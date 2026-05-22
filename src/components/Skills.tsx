@@ -147,14 +147,7 @@ export default function Skills() {
           >
             <p className="skills-cmd-label">$ stack --all</p>
 
-            <div
-              style={{
-                background: "var(--bg-card)",
-                border: "1px solid var(--cyan-border)",
-                borderRadius: "8px",
-                padding: "0.25rem 1.25rem",
-              }}
-            >
+            <div className="manifest-panel">
               {skillsData.categories.map((cat, i) => (
                 <div
                   key={cat.label}
@@ -174,7 +167,6 @@ export default function Skills() {
                       textTransform: "uppercase",
                       color: "var(--cyan)",
                       opacity: 0.65,
-                      whiteSpace: "nowrap",
                     }}
                   >
                     {LABEL_MAP[cat.label] ?? cat.label.toUpperCase()}
