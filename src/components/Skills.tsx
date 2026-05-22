@@ -158,16 +158,12 @@ export default function Skills() {
               {skillsData.categories.map((cat, i) => (
                 <div
                   key={cat.label}
+                  className="manifest-row"
                   style={{
-                    display: "grid",
-                    gridTemplateColumns: "76px 1fr",
-                    gap: "1rem",
-                    padding: "0.8rem 0",
                     borderBottom:
                       i < skillsData.categories.length - 1
                         ? "1px solid rgba(0,217,255,0.05)"
                         : "none",
-                    alignItems: "baseline",
                   }}
                 >
                   <span

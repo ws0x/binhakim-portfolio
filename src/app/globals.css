@@ -305,7 +305,12 @@ body {
   .hero-cta-row a { flex: 1 1 auto; justify-content: center; }
 }
 
-/* Nav: hide desktop links on small screens */
+/* Nav: desktop link row */
+.nav-desktop {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
 @media (max-width: 767px) {
   .nav-desktop { display: none !important; }
 }
@@ -402,6 +407,21 @@ body {
 }
 .skill-card:hover .skill-card-name {
   color: var(--text-primary);
+}
+
+/* ── Manifest row ($ stack --all) ───────────────────────── */
+.manifest-row {
+  display: grid;
+  grid-template-columns: 76px 1fr;
+  gap: 1rem;
+  padding: 0.8rem 0;
+  align-items: baseline;
+}
+@media (max-width: 479px) {
+  .manifest-row {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
 }
 
 /* ── Manifest skill hover ───────────────────────────────── */

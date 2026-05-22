@@ -62,20 +62,14 @@ export default function Navigation() {
             color: "var(--cyan)",
             textDecoration: "none",
             letterSpacing: "0.05em",
+            whiteSpace: "nowrap",
           }}
         >
           <span style={{ color: "var(--cyan)" }}>Bin</span>{" "}Hakim
         </a>
 
         {/* Desktop links */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "2rem",
-          }}
-          className="hidden md:flex"
-        >
+        <div className="nav-desktop">
           {links.map((l) => (
             <a
               key={l.href}
