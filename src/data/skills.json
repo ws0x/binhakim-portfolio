@@ -1,0 +1,41 @@
+{
+  "categories": [
+    {
+      "label": "Languages",
+      "icon": "code",
+      "skills": ["Go", "Java", "TypeScript", "JavaScript", "Python", "Bash", "SQL"]
+    },
+    {
+      "label": "Backend",
+      "icon": "server",
+      "skills": ["Node.js", "Express.js", "Spring Boot", "REST APIs"]
+    },
+    {
+      "label": "Databases",
+      "icon": "database",
+      "skills": ["PostgreSQL", "Redis", "JPA"]
+    },
+    {
+      "label": "Infrastructure",
+      "icon": "cloud",
+      "skills": ["Nginx", "Heroku", "Vercel", "Netlify", "Docker"]
+    },
+    {
+      "label": "Messaging",
+      "icon": "zap",
+      "skills": ["RabbitMQ", "WebSockets"]
+    },
+    {
+      "label": "Tools & Testing",
+      "icon": "wrench",
+      "skills": ["Git", "Postman", "Swagger", "ESLint", "Jest", "Cypress", "Jira", "Notion"]
+    }
+  ],
+  "softSkills": [
+    { "label": "Systems Thinking", "level": 92 },
+    { "label": "Critical Analysis", "level": 88 },
+    { "label": "Problem Decomposition", "level": 90 },
+    { "label": "Technical Writing", "level": 82 },
+    { "label": "Architecture Design", "level": 85 }
+  ]
+}

@@ -1,0 +1,31 @@
+[
+  {
+    "title": "Backend Engineer",
+    "company": "Company Name",
+    "period": "2024 — Present",
+    "location": "Egypt · Remote",
+    "description": "Building and maintaining scalable backend services, APIs, and server infrastructure for production workloads.",
+    "bullets": [
+      "Designed and implemented RESTful APIs with Node.js and NestJS serving thousands of daily requests",
+      "Optimized PostgreSQL query performance through indexing strategies and query analysis, reducing average latency significantly",
+      "Configured and managed Nginx reverse proxy with SSL termination, load balancing, and caching layers",
+      "Implemented RabbitMQ message queues decoupling async services and improving system resilience",
+      "Provisioned and maintained AWS infrastructure including EC2, S3, and RDS deployments"
+    ],
+    "tech": ["Node.js", "TypeScript", "NestJS", "PostgreSQL", "Redis", "Nginx", "RabbitMQ", "AWS"]
+  },
+  {
+    "title": "Software Engineer",
+    "company": "Previous Company",
+    "period": "2023 — 2024",
+    "location": "Egypt",
+    "description": "Full-stack development with a backend focus, building APIs and database-driven applications.",
+    "bullets": [
+      "Built Express.js REST APIs with full CRUD operations and JWT-based authentication",
+      "Designed normalized PostgreSQL schemas and wrote complex multi-table queries",
+      "Integrated Redis caching layer reducing database read load on high-traffic endpoints",
+      "Wrote unit and integration tests using Jest and Cypress for critical business logic"
+    ],
+    "tech": ["Node.js", "Express.js", "PostgreSQL", "Redis", "React", "Jest", "Cypress"]
+  }
+]

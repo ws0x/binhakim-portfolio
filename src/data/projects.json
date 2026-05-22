@@ -1,0 +1,46 @@
+[
+  {
+    "id": "throughline",
+    "title": "Throughline",
+    "tagline": "Behavioral Intelligence Platform",
+    "description": "Full-stack AI platform that transforms CliftonStrengths PDF reports into 14 sections of personalized, theme-grounded behavioral insights. Features parallel SSE streaming AI generation, PDF extraction via Anthropic's Files API, Neon PostgreSQL persistence, and a specificity-checking pipeline that auto-rejects generic output.",
+    "tech": ["Next.js", "TypeScript", "Claude AI", "PostgreSQL", "Drizzle ORM", "Clerk Auth", "SSE Streaming", "Vercel Blob", "Zod"],
+    "github": "https://github.com/ws0x/throughline",
+    "live": null,
+    "featured": true,
+    "category": "Full-Stack · AI"
+  },
+  {
+    "id": "epps-optimizer",
+    "title": "EPPS Container Optimizer",
+    "tagline": "3D Bin Packing & Logistics Tool",
+    "description": "Engineering tool that computes optimal product placement inside shipping containers using 3D bin packing algorithms. Real-time 3D visualization with door clearance validation, multi-solution comparison, and one-click PDF export for logistics teams.",
+    "tech": ["React", "Three.js", "Vite", "3D Algorithms", "Bin Packing", "PDF Export"],
+    "github": "https://github.com/ws0x/epps-sc-container-optimizer",
+    "live": null,
+    "featured": true,
+    "category": "Algorithms · Visualization"
+  },
+  {
+    "id": "algo-visualizer",
+    "title": "Algorithm Visualizer",
+    "tagline": "Interactive CS Learning Platform",
+    "description": "Interactive educational platform visualizing 15+ sorting, searching, graph, and tree algorithms alongside 8 core data structures in real-time. Step-by-step animations with time complexity breakdowns.",
+    "tech": ["React", "Vite", "JavaScript", "Canvas", "Algorithms", "Data Structures"],
+    "github": "https://github.com/ws0x/algo-visualizer",
+    "live": null,
+    "featured": false,
+    "category": "Educational · CS"
+  },
+  {
+    "id": "interpack-scraper",
+    "title": "Interpack26 Scraper",
+    "tagline": "Automated Data Extraction Pipeline",
+    "description": "Automated web scraping pipeline extracting structured exhibitor data from the Interpack 2026 trade show platform. Outputs clean JSON/CSV for downstream business intelligence workflows.",
+    "tech": ["Python", "Web Scraping", "Data Pipeline", "BeautifulSoup", "JSON"],
+    "github": "https://github.com/ws0x/Interpack26-Scraper",
+    "live": null,
+    "featured": false,
+    "category": "Data Engineering · Python"
+  }
+]
