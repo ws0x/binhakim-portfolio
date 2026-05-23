@@ -78,7 +78,7 @@ export default function About() {
               managing modern web server infrastructure.
             </p>
             <p>
-              I love deep-diving into system internals — whether it&apos;s
+              I love deep-diving into system internals whether it&apos;s
               understanding how a query planner makes decisions, tracing a
               request through a reverse proxy, or designing message flows
               between async services.

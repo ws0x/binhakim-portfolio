@@ -9,6 +9,7 @@ const ROLES = [
   "Systems Architect",
   "Database Optimizer",
   "Infrastructure Nerd",
+  "DevOps Enthusiast",
 ];
 
 function TypingText() {

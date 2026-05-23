@@ -543,6 +543,16 @@ body {
   .manifest-panel { padding: 0.25rem 1.25rem; }
 }
 
+/* ── Experience card meta (date + location) ─────────────── */
+.exp-meta {
+  text-align: left;   /* left-aligned when it wraps on mobile */
+}
+@media (min-width: 640px) {
+  .exp-meta {
+    text-align: right; /* right-aligned on the same row as the title */
+  }
+}
+
 /* ── Manifest skill hover ───────────────────────────────── */
 .manifest-skill {
   cursor: pointer;

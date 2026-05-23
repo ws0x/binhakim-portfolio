@@ -77,14 +77,13 @@ function ProjectRow({
           paddingTop: "0.2rem",
           userSelect: "none",
           position: "relative",
-          zIndex: 2,
         }}
       >
         {String(num).padStart(2, "0")}
       </div>
 
       {/* Content */}
-      <div style={{ position: "relative", zIndex: 2 }}>
+      <div style={{ position: "relative" }}>
         {/* Title row */}
         <div
           style={{

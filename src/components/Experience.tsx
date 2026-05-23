@@ -124,7 +124,7 @@ export default function Experience() {
                     {exp.company}
                   </p>
                 </div>
-                <div style={{ textAlign: "right" }}>
+                <div className="exp-meta">
                   <span
                     style={{
                       fontFamily: "var(--font-jet), monospace",

@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Yusuf Naeem | Backend Engineer",
+  title: "Yusuf Naeem | Software Engineer",
   description:
     "Software Engineer specializing in backend architecture, database optimization, and systems infrastructure. Building robust APIs and scalable systems.",
   keywords: [
@@ -22,13 +22,17 @@ export const metadata: Metadata = {
     "Node.js",
     "Go",
     "PostgreSQL",
+    "Database Optimization",
+    "Java",
+    "Spring",
+    "Spring Boot",
     "Systems Infrastructure",
     "Yusuf Naeem",
     "binhakim",
   ],
   authors: [{ name: "Yusuf Naeem Abd El-Hakim" }],
   openGraph: {
-    title: "Yusuf Naeem | Backend Engineer",
+    title: "Yusuf Naeem | Software Engineer",
     description:
       "Software Engineer specializing in backend architecture, database optimization, and systems infrastructure.",
     url: "https://binhakim.dev",
@@ -37,7 +41,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Yusuf Naeem | Backend Engineer",
+    title: "Yusuf Naeem | Software Engineer",
     description:
       "Software Engineer specializing in backend architecture, database optimization, and systems infrastructure.",
   },

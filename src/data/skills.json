@@ -28,7 +28,7 @@
     {
       "label": "Tools & Testing",
       "icon": "wrench",
-      "skills": ["Git", "Postman", "Swagger", "Jest", "Cypress", "Jira", "Notion"]
+      "skills": ["Git", "Postman", "Swagger", "Jest", "Jira", "Notion"]
     }
   ],
   "softSkills": [
