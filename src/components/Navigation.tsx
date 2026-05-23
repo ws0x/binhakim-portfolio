@@ -56,16 +56,30 @@ export default function Navigation() {
         <a
           href="#hero"
           style={{
-            fontFamily: "var(--font-jet), monospace",
-            fontSize: "0.95rem",
-            fontWeight: 700,
-            color: "var(--cyan)",
+            display: "flex",
+            alignItems: "center",
+            gap: "0.6rem",
             textDecoration: "none",
-            letterSpacing: "0.05em",
             whiteSpace: "nowrap",
           }}
         >
-          <span style={{ color: "var(--cyan)" }}>Bin</span>{" "}Hakim
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/icon.png"
+            alt="Yusuf Naeem"
+            className="nav-avatar"
+          />
+          <span
+            style={{
+              fontFamily: "var(--font-jet), monospace",
+              fontSize: "0.95rem",
+              fontWeight: 700,
+              color: "var(--cyan)",
+              letterSpacing: "0.05em",
+            }}
+          >
+            <span style={{ color: "var(--cyan)" }}>Bin</span>{" "}Hakim
+          </span>
         </a>
 
         {/* Desktop links */}

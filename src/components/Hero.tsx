@@ -110,11 +110,16 @@ export default function Hero() {
         style={{
           position: "relative",
           zIndex: 1,
-          maxWidth: "56rem",
+          maxWidth: "72rem",
           width: "100%",
           margin: "0 auto",
         }}
       >
+        <div className="hero-split">
+
+        {/* ── Text content ─────────────────────────────────── */}
+        <div className="hero-content">
+
         {/* Boot status */}
         <div
           style={{
@@ -373,7 +378,23 @@ export default function Hero() {
           >
             <LinkedinIcon size={16} />
           </a>
+        </div>{/* end CTAs row */}
+        </div>{/* end hero-content */}
+
+        {/* ── Portrait photo ───────────────────────────────── */}
+        <div
+          className="hero-photo-wrap"
+          style={{
+            opacity: lines >= 2 ? 1 : 0,
+            transform: lines >= 2 ? "translateY(0)" : "translateY(20px)",
+            transition: "opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s",
+          }}
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/profile.jpg" alt="Yusuf Naeem Abd El-Hakim" />
         </div>
+
+        </div>{/* end hero-split */}
       </div>
 
       {/* Scroll indicator */}

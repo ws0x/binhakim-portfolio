@@ -22,6 +22,7 @@ const FEATURED = [
   { name: "JavaScript",  cat: "LANG",     glyph: "JS" },
   { name: "Node.js",     cat: "BACKEND",  glyph: "NJ" },
   { name: "Nginx",       cat: "INFRA",    glyph: "NX" },
+  { name: "Git",         cat: "INFRA",    glyph: "GT" },
 ];
 
 // Short display labels for the manifest panel

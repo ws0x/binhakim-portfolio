@@ -17,7 +17,7 @@
     "description": "Engineering tool that computes optimal product placement inside shipping containers using 3D bin packing algorithms. Real-time 3D visualization with door clearance validation, multi-solution comparison, and one-click PDF export for logistics teams.",
     "tech": ["React", "Three.js", "Vite", "3D Algorithms", "Bin Packing", "PDF Export"],
     "github": "https://github.com/ws0x/epps-sc-container-optimizer",
-    "live": null,
+    "live": "https://ws0x.github.io/epps-sc-container-optimizer/",
     "featured": true,
     "category": "Algorithms · Visualization"
   },
@@ -28,7 +28,7 @@
     "description": "Interactive educational platform visualizing 15+ sorting, searching, graph, and tree algorithms alongside 8 core data structures in real-time. Step-by-step animations with time complexity breakdowns.",
     "tech": ["React", "Vite", "JavaScript", "Canvas", "Algorithms", "Data Structures"],
     "github": "https://github.com/ws0x/algo-visualizer",
-    "live": null,
+    "live": "https://ws0x.github.io/algo-visualizer/",
     "featured": false,
     "category": "Educational · CS"
   },

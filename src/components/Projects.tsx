@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import { motion, useInView, type Variants } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Globe } from "lucide-react";
 import { GithubIcon } from "./BrandIcons";
 import projectsData from "../data/projects.json";
 
@@ -48,9 +48,22 @@ function ProjectRow({
       initial="hidden"
       animate={inView ? "visible" : "hidden"}
       className="project-row"
+      style={{ position: "relative", cursor: project.live ? "pointer" : "default" }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
+      {/* ── Invisible overlay: makes the whole row a link to the live URL ── */}
+      {project.live && (
+        <a
+          href={project.live}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`View ${project.title} live demo`}
+          tabIndex={-1}
+          style={{ position: "absolute", inset: 0, zIndex: 1 }}
+        />
+      )}
+
       {/* Index number */}
       <div
         style={{
@@ -63,13 +76,15 @@ function ProjectRow({
           transition: "color 0.25s, opacity 0.25s",
           paddingTop: "0.2rem",
           userSelect: "none",
+          position: "relative",
+          zIndex: 2,
         }}
       >
         {String(num).padStart(2, "0")}
       </div>
 
       {/* Content */}
-      <div>
+      <div style={{ position: "relative", zIndex: 2 }}>
         {/* Title row */}
         <div
           style={{
@@ -93,7 +108,7 @@ function ProjectRow({
             {project.title}
           </h3>
 
-          {/* Category + external link */}
+          {/* Category + arrow indicator (only shows when live URL exists) */}
           <div
             style={{
               display: "flex",
@@ -114,7 +129,7 @@ function ProjectRow({
             >
               {project.category}
             </span>
-            {project.github && (
+            {project.live && (
               <ArrowUpRight
                 size={13}
                 style={{
@@ -154,7 +169,7 @@ function ProjectRow({
           {project.description}
         </p>
 
-        {/* Tech tags + GitHub link */}
+        {/* Tech tags + action buttons */}
         <div
           style={{
             display: "flex",
@@ -164,9 +179,7 @@ function ProjectRow({
             gap: "0.75rem",
           }}
         >
-          <div
-            style={{ display: "flex", flexWrap: "wrap", gap: "0.35rem" }}
-          >
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "0.35rem" }}>
             {project.tech.map((t) => (
               <span key={t} className="tech-tag">
                 {t}
@@ -174,17 +187,39 @@ function ProjectRow({
             ))}
           </div>
 
-          {project.github && (
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={(e) => e.stopPropagation()}
-              className="github-btn"
-            >
-              <GithubIcon size={13} /> GitHub
-            </a>
-          )}
+          {/* Buttons sit above the overlay (z-index: 3) */}
+          <div
+            style={{
+              display: "flex",
+              gap: "0.5rem",
+              alignItems: "center",
+              position: "relative",
+              zIndex: 3,
+            }}
+          >
+            {project.live && (
+              <a
+                href={project.live}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="live-btn"
+              >
+                <Globe size={13} /> Live
+              </a>
+            )}
+            {project.github && (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="github-btn"
+              >
+                <GithubIcon size={13} /> GitHub
+              </a>
+            )}
+          </div>
         </div>
       </div>
     </motion.div>
