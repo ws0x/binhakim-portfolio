@@ -167,7 +167,7 @@ export default function Hero() {
             { prefix: ">", text: "whoami", delay: 0 },
             { prefix: "//", text: "Backend Engineer · Systems Infrastructure", delay: 1 },
             { prefix: ">", text: "ls skills/ | head -5", delay: 2 },
-            { prefix: "//", text: "Go  Node.js  PostgreSQL  Redis  Nginx  RabbitMQ", delay: 3 },
+            { prefix: "//", text: "Java  Spring  Node.js  PostgreSQL  JavaScript  Nginx", delay: 3 },
           ].map((line, i) => (
             <div
               key={i}
