@@ -3,7 +3,7 @@
     {
       "label": "Languages",
       "icon": "code",
-      "skills": ["Go", "Java", "TypeScript", "JavaScript", "Python", "Bash", "SQL"]
+      "skills": ["Java", "JavaScript", "Python", "SQL", "Go"]
     },
     {
       "label": "Backend",
@@ -13,12 +13,12 @@
     {
       "label": "Databases",
       "icon": "database",
-      "skills": ["PostgreSQL", "Redis", "JPA"]
+      "skills": ["PostgreSQL", "JPA", "Redis"]
     },
     {
       "label": "Infrastructure",
       "icon": "cloud",
-      "skills": ["Nginx", "Heroku", "Vercel", "Netlify", "Docker"]
+      "skills": ["Nginx", "Heroku", "Vercel", "Docker"]
     },
     {
       "label": "Messaging",
@@ -28,7 +28,7 @@
     {
       "label": "Tools & Testing",
       "icon": "wrench",
-      "skills": ["Git", "Postman", "Swagger", "ESLint", "Jest", "Cypress", "Jira", "Notion"]
+      "skills": ["Git", "Postman", "Swagger", "Jest", "Cypress", "Jira", "Notion"]
     }
   ],
   "softSkills": [

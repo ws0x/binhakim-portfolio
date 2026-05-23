@@ -1,31 +1,102 @@
 [
   {
-    "title": "Backend Engineer",
-    "company": "Company Name",
-    "period": "2024 — Present",
-    "location": "Egypt · Remote",
-    "description": "Building and maintaining scalable backend services, APIs, and server infrastructure for production workloads.",
+    "title": "Software Engineer / IT Business Analyst",
+    "company": "Egyptian Packaging & Plastic Systems Corp",
+    "period": "Apr 2024 - Present",
+    "location": "Egypt · On-site",
+    "description": "Drove data analytics, IT automation, and software engineering to align technical infrastructure with business growth.",
     "bullets": [
-      "Designed and implemented RESTful APIs with Node.js and NestJS serving thousands of daily requests",
-      "Optimized PostgreSQL query performance through indexing strategies and query analysis, reducing average latency significantly",
-      "Configured and managed Nginx reverse proxy with SSL termination, load balancing, and caching layers",
-      "Implemented RabbitMQ message queues decoupling async services and improving system resilience",
-      "Provisioned and maintained AWS infrastructure including EC2, S3, and RDS deployments"
+      "Developed and maintained some of the company’s group websites, ensuring optimal performance and security",
+      "Optimized site performance through caching, image compression, and database cleanup",
+      "Implemented security best practices including hardening wp-admin, configuring backups, and applying updates",
+      "Participated in planning and building the company's IT Asset Management (ITAM) platform from scratch, centralizing hardware/software lifecycles to minimize hardware tracking leaks and optimize maintenance overhead",
+      "Engineered SC 3D Optimizer, a web application that leverages a 3D bin-packing algorithm to deliver real-time container optimization recommendations, significantly improving spatial utilization and reducing cargo planning time",
+      "Automated routine administrative tasks using scripting tools, improving efficiency across IT operations", 
+      "Co-architected the corporate IT department structure, defining governance frameworks, technical roles, and standardized workflows to scale operations",
+      "Developed enterprise-level IT policies and SOPs spanning access control, change management, and service delivery to guarantee business continuity and alignment",
+      "Conducted data-driven cost-benefit and ROI analyses, de-risking capital allocation and driving strategic software investment decisions for executive stakeholders",
+      "Designed and optimized business processes and workflows, improving efficiency, reducing bottlenecks, and enhancing overall productivity",
+      "Conducted data analysis using tools such as Excel, and Power BI to identify trends, patterns, and insights supporting decision-making",
+      "Presented findings and insights to stakeholders through clear reports, visualizations, and executive summaries",
+      "Performed data validation and quality assurance to maintain integrity and reliability of reports",
+      "Gathered, analyzed, and documented business requirements to translate stakeholder needs into actionable solutions",
+      "Collaborated with the hiring team to evaluate and interview candidates for various technical roles",
+      "Worked with Marketing and Business Development teams to optimize websites content and improve SEO"
     ],
-    "tech": ["Node.js", "TypeScript", "NestJS", "PostgreSQL", "Redis", "Nginx", "RabbitMQ", "AWS"]
+    "tech": ["HTML", "CSS", "JavaScript", "REST APIs", "React", "Python", "WordPress", "Excel", "Power BI"]
+  },
+  {
+    "title": "Offensive Security Engineer Intern",
+    "company": "WE INNOVATE",
+    "period": "Sep 2024 - Dec 2024",
+    "location": "Egypt · Hybrid",
+    "description": "Executed white-box and black-box penetration testing across enterprise applications.",
+    "bullets": [
+      "Simulated real-world attacks in lab environments to test the resilience of web, mobile, and infrastructure systems",
+      "Conducted comprehensive web penetration tests using the OWASP Top 10 framework, identifying and exploiting vulnerabilities in real-world applications",
+      "Gained expertise in bypassing security mechanisms, such as authentication and encryption, to identify vulnerabilities",
+      "Gained hands-on experience in mobile application penetration testing",
+      "Leveraged Burp Suite Professional, Metasploit, and Wireshark to map attack surfaces, intercept traffic, and identify vulnerable software subcomponents",
+      "Conducted operating system penetration testing, analyzing system-level vulnerabilities across various OS platforms"
+    ],
+    "tech": ["HTML", "CSS", "JavaScript", "REST APIs", "Python", "WordPress", "Google Sheets API"]
   },
   {
     "title": "Software Engineer",
-    "company": "Previous Company",
-    "period": "2023 — 2024",
-    "location": "Egypt",
-    "description": "Full-stack development with a backend focus, building APIs and database-driven applications.",
+    "company": "HomeBay Furniture",
+    "period": "Nov 2023 - Oct 2024",
+    "location": "Canada · Remote",
+    "description": "Architected high-converting, localized e-commerce web application, driving traffic through SEO and performance optimizations.",
     "bullets": [
-      "Built Express.js REST APIs with full CRUD operations and JWT-based authentication",
-      "Designed normalized PostgreSQL schemas and wrote complex multi-table queries",
-      "Integrated Redis caching layer reducing database read load on high-traffic endpoints",
-      "Wrote unit and integration tests using Jest and Cypress for critical business logic"
+      "Engineered responsive e-commerce web interfaces, utilizing modern frontend performance optimizations to achieve sub-second render speeds",
+      "Customized and extended WooCommerce functionalities, including product management and checkout process optimization",
+      "Implemented performance optimizations (caching, database tuning and image optimization) to improve loading speeds and user engagement",
+      "Monitored website health, conducted regular backups and ensured compliance with security standards",
+      "Collaborated on UI/UX design for the new Homebay.ca interface, enhancing user experience and overall site aesthetics",
+      "Built automated internal workflow scripts, minimizing manual cataloging tasks and synchronizing asset updates"
     ],
-    "tech": ["Node.js", "Express.js", "PostgreSQL", "Redis", "React", "Jest", "Cypress"]
+    "tech": ["HTML", "CSS", "JavaScript", "REST APIs", "Python", "WordPress", "Google Sheets API"]
+  },
+  {
+    "title": "Software Engineer Intern",
+    "company": "Kites Software",
+    "period": "Aug 2023 - Nov 2023",
+    "location": "Egypt · On-site",
+    "description": "Built test-driven RESTful APIs and established unified documentation frameworks within a Agile engineering team.",
+    "bullets": [
+      "Participated in Improving the Onboarding Process for the new Interns",
+      "Created Wikis to help the new comers to discover the technologies and technical approaches at Kites",
+      "Participated in writing integration tests in Behavioral Driven Development (BDD) using Cucumber",
+      "Participated in building and testing RESTful APIs in a Test-Driven Development process",
+      "Investigated and fixed issues reported by the QA team",
+      "Learned new technologies like Spring Boot, PostgreSQL, Angular and RxJS",
+      "Got introduced to some DevOps technologies like liquibase and AWS Services (S3 & EC2)"
+    ],
+    "tech": ["Java", "Spring Boot", "REST APIs", "Git", "Angular", "RxJS", "Jira", "Scrum", "BDD"]
+  },
+  {
+    "title": "Business Analyst",
+    "company": "Egyptian Packaging & Plastic Systems Corp",
+    "period": "Jul 2022 - Mar 2024",
+    "location": "Egypt · On-site",
+    "description": "Architected a comprehensive digital transformation layout from scratch.",
+    "bullets": [
+      "Led the digital transformation initiative within the company, driving process improvements and efficiency across teams",
+      "Planned and developed the Tact CRM System using Notion, creating a centralized platform to streamline operations",
+      "Organized workflows and enhanced collaboration between Site Engineers, Architects, and Supervisors across the organization, ensuring seamless communication and task management"
+    ],
+    "tech": ["Digital Transformation", "Systems Thinking", "Automation", "Notion"]
+  },
+  {
+    "title": "Frontend Developer Intern",
+    "company": "Information Technology Institute (ITI)",
+    "period": "Sep 2022 - Oct 2022",
+    "location": "Egypt · On-site",
+    "description": "Got Introduced to frontend development in a fast-paced internship program.",
+    "bullets": [
+      "Learned and applied frontend development technologies and best practices, including HTML, CSS, JavaScript, and BootStrap",
+      "Gained experience in version control using Git and GitHub"     
+    ],
+    "tech": ["HTML", "CSS", "JavaScript", "Bootstrap", "Git"]
   }
 ]
