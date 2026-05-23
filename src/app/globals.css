@@ -310,15 +310,12 @@ body {
 /* ── Hero split layout (text + portrait) ────────────────── */
 .hero-split {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 2.5rem;
   width: 100%;
 }
 @media (min-width: 900px) {
   .hero-split {
     flex-direction: row;
-    align-items: center;
     gap: 3.5rem;
   }
 }
@@ -326,26 +323,21 @@ body {
 .hero-content {
   flex: 1;
   min-width: 0;
-  /* on mobile content comes second (photo on top) */
-  order: 2;
-}
-@media (min-width: 900px) {
-  .hero-content { order: 1; }
 }
 
+/* Photo: hidden on mobile & tablet, desktop-only */
 .hero-photo-wrap {
-  flex-shrink: 0;
-  order: 1;
-  width: 160px;
-}
-@media (min-width: 640px) {
-  .hero-photo-wrap { width: 220px; }
+  display: none;
 }
 @media (min-width: 900px) {
   .hero-photo-wrap {
-    width: 300px;
-    order: 2;
+    display: block;
+    flex-shrink: 0;
+    width: 360px;
   }
+}
+@media (min-width: 1280px) {
+  .hero-photo-wrap { width: 420px; }
 }
 
 /* The actual <img> inside the photo wrapper */
@@ -362,17 +354,20 @@ body {
 }
 
 /* ── Navbar avatar ──────────────────────────────────────── */
+/* Uses background-image so background-size controls the zoom level */
 .nav-avatar {
   width: 34px;
   height: 34px;
   border-radius: 50%;
   border: 1.5px solid rgba(0, 217, 255, 0.35);
-  object-fit: cover;
-  /* icon.png face crop — center slightly right of middle */
-  object-position: 55% top;
-  flex-shrink: 0;
-  display: block;
   box-shadow: 0 0 10px rgba(0, 217, 255, 0.2);
+  flex-shrink: 0;
+  /* photo fills ~78% of the circle — shows full portrait, not just face crop */
+  background-image: url('/profile.jpg');
+  background-color: var(--bg-base);
+  background-repeat: no-repeat;
+  background-size: 78%;
+  background-position: 52% 8%;
 }
 
 /* Nav: desktop link row */

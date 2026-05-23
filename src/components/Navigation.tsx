@@ -63,12 +63,7 @@ export default function Navigation() {
             whiteSpace: "nowrap",
           }}
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/icon.png"
-            alt="Yusuf Naeem"
-            className="nav-avatar"
-          />
+          <div className="nav-avatar" role="img" aria-label="Yusuf Naeem" />
           <span
             style={{
               fontFamily: "var(--font-jet), monospace",
