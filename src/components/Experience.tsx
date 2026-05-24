@@ -40,7 +40,7 @@ export default function Experience() {
             letterSpacing: "-0.02em",
           }}
         >
-          Where I&apos;ve built things
+          Where I&apos;ve Built Things
         </h2>
       </motion.div>
 

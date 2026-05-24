@@ -257,7 +257,7 @@ export default function Projects() {
                 letterSpacing: "-0.02em",
               }}
             >
-              Things I&apos;ve built
+              Things I&apos;ve Built
             </h2>
           </motion.div>
         </div>

@@ -56,7 +56,7 @@ export default function BlogCards({ posts }: { posts: Post[] }) {
               letterSpacing: "-0.02em",
             }}
           >
-            Thoughts &amp; articles
+            Thoughts &amp; Articles
           </h2>
         </div>
         <a
