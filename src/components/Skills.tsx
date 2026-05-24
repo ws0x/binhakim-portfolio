@@ -69,7 +69,7 @@ export default function Skills() {
               letterSpacing: "-0.02em",
             }}
           >
-            Tools I build with
+            Tools I Build With
           </h2>
         </motion.div>
 
