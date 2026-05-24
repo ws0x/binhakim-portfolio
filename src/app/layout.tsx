@@ -17,6 +17,14 @@ export const metadata: Metadata = {
   title: "Yusuf Naeem | Software Engineer",
   description:
     "Software Engineer specializing in backend architecture, database optimization, and systems infrastructure. Building robust APIs and scalable systems.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon.png", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/favicon.png",
+  },
   keywords: [
     "Backend Engineer",
     "Software Engineer",
