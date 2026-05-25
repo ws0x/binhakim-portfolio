@@ -2,7 +2,36 @@
 
 import { useRef } from "react";
 import { motion, useInView, type Variants } from "framer-motion";
+import { Cpu, ScanSearch, Layers, FileCode2, LayoutDashboard } from "lucide-react";
 import skillsData from "../data/skills.json";
+
+const TRAITS = [
+  {
+    Icon: Cpu,
+    name: "Systems Thinking",
+    desc: "Seeing the full picture before touching a line",
+  },
+  {
+    Icon: ScanSearch,
+    name: "Critical Analysis",
+    desc: "Cutting through noise to find the real problem",
+  },
+  {
+    Icon: Layers,
+    name: "Problem Decomposition",
+    desc: "Divide, conquer, iterate",
+  },
+  {
+    Icon: FileCode2,
+    name: "Technical Writing",
+    desc: "Turning complexity into clarity",
+  },
+  {
+    Icon: LayoutDashboard,
+    name: "Architecture Design",
+    desc: "Structure before syntax, always",
+  },
+];
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 28 },
@@ -145,56 +174,35 @@ export default function About() {
             $ diagnostics --soft-skills
           </p>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
-            {skillsData.softSkills.map((skill, i) => (
-              <div key={skill.label}>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    marginBottom: "0.45rem",
-                  }}
-                >
-                  <span
-                    style={{
-                      fontFamily: "var(--font-jet), monospace",
-                      fontSize: "0.75rem",
-                      color: "var(--text-primary)",
-                      letterSpacing: "0.04em",
-                    }}
-                  >
-                    {skill.label}
-                  </span>
-                  <span
-                    style={{
-                      fontFamily: "var(--font-jet), monospace",
-                      fontSize: "0.65rem",
-                      color: "var(--cyan)",
-                    }}
-                  >
-                    {skill.level}%
-                  </span>
+          <div style={{ display: "flex", flexDirection: "column", gap: "0.6rem" }}>
+            {TRAITS.map((trait) => (
+              <div key={trait.name} className="trait-card">
+                <div className="trait-icon-wrap">
+                  <trait.Icon size={15} />
                 </div>
-                <div
-                  style={{
-                    height: "4px",
-                    background: "rgba(0,217,255,0.08)",
-                    borderRadius: "2px",
-                    overflow: "hidden",
-                  }}
-                >
+                <div style={{ minWidth: 0 }}>
                   <div
-                    className="skill-bar-fill"
                     style={{
-                      height: "100%",
-                      width: inView ? `${skill.level}%` : "0%",
-                      background: `linear-gradient(90deg, var(--cyan), rgba(0,102,255,0.8))`,
-                      borderRadius: "2px",
-                      transition: `width 1s ease ${0.3 + i * 0.1}s`,
-                      boxShadow: "0 0 8px rgba(0,217,255,0.4)",
+                      fontFamily: "var(--font-jet), monospace",
+                      fontSize: "0.78rem",
+                      fontWeight: 600,
+                      color: "var(--text-primary)",
+                      letterSpacing: "0.03em",
+                      marginBottom: "0.15rem",
                     }}
-                  />
+                  >
+                    {trait.name}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: "0.72rem",
+                      color: "var(--text-dim)",
+                      letterSpacing: "0.01em",
+                      lineHeight: 1.4,
+                    }}
+                  >
+                    {trait.desc}
+                  </div>
                 </div>
               </div>
             ))}
