@@ -39,7 +39,7 @@
       "Leveraged Burp Suite Professional, Metasploit, and Wireshark to map attack surfaces, intercept traffic, and identify vulnerable software subcomponents",
       "Conducted operating system penetration testing, analyzing system-level vulnerabilities across various OS platforms"
     ],
-    "tech": ["HTML", "CSS", "JavaScript", "REST APIs", "Python", "WordPress", "Google Sheets API"]
+    "tech": ["Python", "Burp Suite Pro", "Metasploit", "Wireshark", "OWASP Top 10", "Kali Linux"]
   },
   {
     "title": "Software Engineer",

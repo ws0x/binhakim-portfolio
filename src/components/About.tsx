@@ -107,10 +107,24 @@ export default function About() {
               managing modern web server infrastructure.
             </p>
             <p>
-              I love deep-diving into system internals whether it&apos;s
-              understanding how a query planner makes decisions, tracing a
-              request through a reverse proxy, or designing message flows
-              between async services.
+              I love deep-diving into system internals — query planners,
+              reverse proxy routing, async message flows — and integrating
+              AI/LLM APIs to build tools that are genuinely useful in
+              production, not just impressive in demos.
+            </p>
+            <p>
+              I ship real products: Orbit, a Professional Relationship OS with
+              OAuth SSO, Gemini AI semantic search, and Stripe billing, runs
+              live at{" "}
+              <a
+                href="https://byorbit.io"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: "var(--cyan)", textDecoration: "none" }}
+              >
+                byorbit.io
+              </a>
+              {" "}today.
             </p>
             <p>
               When I&apos;m not building systems, I write on{" "}

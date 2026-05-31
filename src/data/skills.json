@@ -3,7 +3,12 @@
     {
       "label": "Languages",
       "icon": "code",
-      "skills": ["Java", "JavaScript", "Python", "SQL", "Go"]
+      "skills": ["Java", "TypeScript", "JavaScript", "Python", "SQL", "Go"]
+    },
+    {
+      "label": "Frontend",
+      "icon": "layout",
+      "skills": ["React", "Next.js", "Tailwind CSS", "TanStack Query"]
     },
     {
       "label": "Backend",
@@ -13,12 +18,17 @@
     {
       "label": "Databases",
       "icon": "database",
-      "skills": ["PostgreSQL", "JPA", "Redis"]
+      "skills": ["PostgreSQL", "Supabase", "JPA", "Redis"]
+    },
+    {
+      "label": "AI / LLM",
+      "icon": "brain",
+      "skills": ["Gemini AI", "Claude AI", "Prompt Engineering"]
     },
     {
       "label": "Infrastructure",
       "icon": "cloud",
-      "skills": ["Nginx", "Heroku", "Vercel", "Docker"]
+      "skills": ["Nginx", "Vercel", "Docker", "Heroku"]
     },
     {
       "label": "Messaging",

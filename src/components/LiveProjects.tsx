@@ -19,6 +19,8 @@ import {
   Phone,
   Coffee,
   Mail,
+  Shield,
+  Brain,
 } from "lucide-react";
 import { GithubIcon } from "./BrandIcons";
 
@@ -32,9 +34,11 @@ const fadeUp: Variants = {
 };
 
 const FEATURES = [
-  { Icon: Users, label: "People Dashboard", detail: "Track & organise your network" },
+  { Icon: Users, label: "People Dashboard", detail: "Track & organise your professional network" },
   { Icon: Network, label: "Relationship Graph", detail: "D3 force-directed visualisation" },
-  { Icon: Zap, label: "AI Semantic Search", detail: "Gemini-powered smart queries" },
+  { Icon: Zap, label: "Gemini AI Search", detail: "Semantic queries & smart contact insights" },
+  { Icon: Brain, label: "AI Contact Intelligence", detail: "Strength scoring & smart outreach nudges" },
+  { Icon: Shield, label: "OAuth SSO", detail: "Google & LinkedIn one-click sign-in" },
   { Icon: CreditCard, label: "Stripe Billing", detail: "Free + Pro subscription tiers" },
   { Icon: Smartphone, label: "PWA · Offline", detail: "Installable on iOS & Android" },
   { Icon: Languages, label: "RTL i18n", detail: "Full English + Arabic support" },
@@ -42,7 +46,7 @@ const FEATURES = [
 
 const TECH = [
   "Next.js 16", "TypeScript", "Supabase", "Gemini AI",
-  "Stripe", "TanStack Query", "Tailwind v4", "PWA",
+  "OAuth 2.0", "Stripe", "TanStack Query", "Tailwind v4", "PWA",
 ];
 
 const ORBIT_PURPLE = "#7c3aed";
@@ -650,13 +654,14 @@ export default function LiveProjects() {
                   Orbit
                 </h3>
                 <p style={{ fontFamily: "var(--font-jet), monospace", fontSize: "0.75rem", color: "var(--cyan)", letterSpacing: "0.08em", marginBottom: "1.1rem", opacity: 0.82 }}>
-                  Personal Relationship OS
+                  Professional Relationship OS
                 </p>
                 <p style={{ fontSize: "0.88rem", color: "var(--text-secondary)", lineHeight: 1.75, marginBottom: "1.75rem", maxWidth: "44rem" }}>
-                  A full-stack professional networking tool that turns your contact list
-                  into a queryable, visual, and trackable system. Force-directed relationship
-                  graph, Gemini AI search, Stripe billing, push reminders, bilingual EN/AR
-                  interface, and Supabase RLS multi-tenancy — deployed on Vercel.
+                  A full-stack <strong style={{ color: "var(--text-primary)" }}>Professional Relationship OS</strong> that turns your professional network into a queryable,
+                  visual, and AI-powered system. OAuth SSO via Google &amp; LinkedIn, Gemini AI
+                  semantic search, D3 force-directed relationship graph, Stripe billing,
+                  Supabase RLS multi-tenancy, push reminders, and a bilingual EN/AR interface —
+                  all deployed on Vercel.
                 </p>
 
                 {/* Feature chips */}
