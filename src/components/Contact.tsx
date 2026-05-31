@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView, type Variants } from "framer-motion";
 import { Mail } from "lucide-react";
-import { GithubIcon, LinkedinIcon, InstagramIcon, MediumIcon } from "./BrandIcons";
+import { GithubIcon, LinkedinIcon, InstagramIcon, MediumIcon, WhatsAppIcon } from "./BrandIcons";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
@@ -17,9 +17,15 @@ const fadeUp: Variants = {
 const socials = [
   {
     label: "Email",
-    sub: "yusufnaeemhakim@gmail.com",
-    href: "mailto:yusufnaeemhakim@gmail.com",
+    sub: "yusuf@binhakim.dev",
+    href: "mailto:yusuf@binhakim.dev",
     Icon: Mail,
+  },
+  {
+    label: "WhatsApp",
+    sub: "+20 102 090 0480",
+    href: "https://wa.me/201020900480",
+    Icon: WhatsAppIcon,
   },
   {
     label: "LinkedIn",
