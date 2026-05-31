@@ -31,7 +31,7 @@ export default function Experience() {
         animate={inView ? "visible" : "hidden"}
         style={{ marginBottom: "3.5rem" }}
       >
-        <p className="section-header">// 03. Experience</p>
+        <p className="section-header">// 04. Experience</p>
         <h2
           style={{
             fontSize: "clamp(1.8rem, 4vw, 2.6rem)",

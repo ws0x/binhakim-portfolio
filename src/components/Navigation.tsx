@@ -7,9 +7,9 @@ import { GithubIcon, LinkedinIcon } from "./BrandIcons";
 const links = [
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
+  { label: "Live", href: "#live-projects" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
-  { label: "Live", href: "#live-projects" },
   { label: "Writing", href: "#writing" },
   { label: "Contact", href: "#contact" },
 ];

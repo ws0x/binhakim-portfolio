@@ -248,7 +248,7 @@ export default function Projects() {
             animate={inView ? "visible" : "hidden"}
             style={{ marginBottom: "1rem" }}
           >
-            <p className="section-header">// 04. Projects</p>
+            <p className="section-header">// 05. Projects</p>
             <h2
               style={{
                 fontSize: "clamp(1.8rem, 4vw, 2.6rem)",

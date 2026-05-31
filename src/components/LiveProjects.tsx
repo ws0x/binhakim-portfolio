@@ -15,6 +15,10 @@ import {
   Share2,
   BarChart2,
   Settings,
+  Search,
+  Phone,
+  Coffee,
+  Mail,
 } from "lucide-react";
 import { GithubIcon } from "./BrandIcons";
 
@@ -37,76 +41,40 @@ const FEATURES = [
 ];
 
 const TECH = [
-  "Next.js 16",
-  "TypeScript",
-  "Supabase",
-  "Gemini AI",
-  "Stripe",
-  "TanStack Query",
-  "Tailwind v4",
-  "PWA",
+  "Next.js 16", "TypeScript", "Supabase", "Gemini AI",
+  "Stripe", "TanStack Query", "Tailwind v4", "PWA",
 ];
 
-function OrbitAppMockup() {
-  const people = [
-    { name: "Sarah Chen", role: "VP Eng · Google", str: 88, color: "#7c3aed" },
-    { name: "Marcus Reid", role: "Founder · YC W24", str: 64, color: "#0891b2" },
-    { name: "Layla Al-Amin", role: "CTO · Careem", str: 93, color: "#059669" },
-  ];
+const ORBIT_PURPLE = "#7c3aed";
+const ORBIT_PURPLE_DIM = "rgba(124,58,237,0.22)";
+const ORBIT_PURPLE_GLOW = "rgba(124,58,237,0.55)";
 
-  const sidebarItems = [
-    { Icon: Home, active: false },
-    { Icon: Users, active: true },
-    { Icon: Share2, active: false },
-    { Icon: BarChart2, active: false },
-    { Icon: Settings, active: false },
-  ];
-
+/* ─── Shared browser chrome ──────────────────────────────────────────── */
+function BrowserChrome({ activeTab, onTab }: { activeTab: number; onTab: (i: number) => void }) {
+  const tabs = ["People", "Graph", "Timeline"];
   return (
-    <div
-      style={{
-        width: "100%",
-        height: "100%",
-        minHeight: "300px",
-        background: "#0c0818",
-        borderRadius: "8px",
-        overflow: "hidden",
-        display: "flex",
-        flexDirection: "column",
-        fontFamily: "var(--font-jet), monospace",
-      }}
-    >
-      {/* Browser chrome */}
+    <div style={{ flexShrink: 0 }}>
+      {/* URL bar row */}
       <div
         style={{
           background: "#150e2b",
-          borderBottom: "1px solid rgba(124,58,237,0.2)",
-          padding: "0.5rem 0.75rem",
+          borderBottom: `1px solid ${ORBIT_PURPLE_DIM}`,
+          padding: "0.45rem 0.75rem",
           display: "flex",
           alignItems: "center",
           gap: "0.5rem",
-          flexShrink: 0,
         }}
       >
         <div style={{ display: "flex", gap: "5px", flexShrink: 0 }}>
           {["#ff5f57", "#febc2e", "#28c840"].map((c) => (
-            <div
-              key={c}
-              style={{
-                width: "9px",
-                height: "9px",
-                borderRadius: "50%",
-                background: c,
-                opacity: 0.85,
-              }}
-            />
+            <div key={c} style={{ width: "9px", height: "9px", borderRadius: "50%", background: c, opacity: 0.85 }} />
           ))}
         </div>
         <div
           style={{
             flex: 1,
             background: "#1c1038",
-            border: "1px solid rgba(124,58,237,0.22)",
+            border: `1px solid ${ORBIT_PURPLE_DIM}`,
             borderRadius: "4px",
             padding: "3px 8px",
             fontSize: "0.58rem",
@@ -114,258 +82,433 @@ function OrbitAppMockup() {
             display: "flex",
             alignItems: "center",
             gap: "5px",
+            fontFamily: "var(--font-jet), monospace",
           }}
         >
-          <div
-            style={{
-              width: "7px",
-              height: "7px",
-              borderRadius: "50%",
-              background: "#28c840",
-              flexShrink: 0,
-            }}
-          />
+          <div style={{ width: "7px", height: "7px", borderRadius: "50%", background: "#28c840", flexShrink: 0 }} />
           byorbit.io
         </div>
       </div>
+      {/* Tab bar */}
+      <div
+        style={{
+          display: "flex",
+          background: "#110a22",
+          borderBottom: `1px solid ${ORBIT_PURPLE_DIM}`,
+        }}
+      >
+        {tabs.map((t, i) => (
+          <button
+            key={t}
+            onClick={() => onTab(i)}
+            style={{
+              flex: 1,
+              background: "none",
+              border: "none",
+              borderBottom: `2px solid ${i === activeTab ? ORBIT_PURPLE : "transparent"}`,
+              padding: "0.38rem 0",
+              fontSize: "0.58rem",
+              fontFamily: "var(--font-jet), monospace",
+              fontWeight: i === activeTab ? 700 : 400,
+              letterSpacing: "0.05em",
+              color: i === activeTab ? "#a78bfa" : "rgba(255,255,255,0.3)",
+              cursor: "pointer",
+              transition: "color 0.18s, border-color 0.18s",
+            }}
+          >
+            {t}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
 
-      {/* App layout */}
-      <div style={{ flex: 1, display: "flex", overflow: "hidden" }}>
-        {/* Sidebar */}
+/* ─── Sidebar ────────────────────────────────────────────────────────── */
+function Sidebar({ activeNav }: { activeNav: number }) {
+  const navItems = [Home, Users, Share2, BarChart2, Settings];
+  return (
+    <div
+      style={{
+        width: "40px",
+        background: "#110a22",
+        borderRight: `1px solid ${ORBIT_PURPLE_DIM}`,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        padding: "0.55rem 0",
+        gap: "0.3rem",
+        flexShrink: 0,
+      }}
+    >
+      <div
+        style={{
+          width: "24px", height: "24px", borderRadius: "5px",
+          background: ORBIT_PURPLE,
+          display: "flex", alignItems: "center", justifyContent: "center",
+          marginBottom: "0.4rem",
+          boxShadow: `0 0 8px ${ORBIT_PURPLE_GLOW}`,
+          flexShrink: 0,
+        }}
+      >
+        <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
+          <circle cx="7" cy="7" r="2" fill="white" />
+          <circle cx="7" cy="7" r="4.5" stroke="white" strokeWidth="0.8" fill="none" opacity="0.6" />
+          <circle cx="7" cy="7" r="6.5" stroke="white" strokeWidth="0.5" fill="none" opacity="0.3" />
+        </svg>
+      </div>
+      {navItems.map((Icon, i) => (
         <div
+          key={i}
           style={{
-            width: "44px",
-            background: "#110a22",
-            borderRight: "1px solid rgba(124,58,237,0.15)",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            padding: "0.6rem 0",
-            gap: "0.35rem",
+            width: "28px", height: "28px", borderRadius: "5px",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            background: i === activeNav ? ORBIT_PURPLE_DIM : "transparent",
+            color: i === activeNav ? "#a78bfa" : "rgba(255,255,255,0.2)",
             flexShrink: 0,
           }}
         >
-          {/* Logo mark */}
+          <Icon size={11} />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/* ─── Mockup 1: People Dashboard ─────────────────────────────────────── */
+function PeopleMockup() {
+  const people = [
+    { name: "Sarah Chen", role: "VP Eng · Google", str: 88, color: ORBIT_PURPLE },
+    { name: "Marcus Reid", role: "Founder · YC W24", str: 64, color: "#0891b2" },
+    { name: "Layla Al-Amin", role: "CTO · Careem", str: 93, color: "#059669" },
+  ];
+  const filters = ["All", "Colleagues", "Mentors", "Clients"];
+
+  return (
+    <div style={{ flex: 1, display: "flex", overflow: "hidden" }}>
+      <Sidebar activeNav={1} />
+      <div style={{ flex: 1, padding: "0.6rem", overflow: "hidden", display: "flex", flexDirection: "column" }}>
+        {/* Search */}
+        <div
+          style={{
+            display: "flex", alignItems: "center", gap: "0.4rem",
+            background: "#180938", border: `1px solid ${ORBIT_PURPLE_DIM}`, borderRadius: "4px",
+            padding: "0.3rem 0.5rem", marginBottom: "0.4rem", flexShrink: 0,
+          }}
+        >
+          <Search size={9} style={{ color: "rgba(255,255,255,0.25)", flexShrink: 0 }} />
+          <span style={{ fontSize: "0.55rem", color: "rgba(255,255,255,0.22)", fontFamily: "var(--font-jet), monospace" }}>
+            Search connections...
+          </span>
+        </div>
+        {/* Filter chips */}
+        <div style={{ display: "flex", gap: "0.25rem", marginBottom: "0.45rem", flexShrink: 0 }}>
+          {filters.map((f, i) => (
+            <div
+              key={f}
+              style={{
+                padding: "1px 6px", borderRadius: "3px", fontSize: "0.48rem",
+                fontFamily: "var(--font-jet), monospace",
+                background: i === 0 ? ORBIT_PURPLE : "rgba(124,58,237,0.1)",
+                color: i === 0 ? "white" : "rgba(255,255,255,0.35)",
+                border: i === 0 ? "none" : `1px solid ${ORBIT_PURPLE_DIM}`,
+              }}
+            >
+              {f}
+            </div>
+          ))}
+        </div>
+        {/* Cards */}
+        {people.map((p) => (
           <div
+            key={p.name}
             style={{
-              width: "26px",
-              height: "26px",
-              borderRadius: "6px",
-              background: "#7c3aed",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              marginBottom: "0.5rem",
-              boxShadow: "0 0 10px rgba(124,58,237,0.55)",
-              flexShrink: 0,
+              background: "#180938", border: `1px solid rgba(124,58,237,0.12)`,
+              borderRadius: "5px", padding: "0.4rem 0.5rem", marginBottom: "0.3rem",
+              display: "flex", alignItems: "center", gap: "0.4rem", flexShrink: 0,
             }}
           >
-            <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
-              <circle cx="7" cy="7" r="2" fill="white" />
-              <circle cx="7" cy="7" r="4.5" stroke="white" strokeWidth="0.8" fill="none" opacity="0.6" />
-              <circle cx="7" cy="7" r="6.5" stroke="white" strokeWidth="0.5" fill="none" opacity="0.3" />
-            </svg>
+            <div
+              style={{
+                width: "21px", height: "21px", borderRadius: "50%", background: p.color,
+                flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center",
+                fontSize: "0.5rem", fontWeight: 700, color: "white",
+              }}
+            >
+              {p.name.charAt(0)}
+            </div>
+            <div style={{ flex: 1, overflow: "hidden", minWidth: 0 }}>
+              <div style={{ color: "rgba(255,255,255,0.85)", fontWeight: 600, fontSize: "0.58rem", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{p.name}</div>
+              <div style={{ color: "rgba(255,255,255,0.3)", fontSize: "0.5rem", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{p.role}</div>
+            </div>
+            <div style={{ width: "28px", flexShrink: 0 }}>
+              <div style={{ background: "rgba(255,255,255,0.07)", borderRadius: "2px", height: "3px", overflow: "hidden" }}>
+                <div style={{ width: `${p.str}%`, background: p.color, height: "100%" }} />
+              </div>
+              <div style={{ color: "rgba(255,255,255,0.22)", fontSize: "0.43rem", textAlign: "right", marginTop: "1px" }}>{p.str}%</div>
+            </div>
           </div>
-          {sidebarItems.map(({ Icon, active }, i) => (
+        ))}
+        {/* Stats */}
+        <div style={{ display: "flex", gap: "0.3rem", marginTop: "auto", paddingTop: "0.35rem", flexShrink: 0 }}>
+          {[{ v: "247", l: "People" }, { v: "18", l: "Active" }, { v: "4", l: "Clusters" }].map((s) => (
+            <div key={s.l} style={{ flex: 1, background: "#180938", border: `1px solid rgba(124,58,237,0.12)`, borderRadius: "4px", padding: "0.22rem 0.28rem", textAlign: "center" }}>
+              <div style={{ color: "#a78bfa", fontWeight: 700, fontSize: "0.6rem" }}>{s.v}</div>
+              <div style={{ color: "rgba(255,255,255,0.22)", fontSize: "0.42rem" }}>{s.l}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ─── Mockup 2: Relationship Graph ───────────────────────────────────── */
+function GraphMockup() {
+  /* All coordinates are in SVG viewBox="0 0 400 240" space */
+  const nodes = [
+    { id: "you", x: 200, y: 118, r: 9, color: ORBIT_PURPLE, label: "You" },
+    { id: "c1", x: 82, y: 86, r: 6, color: "#9333ea", label: "Sarah" },
+    { id: "c2", x: 52, y: 48, r: 4, color: "#9333ea", label: null },
+    { id: "c3", x: 62, y: 150, r: 7, color: "#9333ea", label: "Layla" },
+    { id: "c4", x: 96, y: 196, r: 4, color: "#9333ea", label: null },
+    { id: "m1", x: 315, y: 70, r: 6, color: "#22d3ee", label: "Alex" },
+    { id: "m2", x: 360, y: 38, r: 4, color: "#22d3ee", label: null },
+    { id: "m3", x: 332, y: 128, r: 5, color: "#22d3ee", label: null },
+    { id: "cl1", x: 266, y: 202, r: 6, color: "#34d399", label: "Marcus" },
+    { id: "cl2", x: 320, y: 222, r: 4, color: "#34d399", label: null },
+    { id: "cl3", x: 248, y: 230, r: 3, color: "#34d399", label: null },
+  ];
+  const edges = [
+    ["you", "c1"], ["you", "c3"],
+    ["c1", "c2"], ["c1", "c3"], ["c3", "c4"],
+    ["you", "m1"], ["you", "m3"],
+    ["m1", "m2"], ["m1", "m3"],
+    ["you", "cl1"],
+    ["cl1", "cl2"], ["cl1", "cl3"],
+  ];
+  const byId = (id: string) => nodes.find((n) => n.id === id)!;
+
+  return (
+    <div style={{ flex: 1, display: "flex", overflow: "hidden" }}>
+      <Sidebar activeNav={2} />
+      <div style={{ flex: 1, position: "relative", overflow: "hidden" }}>
+        {/* Graph counter */}
+        <div
+          style={{
+            position: "absolute", top: "0.5rem", right: "0.55rem",
+            background: "rgba(124,58,237,0.15)", border: `1px solid ${ORBIT_PURPLE_DIM}`,
+            borderRadius: "4px", padding: "2px 7px",
+            fontSize: "0.48rem", fontFamily: "var(--font-jet), monospace",
+            color: "#a78bfa", zIndex: 2,
+          }}
+        >
+          11 nodes · 3 clusters
+        </div>
+
+        {/* SVG graph */}
+        <svg
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}
+          viewBox="0 0 400 240"
+          preserveAspectRatio="xMidYMid meet"
+        >
+          <defs>
+            <filter id="orbitGlow">
+              <feGaussianBlur stdDeviation="2" result="coloredBlur" />
+              <feMerge>
+                <feMergeNode in="coloredBlur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+
+          {/* Edges */}
+          {edges.map(([a, b], i) => {
+            const na = byId(a);
+            const nb = byId(b);
+            return (
+              <line
+                key={i}
+                x1={na.x} y1={na.y}
+                x2={nb.x} y2={nb.y}
+                stroke="rgba(255,255,255,0.12)"
+                strokeWidth="0.6"
+              />
+            );
+          })}
+
+          {/* Nodes */}
+          {nodes.map((n) => (
+            <g key={n.id} filter="url(#orbitGlow)">
+              <circle cx={n.x} cy={n.y} r={n.r} fill={n.color} opacity={0.88} />
+              {n.label && (
+                <text
+                  x={n.x}
+                  y={n.y + n.r + 4.5}
+                  textAnchor="middle"
+                  fill="rgba(255,255,255,0.55)"
+                  fontSize="4"
+                  fontFamily="monospace"
+                >
+                  {n.label}
+                </text>
+              )}
+            </g>
+          ))}
+        </svg>
+
+        {/* Legend */}
+        <div
+          style={{
+            position: "absolute", bottom: "0.5rem", left: "0.5rem",
+            display: "flex", gap: "0.6rem", alignItems: "center",
+          }}
+        >
+          {[
+            { color: "#9333ea", label: "Colleagues" },
+            { color: "#22d3ee", label: "Mentors" },
+            { color: "#34d399", label: "Clients" },
+          ].map((l) => (
+            <div key={l.label} style={{ display: "flex", alignItems: "center", gap: "3px" }}>
+              <div style={{ width: "6px", height: "6px", borderRadius: "50%", background: l.color, flexShrink: 0 }} />
+              <span style={{ fontSize: "0.44rem", fontFamily: "var(--font-jet), monospace", color: "rgba(255,255,255,0.35)" }}>{l.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ─── Mockup 3: Person Timeline ──────────────────────────────────────── */
+function TimelineMockup() {
+  const interactions = [
+    { Icon: Phone, label: "Phone call", date: "Jun 2", snippet: "Discussed engineering org structure..." },
+    { Icon: Coffee, label: "Coffee meeting", date: "May 28", snippet: "Met at StartupWeek Dubai — great chemistry" },
+    { Icon: Mail, label: "Email", date: "May 15", snippet: "Follow-up on the ML infra discussion..." },
+  ];
+  const tags = ["Colleague", "AI", "Bay Area"];
+
+  return (
+    <div style={{ flex: 1, display: "flex", overflow: "hidden" }}>
+      <Sidebar activeNav={1} />
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", overflow: "hidden" }}>
+        {/* Person header */}
+        <div
+          style={{
+            padding: "0.55rem 0.6rem",
+            borderBottom: `1px solid rgba(124,58,237,0.15)`,
+            flexShrink: 0,
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center", gap: "0.45rem", marginBottom: "0.3rem" }}>
+            <div
+              style={{
+                width: "26px", height: "26px", borderRadius: "50%",
+                background: ORBIT_PURPLE, flexShrink: 0,
+                display: "flex", alignItems: "center", justifyContent: "center",
+                fontSize: "0.55rem", fontWeight: 700, color: "white",
+                boxShadow: `0 0 8px ${ORBIT_PURPLE_GLOW}`,
+              }}
+            >
+              S
+            </div>
+            <div style={{ flex: 1, overflow: "hidden" }}>
+              <div style={{ color: "rgba(255,255,255,0.9)", fontWeight: 700, fontSize: "0.65rem" }}>Sarah Chen</div>
+              <div style={{ color: "rgba(255,255,255,0.35)", fontSize: "0.5rem" }}>VP Engineering · Google</div>
+            </div>
+            {/* Strength dots */}
+            <div style={{ display: "flex", gap: "2px", flexShrink: 0 }}>
+              {[1, 2, 3, 4, 5].map((i) => (
+                <div
+                  key={i}
+                  style={{
+                    width: "5px", height: "5px", borderRadius: "50%",
+                    background: i <= 4 ? "#a78bfa" : "rgba(124,58,237,0.2)",
+                  }}
+                />
+              ))}
+            </div>
+          </div>
+          {/* Tags */}
+          <div style={{ display: "flex", gap: "0.25rem" }}>
+            {tags.map((tag) => (
+              <div
+                key={tag}
+                style={{
+                  padding: "1px 6px", borderRadius: "3px",
+                  background: "rgba(124,58,237,0.15)", border: `1px solid ${ORBIT_PURPLE_DIM}`,
+                  fontSize: "0.46rem", fontFamily: "var(--font-jet), monospace", color: "#a78bfa",
+                }}
+              >
+                {tag}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Timeline */}
+        <div style={{ flex: 1, padding: "0.55rem 0.6rem", overflow: "hidden" }}>
+          <div
+            style={{
+              fontSize: "0.5rem", fontFamily: "var(--font-jet), monospace",
+              color: "rgba(255,255,255,0.3)", letterSpacing: "0.1em", textTransform: "uppercase",
+              marginBottom: "0.4rem",
+            }}
+          >
+            Interaction History
+          </div>
+          {interactions.map(({ Icon, label, date, snippet }, i) => (
             <div
               key={i}
               style={{
-                width: "30px",
-                height: "30px",
-                borderRadius: "6px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                background: active ? "rgba(124,58,237,0.22)" : "transparent",
-                color: active ? "#a78bfa" : "rgba(255,255,255,0.22)",
-                flexShrink: 0,
+                display: "flex", gap: "0.4rem", alignItems: "flex-start",
+                paddingBottom: "0.35rem", marginBottom: "0.3rem",
+                borderBottom: i < interactions.length - 1 ? `1px solid rgba(124,58,237,0.08)` : "none",
               }}
             >
-              <Icon size={12} />
+              <div
+                style={{
+                  width: "20px", height: "20px", borderRadius: "4px",
+                  background: "rgba(124,58,237,0.14)", border: `1px solid ${ORBIT_PURPLE_DIM}`,
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  color: "#a78bfa", flexShrink: 0,
+                }}
+              >
+                <Icon size={9} />
+              </div>
+              <div style={{ flex: 1, overflow: "hidden", minWidth: 0 }}>
+                <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "1px" }}>
+                  <span style={{ fontSize: "0.58rem", fontWeight: 600, color: "rgba(255,255,255,0.8)" }}>{label}</span>
+                  <span style={{ fontSize: "0.48rem", color: "rgba(255,255,255,0.25)", flexShrink: 0, marginLeft: "0.3rem" }}>{date}</span>
+                </div>
+                <div style={{ fontSize: "0.5rem", color: "rgba(255,255,255,0.32)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{snippet}</div>
+              </div>
             </div>
           ))}
         </div>
 
-        {/* Content */}
+        {/* Check-in footer */}
         <div
           style={{
-            flex: 1,
-            padding: "0.65rem",
-            overflow: "hidden",
-            display: "flex",
-            flexDirection: "column",
+            padding: "0.4rem 0.6rem",
+            borderTop: `1px solid rgba(124,58,237,0.15)`,
+            background: "#110a22",
+            display: "flex", justifyContent: "space-between", alignItems: "center",
+            flexShrink: 0,
           }}
         >
-          {/* Page header */}
+          <span style={{ fontSize: "0.5rem", fontFamily: "var(--font-jet), monospace", color: "rgba(255,255,255,0.35)" }}>
+            Next check-in: <span style={{ color: "#a78bfa" }}>in 12 days</span>
+          </span>
           <div
             style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              marginBottom: "0.55rem",
-              flexShrink: 0,
+              background: "rgba(124,58,237,0.2)", border: `1px solid ${ORBIT_PURPLE_DIM}`,
+              color: "#a78bfa", fontSize: "0.48rem", fontFamily: "var(--font-jet), monospace",
+              padding: "2px 7px", borderRadius: "3px",
             }}
           >
-            <span
-              style={{
-                color: "rgba(255,255,255,0.88)",
-                fontWeight: 700,
-                fontSize: "0.65rem",
-                letterSpacing: "0.04em",
-              }}
-            >
-              People
-            </span>
-            <div
-              style={{
-                background: "#7c3aed",
-                color: "white",
-                padding: "2px 8px",
-                borderRadius: "4px",
-                fontSize: "0.55rem",
-                fontWeight: 700,
-                letterSpacing: "0.05em",
-                boxShadow: "0 0 8px rgba(124,58,237,0.45)",
-              }}
-            >
-              + Add
-            </div>
-          </div>
-
-          {/* Person cards */}
-          {people.map((p) => (
-            <div
-              key={p.name}
-              style={{
-                background: "#180938",
-                border: "1px solid rgba(124,58,237,0.12)",
-                borderRadius: "5px",
-                padding: "0.42rem 0.5rem",
-                marginBottom: "0.35rem",
-                display: "flex",
-                alignItems: "center",
-                gap: "0.45rem",
-                flexShrink: 0,
-              }}
-            >
-              <div
-                style={{
-                  width: "22px",
-                  height: "22px",
-                  borderRadius: "50%",
-                  background: p.color,
-                  flexShrink: 0,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: "0.5rem",
-                  fontWeight: 700,
-                  color: "white",
-                }}
-              >
-                {p.name.charAt(0)}
-              </div>
-              <div style={{ flex: 1, overflow: "hidden", minWidth: 0 }}>
-                <div
-                  style={{
-                    color: "rgba(255,255,255,0.85)",
-                    fontWeight: 600,
-                    fontSize: "0.6rem",
-                    whiteSpace: "nowrap",
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                  }}
-                >
-                  {p.name}
-                </div>
-                <div
-                  style={{
-                    color: "rgba(255,255,255,0.3)",
-                    fontSize: "0.52rem",
-                    whiteSpace: "nowrap",
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                  }}
-                >
-                  {p.role}
-                </div>
-              </div>
-              <div style={{ width: "30px", flexShrink: 0 }}>
-                <div
-                  style={{
-                    background: "rgba(255,255,255,0.07)",
-                    borderRadius: "2px",
-                    height: "3px",
-                    overflow: "hidden",
-                  }}
-                >
-                  <div
-                    style={{
-                      width: `${p.str}%`,
-                      background: p.color,
-                      height: "100%",
-                    }}
-                  />
-                </div>
-                <div
-                  style={{
-                    color: "rgba(255,255,255,0.22)",
-                    fontSize: "0.44rem",
-                    textAlign: "right",
-                    marginTop: "1px",
-                  }}
-                >
-                  {p.str}%
-                </div>
-              </div>
-            </div>
-          ))}
-
-          {/* Stats row */}
-          <div
-            style={{
-              display: "flex",
-              gap: "0.35rem",
-              marginTop: "auto",
-              paddingTop: "0.4rem",
-              flexShrink: 0,
-            }}
-          >
-            {[
-              { v: "247", l: "People" },
-              { v: "18", l: "Active" },
-              { v: "4", l: "Clusters" },
-            ].map((s) => (
-              <div
-                key={s.l}
-                style={{
-                  flex: 1,
-                  background: "#180938",
-                  border: "1px solid rgba(124,58,237,0.12)",
-                  borderRadius: "4px",
-                  padding: "0.25rem 0.3rem",
-                  textAlign: "center",
-                }}
-              >
-                <div
-                  style={{
-                    color: "#a78bfa",
-                    fontWeight: 700,
-                    fontSize: "0.62rem",
-                  }}
-                >
-                  {s.v}
-                </div>
-                <div
-                  style={{
-                    color: "rgba(255,255,255,0.22)",
-                    fontSize: "0.44rem",
-                  }}
-                >
-                  {s.l}
-                </div>
-              </div>
-            ))}
+            Set reminder
           </div>
         </div>
       </div>
@@ -373,6 +516,34 @@ function OrbitAppMockup() {
   );
 }
 
+/* ─── Full mockup panel ──────────────────────────────────────────────── */
+function OrbitMockupPanel() {
+  const [tab, setTab] = useState(0);
+
+  return (
+    <div
+      style={{
+        borderRadius: "10px",
+        overflow: "hidden",
+        border: `1px solid rgba(124,58,237,0.25)`,
+        boxShadow: "0 0 40px rgba(124,58,237,0.14), 0 8px 36px rgba(0,0,0,0.55)",
+        background: "#0c0818",
+        display: "flex",
+        flexDirection: "column",
+        minHeight: "360px",
+        fontFamily: "var(--font-jet), monospace",
+        position: "relative",
+      }}
+    >
+      <BrowserChrome activeTab={tab} onTab={setTab} />
+      {tab === 0 && <PeopleMockup />}
+      {tab === 1 && <GraphMockup />}
+      {tab === 2 && <TimelineMockup />}
+    </div>
+  );
+}
+
+/* ─── Main section ───────────────────────────────────────────────────── */
 export default function LiveProjects() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
@@ -384,20 +555,19 @@ export default function LiveProjects() {
       className="section-pad"
       style={{
         background:
-          "radial-gradient(ellipse at 25% 60%, rgba(124,58,237,0.05) 0%, transparent 55%), radial-gradient(ellipse at 75% 0%, rgba(0,217,255,0.06) 0%, transparent 50%), var(--bg-elevated)",
+          "radial-gradient(ellipse at 25% 55%, rgba(124,58,237,0.05) 0%, transparent 55%), radial-gradient(ellipse at 75% 0%, rgba(0,217,255,0.06) 0%, transparent 50%), var(--bg-elevated)",
         borderTop: "1px solid rgba(0,217,255,0.07)",
         borderBottom: "1px solid rgba(0,217,255,0.07)",
         position: "relative",
         overflow: "hidden",
       }}
     >
-      {/* Subtle grid overlay */}
+      {/* Subtle grid */}
       <div
         style={{
-          position: "absolute",
-          inset: 0,
+          position: "absolute", inset: 0,
           backgroundImage:
-            "linear-gradient(rgba(0,217,255,0.022) 1px, transparent 1px), linear-gradient(90deg, rgba(0,217,255,0.022) 1px, transparent 1px)",
+            "linear-gradient(rgba(0,217,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(0,217,255,0.02) 1px, transparent 1px)",
           backgroundSize: "48px 48px",
           pointerEvents: "none",
         }}
@@ -407,44 +577,28 @@ export default function LiveProjects() {
         <div ref={ref}>
           {/* Section header */}
           <motion.div
-            custom={0}
-            variants={fadeUp}
-            initial="hidden"
+            custom={0} variants={fadeUp} initial="hidden"
             animate={inView ? "visible" : "hidden"}
             style={{ marginBottom: "3rem" }}
           >
-            <p className="section-header">// 05. Live</p>
+            <p className="section-header">// 03. Live</p>
             <h2
               style={{
                 fontSize: "clamp(1.8rem, 4vw, 2.6rem)",
-                fontWeight: 700,
-                color: "var(--text-primary)",
-                letterSpacing: "-0.02em",
-                marginBottom: "0.6rem",
+                fontWeight: 700, color: "var(--text-primary)",
+                letterSpacing: "-0.02em", marginBottom: "0.6rem",
               }}
             >
               Shipped &amp; Deployed
             </h2>
-            <p
-              style={{
-                fontSize: "0.88rem",
-                color: "var(--text-secondary)",
-                maxWidth: "44rem",
-                lineHeight: 1.7,
-              }}
-            >
+            <p style={{ fontSize: "0.88rem", color: "var(--text-secondary)", maxWidth: "44rem", lineHeight: 1.7 }}>
               Not prototypes. Not toy demos. Live, full-stack products running on real
               infrastructure — with auth, billing, persistence, and production deployments.
             </p>
           </motion.div>
 
           {/* Spotlight card */}
-          <motion.div
-            custom={1}
-            variants={fadeUp}
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
-          >
+          <motion.div custom={1} variants={fadeUp} initial="hidden" animate={inView ? "visible" : "hidden"}>
             <div
               className="live-card-grid"
               onMouseEnter={() => setHovered(true)}
@@ -462,137 +616,59 @@ export default function LiveProjects() {
                 overflow: "hidden",
               }}
             >
-              {/* Corner radial accent */}
+              {/* Corner accent */}
               <div
                 style={{
-                  position: "absolute",
-                  top: 0,
-                  right: 0,
-                  width: "280px",
-                  height: "280px",
-                  background:
-                    "radial-gradient(circle at top right, rgba(0,217,255,0.07), transparent 65%)",
-                  borderRadius: "0 14px 0 0",
-                  pointerEvents: "none",
+                  position: "absolute", top: 0, right: 0, width: "280px", height: "280px",
+                  background: "radial-gradient(circle at top right, rgba(0,217,255,0.07), transparent 65%)",
+                  borderRadius: "0 14px 0 0", pointerEvents: "none",
                 }}
               />
 
-              {/* ── Left: Info panel ── */}
+              {/* ── Left: info panel ── */}
               <div style={{ position: "relative" }}>
-                {/* Status + category row */}
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "0.75rem",
-                    marginBottom: "1.4rem",
-                    flexWrap: "wrap",
-                  }}
-                >
+                {/* Status row */}
+                <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1.4rem", flexWrap: "wrap" }}>
                   <div
                     style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "0.5rem",
-                      background: "rgba(16,185,129,0.1)",
-                      border: "1px solid rgba(16,185,129,0.28)",
-                      borderRadius: "100px",
-                      padding: "4px 12px 4px 8px",
+                      display: "inline-flex", alignItems: "center", gap: "0.5rem",
+                      background: "rgba(16,185,129,0.1)", border: "1px solid rgba(16,185,129,0.28)",
+                      borderRadius: "100px", padding: "4px 12px 4px 8px",
                     }}
                   >
                     <span className="online-dot" style={{ width: "7px", height: "7px" }} />
-                    <span
-                      style={{
-                        fontFamily: "var(--font-jet), monospace",
-                        fontSize: "0.6rem",
-                        fontWeight: 700,
-                        letterSpacing: "0.16em",
-                        color: "var(--success)",
-                        textTransform: "uppercase",
-                      }}
-                    >
+                    <span style={{ fontFamily: "var(--font-jet), monospace", fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.16em", color: "var(--success)", textTransform: "uppercase" }}>
                       Live Now
                     </span>
                   </div>
-                  <span
-                    style={{
-                      fontFamily: "var(--font-jet), monospace",
-                      fontSize: "0.6rem",
-                      letterSpacing: "0.12em",
-                      textTransform: "uppercase",
-                      color: "var(--text-dim)",
-                    }}
-                  >
+                  <span style={{ fontFamily: "var(--font-jet), monospace", fontSize: "0.6rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--text-dim)" }}>
                     Full-Stack SaaS
                   </span>
                 </div>
 
-                {/* Title */}
-                <h3
-                  style={{
-                    fontSize: "clamp(2.2rem, 5vw, 3.4rem)",
-                    fontWeight: 800,
-                    color: "var(--text-primary)",
-                    letterSpacing: "-0.035em",
-                    lineHeight: 1,
-                    marginBottom: "0.45rem",
-                  }}
-                >
+                <h3 style={{ fontSize: "clamp(2.2rem, 5vw, 3.4rem)", fontWeight: 800, color: "var(--text-primary)", letterSpacing: "-0.035em", lineHeight: 1, marginBottom: "0.45rem" }}>
                   Orbit
                 </h3>
-
-                {/* Tagline */}
-                <p
-                  style={{
-                    fontFamily: "var(--font-jet), monospace",
-                    fontSize: "0.75rem",
-                    color: "var(--cyan)",
-                    letterSpacing: "0.08em",
-                    marginBottom: "1.1rem",
-                    opacity: 0.82,
-                  }}
-                >
+                <p style={{ fontFamily: "var(--font-jet), monospace", fontSize: "0.75rem", color: "var(--cyan)", letterSpacing: "0.08em", marginBottom: "1.1rem", opacity: 0.82 }}>
                   Personal Relationship OS
                 </p>
-
-                {/* Description */}
-                <p
-                  style={{
-                    fontSize: "0.88rem",
-                    color: "var(--text-secondary)",
-                    lineHeight: 1.75,
-                    marginBottom: "1.75rem",
-                    maxWidth: "44rem",
-                  }}
-                >
+                <p style={{ fontSize: "0.88rem", color: "var(--text-secondary)", lineHeight: 1.75, marginBottom: "1.75rem", maxWidth: "44rem" }}>
                   A full-stack professional networking tool that turns your contact list
-                  into a queryable, visual, and trackable system. Features a
-                  force-directed relationship graph, Gemini-powered AI search, Stripe
-                  subscription billing, push-notification reminders, a bilingual (EN/AR)
-                  interface, and Supabase RLS multi-tenancy — all deployed on Vercel.
+                  into a queryable, visual, and trackable system. Force-directed relationship
+                  graph, Gemini AI search, Stripe billing, push reminders, bilingual EN/AR
+                  interface, and Supabase RLS multi-tenancy — deployed on Vercel.
                 </p>
 
                 {/* Feature chips */}
-                <div
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "repeat(2, 1fr)",
-                    gap: "0.6rem",
-                    marginBottom: "1.75rem",
-                  }}
-                >
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "0.6rem", marginBottom: "1.75rem" }}>
                   {FEATURES.map(({ Icon, label, detail }) => (
                     <div
                       key={label}
                       style={{
-                        display: "flex",
-                        alignItems: "flex-start",
-                        gap: "0.6rem",
+                        display: "flex", alignItems: "flex-start", gap: "0.6rem",
                         padding: "0.65rem 0.75rem",
-                        background: "rgba(0,217,255,0.03)",
-                        border: "1px solid rgba(0,217,255,0.09)",
-                        borderRadius: "7px",
-                        transition: "background 0.2s, border-color 0.2s",
+                        background: "rgba(0,217,255,0.03)", border: "1px solid rgba(0,217,255,0.09)",
+                        borderRadius: "7px", transition: "background 0.2s, border-color 0.2s",
                       }}
                       onMouseEnter={(e) => {
                         const el = e.currentTarget as HTMLDivElement;
@@ -605,174 +681,77 @@ export default function LiveProjects() {
                         el.style.borderColor = "rgba(0,217,255,0.09)";
                       }}
                     >
-                      <div
-                        style={{
-                          width: "28px",
-                          height: "28px",
-                          borderRadius: "6px",
-                          background: "rgba(0,217,255,0.07)",
-                          border: "1px solid rgba(0,217,255,0.16)",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          color: "var(--cyan)",
-                          flexShrink: 0,
-                        }}
-                      >
+                      <div style={{ width: "28px", height: "28px", borderRadius: "6px", background: "rgba(0,217,255,0.07)", border: "1px solid rgba(0,217,255,0.16)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--cyan)", flexShrink: 0 }}>
                         <Icon size={13} />
                       </div>
                       <div>
-                        <div
-                          style={{
-                            fontSize: "0.78rem",
-                            fontWeight: 600,
-                            color: "var(--text-primary)",
-                            lineHeight: 1.2,
-                            marginBottom: "0.15rem",
-                          }}
-                        >
-                          {label}
-                        </div>
-                        <div
-                          style={{
-                            fontSize: "0.67rem",
-                            color: "var(--text-dim)",
-                            lineHeight: 1.3,
-                          }}
-                        >
-                          {detail}
-                        </div>
+                        <div style={{ fontSize: "0.78rem", fontWeight: 600, color: "var(--text-primary)", lineHeight: 1.2, marginBottom: "0.15rem" }}>{label}</div>
+                        <div style={{ fontSize: "0.67rem", color: "var(--text-dim)", lineHeight: 1.3 }}>{detail}</div>
                       </div>
                     </div>
                   ))}
                 </div>
 
                 {/* Tech stack */}
-                <div
-                  style={{
-                    display: "flex",
-                    flexWrap: "wrap",
-                    gap: "0.35rem",
-                    marginBottom: "1.75rem",
-                  }}
-                >
-                  {TECH.map((t) => (
-                    <span key={t} className="tech-tag">
-                      {t}
-                    </span>
-                  ))}
+                <div style={{ display: "flex", flexWrap: "wrap", gap: "0.35rem", marginBottom: "1.75rem" }}>
+                  {TECH.map((t) => <span key={t} className="tech-tag">{t}</span>)}
                 </div>
 
-                {/* CTA buttons */}
+                {/* CTAs */}
                 <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
                   <a
                     href="https://byorbit.io"
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "0.5rem",
-                      fontFamily: "var(--font-jet), monospace",
-                      fontSize: "0.73rem",
-                      fontWeight: 700,
-                      letterSpacing: "0.08em",
-                      textTransform: "uppercase",
-                      color: "var(--bg-base)",
-                      background: "var(--cyan)",
-                      padding: "0.65rem 1.4rem",
-                      borderRadius: "6px",
-                      textDecoration: "none",
+                      display: "inline-flex", alignItems: "center", gap: "0.5rem",
+                      fontFamily: "var(--font-jet), monospace", fontSize: "0.73rem", fontWeight: 700,
+                      letterSpacing: "0.08em", textTransform: "uppercase",
+                      color: "var(--bg-base)", background: "var(--cyan)",
+                      padding: "0.65rem 1.4rem", borderRadius: "6px", textDecoration: "none",
                       boxShadow: "0 0 22px rgba(0,217,255,0.38)",
                       transition: "background 0.2s, box-shadow 0.2s, transform 0.2s",
                     }}
                     onMouseEnter={(e) => {
                       const el = e.currentTarget as HTMLAnchorElement;
-                      el.style.background = "#33e1ff";
-                      el.style.boxShadow = "0 0 36px rgba(0,217,255,0.58)";
-                      el.style.transform = "translateY(-1px)";
+                      el.style.background = "#33e1ff"; el.style.boxShadow = "0 0 36px rgba(0,217,255,0.58)"; el.style.transform = "translateY(-1px)";
                     }}
                     onMouseLeave={(e) => {
                       const el = e.currentTarget as HTMLAnchorElement;
-                      el.style.background = "var(--cyan)";
-                      el.style.boxShadow = "0 0 22px rgba(0,217,255,0.38)";
-                      el.style.transform = "translateY(0)";
+                      el.style.background = "var(--cyan)"; el.style.boxShadow = "0 0 22px rgba(0,217,255,0.38)"; el.style.transform = "translateY(0)";
                     }}
                   >
-                    <Globe size={14} />
-                    Visit App
-                    <ArrowUpRight size={13} />
+                    <Globe size={14} /> Visit App <ArrowUpRight size={13} />
                   </a>
                   <a
                     href="https://github.com/ws0x/orbit"
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "0.5rem",
-                      fontFamily: "var(--font-jet), monospace",
-                      fontSize: "0.73rem",
-                      fontWeight: 700,
-                      letterSpacing: "0.08em",
-                      textTransform: "uppercase",
-                      color: "var(--text-secondary)",
-                      background: "transparent",
+                      display: "inline-flex", alignItems: "center", gap: "0.5rem",
+                      fontFamily: "var(--font-jet), monospace", fontSize: "0.73rem", fontWeight: 700,
+                      letterSpacing: "0.08em", textTransform: "uppercase",
+                      color: "var(--text-secondary)", background: "transparent",
                       border: "1px solid rgba(0,217,255,0.25)",
-                      padding: "0.65rem 1.2rem",
-                      borderRadius: "6px",
-                      textDecoration: "none",
-                      transition:
-                        "color 0.2s, border-color 0.2s, background 0.2s, box-shadow 0.2s",
+                      padding: "0.65rem 1.2rem", borderRadius: "6px", textDecoration: "none",
+                      transition: "color 0.2s, border-color 0.2s, background 0.2s, box-shadow 0.2s",
                     }}
                     onMouseEnter={(e) => {
                       const el = e.currentTarget as HTMLAnchorElement;
-                      el.style.color = "var(--cyan)";
-                      el.style.borderColor = "rgba(0,217,255,0.55)";
-                      el.style.background = "rgba(0,217,255,0.06)";
-                      el.style.boxShadow = "0 0 14px rgba(0,217,255,0.12)";
+                      el.style.color = "var(--cyan)"; el.style.borderColor = "rgba(0,217,255,0.55)"; el.style.background = "rgba(0,217,255,0.06)"; el.style.boxShadow = "0 0 14px rgba(0,217,255,0.12)";
                     }}
                     onMouseLeave={(e) => {
                       const el = e.currentTarget as HTMLAnchorElement;
-                      el.style.color = "var(--text-secondary)";
-                      el.style.borderColor = "rgba(0,217,255,0.25)";
-                      el.style.background = "transparent";
-                      el.style.boxShadow = "none";
+                      el.style.color = "var(--text-secondary)"; el.style.borderColor = "rgba(0,217,255,0.25)"; el.style.background = "transparent"; el.style.boxShadow = "none";
                     }}
                   >
-                    <GithubIcon size={14} />
-                    GitHub
+                    <GithubIcon size={14} /> GitHub
                   </a>
                 </div>
               </div>
 
-              {/* ── Right: App mockup ── */}
-              <div
-                style={{
-                  borderRadius: "10px",
-                  overflow: "hidden",
-                  border: "1px solid rgba(124,58,237,0.22)",
-                  boxShadow:
-                    "0 0 40px rgba(124,58,237,0.12), 0 8px 32px rgba(0,0,0,0.55)",
-                  aspectRatio: "16/10",
-                  position: "relative",
-                }}
-              >
-                <OrbitAppMockup />
-                {/* Bottom fade overlay */}
-                <div
-                  style={{
-                    position: "absolute",
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    height: "48px",
-                    background:
-                      "linear-gradient(to top, rgba(12,18,32,0.65), transparent)",
-                    pointerEvents: "none",
-                  }}
-                />
-              </div>
+              {/* ── Right: tabbed mockup panel ── */}
+              <OrbitMockupPanel />
             </div>
           </motion.div>
         </div>
