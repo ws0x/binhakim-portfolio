@@ -240,7 +240,7 @@ export default function Hero() {
             transition: "opacity 0.5s ease 0.3s, transform 0.5s ease 0.3s",
           }}
         >
-          I build production systems end to end — designing scalable APIs and
+          I build production systems end to end, designing scalable APIs and
           data models, integrating LLMs and AI agents where they earn their
           place, and shipping live SaaS that real users rely on. I build, secure,
           and measure what I ship.

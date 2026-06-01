@@ -718,7 +718,7 @@ export default function LiveProjects() {
             </h2>
             <p style={{ fontSize: "0.88rem", color: "var(--text-secondary)", maxWidth: "44rem", lineHeight: 1.7 }}>
               Not prototypes. Not toy demos. Live, full-stack products running on real
-              infrastructure — with auth, billing, persistence, and production deployments.
+              infrastructure with auth, billing, persistence, and production deployments.
             </p>
           </motion.div>
 
@@ -761,7 +761,7 @@ export default function LiveProjects() {
                 <h3 style={{ fontSize: "clamp(2.2rem, 5vw, 3.4rem)", fontWeight: 800, color: "var(--text-primary)", letterSpacing: "-0.035em", lineHeight: 1, marginBottom: "0.45rem" }}>Orbit</h3>
                 <p style={{ fontFamily: "var(--font-jet), monospace", fontSize: "0.75rem", color: "var(--cyan)", letterSpacing: "0.08em", marginBottom: "1.1rem", opacity: 0.82 }}>Professional Relationship OS</p>
                 <p style={{ fontSize: "0.88rem", color: "var(--text-secondary)", lineHeight: 1.75, marginBottom: "1.75rem", maxWidth: "44rem" }}>
-                  A full-stack <strong style={{ color: "var(--text-primary)" }}>Professional Relationship OS</strong> that turns your professional network into a queryable, visual, and AI-powered system. OAuth SSO via Google &amp; LinkedIn, Gemini AI semantic search, D3 force-directed relationship graph, Stripe billing, Supabase RLS multi-tenancy, push reminders, and a bilingual EN/AR interface — all deployed on Vercel.
+                  A full-stack <strong style={{ color: "var(--text-primary)" }}>Professional Relationship OS </strong> that turns your professional network into a queryable, visual, and AI-powered system. OAuth SSO via Google &amp; LinkedIn, Gemini AI semantic search, D3 force-directed relationship graph, Stripe billing, Supabase RLS multi-tenancy, push reminders and a bilingual EN/AR interface, all deployed on Vercel.
                 </p>
 
                 {/* Feature chips */}
