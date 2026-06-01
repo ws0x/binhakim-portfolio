@@ -33,8 +33,8 @@ const LABEL_MAP: Record<string, string> = {
   "Databases":      "DATABASE",
   "AI / LLM":       "AI/LLM",
   "Infrastructure": "INFRA",
-  "Messaging":      "MSG",
-  "Tools & Testing":"TOOLING",
+  "Security":       "SEC",
+  "Practices":      "TOOLING",
 };
 
 export default function Skills() {

@@ -3,7 +3,7 @@
     {
       "label": "Languages",
       "icon": "code",
-      "skills": ["Java", "TypeScript", "JavaScript", "Python", "SQL", "Go"]
+      "skills": ["Java", "TypeScript", "JavaScript", "Python", "SQL"]
     },
     {
       "label": "Frontend",
@@ -18,27 +18,27 @@
     {
       "label": "Databases",
       "icon": "database",
-      "skills": ["PostgreSQL", "Supabase", "JPA", "Redis"]
+      "skills": ["PostgreSQL", "Supabase", "Drizzle ORM", "JPA"]
     },
     {
       "label": "AI / LLM",
       "icon": "brain",
-      "skills": ["Gemini AI", "Claude AI", "Prompt Engineering"]
+      "skills": ["Claude AI", "Gemini AI", "SSE Streaming", "Prompt Engineering"]
     },
     {
       "label": "Infrastructure",
       "icon": "cloud",
-      "skills": ["Nginx", "Vercel", "Docker", "Heroku"]
+      "skills": ["Nginx", "Docker", "Vercel", "AWS"]
     },
     {
-      "label": "Messaging",
-      "icon": "zap",
-      "skills": ["RabbitMQ", "WebSockets"]
+      "label": "Security",
+      "icon": "shield",
+      "skills": ["OWASP Top 10", "Burp Suite", "Pen Testing", "Kali Linux"]
     },
     {
-      "label": "Tools & Testing",
+      "label": "Practices",
       "icon": "wrench",
-      "skills": ["Git", "Postman", "Swagger", "Jest", "Jira", "Notion"]
+      "skills": ["TDD", "BDD / Cucumber", "Git", "Agile / Scrum"]
     }
   ],
   "softSkills": [

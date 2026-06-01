@@ -101,16 +101,16 @@ export default function About() {
             }}
           >
             <p>
-              I&apos;m a Software Engineer with a strong academic foundation in
-              Computer Science and hands-on professional experience building
-              robust backend architectures, optimizing database performance, and
-              managing modern web server infrastructure.
+              I&apos;m a backend-leaning software engineer who builds and ships
+              production systems end to end — API design and data modelling,
+              modern frontends in Next.js and TypeScript, and the deployment
+              and security hardening around them.
             </p>
             <p>
-              I love deep-diving into system internals — query planners,
-              reverse proxy routing, async message flows — and integrating
-              AI/LLM APIs to build tools that are genuinely useful in
-              production, not just impressive in demos.
+              I deep-dive into system internals — query planners, reverse proxy
+              routing, LLM streaming pipelines — and integrate AI where it earns
+              its place: building tools that are genuinely useful in production,
+              not just impressive in demos.
             </p>
             <p>
               I ship real products: Orbit, a Professional Relationship OS with
