@@ -144,7 +144,7 @@ export default function About() {
               { label: "Medium", href: "https://medium.com/@binhakim" },
               {
                 label: "Email",
-                href: "mailto:yusufnaeemhakim@gmail.com",
+                href: "mailto:yusuf@binhakim.dev",
               },
             ].map((l) => (
               <a
