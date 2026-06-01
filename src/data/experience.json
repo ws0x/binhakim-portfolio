@@ -6,6 +6,12 @@
     "location": "Egypt · On-site",
     "description": "Full-stack engineer and IT systems lead — building internal production tooling and driving data-informed decisions for executive stakeholders.",
     "bullets": [
+      "Designed and engineered a multi-tenant personal CRM architecture using Next.js 16, React 19, and Supabase, enforcing full data isolation exclusively at the database layer via Postgres Row-Level Security (RLS) to eliminate data-leakage vectors globally",
+      "Developed an interactive, real-time relationship mapping interface utilizing react-force-graph-2d and client-side cache hydration via TanStack Query v5, rendering dynamic D3 force simulations while maintaining instant optimistic UI updates",
+      "Implemented a metered subscription billing system using Stripe webhooks and a custom server-side Postgres usage-metering function (increment_usage), decoupling application logic from critical transaction tracking",
+      "Architected and shipped a multi-entity B2B lead management system that consolidated disparate operational workflows from 4 business units into a single unified platform",
+      "Enforced zero-trust data privacy at the API layer by implementing a 5-layer server-side security stack and field-level Role-Based Access Control (RBAC), ensuring sensitive marketing and sales fields were filtered on the server and never leaked into client network payloads",
+      "Engineered an Egyptian Arabic speech-to-text pipeline by implementing OpenAI Whisper with specialized context priming prompts, significantly reducing Word Error Rate (WER) for colloquial dialects and mixed English/Arabic technical terminology",
       "Engineered SC 3D Optimizer, a React + Three.js web application that computes optimal container loads via a 3D bin-packing algorithm — delivering real-time 3D visualisations with door-clearance validation, multi-solution comparison, and one-click PDF export for logistics teams",
       "Built the company's IT Asset Management (ITAM) platform from scratch, designing the data model and lifecycle workflows to centralise hardware and software inventory — eliminating manual tracking gaps and maintenance blind spots across the organisation",
       "Owned security, reliability, and cost governance for 25+ domains and 7 production websites by implementing automated backups, wp-admin hardening, caching, image compression, and database optimisation",
@@ -13,7 +19,7 @@
       "Co-architected the corporate IT department from the ground up — defining governance frameworks, technical role structure, and SOPs for access control, change management, and service delivery — scaling operations to 90+ users",
       "Automated repetitive IT and reporting workflows with Python scripts, reducing manual overhead and improving consistency across operations"
     ],
-    "tech": ["React", "Three.js", "Python", "JavaScript", "REST APIs", "WordPress", "Power BI", "Excel"]
+    "tech": ["Node.js", "Express.js", "PostgreSQL", "Supabase", "Vercel", "React", "Python", "JavaScript", "REST APIs", "LLMs", "WordPress", "Stripe", "Git", "Next.js"]
   },
   {
     "title": "Offensive Security Engineer Intern",
