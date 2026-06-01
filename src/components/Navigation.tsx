@@ -1,12 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Download } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./BrandIcons";
 
 const links = [
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
+  { label: "Live", href: "#live-projects" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
   { label: "Writing", href: "#writing" },
@@ -103,7 +104,7 @@ export default function Navigation() {
             </a>
           ))}
 
-          <div style={{ display: "flex", gap: "0.75rem", marginLeft: "0.5rem" }}>
+          <div style={{ display: "flex", gap: "0.75rem", marginLeft: "0.5rem", alignItems: "center" }}>
             {[
               {
                 href: "https://github.com/ws0x",
@@ -148,6 +149,44 @@ export default function Navigation() {
                 <Icon size={15} />
               </a>
             ))}
+
+            <a
+              href="/resume.pdf"
+              download="Yusuf_Naeem_Resume.pdf"
+              aria-label="Download Resume"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "0.35rem",
+                height: "34px",
+                padding: "0 0.75rem",
+                border: "1px solid rgba(0,217,255,0.35)",
+                borderRadius: "6px",
+                background: "rgba(0,217,255,0.06)",
+                color: "var(--cyan)",
+                fontFamily: "var(--font-jet), monospace",
+                fontSize: "0.65rem",
+                fontWeight: 700,
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
+                textDecoration: "none",
+                transition: "all 0.2s",
+                whiteSpace: "nowrap",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "rgba(0,217,255,0.14)";
+                e.currentTarget.style.borderColor = "rgba(0,217,255,0.6)";
+                e.currentTarget.style.boxShadow = "0 0 14px rgba(0,217,255,0.2)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "rgba(0,217,255,0.06)";
+                e.currentTarget.style.borderColor = "rgba(0,217,255,0.35)";
+                e.currentTarget.style.boxShadow = "none";
+              }}
+            >
+              <Download size={12} />
+              Resume
+            </a>
           </div>
         </div>
 
@@ -200,12 +239,35 @@ export default function Navigation() {
               {l.label}
             </a>
           ))}
-          <div style={{ display: "flex", gap: "0.75rem", paddingTop: "0.25rem" }}>
+          <div style={{ display: "flex", gap: "0.75rem", paddingTop: "0.25rem", alignItems: "center", flexWrap: "wrap" }}>
             <a href="https://github.com/ws0x" target="_blank" rel="noopener noreferrer" style={{ color: "var(--text-secondary)" }}>
               <GithubIcon size={18} />
             </a>
             <a href="https://linkedin.com/in/binhakim" target="_blank" rel="noopener noreferrer" style={{ color: "var(--text-secondary)" }}>
               <LinkedinIcon size={18} />
+            </a>
+            <a
+              href="/resume.pdf"
+              download="Yusuf_Naeem_Resume.pdf"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "0.3rem",
+                padding: "0.35rem 0.75rem",
+                border: "1px solid rgba(0,217,255,0.35)",
+                borderRadius: "6px",
+                background: "rgba(0,217,255,0.06)",
+                color: "var(--cyan)",
+                fontFamily: "var(--font-jet), monospace",
+                fontSize: "0.65rem",
+                fontWeight: 700,
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
+                textDecoration: "none",
+              }}
+            >
+              <Download size={12} />
+              Resume
             </a>
           </div>
         </div>

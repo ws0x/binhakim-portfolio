@@ -47,7 +47,7 @@ export default function BlogCards({ posts }: { posts: Post[] }) {
         }}
       >
         <div>
-          <p className="section-header">// 05. Writing</p>
+          <p className="section-header">// 06. Writing</p>
           <h2
             style={{
               fontSize: "clamp(1.8rem, 4vw, 2.6rem)",
