@@ -6,10 +6,10 @@ import { GithubIcon, LinkedinIcon } from "./BrandIcons";
 
 const ROLES = [
   "Backend Engineer",
-  "Systems Architect",
-  "Database Optimizer",
-  "Infrastructure Nerd",
-  "DevOps Enthusiast",
+  "Full-Stack Engineer",
+  "API & Systems Design",
+  "LLM / AI Integration",
+  "DevOps & Security",
 ];
 
 function TypingText() {
@@ -240,10 +240,10 @@ export default function Hero() {
             transition: "opacity 0.5s ease 0.3s, transform 0.5s ease 0.3s",
           }}
         >
-          Passionate about deep-diving into system internals, designing scalable
-          APIs, and building tools that make applications faster and more
-          efficient. Strong foundation in CS with hands-on infrastructure
-          experience.
+          I build production systems end to end — designing scalable APIs and
+          data models, integrating LLMs and AI agents where they earn their
+          place, and shipping live SaaS that real users rely on. I build, secure,
+          and measure what I ship.
         </p>
 
         {/* CTAs */}
