@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useInView, type Variants } from "framer-motion";
 import {
   Globe,
@@ -417,20 +417,63 @@ function TimelineMockup() {
 
 function OrbitMockupPanel() {
   const [tab, setTab] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const TAB_COUNT = 3;
+
+  useEffect(() => {
+    if (paused) return;
+    const id = setInterval(() => setTab((t) => (t + 1) % TAB_COUNT), 3400);
+    return () => clearInterval(id);
+  }, [paused]);
+
   return (
     <div
-      style={{
-        borderRadius: "10px", overflow: "hidden",
-        border: `1px solid rgba(124,58,237,0.25)`,
-        boxShadow: "0 0 40px rgba(124,58,237,0.14), 0 8px 36px rgba(0,0,0,0.55)",
-        background: "#0c0818", display: "flex", flexDirection: "column",
-        minHeight: "360px", fontFamily: "var(--font-jet), monospace", position: "relative",
-      }}
+      style={{ display: "flex", flexDirection: "column", gap: "0.6rem" }}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
     >
-      <BrowserChrome activeTab={tab} onTab={setTab} />
-      {tab === 0 && <PeopleMockup />}
-      {tab === 1 && <GraphMockup />}
-      {tab === 2 && <TimelineMockup />}
+      {/* Interactive hint row */}
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 0.15rem" }}>
+        <span style={{ fontFamily: "var(--font-jet), monospace", fontSize: "0.56rem", color: "rgba(167,139,250,0.55)", letterSpacing: "0.14em", textTransform: "uppercase" }}>
+          // interactive demo · click tabs to explore
+        </span>
+        <div style={{ display: "flex", gap: "5px", alignItems: "center" }}>
+          {Array.from({ length: TAB_COUNT }).map((_, i) => (
+            <button
+              key={i}
+              onClick={() => { setTab(i); setPaused(true); }}
+              style={{
+                width: i === tab ? "18px" : "6px",
+                height: "6px",
+                borderRadius: "3px",
+                background: i === tab ? ORBIT_PURPLE : "rgba(124,58,237,0.22)",
+                border: "none",
+                cursor: "pointer",
+                padding: 0,
+                transition: "width 0.35s ease, background 0.25s ease",
+              }}
+            />
+          ))}
+        </div>
+      </div>
+
+      <div
+        style={{
+          borderRadius: "10px", overflow: "hidden",
+          border: `1px solid rgba(124,58,237,0.25)`,
+          boxShadow: paused
+            ? "0 0 55px rgba(124,58,237,0.22), 0 8px 40px rgba(0,0,0,0.6)"
+            : "0 0 40px rgba(124,58,237,0.14), 0 8px 36px rgba(0,0,0,0.55)",
+          background: "#0c0818", display: "flex", flexDirection: "column",
+          minHeight: "480px", fontFamily: "var(--font-jet), monospace", position: "relative",
+          transition: "box-shadow 0.3s ease",
+        }}
+      >
+        <BrowserChrome activeTab={tab} onTab={(i) => { setTab(i); setPaused(true); }} />
+        {tab === 0 && <PeopleMockup />}
+        {tab === 1 && <GraphMockup />}
+        {tab === 2 && <TimelineMockup />}
+      </div>
     </div>
   );
 }
@@ -653,20 +696,63 @@ function PermissionsTabMockup() {
 
 function NexFlowMockupPanel() {
   const [tab, setTab] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const TAB_COUNT = 3;
+
+  useEffect(() => {
+    if (paused) return;
+    const id = setInterval(() => setTab((t) => (t + 1) % TAB_COUNT), 3400);
+    return () => clearInterval(id);
+  }, [paused]);
+
   return (
     <div
-      style={{
-        borderRadius: "10px", overflow: "hidden",
-        border: `1px solid rgba(6,182,212,0.25)`,
-        boxShadow: "0 0 40px rgba(6,182,212,0.1), 0 8px 36px rgba(0,0,0,0.55)",
-        background: "#05111d", display: "flex", flexDirection: "column",
-        minHeight: "360px", fontFamily: "var(--font-jet), monospace", position: "relative",
-      }}
+      style={{ display: "flex", flexDirection: "column", gap: "0.6rem" }}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
     >
-      <NexFlowBrowserChrome activeTab={tab} onTab={setTab} />
-      {tab === 0 && <PipelineTabMockup />}
-      {tab === 1 && <AnalyticsTabMockup />}
-      {tab === 2 && <PermissionsTabMockup />}
+      {/* Interactive hint row */}
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 0.15rem" }}>
+        <span style={{ fontFamily: "var(--font-jet), monospace", fontSize: "0.56rem", color: `rgba(6,182,212,0.5)`, letterSpacing: "0.14em", textTransform: "uppercase" }}>
+          // interactive demo · click tabs to explore
+        </span>
+        <div style={{ display: "flex", gap: "5px", alignItems: "center" }}>
+          {Array.from({ length: TAB_COUNT }).map((_, i) => (
+            <button
+              key={i}
+              onClick={() => { setTab(i); setPaused(true); }}
+              style={{
+                width: i === tab ? "18px" : "6px",
+                height: "6px",
+                borderRadius: "3px",
+                background: i === tab ? NF_CYAN : NF_DIM,
+                border: "none",
+                cursor: "pointer",
+                padding: 0,
+                transition: "width 0.35s ease, background 0.25s ease",
+              }}
+            />
+          ))}
+        </div>
+      </div>
+
+      <div
+        style={{
+          borderRadius: "10px", overflow: "hidden",
+          border: `1px solid rgba(6,182,212,0.25)`,
+          boxShadow: paused
+            ? "0 0 55px rgba(6,182,212,0.18), 0 8px 40px rgba(0,0,0,0.6)"
+            : "0 0 40px rgba(6,182,212,0.1), 0 8px 36px rgba(0,0,0,0.55)",
+          background: "#05111d", display: "flex", flexDirection: "column",
+          minHeight: "480px", fontFamily: "var(--font-jet), monospace", position: "relative",
+          transition: "box-shadow 0.3s ease",
+        }}
+      >
+        <NexFlowBrowserChrome activeTab={tab} onTab={(i) => { setTab(i); setPaused(true); }} />
+        {tab === 0 && <PipelineTabMockup />}
+        {tab === 1 && <AnalyticsTabMockup />}
+        {tab === 2 && <PermissionsTabMockup />}
+      </div>
     </div>
   );
 }

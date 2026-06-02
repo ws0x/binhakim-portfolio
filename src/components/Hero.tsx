@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, Download } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./BrandIcons";
 
 const ROLES = [
@@ -378,6 +378,44 @@ export default function Hero() {
             }}
           >
             <LinkedinIcon size={16} />
+          </a>
+
+          <a
+            href="/resume.pdf"
+            download="Yusuf_Naeem_Resume.pdf"
+            aria-label="Download Resume"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.4rem",
+              padding: "0.75rem 1rem",
+              background: "rgba(0,217,255,0.06)",
+              color: "var(--cyan)",
+              border: "1px solid rgba(0,217,255,0.28)",
+              borderRadius: "6px",
+              fontFamily: "var(--font-jet), monospace",
+              fontSize: "0.7rem",
+              fontWeight: 700,
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+              textDecoration: "none",
+              transition: "all 0.2s",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = "rgba(0,217,255,0.14)";
+              e.currentTarget.style.borderColor = "rgba(0,217,255,0.6)";
+              e.currentTarget.style.boxShadow = "0 0 18px rgba(0,217,255,0.22)";
+              e.currentTarget.style.transform = "translateY(-1px)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "rgba(0,217,255,0.06)";
+              e.currentTarget.style.borderColor = "rgba(0,217,255,0.28)";
+              e.currentTarget.style.boxShadow = "none";
+              e.currentTarget.style.transform = "translateY(0)";
+            }}
+          >
+            <Download size={14} />
+            Resume
           </a>
         </div>{/* end CTAs row */}
         </div>{/* end hero-content */}

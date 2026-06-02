@@ -631,9 +631,9 @@ body {
 }
 @media (min-width: 900px) {
   .live-card-grid {
-    grid-template-columns: 3fr 2fr;
+    grid-template-columns: 1fr 1fr;
     gap: 3rem;
-    align-items: center;
+    align-items: start;
   }
 }
 
