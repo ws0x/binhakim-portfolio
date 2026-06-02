@@ -870,8 +870,14 @@ export default function LiveProjects() {
                   ))}
                 </div>
 
+              </div>
+
+              {/* ── Right: mockup + tech + CTAs ── */}
+              <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+                <OrbitMockupPanel />
+
                 {/* Tech */}
-                <div style={{ display: "flex", flexWrap: "wrap", gap: "0.35rem", marginBottom: "1.75rem" }}>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: "0.35rem" }}>
                   {ORBIT_TECH.map((t) => <span key={t} className="tech-tag">{t}</span>)}
                 </div>
 
@@ -895,9 +901,6 @@ export default function LiveProjects() {
                   </a>
                 </div>
               </div>
-
-              {/* ── Right: mockup ── */}
-              <OrbitMockupPanel />
             </div>
           </motion.div>
 
@@ -969,8 +972,14 @@ export default function LiveProjects() {
                   ))}
                 </div>
 
+              </div>
+
+              {/* ── Right: mockup + tech + CTAs ── */}
+              <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+                <NexFlowMockupPanel />
+
                 {/* Tech */}
-                <div style={{ display: "flex", flexWrap: "wrap", gap: "0.35rem", marginBottom: "1.75rem" }}>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: "0.35rem" }}>
                   {NF_TECH.map((t) => <span key={t} className="tech-tag">{t}</span>)}
                 </div>
 
@@ -994,9 +1003,6 @@ export default function LiveProjects() {
                   </a>
                 </div>
               </div>
-
-              {/* ── Right: mockup ── */}
-              <NexFlowMockupPanel />
             </div>
           </motion.div>
 
