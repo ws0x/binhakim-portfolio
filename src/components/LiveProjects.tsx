@@ -208,7 +208,7 @@ function BrowserChrome({ activeTab, onTab }: { activeTab: number; onTab: (i: num
           }}
         >
           <div style={{ width: "7px", height: "7px", borderRadius: "50%", background: "#28c840", flexShrink: 0 }} />
-          byorbit.io
+          https://byorbit.io
         </div>
       </div>
       <div style={{ display: "flex", background: "#110a22", borderBottom: `1px solid ${ORBIT_PURPLE_DIM}` }}>
@@ -544,7 +544,7 @@ function NexFlowBrowserChrome({ activeTab, onTab }: { activeTab: number; onTab: 
         </div>
         <div style={{ flex: 1, background: "#081828", border: `1px solid ${NF_DIM}`, borderRadius: "4px", padding: "3px 8px", fontSize: "0.58rem", color: "rgba(255,255,255,0.5)", display: "flex", alignItems: "center", gap: "5px", fontFamily: "var(--font-jet), monospace" }}>
           <div style={{ width: "7px", height: "7px", borderRadius: "50%", background: "#28c840", flexShrink: 0 }} />
-          nexflow-os.vercel.app
+          https://nexflow-os.vercel.app
         </div>
       </div>
       <div style={{ display: "flex", background: "#040e1a", borderBottom: `1px solid ${NF_DIM}` }}>
@@ -823,7 +823,7 @@ function CommitBrowserChrome({ activeTab, onTab }: { activeTab: number; onTab: (
         </div>
         <div style={{ flex: 1, background: "#071f11", border: `1px solid ${COMMIT_DIM}`, borderRadius: "4px", padding: "3px 8px", fontSize: "0.58rem", color: "rgba(255,255,255,0.5)", display: "flex", alignItems: "center", gap: "5px", fontFamily: "var(--font-jet), monospace" }}>
           <div style={{ width: "7px", height: "7px", borderRadius: "50%", background: "#28c840", flexShrink: 0 }} />
-          commit-alpha.vercel.app
+          https://commit.binhakim.dev/
         </div>
       </div>
       <div style={{ display: "flex", background: "#031410", borderBottom: `1px solid ${COMMIT_DIM}` }}>
@@ -1447,7 +1447,7 @@ export default function LiveProjects() {
                 {/* CTAs */}
                 <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
                   <a
-                    href="https://commit-alpha.vercel.app" target="_blank" rel="noopener noreferrer"
+                    href="https://commit.binhakim.dev/" target="_blank" rel="noopener noreferrer"
                     style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", fontFamily: "var(--font-jet), monospace", fontSize: "0.73rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#031410", background: COMMIT_GREEN, padding: "0.65rem 1.4rem", borderRadius: "6px", textDecoration: "none", boxShadow: "0 0 22px rgba(16,185,129,0.38)", transition: "background 0.2s, box-shadow 0.2s, transform 0.2s" }}
                     onMouseEnter={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = "#34d399"; el.style.boxShadow = "0 0 36px rgba(16,185,129,0.58)"; el.style.transform = "translateY(-1px)"; }}
                     onMouseLeave={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = COMMIT_GREEN; el.style.boxShadow = "0 0 22px rgba(16,185,129,0.38)"; el.style.transform = "translateY(0)"; }}
