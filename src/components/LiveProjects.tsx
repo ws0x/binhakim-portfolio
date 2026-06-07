@@ -1166,6 +1166,110 @@ export default function LiveProjects() {
           </motion.div>
 
           {/* ══════════════════════════════════════════════════════════════════
+              COMMIT CARD
+          ══════════════════════════════════════════════════════════════════ */}
+          <motion.div
+            custom={3} variants={fadeUp} initial="hidden"
+            animate={inView ? "visible" : "hidden"}
+            style={{ marginTop: "2.5rem" }}
+          >
+            <div
+              className="live-card-grid"
+              onMouseEnter={() => setCommitHovered(true)}
+              onMouseLeave={() => setCommitHovered(false)}
+              style={{
+                background: "var(--bg-card)",
+                border: `1px solid ${commitHovered ? "rgba(16,185,129,0.42)" : "rgba(16,185,129,0.16)"}`,
+                borderRadius: "14px",
+                padding: "clamp(1.5rem, 4vw, 2.5rem)",
+                transition: "border-color 0.35s ease, box-shadow 0.35s ease",
+                boxShadow: commitHovered
+                  ? "0 0 0 1px rgba(16,185,129,0.14), 0 0 60px rgba(16,185,129,0.1), 0 12px 60px rgba(0,0,0,0.5)"
+                  : "0 0 0 1px rgba(16,185,129,0.04), 0 6px 40px rgba(0,0,0,0.45)",
+                position: "relative", overflow: "hidden",
+              }}
+            >
+              {/* Corner accent */}
+              <div style={{ position: "absolute", top: 0, right: 0, width: "280px", height: "280px", background: "radial-gradient(circle at top right, rgba(16,185,129,0.08), transparent 65%)", borderRadius: "0 14px 0 0", pointerEvents: "none" }} />
+
+              {/* ── Left: info ── */}
+              <div style={{ position: "relative" }}>
+                <CommitLogo />
+
+                {/* Status row */}
+                <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1.4rem", flexWrap: "wrap" }}>
+                  <div style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: "rgba(16,185,129,0.1)", border: "1px solid rgba(16,185,129,0.28)", borderRadius: "100px", padding: "4px 12px 4px 8px" }}>
+                    <span className="online-dot" style={{ width: "7px", height: "7px" }} />
+                    <span style={{ fontFamily: "var(--font-jet), monospace", fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.16em", color: "var(--success)", textTransform: "uppercase" }}>Live Now</span>
+                  </div>
+                  <span style={{ fontFamily: "var(--font-jet), monospace", fontSize: "0.6rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--text-dim)" }}>SaaS · EdTech</span>
+                </div>
+
+                <h3 style={{ fontSize: "clamp(2.2rem, 5vw, 3.4rem)", fontWeight: 800, color: "var(--text-primary)", letterSpacing: "-0.035em", lineHeight: 1, marginBottom: "0.45rem" }}>commit_</h3>
+                <p style={{ fontFamily: "var(--font-jet), monospace", fontSize: "0.75rem", color: COMMIT_GREEN, letterSpacing: "0.08em", marginBottom: "1.1rem", opacity: 0.82 }}>
+                  Finish What You Started Learning
+                </p>
+                <p style={{ fontSize: "0.88rem", color: "var(--text-secondary)", lineHeight: 1.75, marginBottom: "1.75rem", maxWidth: "44rem" }}>
+                  A habit-forming curriculum tracker for self-taught developers who are great at starting but rarely finish. The entire product speaks{" "}
+                  <strong style={{ color: "var(--text-primary)" }}>git</strong>: a study session is a <em>commit</em>, your streak is a <em>contribution graph</em>, finishing a course is <em>merging to main</em>. Built around a{" "}
+                  <strong style={{ color: "var(--text-primary)" }}>completion loop</strong> — log a session → keep the streak → see what&apos;s next → get a nudge → celebrate → repeat. Features a smart ETA engine, a gamification layer with XP and badges, a glowing transit-style roadmap, pacing nudges that encourage instead of guilt, and daily email digests via Resend — all on SQLite locally and Postgres in production with a one-line schema swap.
+                </p>
+
+                {/* Feature chips */}
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "0.6rem", marginBottom: "1.75rem" }}>
+                  {COMMIT_FEATURES.map(({ Icon, label, detail }) => (
+                    <div
+                      key={label}
+                      style={{ display: "flex", alignItems: "flex-start", gap: "0.6rem", padding: "0.65rem 0.75rem", background: "rgba(16,185,129,0.03)", border: "1px solid rgba(16,185,129,0.09)", borderRadius: "7px", transition: "background 0.2s, border-color 0.2s" }}
+                      onMouseEnter={(e) => { const el = e.currentTarget as HTMLDivElement; el.style.background = "rgba(16,185,129,0.07)"; el.style.borderColor = "rgba(16,185,129,0.22)"; }}
+                      onMouseLeave={(e) => { const el = e.currentTarget as HTMLDivElement; el.style.background = "rgba(16,185,129,0.03)"; el.style.borderColor = "rgba(16,185,129,0.09)"; }}
+                    >
+                      <div style={{ width: "28px", height: "28px", borderRadius: "6px", background: "rgba(16,185,129,0.07)", border: "1px solid rgba(16,185,129,0.16)", display: "flex", alignItems: "center", justifyContent: "center", color: COMMIT_GREEN, flexShrink: 0 }}>
+                        <Icon size={13} />
+                      </div>
+                      <div>
+                        <div style={{ fontSize: "0.78rem", fontWeight: 600, color: "var(--text-primary)", lineHeight: 1.2, marginBottom: "0.15rem" }}>{label}</div>
+                        <div style={{ fontSize: "0.67rem", color: "var(--text-dim)", lineHeight: 1.3 }}>{detail}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+              </div>
+
+              {/* ── Right: mockup + tech + CTAs ── */}
+              <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+                <CommitMockupPanel />
+
+                {/* Tech */}
+                <div style={{ display: "flex", flexWrap: "wrap", gap: "0.35rem" }}>
+                  {COMMIT_TECH.map((t) => <span key={t} className="tech-tag">{t}</span>)}
+                </div>
+
+                {/* CTAs */}
+                <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
+                  <a
+                    href="https://commit.binhakim.dev/" target="_blank" rel="noopener noreferrer"
+                    style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", fontFamily: "var(--font-jet), monospace", fontSize: "0.73rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#031410", background: COMMIT_GREEN, padding: "0.65rem 1.4rem", borderRadius: "6px", textDecoration: "none", boxShadow: "0 0 22px rgba(16,185,129,0.38)", transition: "background 0.2s, box-shadow 0.2s, transform 0.2s" }}
+                    onMouseEnter={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = "#34d399"; el.style.boxShadow = "0 0 36px rgba(16,185,129,0.58)"; el.style.transform = "translateY(-1px)"; }}
+                    onMouseLeave={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = COMMIT_GREEN; el.style.boxShadow = "0 0 22px rgba(16,185,129,0.38)"; el.style.transform = "translateY(0)"; }}
+                  >
+                    <Globe size={14} /> Visit App <ArrowUpRight size={13} />
+                  </a>
+                  <a
+                    href="https://github.com/ws0x/commit" target="_blank" rel="noopener noreferrer"
+                    style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", fontFamily: "var(--font-jet), monospace", fontSize: "0.73rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--text-secondary)", background: "transparent", border: "1px solid rgba(16,185,129,0.25)", padding: "0.65rem 1.2rem", borderRadius: "6px", textDecoration: "none", transition: "color 0.2s, border-color 0.2s, background 0.2s, box-shadow 0.2s" }}
+                    onMouseEnter={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.color = COMMIT_GREEN; el.style.borderColor = "rgba(16,185,129,0.55)"; el.style.background = "rgba(16,185,129,0.06)"; el.style.boxShadow = "0 0 14px rgba(16,185,129,0.12)"; }}
+                    onMouseLeave={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.color = "var(--text-secondary)"; el.style.borderColor = "rgba(16,185,129,0.25)"; el.style.background = "transparent"; el.style.boxShadow = "none"; }}
+                  >
+                    <GithubIcon size={14} /> GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* ══════════════════════════════════════════════════════════════════
               ORBIT CARD
           ══════════════════════════════════════════════════════════════════ */}
           <motion.div custom={1} variants={fadeUp} initial="hidden" animate={inView ? "visible" : "hidden"}>
@@ -1355,110 +1459,6 @@ export default function LiveProjects() {
                     style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", fontFamily: "var(--font-jet), monospace", fontSize: "0.73rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--text-secondary)", background: "transparent", border: "1px solid rgba(6,182,212,0.25)", padding: "0.65rem 1.2rem", borderRadius: "6px", textDecoration: "none", transition: "color 0.2s, border-color 0.2s, background 0.2s, box-shadow 0.2s" }}
                     onMouseEnter={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.color = NF_CYAN; el.style.borderColor = "rgba(6,182,212,0.55)"; el.style.background = "rgba(6,182,212,0.06)"; el.style.boxShadow = "0 0 14px rgba(6,182,212,0.12)"; }}
                     onMouseLeave={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.color = "var(--text-secondary)"; el.style.borderColor = "rgba(6,182,212,0.25)"; el.style.background = "transparent"; el.style.boxShadow = "none"; }}
-                  >
-                    <GithubIcon size={14} /> GitHub
-                  </a>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* ══════════════════════════════════════════════════════════════════
-              COMMIT CARD
-          ══════════════════════════════════════════════════════════════════ */}
-          <motion.div
-            custom={3} variants={fadeUp} initial="hidden"
-            animate={inView ? "visible" : "hidden"}
-            style={{ marginTop: "2.5rem" }}
-          >
-            <div
-              className="live-card-grid"
-              onMouseEnter={() => setCommitHovered(true)}
-              onMouseLeave={() => setCommitHovered(false)}
-              style={{
-                background: "var(--bg-card)",
-                border: `1px solid ${commitHovered ? "rgba(16,185,129,0.42)" : "rgba(16,185,129,0.16)"}`,
-                borderRadius: "14px",
-                padding: "clamp(1.5rem, 4vw, 2.5rem)",
-                transition: "border-color 0.35s ease, box-shadow 0.35s ease",
-                boxShadow: commitHovered
-                  ? "0 0 0 1px rgba(16,185,129,0.14), 0 0 60px rgba(16,185,129,0.1), 0 12px 60px rgba(0,0,0,0.5)"
-                  : "0 0 0 1px rgba(16,185,129,0.04), 0 6px 40px rgba(0,0,0,0.45)",
-                position: "relative", overflow: "hidden",
-              }}
-            >
-              {/* Corner accent */}
-              <div style={{ position: "absolute", top: 0, right: 0, width: "280px", height: "280px", background: "radial-gradient(circle at top right, rgba(16,185,129,0.08), transparent 65%)", borderRadius: "0 14px 0 0", pointerEvents: "none" }} />
-
-              {/* ── Left: info ── */}
-              <div style={{ position: "relative" }}>
-                <CommitLogo />
-
-                {/* Status row */}
-                <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1.4rem", flexWrap: "wrap" }}>
-                  <div style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: "rgba(16,185,129,0.1)", border: "1px solid rgba(16,185,129,0.28)", borderRadius: "100px", padding: "4px 12px 4px 8px" }}>
-                    <span className="online-dot" style={{ width: "7px", height: "7px" }} />
-                    <span style={{ fontFamily: "var(--font-jet), monospace", fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.16em", color: "var(--success)", textTransform: "uppercase" }}>Live Now</span>
-                  </div>
-                  <span style={{ fontFamily: "var(--font-jet), monospace", fontSize: "0.6rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--text-dim)" }}>SaaS · EdTech</span>
-                </div>
-
-                <h3 style={{ fontSize: "clamp(2.2rem, 5vw, 3.4rem)", fontWeight: 800, color: "var(--text-primary)", letterSpacing: "-0.035em", lineHeight: 1, marginBottom: "0.45rem" }}>commit_</h3>
-                <p style={{ fontFamily: "var(--font-jet), monospace", fontSize: "0.75rem", color: COMMIT_GREEN, letterSpacing: "0.08em", marginBottom: "1.1rem", opacity: 0.82 }}>
-                  Finish What You Started Learning
-                </p>
-                <p style={{ fontSize: "0.88rem", color: "var(--text-secondary)", lineHeight: 1.75, marginBottom: "1.75rem", maxWidth: "44rem" }}>
-                  A habit-forming curriculum tracker for self-taught developers who are great at starting but rarely finish. The entire product speaks{" "}
-                  <strong style={{ color: "var(--text-primary)" }}>git</strong>: a study session is a <em>commit</em>, your streak is a <em>contribution graph</em>, finishing a course is <em>merging to main</em>. Built around a{" "}
-                  <strong style={{ color: "var(--text-primary)" }}>completion loop</strong> — log a session → keep the streak → see what&apos;s next → get a nudge → celebrate → repeat. Features a smart ETA engine, a gamification layer with XP and badges, a glowing transit-style roadmap, pacing nudges that encourage instead of guilt, and daily email digests via Resend — all on SQLite locally and Postgres in production with a one-line schema swap.
-                </p>
-
-                {/* Feature chips */}
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "0.6rem", marginBottom: "1.75rem" }}>
-                  {COMMIT_FEATURES.map(({ Icon, label, detail }) => (
-                    <div
-                      key={label}
-                      style={{ display: "flex", alignItems: "flex-start", gap: "0.6rem", padding: "0.65rem 0.75rem", background: "rgba(16,185,129,0.03)", border: "1px solid rgba(16,185,129,0.09)", borderRadius: "7px", transition: "background 0.2s, border-color 0.2s" }}
-                      onMouseEnter={(e) => { const el = e.currentTarget as HTMLDivElement; el.style.background = "rgba(16,185,129,0.07)"; el.style.borderColor = "rgba(16,185,129,0.22)"; }}
-                      onMouseLeave={(e) => { const el = e.currentTarget as HTMLDivElement; el.style.background = "rgba(16,185,129,0.03)"; el.style.borderColor = "rgba(16,185,129,0.09)"; }}
-                    >
-                      <div style={{ width: "28px", height: "28px", borderRadius: "6px", background: "rgba(16,185,129,0.07)", border: "1px solid rgba(16,185,129,0.16)", display: "flex", alignItems: "center", justifyContent: "center", color: COMMIT_GREEN, flexShrink: 0 }}>
-                        <Icon size={13} />
-                      </div>
-                      <div>
-                        <div style={{ fontSize: "0.78rem", fontWeight: 600, color: "var(--text-primary)", lineHeight: 1.2, marginBottom: "0.15rem" }}>{label}</div>
-                        <div style={{ fontSize: "0.67rem", color: "var(--text-dim)", lineHeight: 1.3 }}>{detail}</div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-              </div>
-
-              {/* ── Right: mockup + tech + CTAs ── */}
-              <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
-                <CommitMockupPanel />
-
-                {/* Tech */}
-                <div style={{ display: "flex", flexWrap: "wrap", gap: "0.35rem" }}>
-                  {COMMIT_TECH.map((t) => <span key={t} className="tech-tag">{t}</span>)}
-                </div>
-
-                {/* CTAs */}
-                <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
-                  <a
-                    href="https://commit.binhakim.dev/" target="_blank" rel="noopener noreferrer"
-                    style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", fontFamily: "var(--font-jet), monospace", fontSize: "0.73rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#031410", background: COMMIT_GREEN, padding: "0.65rem 1.4rem", borderRadius: "6px", textDecoration: "none", boxShadow: "0 0 22px rgba(16,185,129,0.38)", transition: "background 0.2s, box-shadow 0.2s, transform 0.2s" }}
-                    onMouseEnter={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = "#34d399"; el.style.boxShadow = "0 0 36px rgba(16,185,129,0.58)"; el.style.transform = "translateY(-1px)"; }}
-                    onMouseLeave={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = COMMIT_GREEN; el.style.boxShadow = "0 0 22px rgba(16,185,129,0.38)"; el.style.transform = "translateY(0)"; }}
-                  >
-                    <Globe size={14} /> Visit App <ArrowUpRight size={13} />
-                  </a>
-                  <a
-                    href="https://github.com/ws0x/commit" target="_blank" rel="noopener noreferrer"
-                    style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", fontFamily: "var(--font-jet), monospace", fontSize: "0.73rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--text-secondary)", background: "transparent", border: "1px solid rgba(16,185,129,0.25)", padding: "0.65rem 1.2rem", borderRadius: "6px", textDecoration: "none", transition: "color 0.2s, border-color 0.2s, background 0.2s, box-shadow 0.2s" }}
-                    onMouseEnter={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.color = COMMIT_GREEN; el.style.borderColor = "rgba(16,185,129,0.55)"; el.style.background = "rgba(16,185,129,0.06)"; el.style.boxShadow = "0 0 14px rgba(16,185,129,0.12)"; }}
-                    onMouseLeave={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.color = "var(--text-secondary)"; el.style.borderColor = "rgba(16,185,129,0.25)"; el.style.background = "transparent"; el.style.boxShadow = "none"; }}
                   >
                     <GithubIcon size={14} /> GitHub
                   </a>
