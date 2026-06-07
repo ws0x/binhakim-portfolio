@@ -1272,7 +1272,7 @@ export default function LiveProjects() {
           {/* ══════════════════════════════════════════════════════════════════
               ORBIT CARD
           ══════════════════════════════════════════════════════════════════ */}
-          <motion.div custom={1} variants={fadeUp} initial="hidden" animate={inView ? "visible" : "hidden"}>
+          <motion.div custom={1} variants={fadeUp} initial="hidden" animate={inView ? "visible" : "hidden"} style={ { marginTop: "2.5rem" } }>
             <div
               className="live-card-grid"
               onMouseEnter={() => setOrbitHovered(true)}
