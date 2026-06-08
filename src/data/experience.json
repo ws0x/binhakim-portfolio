@@ -53,7 +53,7 @@
     "title": "Software Engineer Intern",
     "company": "Kites Software",
     "period": "Aug 2023 - Nov 2023",
-    "location": "Egypt · On-site",
+    "location": "Egypt · Hybrid",
     "description": "Built test-driven RESTful APIs for Egypt's first SaaS ERP in an Agile/Scrum engineering team.",
     "bullets": [
       "Shipped production RESTful API endpoints for a Spring Boot SaaS ERP serving Egyptian import and distribution businesses, following a strict test-first (TDD) development workflow",
@@ -67,7 +67,7 @@
     "title": "Business Analyst",
     "company": "Tact Decorations",
     "period": "Jun 2022 - Aug 2023",
-    "location": "Egypt · On-site",
+    "location": "Egypt · Remote",
     "description": "Led the company's first digital transformation — centralising operations and redesigning cross-functional workflows from the ground up.",
     "bullets": [
       "Built the company's CRM and operations hub in Notion from scratch, giving site engineers, architects, and supervisors a single platform for project communication, task assignment, and progress tracking",
@@ -80,7 +80,7 @@
     "title": "Frontend Developer Intern",
     "company": "Information Technology Institute (ITI)",
     "period": "Sep 2022 - Oct 2022",
-    "location": "Egypt · On-site",
+    "location": "Egypt · Hybrid",
     "description": "Developed foundational frontend skills through ITI's intensive web development programme.",
     "bullets": [
       "Built responsive web interfaces using HTML, CSS, JavaScript, and Bootstrap as part of ITI's structured training programme",
