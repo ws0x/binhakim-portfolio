@@ -42,10 +42,10 @@
     }
   ],
   "softSkills": [
+    { "label": "System Design", "level": 85 },
+    { "label": "Problem Decomposition", "level": 90 },
     { "label": "Systems Thinking", "level": 92 },
     { "label": "Critical Analysis", "level": 88 },
-    { "label": "Problem Decomposition", "level": 90 },
-    { "label": "Technical Writing", "level": 82 },
-    { "label": "Architecture Design", "level": 85 }
+    { "label": "Technical Writing", "level": 82 }
   ]
 }
