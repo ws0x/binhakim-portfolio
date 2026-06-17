@@ -7,6 +7,16 @@ import skillsData from "../data/skills.json";
 
 const TRAITS = [
   {
+    Icon: LayoutDashboard,
+    name: "System Design",
+    desc: "Structure before syntax, always",
+  },
+  {
+    Icon: Layers,
+    name: "Problem Decomposition",
+    desc: "Divide, conquer, iterate",
+  },
+  {
     Icon: Cpu,
     name: "Systems Thinking",
     desc: "Seeing the full picture before touching a line",
@@ -17,19 +27,9 @@ const TRAITS = [
     desc: "Cutting through noise to find the real problem",
   },
   {
-    Icon: Layers,
-    name: "Problem Decomposition",
-    desc: "Divide, conquer, iterate",
-  },
-  {
     Icon: FileCode2,
     name: "Technical Writing",
     desc: "Turning complexity into clarity",
-  },
-  {
-    Icon: LayoutDashboard,
-    name: "Architecture Design",
-    desc: "Structure before syntax, always",
   },
 ];
 
