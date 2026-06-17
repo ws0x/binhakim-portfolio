@@ -17,9 +17,9 @@ const geistMono = Geist_Mono({
 
 const SITE_URL = "https://binhakim.dev";
 const FULL_NAME = "Yusuf Naeem Abd El-Hakim";
-const TITLE = "Yusuf Naeem | Full-Stack & Backend Software Engineer";
+const TITLE = "Yusuf Naeem | Software Engineer";
 const DESCRIPTION =
-  "Yusuf Naeem Abd El-Hakim — Full-Stack & Backend Software Engineer who ships live SaaS products. Specialising in Next.js, TypeScript, Supabase, AI integration, Java/Spring Boot, and systems infrastructure.";
+  "Yusuf Naeem Abd El-Hakim, Software Engineer who ships live SaaS products. Specialising in Backend, System Design, AI integration, and systems infrastructure.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -99,7 +99,7 @@ export const metadata: Metadata = {
     siteName: "binhakim.dev",
     title: TITLE,
     description:
-      "Full-Stack & Backend Software Engineer — ships live SaaS products, AI applications, and scalable APIs. See Orbit and other live deployments at binhakim.dev.",
+      "Software Engineer who ships live SaaS products, AI applications, and scalable systems.",
     images: [
       {
         url: "/profile.jpg",
@@ -119,7 +119,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: TITLE,
     description:
-      "Full-Stack & Backend Software Engineer who ships live SaaS products. See Orbit (byorbit.io) and other live deployments.",
+      "Software Engineer who ships live SaaS products and scalable systems.",
     images: ["/profile.jpg"],
     creator: "@binhakim",
   },
@@ -143,7 +143,7 @@ const jsonLd = {
         width: 800,
         height: 800,
       },
-      jobTitle: "Full-Stack & Backend Software Engineer",
+      jobTitle: "Software Engineer",
       description: DESCRIPTION,
       email: "yusufnaeemhakim@gmail.com",
       knowsAbout: [
