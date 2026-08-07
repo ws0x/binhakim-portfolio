@@ -3,10 +3,11 @@
     "id": "throughline",
     "title": "Throughline",
     "tagline": "Behavioral Intelligence Platform",
-    "description": "Full-stack AI platform that transforms CliftonStrengths PDF reports into 14 sections of personalized, theme-grounded behavioral insights. Features parallel SSE streaming AI generation, PDF extraction via Anthropic's Files API, Neon PostgreSQL persistence, and a specificity-checking pipeline that auto-rejects generic output.",
+    "description": "Full-stack AI platform that transforms CliftonStrengths PDF reports into 14 sections of personalized, theme-grounded behavioral insights. Features parallel SSE streaming AI generation, PDF extraction via Anthropic's Files API, Neon PostgreSQL persistence, and a specificity-checking pipeline that auto-rejects generic output. Still under construction — the generation pipeline works end to end, but it is not yet a public release.",
     "tech": ["Next.js", "TypeScript", "Claude AI", "PostgreSQL", "Drizzle ORM", "Clerk Auth", "SSE Streaming", "Vercel Blob", "Zod"],
     "github": "https://github.com/ws0x/throughline",
     "live": null,
+    "status": "Under Construction",
     "featured": true,
     "category": "Full-Stack · AI"
   },
@@ -18,6 +19,7 @@
     "tech": ["React", "Three.js", "Vite", "3D Algorithms", "Bin Packing", "PDF Export"],
     "github": "https://github.com/ws0x/epps-sc-container-optimizer",
     "live": "https://ws0x.github.io/epps-sc-container-optimizer/",
+    "status": null,
     "featured": true,
     "category": "Algorithms · Visualization"
   },
@@ -29,8 +31,21 @@
     "tech": ["React", "Vite", "JavaScript", "Canvas", "Algorithms", "Data Structures"],
     "github": "https://github.com/ws0x/algo-visualizer",
     "live": "https://ws0x.github.io/algo-visualizer/",
+    "status": null,
     "featured": false,
     "category": "Educational · CS"
+  },
+  {
+    "id": "iread",
+    "title": "iREAD",
+    "tagline": "Reading Platform & Digital Bookstore · 2023",
+    "description": "Graduation project at Ahram Canadian University, supervised by Dr. Sherif El-Shafey, Head of Software Engineering. A reading platform combining a catalogue with reviews and reading history, a storefront for digital book purchases, and a community layer for readers to exchange insights — served by a single REST API feeding both the Flutter mobile client and the React web client, keeping one source of business logic across platforms.",
+    "tech": ["Flutter", "React", "REST API", "Mobile + Web", "Graduation Project"],
+    "github": null,
+    "live": null,
+    "status": null,
+    "featured": false,
+    "category": "Academic · Full-Stack"
   },
   {
     "id": "interpack-scraper",
@@ -40,6 +55,7 @@
     "tech": ["Python", "Web Scraping", "Data Pipeline", "BeautifulSoup", "JSON"],
     "github": "https://github.com/ws0x/Interpack26-Scraper",
     "live": null,
+    "status": null,
     "featured": false,
     "category": "Data Engineering · Python"
   }

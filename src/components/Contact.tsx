@@ -75,7 +75,7 @@ export default function Contact() {
           animate={inView ? "visible" : "hidden"}
           style={{ marginBottom: "4rem", maxWidth: "44rem" }}
         >
-          <p className="section-header">// 07. Contact</p>
+          <p className="section-header">// 11. Contact</p>
           <h2
             style={{
               fontSize: "clamp(1.8rem, 4vw, 2.6rem)",
@@ -94,10 +94,10 @@ export default function Contact() {
               lineHeight: 1.75,
             }}
           >
-            I&apos;m open to backend engineering roles, infrastructure
-            projects, and collaborations involving systems design, APIs, or
-            databases. Whether you have an opportunity or just want to talk
-            tech — my inbox is always open.
+            I&apos;m open to software engineering roles and collaborations
+            involving systems design, APIs and data modelling, or security
+            work. Whether you have an opportunity or just want to talk tech —
+            my inbox is always open.
           </p>
         </motion.div>
 

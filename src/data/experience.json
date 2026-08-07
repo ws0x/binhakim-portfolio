@@ -1,91 +1,87 @@
 [
   {
-    "title": "Software Engineer / IT Business Analyst",
-    "company": "Egyptian Packaging & Plastic Systems Corp",
+    "title": "Software Engineer",
+    "company": "Egyptian Packaging & Plastic Systems (EPPS)",
     "period": "Apr 2024 - Present",
-    "location": "Egypt · On-site",
-    "description": "Full-stack engineer and IT systems lead — building internal production tooling and driving data-informed decisions for executive stakeholders.",
+    "location": "Cairo, Egypt · Hybrid",
+    "description": "Full-time since Jun 2024. Builds and operates the internal platforms the business runs on — lead pipeline, asset management, logistics tooling — and owns reliability, security, and IT governance across the group.",
     "bullets": [
-      "Designed and engineered a multi-tenant personal CRM architecture using Next.js 16, React 19, and Supabase, enforcing full data isolation exclusively at the database layer via Postgres Row-Level Security (RLS) to eliminate data-leakage vectors globally",
-      "Developed an interactive, real-time relationship mapping interface utilizing react-force-graph-2d and client-side cache hydration via TanStack Query v5, rendering dynamic D3 force simulations while maintaining instant optimistic UI updates",
-      "Implemented a metered subscription billing system using Stripe webhooks and a custom server-side Postgres usage-metering function (increment_usage), decoupling application logic from critical transaction tracking",
-      "Architected and shipped a multi-entity B2B lead management system that consolidated disparate operational workflows from 4 business units into a single unified platform",
-      "Enforced zero-trust data privacy at the API layer by implementing a 5-layer server-side security stack and field-level Role-Based Access Control (RBAC), ensuring sensitive marketing and sales fields were filtered on the server and never leaked into client network payloads",
-      "Engineered an Egyptian Arabic speech-to-text pipeline by implementing OpenAI Whisper with specialized context priming prompts, significantly reducing Word Error Rate (WER) for colloquial dialects and mixed English/Arabic technical terminology",
-      "Engineered SC 3D Optimizer, a React + Three.js web application that computes optimal container loads via a 3D bin-packing algorithm — delivering real-time 3D visualisations with door-clearance validation, multi-solution comparison, and one-click PDF export for logistics teams",
-      "Built the company's IT Asset Management (ITAM) platform from scratch, designing the data model and lifecycle workflows to centralise hardware and software inventory — eliminating manual tracking gaps and maintenance blind spots across the organisation",
-      "Owned security, reliability, and cost governance for 25+ domains and 7 production websites by implementing automated backups, wp-admin hardening, caching, image compression, and database optimisation",
+      "Built and now operate an internal B2B lead pipeline platform replacing spreadsheet tracking across four business entities, holding roughly 2,000 records for the 8 to 10 staff running marketing capture through to closed sale",
+      "Designed a full audit trail and an atomic identifier generator that keeps records conflict-free under concurrent writes",
+      "Resolved a Marketing and Sales data-ownership conflict with field-level, server-side access control that strips restricted fields from API payloads before they reach the client",
+      "Engineered an Egyptian Arabic speech-to-text pipeline with OpenAI Whisper and context-priming prompts, cutting Word Error Rate for colloquial dialect and mixed English/Arabic technical terminology",
+      "Built SC 3D Optimizer, applying a 3D bin-packing heuristic to container load planning under door-clearance constraints, cutting planning time roughly fourfold and improving space utilisation (React, Three.js)",
+      "Modelled the data and lifecycle workflows for the company's IT asset management platform, tracking roughly 3,000 assets with full check-out and check-in history",
+      "Own reliability and security across 25+ domains and 7 production sites through caching, automated backups, database cleanup, and web server hardening",
       "De-risked capital allocation by delivering cost-benefit and ROI analyses to executive stakeholders, translating business requirements into Power BI dashboards and written executive summaries",
-      "Co-architected the corporate IT department from the ground up — defining governance frameworks, technical role structure, and SOPs for access control, change management, and service delivery — scaling operations to 90+ users",
+      "Co-architected IT governance, standard operating procedures, and Active Directory infrastructure for 90+ users",
       "Automated repetitive IT and reporting workflows with Python scripts, reducing manual overhead and improving consistency across operations"
     ],
-    "tech": ["Node.js", "Express.js", "PostgreSQL", "Supabase", "Vercel", "React", "Python", "JavaScript", "REST APIs", "LLMs", "WordPress", "Stripe", "Git", "Next.js"]
+    "tech": ["Node.js", "Express.js", "PostgreSQL", "REST APIs", "React", "Three.js", "Python", "TypeScript", "LLMs / Whisper", "Active Directory", "Power BI", "WordPress", "Git"]
   },
   {
-    "title": "Offensive Security Engineer Intern",
+    "title": "Offensive Security Engineer (Intern)",
     "company": "WE INNOVATE",
     "period": "Sep 2024 - Dec 2024",
-    "location": "Egypt · Hybrid",
+    "location": "Cairo, Egypt · Hybrid",
     "description": "Executed white-box and black-box penetration testing across enterprise web, mobile, and infrastructure systems.",
     "bullets": [
-      "Identified and exploited vulnerabilities in real-world web, mobile, and infrastructure targets against the OWASP Top 10 framework — delivering severity-rated reports with attack-chain documentation and remediation guidance",
-      "Mapped attack surfaces and intercepted traffic using Burp Suite Professional, Metasploit, and Wireshark, demonstrating exploitability with proof-of-concept payloads for client-facing reports",
-      "Ran Active Directory and network penetration tests across enterprise environments, surfacing privilege-escalation paths and lateral-movement risks",
-      "Automated vulnerability scanning and security-testing workflows with Python scripts, reducing repetitive manual steps in the assessment pipeline"
+      "Exploited web, mobile, and infrastructure vulnerabilities against the OWASP Top 10, documenting every finding with a reproducible proof-of-concept and a remediation path (Burp Suite, Metasploit, Wireshark)",
+      "Ran Active Directory and network penetration tests, mapping privilege-escalation and lateral-movement paths across the target environment",
+      "Wrote Python tooling to automate recurring reconnaissance and vulnerability-assessment workflows, beyond the defined scope of the internship"
     ],
-    "tech": ["Python", "Burp Suite Pro", "Metasploit", "Wireshark", "OWASP Top 10", "Kali Linux"]
+    "tech": ["Python", "Burp Suite Pro", "Metasploit", "Wireshark", "OWASP Top 10", "Kali Linux", "Active Directory"]
   },
   {
     "title": "Software Engineer",
     "company": "HomeBay Furniture",
     "period": "Nov 2023 - Oct 2024",
-    "location": "Canada · Remote",
+    "location": "Ontario, Canada · Remote",
     "description": "Built and optimised the e-commerce platform for a Canadian furniture brand, improving site performance and eliminating manual catalogue overhead.",
     "bullets": [
-      "Engineered responsive e-commerce interfaces for Homebay.ca and extended WooCommerce's product management and checkout flows to meet evolving business requirements",
-      "Improved site performance and user engagement by implementing multi-layer caching, image optimisation, and database tuning",
-      "Built Python automation scripts integrated with the Google Sheets API to synchronise product catalogue data, eliminating manual data-entry overhead from daily operations",
+      "Automated product catalogue and asset synchronisation through the Google Sheets API, removing a recurring manual cataloguing task from the team's weekly cycle (Python)",
+      "Extended WooCommerce product-management and checkout functionality, and applied caching, database indexing, and image optimisation across the storefront",
       "Grew organic search visibility through structured keyword analysis, meta-tag optimisation, and on-page SEO improvements"
     ],
     "tech": ["JavaScript", "Python", "WordPress", "WooCommerce", "REST APIs", "Google Sheets API", "HTML", "CSS"]
   },
   {
-    "title": "Software Engineer Intern",
+    "title": "Software Engineer (Intern)",
     "company": "Kites Software",
     "period": "Aug 2023 - Nov 2023",
-    "location": "Egypt · Hybrid",
+    "location": "Cairo, Egypt · Hybrid",
     "description": "Built test-driven RESTful APIs for Egypt's first SaaS ERP in an Agile/Scrum engineering team.",
     "bullets": [
-      "Shipped production RESTful API endpoints for a Spring Boot SaaS ERP serving Egyptian import and distribution businesses, following a strict test-first (TDD) development workflow",
-      "Wrote Cucumber BDD integration tests against a PostgreSQL backend, catching regression defects before they reached QA",
-      "Investigated and resolved QA-reported bugs, improving release stability and reducing the defect escape rate",
-      "Authored technical onboarding wikis documenting the team's stack and engineering practices, accelerating ramp-up time for incoming engineers"
+      "Built and shipped RESTful API endpoints test-first for Egypt's first SaaS ERP for import and distribution, writing integration tests in BDD style with Cucumber (Java, Spring Boot, PostgreSQL)",
+      "Diagnosed and fixed QA-reported defects inside a full Agile and Scrum cycle",
+      "Authored onboarding documentation that the team adopted for subsequent intern cohorts"
     ],
-    "tech": ["Java", "Spring Boot", "PostgreSQL", "REST APIs", "BDD", "Cucumber", "Git", "Scrum", "Jira"]
+    "tech": ["Java", "Spring Boot", "PostgreSQL", "REST APIs", "BDD", "Cucumber", "Liquibase", "Git", "Scrum", "Jira"]
   },
   {
     "title": "Business Analyst",
-    "company": "Tact Decorations",
-    "period": "Jun 2022 - Aug 2023",
-    "location": "Egypt · Remote",
-    "description": "Led the company's first digital transformation — centralising operations and redesigning cross-functional workflows from the ground up.",
+    "company": "Tact Decoration",
+    "period": "Jun 2023 - Aug 2023",
+    "location": "Cairo, Egypt · Remote · Part-time",
+    "description": "Led the company's first digital transformation — replacing informal, untracked coordination with a centralised system.",
     "bullets": [
-      "Built the company's CRM and operations hub in Notion from scratch, giving site engineers, architects, and supervisors a single platform for project communication, task assignment, and progress tracking",
-      "Redesigned cross-functional workflows to eliminate handoff bottlenecks, improving coordination and reducing delays between field and office teams",
-      "Drove the company's first digital transformation initiative — defining the tooling stack, establishing documentation standards, and producing operational playbooks adopted across departments"
+      "Led the company's first digital-transformation initiative, replacing informal, untracked coordination with a centralised system",
+      "Built a CRM and operations hub in Notion from scratch, giving site engineers, architects, and supervisors a single platform for task assignment and progress tracking",
+      "Redesigned cross-functional workflows between field and office teams, and documented the new process as a standard other staff could follow"
     ],
-    "tech": ["Notion", "Systems Thinking", "Process Design", "Digital Transformation", "Automation"]
+    "tech": ["Notion", "Systems Thinking", "Process Design", "Digital Transformation"]
   },
   {
-    "title": "Frontend Developer Intern",
-    "company": "Information Technology Institute (ITI)",
-    "period": "Sep 2022 - Oct 2022",
-    "location": "Egypt · Hybrid",
-    "description": "Developed foundational frontend skills through ITI's intensive web development programme.",
+    "title": "Freelance Full-Stack Developer",
+    "company": "Self-employed",
+    "period": "Jan 2022 - Jun 2022",
+    "location": "Remote",
+    "description": "Built and shipped websites and online storefronts for small businesses end to end, working directly with each owner without a team or supervision.",
     "bullets": [
-      "Built responsive web interfaces using HTML, CSS, JavaScript, and Bootstrap as part of ITI's structured training programme",
-      "Adopted Git version control and collaborative development workflows from day one"
+      "Built and shipped websites and online storefronts for small businesses end to end, from static frontend (HTML, CSS, vanilla JavaScript) through backend logic and data (Django, Django REST Framework)",
+      "Worked directly with each business owner to scope requirements and turn them into a working site without a team or supervision",
+      "Implemented storefront features, including product catalogues and inquiry forms, backed by Django REST Framework APIs"
     ],
-    "tech": ["HTML", "CSS", "JavaScript", "Bootstrap", "Git"]
+    "tech": ["Python", "Django", "Django REST Framework", "JavaScript", "HTML", "CSS", "SQLite"]
   }
 ]

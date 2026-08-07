@@ -1,23 +1,9 @@
 [
   {
-    "title": "Add your first Medium article title here",
-    "excerpt": "Update this with the actual excerpt from your article on Medium.",
+    "title": "Writing on Medium",
+    "excerpt": "Articles on backend engineering, database design, and web security — translating technical material for practitioner and general audiences. Read the latest at medium.com/@binhakim.",
     "url": "https://medium.com/@binhakim",
     "date": "2025",
-    "readTime": "5 min"
-  },
-  {
-    "title": "Second Article Title",
-    "excerpt": "A short excerpt or description of what this article covers.",
-    "url": "https://medium.com/@binhakim",
-    "date": "2025",
-    "readTime": "4 min"
-  },
-  {
-    "title": "Third Article Title",
-    "excerpt": "Replace this with real article titles from your Medium profile at medium.com/@binhakim",
-    "url": "https://medium.com/@binhakim",
-    "date": "2024",
-    "readTime": "6 min"
+    "readTime": "—"
   }
 ]

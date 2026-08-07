@@ -19,7 +19,7 @@ const SITE_URL = "https://binhakim.dev";
 const FULL_NAME = "Yusuf Naeem Abd El-Hakim";
 const TITLE = "Yusuf Naeem | Software Engineer";
 const DESCRIPTION =
-  "Yusuf Naeem Abd El-Hakim, Software Engineer who ships live SaaS products. Specialising in Backend, System Design, AI integration, and systems infrastructure.";
+  "Yusuf Naeem Abd El-Hakim, Software Engineer specialising in systems design and applied security. REST APIs, relational data models, and access-control layers — plus two self-directed SaaS products taken solo from idea to public launch.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -36,21 +36,23 @@ export const metadata: Metadata = {
     "binhakim",
     "Abd El-Hakim",
     "Yusuf Naeem Abd El-Hakim",
+    "Software Engineer",
     "Full-Stack Engineer",
     "Backend Engineer",
-    "Software Engineer",
+    "Systems Design",
+    "Applied Security",
+    "Distributed Systems",
     "Next.js Developer",
     "TypeScript Engineer",
     "Supabase Developer",
     "React Developer",
     "Node.js",
-    "Java Spring Boot",
     "PostgreSQL",
     "SaaS Developer",
-    "AI Engineer",
     "Orbit app",
-    "Systems Infrastructure",
+    "Commit app",
     "API Development",
+    "Cairo software engineer",
     "Dubai software engineer",
     "portfolio",
   ],
@@ -99,7 +101,7 @@ export const metadata: Metadata = {
     siteName: "binhakim.dev",
     title: TITLE,
     description:
-      "Software Engineer who ships live SaaS products, AI applications, and scalable systems.",
+      "Software Engineer — systems design and applied security. Two SaaS products taken solo from idea to public launch.",
     images: [
       {
         url: "/profile.jpg",
@@ -119,7 +121,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: TITLE,
     description:
-      "Software Engineer who ships live SaaS products and scalable systems.",
+      "Software Engineer — systems design, applied security, and SaaS shipped solo.",
     images: ["/profile.jpg"],
     creator: "@binhakim",
   },
@@ -146,19 +148,81 @@ const jsonLd = {
       jobTitle: "Software Engineer",
       description: DESCRIPTION,
       email: "yusufnaeemhakim@gmail.com",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Cairo",
+        addressCountry: "EG",
+      },
       knowsAbout: [
-        "Full-Stack Development",
+        "Software Engineering",
+        "Systems Design",
         "Backend Engineering",
-        "Systems Architecture",
+        "REST API Design",
+        "Relational Data Modelling",
+        "Application Security",
+        "OWASP Top 10",
         "Next.js",
         "TypeScript",
-        "Supabase",
-        "Java",
-        "Spring Boot",
+        "Node.js",
         "PostgreSQL",
-        "AI Integration",
-        "DevOps",
+        "Supabase",
+        "Distributed Systems",
         "SaaS Products",
+      ],
+      knowsLanguage: [
+        { "@type": "Language", name: "Arabic" },
+        { "@type": "Language", name: "English" },
+        { "@type": "Language", name: "German" },
+      ],
+      alumniOf: {
+        "@type": "CollegeOrUniversity",
+        name: "Ahram Canadian University",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Cairo",
+          addressCountry: "EG",
+        },
+      },
+      hasCredential: [
+        {
+          "@type": "EducationalOccupationalCredential",
+          credentialCategory: "degree",
+          name: "B.Sc. Computer Science — Software Engineering Major",
+          recognizedBy: {
+            "@type": "CollegeOrUniversity",
+            name: "Ahram Canadian University",
+          },
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          credentialCategory: "certificate",
+          name: "CS50: Introduction to Computer Science",
+          recognizedBy: { "@type": "Organization", name: "HarvardX" },
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          credentialCategory: "certificate",
+          name: "Web Development & .NET Development Summer Training",
+          recognizedBy: {
+            "@type": "Organization",
+            name: "Information Technology Institute (ITI)",
+          },
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          credentialCategory: "certificate",
+          name: "Offensive Security Engineering",
+          recognizedBy: { "@type": "Organization", name: "WE INNOVATE" },
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          credentialCategory: "certificate",
+          name: "Forward Program",
+          recognizedBy: { "@type": "Organization", name: "McKinsey.org" },
+        },
+      ],
+      award: [
+        "Honourable Mention, Egyptian Collegiate Programming Contest (ECPC) 2021",
       ],
       sameAs: [
         "https://github.com/ws0x",

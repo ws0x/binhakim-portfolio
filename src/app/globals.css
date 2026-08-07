@@ -661,3 +661,76 @@ body {
   box-shadow: 0 0 24px rgba(0, 217, 255, 0.55);
   transform: translateY(-1px);
 }
+
+/* ── Credentials: education / certifications / honours / languages ── */
+.cred-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+@media (min-width: 640px) {
+  .cred-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (min-width: 1024px) {
+  .cred-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.cred-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  border-radius: 7px;
+  background: rgba(0, 217, 255, 0.07);
+  border: 1px solid rgba(0, 217, 255, 0.15);
+  color: var(--cyan);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.panel:hover .cred-icon-wrap {
+  background: rgba(0, 217, 255, 0.12);
+  box-shadow: 0 0 12px rgba(0, 217, 255, 0.2);
+}
+
+.cred-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.5rem 0;
+}
+
+/* ── Project status badge (e.g. "Under Construction") ───── */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 2px 9px;
+  border-radius: 100px;
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: #f59e0b;
+  font-family: var(--font-jet), monospace;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Nav: tighten the link row on narrower desktops (more sections now) */
+@media (min-width: 768px) and (max-width: 1180px) {
+  .nav-desktop { gap: 1rem; }
+  .nav-desktop > a { font-size: 0.66rem !important; letter-spacing: 0.06em !important; }
+}
+@media (min-width: 768px) and (max-width: 980px) {
+  .nav-desktop { gap: 0.7rem; }
+  .nav-desktop > a { font-size: 0.6rem !important; letter-spacing: 0.04em !important; }
+}
+
+/* Honours grid: stretches to fill when only one or two entries exist */
+.honour-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: 1rem;
+}

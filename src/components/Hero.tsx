@@ -5,11 +5,11 @@ import { ArrowDown, Download } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./BrandIcons";
 
 const ROLES = [
-  "Backend Engineer",
-  "Full-Stack Engineer",
-  "API & Systems Design",
-  "LLM / AI Integration",
-  "DevOps & Security",
+  "Software Engineer",
+  "Systems Design",
+  "Applied Security",
+  "APIs & Data Modelling",
+  "Solo SaaS Builder",
 ];
 
 function TypingText() {
@@ -165,9 +165,9 @@ export default function Hero() {
         >
           {[
             { prefix: ">", text: "whoami", delay: 0 },
-            { prefix: "//", text: "Backend Engineer · Systems Infrastructure", delay: 1 },
-            { prefix: ">", text: "ls skills/ | head -5", delay: 2 },
-            { prefix: "//", text: "Java  Spring  Node.js  PostgreSQL  JavaScript  Nginx", delay: 3 },
+            { prefix: "//", text: "Software Engineer · Systems Design & Applied Security", delay: 1 },
+            { prefix: ">", text: "ls skills/ | head -6", delay: 2 },
+            { prefix: "//", text: "TypeScript  Node.js  PostgreSQL  Next.js  Docker  Nginx", delay: 3 },
           ].map((line, i) => (
             <div
               key={i}
@@ -240,10 +240,11 @@ export default function Hero() {
             transition: "opacity 0.5s ease 0.3s, transform 0.5s ease 0.3s",
           }}
         >
-          I build production systems end to end, designing scalable APIs and
-          data models, integrating LLMs and AI agents where they earn their
-          place, and shipping live SaaS that real users rely on. I build, secure,
-          and measure what I ship.
+          I take systems from a blank schema to production without supervision —
+          REST APIs, relational data models, and access-control layers built to
+          hold under concurrent load. Two self-directed SaaS products taken solo
+          from idea to public launch, threat-modelled before they shipped rather
+          than patched afterwards.
         </p>
 
         {/* CTAs */}
