@@ -17,8 +17,8 @@ const fadeUp: Variants = {
 const socials = [
   {
     label: "Email",
-    sub: "yusuf@binhakim.dev",
-    href: "mailto:yusuf@binhakim.dev",
+    sub: "yusufnaeemhakim@gmail.com",
+    href: "mailto:yusufnaeemhakim@gmail.com",
     Icon: Mail,
   },
   {
