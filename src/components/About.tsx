@@ -101,21 +101,24 @@ export default function About() {
             }}
           >
             <p>
-              I&apos;m a backend-leaning software engineer who builds and ships
-              production systems end to end — API design and data modelling,
-              modern frontends in Next.js and TypeScript, and the deployment
-              and security hardening around them.
+              I&apos;m a software engineer who takes systems from a blank schema
+              to production without supervision. Three years designing REST APIs,
+              relational data models, and access-control layers built to hold
+              under concurrent load — plus the deployment, reliability, and
+              hardening that come after launch.
             </p>
             <p>
-              I deep-dive into system internals — query planners, reverse proxy
-              routing, LLM streaming pipelines — and integrate AI where it earns
-              its place: building tools that are genuinely useful in production,
-              not just impressive in demos.
+              Offensive-security training in the OWASP Top 10 shapes how I work:
+              systems get threat-modelled before they ship rather than patched
+              afterwards. I&apos;m equally comfortable on the commercial side —
+              gathering requirements across business units, running cost-benefit
+              analysis for executive decisions, and redesigning the processes the
+              software is meant to serve.
             </p>
             <p>
-              I ship real products: Orbit, a Professional Relationship OS with
-              OAuth SSO, Gemini AI semantic search, and Stripe billing, runs
-              live at{" "}
+              Two self-directed SaaS products taken solo from idea to public
+              launch: Orbit, a Professional Relationship OS with OAuth SSO,
+              Gemini semantic search, and Stripe billing, runs live at{" "}
               <a
                 href="https://byorbit.io"
                 target="_blank"
@@ -124,7 +127,20 @@ export default function About() {
               >
                 byorbit.io
               </a>
-              {" "}today.
+              , and Commit, a curriculum tracker for self-taught developers, at{" "}
+              <a
+                href="https://commit.binhakim.dev"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: "var(--cyan)", textDecoration: "none" }}
+              >
+                commit.binhakim.dev
+              </a>
+              .
+            </p>
+            <p>
+              I&apos;m now formalising that practice through graduate research in
+              distributed systems and software system design.
             </p>
             <p>
               When I&apos;m not building systems, I write on{" "}
@@ -158,7 +174,7 @@ export default function About() {
               { label: "Medium", href: "https://medium.com/@binhakim" },
               {
                 label: "Email",
-                href: "mailto:yusuf@binhakim.dev",
+                href: "mailto:yusufnaeemhakim@gmail.com",
               },
             ].map((l) => (
               <a

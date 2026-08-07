@@ -15,14 +15,14 @@ const fadeUp: Variants = {
 
 // Core stack — primary technologies
 const FEATURED = [
-  { name: "Java",        cat: "LANG",     glyph: "JV" },
   { name: "TypeScript",  cat: "LANG",     glyph: "TS" },
-  { name: "Spring Boot", cat: "BACKEND",  glyph: "SB" },
+  { name: "Node.js",     cat: "BACKEND",  glyph: "NJ" },
   { name: "PostgreSQL",  cat: "DATABASE", glyph: "PG" },
   { name: "Next.js",     cat: "FRONTEND", glyph: "NX" },
-  { name: "Node.js",     cat: "BACKEND",  glyph: "NJ" },
+  { name: "React",       cat: "FRONTEND", glyph: "RC" },
+  { name: "Supabase",    cat: "DATABASE", glyph: "SB" },
+  { name: "Docker",      cat: "INFRA",    glyph: "DK" },
   { name: "Nginx",       cat: "INFRA",    glyph: "NG" },
-  { name: "Git",         cat: "TOOLING",  glyph: "GT" },
 ];
 
 // Short display labels for the manifest panel
@@ -33,8 +33,9 @@ const LABEL_MAP: Record<string, string> = {
   "Databases":      "DATABASE",
   "AI / LLM":       "AI/LLM",
   "Infrastructure": "INFRA",
-  "Security":       "SEC",
-  "Practices":      "TOOLING",
+  "Security":         "SEC",
+  "Practices":        "TOOLING",
+  "Also Worked With": "ALSO",
 };
 
 export default function Skills() {

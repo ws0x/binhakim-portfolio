@@ -3,42 +3,47 @@
     {
       "label": "Languages",
       "icon": "code",
-      "skills": ["Java", "TypeScript", "JavaScript", "Python", "SQL"]
-    },
-    {
-      "label": "Frontend",
-      "icon": "layout",
-      "skills": ["React", "Next.js", "Tailwind CSS", "TanStack Query"]
+      "skills": ["TypeScript", "JavaScript", "Python", "SQL"]
     },
     {
       "label": "Backend",
       "icon": "server",
-      "skills": ["Node.js", "Express.js", "Spring Boot", "REST APIs"]
+      "skills": ["Node.js", "Express.js", "REST API Design", "OAuth 2.0 / JWT"]
     },
     {
       "label": "Databases",
       "icon": "database",
-      "skills": ["PostgreSQL", "Supabase", "Drizzle ORM", "JPA"]
+      "skills": ["PostgreSQL", "Supabase", "SQLite", "Multi-Tenancy / RLS"]
+    },
+    {
+      "label": "Frontend",
+      "icon": "layout",
+      "skills": ["React", "Next.js", "TanStack Query", "Tailwind CSS", "Three.js", "D3"]
     },
     {
       "label": "AI / LLM",
       "icon": "brain",
-      "skills": ["Claude AI", "Gemini AI", "SSE Streaming", "Prompt Engineering"]
+      "skills": ["Gemini API", "Semantic Search", "Prompt Engineering", "SSE Streaming"]
     },
     {
       "label": "Infrastructure",
       "icon": "cloud",
-      "skills": ["Nginx", "Docker", "Vercel", "AWS"]
+      "skills": ["Docker", "Nginx", "Vercel", "AWS (S3, EC2)", "Liquibase", "CI/CD"]
     },
     {
       "label": "Security",
       "icon": "shield",
-      "skills": ["OWASP Top 10", "Burp Suite", "Pen Testing", "Kali Linux"]
+      "skills": ["OWASP Top 10", "Threat Modelling", "Pen Testing", "Burp Suite"]
     },
     {
       "label": "Practices",
       "icon": "wrench",
-      "skills": ["TDD", "BDD / Cucumber", "Git", "Agile / Scrum"]
+      "skills": ["Git", "Agile / Scrum", "TDD", "BDD (Cucumber)", "Postman", "Swagger", "Jira"]
+    },
+    {
+      "label": "Also Worked With",
+      "icon": "layers",
+      "skills": ["Java / Spring Boot", "Django REST Framework", "Power BI", "Kali Linux"]
     }
   ],
   "softSkills": [

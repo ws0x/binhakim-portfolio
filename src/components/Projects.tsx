@@ -23,6 +23,7 @@ interface Project {
   tech: string[];
   github: string | null;
   live: string | null;
+  status: string | null;
   featured: boolean;
   category: string;
 }
@@ -95,17 +96,29 @@ function ProjectRow({
             flexWrap: "wrap",
           }}
         >
-          <h3
+          <div
             style={{
-              fontSize: "clamp(1.1rem, 2.5vw, 1.4rem)",
-              fontWeight: 700,
-              color: "var(--text-primary)",
-              lineHeight: 1.2,
-              transition: "color 0.2s",
+              display: "flex",
+              alignItems: "center",
+              gap: "0.65rem",
+              flexWrap: "wrap",
             }}
           >
-            {project.title}
-          </h3>
+            <h3
+              style={{
+                fontSize: "clamp(1.1rem, 2.5vw, 1.4rem)",
+                fontWeight: 700,
+                color: "var(--text-primary)",
+                lineHeight: 1.2,
+                transition: "color 0.2s",
+              }}
+            >
+              {project.title}
+            </h3>
+            {project.status && (
+              <span className="status-badge">{project.status}</span>
+            )}
+          </div>
 
           {/* Category + arrow indicator (only shows when live URL exists) */}
           <div
