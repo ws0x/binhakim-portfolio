@@ -897,3 +897,55 @@ body {
     align-items: baseline;
   }
 }
+
+/* ── Story timeline (/about) ───────────────────────────────
+   A single continuous rule down the left with a node per chapter. The rule is
+   drawn on the <ol> rather than per item so it does not break between
+   chapters, and it is hidden from assistive tech — the ordered list already
+   carries the sequence. */
+.story {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  /* Browsers give <ol> a large default inline padding; reset it here rather
+     than inline on the element, so this gutter value actually wins. */
+  padding: 0 0 0 1.75rem;
+  margin: 0;
+}
+.story::before {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    var(--cyan),
+    rgba(0, 217, 255, 0.35) 60%,
+    rgba(0, 217, 255, 0.06)
+  );
+}
+.story-item {
+  position: relative;
+}
+.story-marker {
+  position: absolute;
+  left: -1.75rem;
+  top: 0.15rem;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--bg-base);
+  border: 2px solid var(--cyan);
+  box-shadow: 0 0 10px rgba(0, 217, 255, 0.4);
+}
+@media (min-width: 720px) {
+  .story {
+    padding-left: 2.25rem;
+  }
+  .story-marker {
+    left: -2.25rem;
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "_authoring": [
+    "Every claim below is sourced from the resume, the project descriptions, or",
+    "credentials.json. Nothing has been inferred about motivation or feeling.",
+    "",
+    "GAPS — only you can write these, and the page is built so it reads fine",
+    "without them. Add a chapter, or extend an existing `body`, when ready:",
+    "  1. Why you started programming at all. The arc currently begins at",
+    "     university because that is the first thing on record.",
+    "  2. What you struggled with hardest, and how long it actually took. This",
+    "     is the single most useful thing for a reader one step behind you.",
+    "  3. A concrete moment something clicked — a bug, a concept, a project.",
+    "  4. What you would tell someone in their first year now.",
+    "",
+    "Resist adding a chapter you cannot make specific. A vague paragraph about",
+    "'passion for technology' is worse than one fewer chapter."
+  ],
+  "lede": "I build systems for a living and explain them for the same reason I once needed them explained. This is the order things actually happened in — including the parts that took longer than they should have.",
+  "chapters": [
+    {
+      "id": "foundations",
+      "year": "2019 — 2023",
+      "title": "Learning the fundamentals properly",
+      "body": [
+        "I read computer science at Ahram Canadian University, majoring in software engineering, and finished with a 3.36 GPA. The part that shaped how I work was not the coursework — it was the competitive programming community and the year-plus I spent tutoring classmates through data structures, algorithms and project management.",
+        "Teaching the same concept to five people who are each stuck at a different point is the fastest way to find out whether you understand it. It is also where I learned that most people are not missing intelligence, they are missing one specific prerequisite nobody went back to fill in. I still write with that in mind.",
+        "An honourable mention at the Egyptian Collegiate Programming Contest in 2021 came out of that community rather than anything I did alone."
+      ]
+    },
+    {
+      "id": "first-clients",
+      "year": "2022",
+      "title": "Shipping for real people before graduating",
+      "body": [
+        "Halfway through the degree I started taking freelance work — websites and small online storefronts, built end to end from static frontends through Django REST Framework APIs and the data behind them.",
+        "There was no team, no supervisor and no ticket queue. Scoping a business owner's half-formed idea into something buildable turned out to be most of the job, and it is a skill no coursework had asked me for. It is also the point where 'it works on my machine' stopped being an acceptable end state."
+      ]
+    },
+    {
+      "id": "discipline",
+      "year": "2023",
+      "title": "Learning to write software other people maintain",
+      "body": [
+        "At Kites Software I worked on Egypt's first SaaS ERP for import and distribution, building REST endpoints test-first in Java and Spring Boot with Cucumber integration tests against Postgres.",
+        "Writing the test before the endpoint felt like a tax for about a week and then stopped feeling like anything at all. Working inside a real Agile cycle — QA finding what I missed, onboarding docs I wrote being used by the next intern — was the first time my code had a life beyond me.",
+        "The same year I finished my graduation project, iREAD: a reading platform and digital bookstore serving a Flutter mobile client and a React web client from one REST API, so the business logic had a single home rather than two drifting copies."
+      ]
+    },
+    {
+      "id": "attacker-view",
+      "year": "2024",
+      "title": "Learning to see systems the way an attacker does",
+      "body": [
+        "I spent four months as an offensive security engineer at WE INNOVATE, exploiting web, mobile and infrastructure targets against the OWASP Top 10 and running Active Directory and network penetration tests — every finding documented with a reproducible proof of concept and a remediation path.",
+        "Breaking systems for a living permanently changed how I build them. Access control stopped being a UI concern and became a database and API-layer concern. When I later had to resolve a Marketing and Sales data-ownership conflict at EPPS, the answer was obvious in a way it would not have been a year earlier: strip the restricted fields server-side, before the payload ever reaches the client, because anything hidden only in the interface is not hidden at all."
+      ]
+    },
+    {
+      "id": "production",
+      "year": "2024 — now",
+      "title": "Owning things in production",
+      "body": [
+        "At EPPS I built and now operate an internal B2B lead pipeline replacing spreadsheet tracking across four business entities — roughly 2,000 records, used daily by the eight to ten people running marketing capture through to closed sale. Alongside it: a 3D bin-packing container planner, an IT asset platform tracking about 3,000 assets, and reliability and security across 25+ domains and 7 production sites.",
+        "Operating what you build is a different discipline from shipping it. You find out which decisions were convenient and which were correct, usually at an inconvenient hour."
+      ]
+    },
+    {
+      "id": "solo",
+      "year": "2025 — now",
+      "title": "Two products, taken solo from idea to launch",
+      "body": [
+        "Orbit is a professional relationship OS — multi-tenant on Postgres with row-level security, so isolation holds even when the application code above it is wrong. Google OAuth and magic-link auth, Stripe billing with server-side usage metering, Gemini-powered semantic search over your own connections, a D3 force-directed graph, and full English/Arabic RTL as an installable PWA.",
+        "Commit is a curriculum tracker for self-taught developers, built around the observation that starting is easy and finishing is not. The whole product speaks git: a study session is a commit, a streak is a contribution graph, finishing a course is merging to main.",
+        "Scoping, schema, API, interface, deployment and everything after launch — alone, for both. That is the part I would point at if you asked what I can actually do."
+      ]
+    },
+    {
+      "id": "next",
+      "year": "Now",
+      "title": "Formalising it",
+      "body": [
+        "I am beginning graduate research in distributed systems and software system design — putting rigour under the parts I learned by building and breaking things.",
+        "I write about what I learn on the way, aimed at whoever is one step behind me rather than ten. That audience is easy to help and usually badly served, and I remember being in it."
+      ]
+    }
+  ]
+}
