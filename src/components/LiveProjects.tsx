@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
-import { motion, useInView, type Variants } from "framer-motion";
+import Reveal from "./ui/Reveal";
+import { useState, useEffect } from "react";
 import {
   Globe,
   Network,
@@ -38,15 +38,6 @@ import {
   Clock,
 } from "lucide-react";
 import { GithubIcon } from "./BrandIcons";
-
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 28 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay: i * 0.12, ease: "easeOut" as const },
-  }),
-};
 
 // ── Orbit constants ────────────────────────────────────────────────────────────
 const ORBIT_PURPLE      = "#7c3aed";
@@ -485,7 +476,7 @@ function OrbitMockupPanel() {
       {/* Interactive hint row */}
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 0.15rem" }}>
         <span style={{ fontFamily: "var(--font-jet), monospace", fontSize: "0.56rem", color: "rgba(167,139,250,0.55)", letterSpacing: "0.14em", textTransform: "uppercase" }}>
-          // interactive demo · click tabs to explore
+          {"// interactive demo · click tabs to explore"}
         </span>
         <div style={{ display: "flex", gap: "5px", alignItems: "center" }}>
           {Array.from({ length: TAB_COUNT }).map((_, i) => (
@@ -764,7 +755,7 @@ function NexFlowMockupPanel() {
       {/* Interactive hint row */}
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 0.15rem" }}>
         <span style={{ fontFamily: "var(--font-jet), monospace", fontSize: "0.56rem", color: `rgba(6,182,212,0.5)`, letterSpacing: "0.14em", textTransform: "uppercase" }}>
-          // interactive demo · click tabs to explore
+          {"// interactive demo · click tabs to explore"}
         </span>
         <div style={{ display: "flex", gap: "5px", alignItems: "center" }}>
           {Array.from({ length: TAB_COUNT }).map((_, i) => (
@@ -1070,7 +1061,7 @@ function CommitMockupPanel() {
     >
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 0.15rem" }}>
         <span style={{ fontFamily: "var(--font-jet), monospace", fontSize: "0.56rem", color: `rgba(16,185,129,0.5)`, letterSpacing: "0.14em", textTransform: "uppercase" }}>
-          // interactive demo · click tabs to explore
+          {"// interactive demo · click tabs to explore"}
         </span>
         <div style={{ display: "flex", gap: "5px", alignItems: "center" }}>
           {Array.from({ length: TAB_COUNT }).map((_, i) => (
@@ -1118,8 +1109,6 @@ function CommitMockupPanel() {
 // ══════════════════════════════════════════════════════════════════════════════
 
 export default function LiveProjects() {
-  const ref        = useRef(null);
-  const inView     = useInView(ref, { once: true, margin: "-60px" });
   const [orbitHovered,  setOrbitHovered]  = useState(false);
   const [nfHovered,     setNfHovered]     = useState(false);
   const [commitHovered, setCommitHovered] = useState(false);
@@ -1147,15 +1136,13 @@ export default function LiveProjects() {
       />
 
       <div style={{ maxWidth: "72rem", margin: "0 auto", position: "relative" }}>
-        <div ref={ref}>
+        <div>
 
           {/* ── Section header ── */}
-          <motion.div
-            custom={0} variants={fadeUp} initial="hidden"
-            animate={inView ? "visible" : "hidden"}
+          <Reveal as="div" delay={0}
             style={{ marginBottom: "3rem" }}
           >
-            <p className="section-header">// 03. Live</p>
+            <p className="section-header">{"// 03. Live"}</p>
             <h2 style={{ fontSize: "clamp(1.8rem, 4vw, 2.6rem)", fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.02em", marginBottom: "0.6rem" }}>
               Shipped &amp; Deployed
             </h2>
@@ -1163,14 +1150,12 @@ export default function LiveProjects() {
               Not prototypes. Not toy demos. Live, full-stack products running on real
               infrastructure with auth, billing, persistence, and production deployments.
             </p>
-          </motion.div>
+          </Reveal>
 
           {/* ══════════════════════════════════════════════════════════════════
               COMMIT CARD
           ══════════════════════════════════════════════════════════════════ */}
-          <motion.div
-            custom={3} variants={fadeUp} initial="hidden"
-            animate={inView ? "visible" : "hidden"}
+          <Reveal as="div" delay={3}
             style={{ marginTop: "2.5rem" }}
           >
             <div
@@ -1267,12 +1252,12 @@ export default function LiveProjects() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </Reveal>
 
           {/* ══════════════════════════════════════════════════════════════════
               ORBIT CARD
           ══════════════════════════════════════════════════════════════════ */}
-          <motion.div custom={1} variants={fadeUp} initial="hidden" animate={inView ? "visible" : "hidden"} style={ { marginTop: "2.5rem" } }>
+          <Reveal as="div" delay={1} style={ { marginTop: "2.5rem" } }>
             <div
               className="live-card-grid"
               onMouseEnter={() => setOrbitHovered(true)}
@@ -1363,14 +1348,12 @@ export default function LiveProjects() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </Reveal>
 
           {/* ══════════════════════════════════════════════════════════════════
               NEXFLOW CARD
           ══════════════════════════════════════════════════════════════════ */}
-          <motion.div
-            custom={2} variants={fadeUp} initial="hidden"
-            animate={inView ? "visible" : "hidden"}
+          <Reveal as="div" delay={2}
             style={{ marginTop: "2.5rem" }}
           >
             <div
@@ -1465,7 +1448,7 @@ export default function LiveProjects() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </Reveal>
 
         </div>
       </div>

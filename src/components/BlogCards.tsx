@@ -1,17 +1,5 @@
-"use client";
-
-import { useRef } from "react";
-import { motion, useInView, type Variants } from "framer-motion";
+import Reveal from "./ui/Reveal";
 import { ArrowUpRight, Clock } from "lucide-react";
-
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, delay: i * 0.1, ease: "easeOut" as const },
-  }),
-};
 
 interface Post {
   title: string;
@@ -22,21 +10,13 @@ interface Post {
 }
 
 export default function BlogCards({ posts }: { posts: Post[] }) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
-
   return (
     <section
       id="writing"
-      ref={ref}
       className="section-pad"
       style={{ maxWidth: "72rem", margin: "0 auto" }}
     >
-      <motion.div
-        custom={0}
-        variants={fadeUp}
-        initial="hidden"
-        animate={inView ? "visible" : "hidden"}
+      <Reveal as="div" delay={0}
         style={{
           display: "flex",
           justifyContent: "space-between",
@@ -47,7 +27,7 @@ export default function BlogCards({ posts }: { posts: Post[] }) {
         }}
       >
         <div>
-          <p className="section-header">// 10. Writing</p>
+          <p className="section-header">{"// 10. Writing"}</p>
           <h2
             style={{
               fontSize: "clamp(1.8rem, 4vw, 2.6rem)",
@@ -63,6 +43,7 @@ export default function BlogCards({ posts }: { posts: Post[] }) {
           href="https://medium.com/@binhakim"
           target="_blank"
           rel="noopener noreferrer"
+          className="fade-hover"
           style={{
             display: "inline-flex",
             alignItems: "center",
@@ -73,27 +54,20 @@ export default function BlogCards({ posts }: { posts: Post[] }) {
             textTransform: "uppercase",
             color: "var(--cyan)",
             textDecoration: "none",
-            transition: "opacity 0.2s",
           }}
-          onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.7")}
-          onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
         >
           All articles <ArrowUpRight size={13} />
         </a>
-      </motion.div>
+      </Reveal>
 
       <div className="blog-grid">
         {posts.map((post, i) => (
-          <motion.a
+          <Reveal as="a" delay={i + 1}
             key={i}
-            custom={i + 1}
-            variants={fadeUp}
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
             href={post.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="panel glow-border-hover"
+            className="panel glow-border-hover lift-hover lift-hover-lg"
             style={{
               padding: "1.5rem",
               textDecoration: "none",
@@ -101,7 +75,6 @@ export default function BlogCards({ posts }: { posts: Post[] }) {
               flexDirection: "column",
               gap: "0.75rem",
             }}
-            whileHover={{ y: -4 }}
           >
             {/* Date + read time */}
             <div
@@ -173,7 +146,7 @@ export default function BlogCards({ posts }: { posts: Post[] }) {
             >
               Read on Medium <ArrowUpRight size={11} />
             </div>
-          </motion.a>
+          </Reveal>
         ))}
       </div>
     </section>

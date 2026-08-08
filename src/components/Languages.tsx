@@ -1,28 +1,12 @@
-"use client";
-
-import { useRef } from "react";
-import { motion, useInView, type Variants } from "framer-motion";
+import Reveal from "./ui/Reveal";
 import credentials from "../data/credentials.json";
 
 const { languages } = credentials;
 
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.45, delay: i * 0.08, ease: "easeOut" as const },
-  }),
-};
-
 export default function Languages() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
-
   return (
     <section
       id="languages"
-      ref={ref}
       className="section-pad"
       style={{
         background: "var(--bg-elevated)",
@@ -31,14 +15,10 @@ export default function Languages() {
       }}
     >
       <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
-        <motion.div
-          custom={0}
-          variants={fadeUp}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+        <Reveal as="div" delay={0}
           style={{ marginBottom: "3rem" }}
         >
-          <p className="section-header">// 09. Languages</p>
+          <p className="section-header">{"// 09. Languages"}</p>
           <h2
             style={{
               fontSize: "clamp(1.8rem, 4vw, 2.6rem)",
@@ -49,16 +29,12 @@ export default function Languages() {
           >
             Spoken
           </h2>
-        </motion.div>
+        </Reveal>
 
         <div className="cred-grid">
           {languages.map((lang, i) => (
-            <motion.div
+            <Reveal as="div" delay={i + 1}
               key={lang.name}
-              custom={i + 1}
-              variants={fadeUp}
-              initial="hidden"
-              animate={inView ? "visible" : "hidden"}
               className="panel glow-border-hover"
               style={{ padding: "1.35rem 1.5rem" }}
             >
@@ -111,7 +87,7 @@ export default function Languages() {
                   />
                 ))}
               </div>
-            </motion.div>
+            </Reveal>
           ))}
         </div>
       </div>

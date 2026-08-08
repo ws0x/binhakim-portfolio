@@ -1,18 +1,6 @@
-"use client";
-
-import { useRef } from "react";
-import { motion, useInView, type Variants } from "framer-motion";
+import Reveal from "./ui/Reveal";
 import { Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon, InstagramIcon, MediumIcon, WhatsAppIcon } from "./BrandIcons";
-
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, delay: i * 0.1, ease: "easeOut" as const },
-  }),
-};
 
 const socials = [
   {
@@ -54,13 +42,9 @@ const socials = [
 ];
 
 export default function Contact() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
-
   return (
     <section
       id="contact"
-      ref={ref}
       className="section-pad"
       style={{
         background: "var(--bg-elevated)",
@@ -68,14 +52,10 @@ export default function Contact() {
       }}
     >
       <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
-        <motion.div
-          custom={0}
-          variants={fadeUp}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+        <Reveal as="div" delay={0}
           style={{ marginBottom: "4rem", maxWidth: "44rem" }}
         >
-          <p className="section-header">// 11. Contact</p>
+          <p className="section-header">{"// 11. Contact"}</p>
           <h2
             style={{
               fontSize: "clamp(1.8rem, 4vw, 2.6rem)",
@@ -99,7 +79,7 @@ export default function Contact() {
             work. Whether you have an opportunity or just want to talk tech —
             my inbox is always open.
           </p>
-        </motion.div>
+        </Reveal>
 
         {/* Social grid */}
         <div
@@ -107,16 +87,12 @@ export default function Contact() {
           style={{ marginBottom: "4rem" }}
         >
           {socials.map(({ label, sub, href, Icon }, i) => (
-            <motion.a
+            <Reveal as="a" delay={i + 1}
               key={href}
-              custom={i + 1}
-              variants={fadeUp}
-              initial="hidden"
-              animate={inView ? "visible" : "hidden"}
               href={href}
               target={href.startsWith("mailto") ? undefined : "_blank"}
               rel="noopener noreferrer"
-              className="panel glow-border-hover"
+              className="panel glow-border-hover lift-hover"
               style={{
                 padding: "1.25rem 1.5rem",
                 textDecoration: "none",
@@ -124,7 +100,6 @@ export default function Contact() {
                 alignItems: "center",
                 gap: "1rem",
               }}
-              whileHover={{ y: -3 }}
             >
               <div
                 style={{
@@ -165,7 +140,7 @@ export default function Contact() {
                   {sub}
                 </p>
               </div>
-            </motion.a>
+            </Reveal>
           ))}
         </div>
 

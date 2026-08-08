@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 const geistSans = Geist({
@@ -80,17 +82,16 @@ export const metadata: Metadata = {
   },
 
   /* ── Icons ──────────────────────────────────────────────── */
+  /* `/favicon.png` was declared here but has never existed in the repo, so
+     every page load fetched a 404. The real assets are src/app/icon.png
+     (served at /icon.png) and the /favicon.ico route handler. */
   icons: {
     icon: [
-      { url: "/favicon.png", type: "image/png", sizes: "512x512" },
-      { url: "/favicon.png", type: "image/png", sizes: "192x192" },
-      { url: "/favicon.png", type: "image/png", sizes: "32x32" },
-      { url: "/favicon.png", type: "image/png", sizes: "16x16" },
+      { url: "/icon.png", type: "image/png", sizes: "512x512" },
+      { url: "/favicon.ico", sizes: "any" },
     ],
-    shortcut: "/favicon.png",
-    apple: [
-      { url: "/favicon.png", type: "image/png", sizes: "512x512" },
-    ],
+    shortcut: "/favicon.ico",
+    apple: [{ url: "/icon.png", type: "image/png", sizes: "512x512" }],
   },
 
   /* ── Open Graph ─────────────────────────────────────────── */
@@ -271,10 +272,21 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        {/* Scroll reveals start at opacity 0 and are switched on by JS. The
+            markup is server-rendered either way (so crawlers always see it),
+            but without this a JS-disabled visitor gets a blank page. */}
+        <noscript>
+          <style>{`.reveal { opacity: 1 !important; transform: none !important; }`}</style>
+        </noscript>
       </head>
       <body className="antialiased">
         {children}
         <GoogleAnalytics />
+        {/* Both packages were already dependencies but had never been mounted.
+            Speed Insights supplies field Core Web Vitals, which is what the
+            performance budget is actually measured against. */}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
