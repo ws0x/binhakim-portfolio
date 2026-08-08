@@ -1,6 +1,6 @@
 import Reveal from "./ui/Reveal";
 import { Trophy } from "lucide-react";
-import credentials from "../data/credentials.json";
+import { credentials } from "../lib/content";
 
 const { honours } = credentials;
 

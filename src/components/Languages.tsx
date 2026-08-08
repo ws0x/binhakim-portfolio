@@ -1,5 +1,5 @@
 import Reveal from "./ui/Reveal";
-import credentials from "../data/credentials.json";
+import { credentials } from "../lib/content";
 
 const { languages } = credentials;
 

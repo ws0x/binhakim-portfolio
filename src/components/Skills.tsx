@@ -1,5 +1,5 @@
 import Reveal from "./ui/Reveal";
-import skillsData from "../data/skills.json";
+import { skills as skillsData } from "../lib/content";
 
 // Core stack — primary technologies
 const FEATURED = [

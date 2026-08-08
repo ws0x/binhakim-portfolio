@@ -1,5 +1,5 @@
 import Reveal from "./ui/Reveal";
-import experienceData from "../data/experience.json";
+import { experience as experienceData } from "../lib/content";
 
 export default function Experience() {
   return (
