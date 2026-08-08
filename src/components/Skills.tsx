@@ -1,17 +1,5 @@
-"use client";
-
-import { useRef } from "react";
-import { motion, useInView, type Variants } from "framer-motion";
+import Reveal from "./ui/Reveal";
 import skillsData from "../data/skills.json";
-
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.45, delay: i * 0.07, ease: "easeOut" as const },
-  }),
-};
 
 // Core stack — primary technologies
 const FEATURED = [
@@ -39,13 +27,9 @@ const LABEL_MAP: Record<string, string> = {
 };
 
 export default function Skills() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
-
   return (
     <section
       id="skills"
-      ref={ref}
       className="section-pad"
       style={{
         background: "var(--bg-elevated)",
@@ -56,14 +40,10 @@ export default function Skills() {
       <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
 
         {/* Header */}
-        <motion.div
-          custom={0}
-          variants={fadeUp}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+        <Reveal as="div" delay={0}
           style={{ marginBottom: "3rem" }}
         >
-          <p className="section-header">// 02. Tech Stack</p>
+          <p className="section-header">{"// 02. Tech Stack"}</p>
           <h2
             style={{
               fontSize: "clamp(1.8rem, 4vw, 2.6rem)",
@@ -74,31 +54,23 @@ export default function Skills() {
           >
             Tools I Build With
           </h2>
-        </motion.div>
+        </Reveal>
 
         {/* Two-panel layout */}
         <div className="skills-layout">
 
           {/* ── LEFT: Core stack cards ─────────────────────── */}
           <div>
-            <motion.p
-              custom={1}
-              variants={fadeUp}
-              initial="hidden"
-              animate={inView ? "visible" : "hidden"}
+            <Reveal as="p" delay={1}
               className="skills-cmd-label"
             >
               $ core --primary
-            </motion.p>
+            </Reveal>
 
             <div className="featured-grid">
               {FEATURED.map((feat, i) => (
-                <motion.div
+                <Reveal as="div" delay={i + 2}
                   key={feat.name}
-                  custom={i + 2}
-                  variants={fadeUp}
-                  initial="hidden"
-                  animate={inView ? "visible" : "hidden"}
                   className="skill-card"
                 >
                   {/* Glyph badge */}
@@ -137,17 +109,13 @@ export default function Skills() {
                       {feat.cat}
                     </span>
                   </div>
-                </motion.div>
+                </Reveal>
               ))}
             </div>
           </div>
 
           {/* ── RIGHT: Full manifest ───────────────────────── */}
-          <motion.div
-            custom={8}
-            variants={fadeUp}
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
+          <Reveal as="div" delay={8}
           >
             <p className="skills-cmd-label">$ stack --all</p>
 
@@ -196,7 +164,7 @@ export default function Skills() {
                 </div>
               ))}
             </div>
-          </motion.div>
+          </Reveal>
 
         </div>
       </div>

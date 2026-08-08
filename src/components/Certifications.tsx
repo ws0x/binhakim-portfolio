@@ -1,29 +1,13 @@
-"use client";
-
-import { useRef } from "react";
-import { motion, useInView, type Variants } from "framer-motion";
+import Reveal from "./ui/Reveal";
 import { BadgeCheck } from "lucide-react";
 import credentials from "../data/credentials.json";
 
 const { certifications } = credentials;
 
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.45, delay: i * 0.08, ease: "easeOut" as const },
-  }),
-};
-
 export default function Certifications() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
-
   return (
     <section
       id="certifications"
-      ref={ref}
       className="section-pad"
       style={{
         background: "var(--bg-elevated)",
@@ -32,14 +16,10 @@ export default function Certifications() {
       }}
     >
       <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
-        <motion.div
-          custom={0}
-          variants={fadeUp}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+        <Reveal as="div" delay={0}
           style={{ marginBottom: "3rem" }}
         >
-          <p className="section-header">// 07. Certifications</p>
+          <p className="section-header">{"// 07. Certifications"}</p>
           <h2
             style={{
               fontSize: "clamp(1.8rem, 4vw, 2.6rem)",
@@ -50,16 +30,12 @@ export default function Certifications() {
           >
             Training &amp; Credentials
           </h2>
-        </motion.div>
+        </Reveal>
 
         <div className="cred-grid">
           {certifications.map((cert, i) => (
-            <motion.div
+            <Reveal as="div" delay={i + 1}
               key={cert.name}
-              custom={i + 1}
-              variants={fadeUp}
-              initial="hidden"
-              animate={inView ? "visible" : "hidden"}
               className="panel glow-border-hover"
               style={{
                 padding: "1.25rem 1.35rem",
@@ -102,7 +78,7 @@ export default function Certifications() {
                   )}
                 </div>
               </div>
-            </motion.div>
+            </Reveal>
           ))}
         </div>
       </div>
