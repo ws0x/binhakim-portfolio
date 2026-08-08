@@ -1,6 +1,6 @@
 import Reveal from "./ui/Reveal";
 import { BadgeCheck } from "lucide-react";
-import credentials from "../data/credentials.json";
+import { credentials } from "../lib/content";
 
 const { certifications } = credentials;
 

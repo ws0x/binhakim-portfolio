@@ -1,20 +1,7 @@
 import Reveal from "./ui/Reveal";
 import { ArrowUpRight, Globe } from "lucide-react";
 import { GithubIcon } from "./BrandIcons";
-import projectsData from "../data/projects.json";
-
-interface Project {
-  id: string;
-  title: string;
-  tagline: string;
-  description: string;
-  tech: string[];
-  github: string | null;
-  live: string | null;
-  status: string | null;
-  featured: boolean;
-  category: string;
-}
+import { projects as projectsData, type Project } from "../lib/content";
 
 function ProjectRow({
   project,
