@@ -53,6 +53,27 @@ export const ROUTES: RouteDef[] = [
     priority: 1.0,
     changeFrequency: "weekly",
   },
+  {
+    href: "/stack",
+    label: "Stack",
+    title: "Stack",
+    description:
+      "The tools I actually reach for, why each one earns its place, and what I have used properly but would not start with today.",
+    nav: true,
+    sitemap: true,
+    priority: 0.7,
+    changeFrequency: "monthly",
+  },
+  {
+    href: "/resume",
+    label: "Resume",
+    title: "Resume",
+    description: `Experience, education and credentials for ${FULL_NAME} — software engineer, systems design and applied security.`,
+    nav: true,
+    sitemap: true,
+    priority: 0.8,
+    changeFrequency: "monthly",
+  },
   // Routes are added here as they are built, not when they are planned — the
   // nav, the sitemap and the 404 all read from this table, so an entry for an
   // unbuilt route would advertise a dead link in three places at once.

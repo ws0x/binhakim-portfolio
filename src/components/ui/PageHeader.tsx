@@ -22,7 +22,11 @@ export default function PageHeader({
 }) {
   return (
     <header style={{ marginBottom: "3.5rem" }}>
-      {crumbs?.length ? <Breadcrumbs crumbs={crumbs} /> : null}
+      {/* Only rendered once there is an intermediate level worth navigating
+          back to. On a top-level page the trail would read "~ / stack" directly
+          above a "~/stack" eyebrow — the same information twice. The
+          BreadcrumbList in the page's JSON-LD is emitted either way. */}
+      {crumbs && crumbs.length > 1 ? <Breadcrumbs crumbs={crumbs} /> : null}
 
       <Reveal as="div" delay={0}>
         <p className="section-header">{eyebrow}</p>

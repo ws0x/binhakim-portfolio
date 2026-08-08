@@ -1,4 +1,5 @@
 import { test, expect, type Page } from "@playwright/test";
+import { ROUTES, SITE_URL } from "../src/lib/site";
 
 /**
  * Smoke suite.
@@ -186,6 +187,47 @@ test.describe("accessibility", () => {
 
     for (const { token, ratio } of ratios) {
       expect(ratio, `--text-dim on ${token} is ${ratio.toFixed(2)}:1`).toBeGreaterThanOrEqual(4.5);
+    }
+  });
+});
+
+/**
+ * Driven by the same ROUTES table the site builds its nav and sitemap from, so
+ * a newly added route is covered here the moment it is registered — there is no
+ * separate list to remember to update.
+ */
+test.describe("routes", () => {
+  for (const route of ROUTES) {
+    test(`${route.href} responds and is self-canonical`, async ({ page }) => {
+      const response = await page.goto(route.href);
+      expect(response?.status(), `${route.href} should be reachable`).toBe(200);
+
+      const canonical = await page
+        .locator('link[rel="canonical"]')
+        .first()
+        .getAttribute("href");
+      const expected = route.href === "/" ? SITE_URL : `${SITE_URL}${route.href}`;
+      expect(canonical, `${route.href} must declare its own canonical`).toBe(expected);
+
+      // Exactly one <h1> per page: more than one is an outline bug, none means
+      // the page has no title for a crawler or a screen reader to anchor on.
+      await expect(page.locator("h1")).toHaveCount(1);
+    });
+  }
+
+  test("no two routes share a canonical", async ({ page }) => {
+    const seen = new Map<string, string>();
+    for (const route of ROUTES) {
+      await page.goto(route.href);
+      const canonical = (await page
+        .locator('link[rel="canonical"]')
+        .first()
+        .getAttribute("href"))!;
+      expect(
+        seen.has(canonical),
+        `${route.href} and ${seen.get(canonical)} both claim ${canonical}`
+      ).toBe(false);
+      seen.set(canonical, route.href);
     }
   });
 });
