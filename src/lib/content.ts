@@ -4,6 +4,7 @@ import experienceJson from "../data/experience.json";
 import projectsJson from "../data/projects.json";
 import credentialsJson from "../data/credentials.json";
 import skillsJson from "../data/skills.json";
+import stackJson from "../data/stack.json";
 
 /**
  * Validated access to the JSON content files.
@@ -94,6 +95,30 @@ export const skillsSchema = z.object({
   ),
 });
 
+export const stackSchema = z.object({
+  // Authoring guidance for whoever edits the file; not rendered.
+  _authoring: z.array(z.string()).optional(),
+  tiers: z
+    .array(
+      z.object({
+        id: nonEmpty.regex(/^[a-z0-9-]+$/),
+        label: nonEmpty,
+        blurb: nonEmpty,
+        tools: z
+          .array(
+            z.object({
+              name: nonEmpty,
+              // Deliberately allowed to be empty: a tool with nothing honest to
+              // say about it renders as a bare name rather than a placeholder.
+              note: z.string(),
+            })
+          )
+          .min(1),
+      })
+    )
+    .min(1),
+});
+
 /* ── Parsing ─────────────────────────────────────────────────────────── */
 
 function parse<T>(schema: z.ZodType<T>, data: unknown, file: string): T {
@@ -127,9 +152,12 @@ export const credentials = parse(
 
 export const skills = parse(skillsSchema, skillsJson, "skills.json");
 
+export const stack = parse(stackSchema, stackJson, "stack.json");
+
 /* ── Types ───────────────────────────────────────────────────────────── */
 
 export type Experience = z.infer<typeof experienceSchema>;
 export type Project = z.infer<typeof projectSchema>;
 export type Credentials = z.infer<typeof credentialsSchema>;
 export type Skills = z.infer<typeof skillsSchema>;
+export type Stack = z.infer<typeof stackSchema>;
