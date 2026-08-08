@@ -4,6 +4,14 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import {
+  SITE_URL,
+  SITE_NAME,
+  FULL_NAME,
+  SHORT_NAME,
+  DEFAULT_DESCRIPTION,
+} from "@/lib/site";
+import { baseGraph, webPageNode, graph } from "@/lib/schema";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,11 +25,8 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
-const SITE_URL = "https://binhakim.dev";
-const FULL_NAME = "Yusuf Naeem Abd El-Hakim";
-const TITLE = "Yusuf Naeem | Software Engineer";
-const DESCRIPTION =
-  "Yusuf Naeem Abd El-Hakim, Software Engineer specialising in systems design and applied security. REST APIs, relational data models, and access-control layers — plus two self-directed SaaS products taken solo from idea to public launch.";
+const TITLE = `${SHORT_NAME} | Software Engineer`;
+const DESCRIPTION = DEFAULT_DESCRIPTION;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -99,7 +104,7 @@ export const metadata: Metadata = {
     type: "profile",
     locale: "en_US",
     url: SITE_URL,
-    siteName: "binhakim.dev",
+    siteName: SITE_NAME,
     title: TITLE,
     description:
       "Software Engineer — systems design and applied security. Two SaaS products taken solo from idea to public launch.",
@@ -130,133 +135,13 @@ export const metadata: Metadata = {
   category: "technology",
 };
 
-/* ── JSON-LD structured data ──────────────────────────────── */
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Person",
-      "@id": `${SITE_URL}/#person`,
-      name: FULL_NAME,
-      alternateName: ["binhakim", "Yusuf Naeem"],
-      url: SITE_URL,
-      image: {
-        "@type": "ImageObject",
-        url: `${SITE_URL}/profile.jpg`,
-        width: 800,
-        height: 800,
-      },
-      jobTitle: "Software Engineer",
-      description: DESCRIPTION,
-      email: "yusufnaeemhakim@gmail.com",
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "Cairo",
-        addressCountry: "EG",
-      },
-      knowsAbout: [
-        "Software Engineering",
-        "Systems Design",
-        "Backend Engineering",
-        "REST API Design",
-        "Relational Data Modelling",
-        "Application Security",
-        "OWASP Top 10",
-        "Next.js",
-        "TypeScript",
-        "Node.js",
-        "PostgreSQL",
-        "Supabase",
-        "Distributed Systems",
-        "SaaS Products",
-      ],
-      knowsLanguage: [
-        { "@type": "Language", name: "Arabic" },
-        { "@type": "Language", name: "English" },
-        { "@type": "Language", name: "German" },
-      ],
-      alumniOf: {
-        "@type": "CollegeOrUniversity",
-        name: "Ahram Canadian University",
-        address: {
-          "@type": "PostalAddress",
-          addressLocality: "Cairo",
-          addressCountry: "EG",
-        },
-      },
-      hasCredential: [
-        {
-          "@type": "EducationalOccupationalCredential",
-          credentialCategory: "degree",
-          name: "B.Sc. Computer Science — Software Engineering Major",
-          recognizedBy: {
-            "@type": "CollegeOrUniversity",
-            name: "Ahram Canadian University",
-          },
-        },
-        {
-          "@type": "EducationalOccupationalCredential",
-          credentialCategory: "certificate",
-          name: "CS50: Introduction to Computer Science",
-          recognizedBy: { "@type": "Organization", name: "HarvardX" },
-        },
-        {
-          "@type": "EducationalOccupationalCredential",
-          credentialCategory: "certificate",
-          name: "Web Development & .NET Development Summer Training",
-          recognizedBy: {
-            "@type": "Organization",
-            name: "Information Technology Institute (ITI)",
-          },
-        },
-        {
-          "@type": "EducationalOccupationalCredential",
-          credentialCategory: "certificate",
-          name: "Offensive Security Engineering",
-          recognizedBy: { "@type": "Organization", name: "WE INNOVATE" },
-        },
-        {
-          "@type": "EducationalOccupationalCredential",
-          credentialCategory: "certificate",
-          name: "Forward Program",
-          recognizedBy: { "@type": "Organization", name: "McKinsey.org" },
-        },
-      ],
-      award: [
-        "Honourable Mention, Egyptian Collegiate Programming Contest (ECPC) 2021",
-      ],
-      sameAs: [
-        "https://github.com/ws0x",
-        "https://linkedin.com/in/binhakim",
-        "https://medium.com/@binhakim",
-      ],
-    },
-    {
-      "@type": "WebSite",
-      "@id": `${SITE_URL}/#website`,
-      url: SITE_URL,
-      name: "Yusuf Naeem | Software Engineer Portfolio",
-      description: DESCRIPTION,
-      author: { "@id": `${SITE_URL}/#person` },
-      inLanguage: "en-US",
-    },
-    {
-      "@type": "WebPage",
-      "@id": `${SITE_URL}/#webpage`,
-      url: SITE_URL,
-      name: TITLE,
-      isPartOf: { "@id": `${SITE_URL}/#website` },
-      about: { "@id": `${SITE_URL}/#person` },
-      description: DESCRIPTION,
-      breadcrumb: {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-        ],
-      },
-    },
-  ],
-};
+/* ── JSON-LD ────────────────────────────────────────────────
+   Built from lib/schema.ts so each route can extend the graph rather than
+   restating it. */
+const jsonLd = graph(
+  ...baseGraph(),
+  webPageNode({ path: "/", name: TITLE, description: DESCRIPTION })
+);
 
 export default function RootLayout({
   children,
@@ -270,7 +155,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: jsonLd }}
         />
         {/* Scroll reveals start at opacity 0 and are switched on by JS. The
             markup is server-rendered either way (so crawlers always see it),
