@@ -54,6 +54,17 @@ export const ROUTES: RouteDef[] = [
     changeFrequency: "weekly",
   },
   {
+    href: "/about",
+    label: "About",
+    title: "About",
+    description:
+      "How a computer science degree, a year of tutoring classmates, freelance clients and an offensive-security internship turned into shipping production systems — in the order it actually happened.",
+    nav: true,
+    sitemap: true,
+    priority: 0.8,
+    changeFrequency: "monthly",
+  },
+  {
     href: "/stack",
     label: "Stack",
     title: "Stack",
