@@ -190,6 +190,40 @@ test.describe("accessibility", () => {
   });
 });
 
+test.describe("error routes", () => {
+  test("unknown paths return a styled 404, not a framework default", async ({ page }) => {
+    const response = await page.goto("/this-route-does-not-exist");
+
+    expect(response?.status(), "must be a real 404, not a 200 soft-404").toBe(404);
+    await expect(page.getByText("no such file or directory")).toBeVisible();
+
+    // Offers a way back rather than stranding the visitor.
+    await expect(page.getByRole("link", { name: "Home" })).toBeVisible();
+  });
+
+  test("404 is excluded from indexing", async ({ page }) => {
+    await page.goto("/this-route-does-not-exist");
+    const robots = await page.locator('meta[name="robots"]').first().getAttribute("content");
+    expect(robots).toContain("noindex");
+  });
+
+  test("every escape route offered by the 404 actually resolves", async ({ page, request }) => {
+    // The 404 builds its links from the ROUTES table. If that table ever lists
+    // a route that has not been built, the error page sends people from one
+    // dead end to another — which is worse than offering nothing.
+    await page.goto("/this-route-does-not-exist");
+    const hrefs = await page.$$eval("main a[href^='/']", (as) =>
+      as.map((a) => a.getAttribute("href")!)
+    );
+
+    expect(hrefs.length, "the 404 should offer at least one way out").toBeGreaterThan(0);
+    for (const href of new Set(hrefs)) {
+      const res = await request.get(href);
+      expect(res.status(), `404 links to ${href}, which is itself a ${res.status()}`).toBe(200);
+    }
+  });
+});
+
 test.describe("SEO essentials", () => {
   test("serves a title, description, canonical and OG image", async ({ page }) => {
     await page.goto("/");

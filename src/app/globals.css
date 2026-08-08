@@ -833,3 +833,18 @@ body {
 .project-row:focus-within .project-meta {
   color: var(--cyan);
 }
+
+/* ── Breadcrumb link ───────────────────────────────────────
+   Underline stays off until hover/focus so the trail reads as a path rather
+   than a row of links. */
+.crumb-link {
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.crumb-link:hover,
+.crumb-link:focus-visible {
+  color: var(--cyan);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
