@@ -75,7 +75,7 @@ export default function Contact() {
           animate={inView ? "visible" : "hidden"}
           style={{ marginBottom: "4rem", maxWidth: "44rem" }}
         >
-          <p className="section-header">// 11. Contact</p>
+          <p className="section-header">// 08. Contact</p>
           <h2
             style={{
               fontSize: "clamp(1.8rem, 4vw, 2.6rem)",
