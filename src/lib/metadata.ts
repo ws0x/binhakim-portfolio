@@ -16,6 +16,7 @@ export function pageMetadata(
   const title = overrides.title ?? route?.title ?? SHORT_NAME;
   const description = overrides.description ?? route?.description ?? "";
   const url = absoluteUrl(path);
+  const imagePath = path === "/" ? "/opengraph-image" : `${path}/opengraph-image`;
 
   return {
     title,
@@ -30,9 +31,9 @@ export function pageMetadata(
       description,
       images: [
         {
-          url: "/profile.jpg",
-          width: 800,
-          height: 800,
+          url: imagePath,
+          width: 1200,
+          height: 630,
           alt: `${FULL_NAME} — Software Engineer`,
           type: "image/jpeg",
         },
@@ -42,7 +43,7 @@ export function pageMetadata(
       card: "summary_large_image",
       title: typeof title === "string" ? `${title} | ${SHORT_NAME}` : undefined,
       description,
-      images: ["/profile.jpg"],
+      images: [imagePath],
       creator: "@binhakim",
     },
     ...overrides,

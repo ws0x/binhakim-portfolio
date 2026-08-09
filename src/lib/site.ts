@@ -12,6 +12,9 @@ export const FULL_NAME = "Yusuf Naeem Abd El-Hakim";
 export const SHORT_NAME = "Yusuf Naeem";
 export const EMAIL = "yusufnaeemhakim@gmail.com";
 export const LOCATION = { city: "Cairo", country: "EG" } as const;
+export const LOCALE = "en" as const;
+export const TEXT_DIRECTION = "ltr" as const;
+export const AVAILABILITY = "Open to selected engineering roles and product collaborations";
 
 export const SOCIAL = {
   github: "https://github.com/ws0x",
@@ -51,6 +54,19 @@ export const HOME_SECTIONS: HomeSectionDef[] = [
   { id: "live-projects", label: "Featured work" },
   { id: "experience", label: "Experience" },
   { id: "contact", label: "Contact" },
+];
+
+export interface AudiencePath {
+  id: "hiring" | "collaboration" | "products";
+  label: string;
+  description: string;
+  href: string;
+}
+
+export const AUDIENCE_PATHS: AudiencePath[] = [
+  { id: "hiring", label: "Hiring me", description: "Review experience, credentials and the resume.", href: "/resume" },
+  { id: "collaboration", label: "Working with me", description: "See the systems and workflows I build for real teams.", href: "#contact" },
+  { id: "products", label: "Reviewing my products", description: "Explore Commit, Orbit and the decisions behind them.", href: "/work" },
 ];
 
 export const ROUTES: RouteDef[] = [

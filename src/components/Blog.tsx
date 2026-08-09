@@ -1,4 +1,4 @@
-import { writingEntries } from "../lib/content";
+import { writingArticles } from "../lib/writing";
 import BlogCards from "./BlogCards";
 
 /**
@@ -7,5 +7,15 @@ import BlogCards from "./BlogCards";
  * blog.json if the feed is unreachable.
  */
 export default function Blog() {
-  return <BlogCards posts={writingEntries} />;
+  return (
+    <BlogCards
+      posts={writingArticles.slice(0, 3).map((article) => ({
+        title: article.title,
+        excerpt: article.excerpt,
+        url: `/writing/${article.slug}`,
+        date: article.publishedAt,
+        readTime: article.readTime,
+      }))}
+    />
+  );
 }

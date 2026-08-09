@@ -8,6 +8,8 @@ import { workCaseStudies } from "@/lib/content";
 import { pageMetadata } from "@/lib/metadata";
 import { baseGraph, graph, webPageNode } from "@/lib/schema";
 import { routeFor } from "@/lib/site";
+import TrackedEmailLink from "@/components/TrackedEmailLink";
+import { EMAIL } from "@/lib/site";
 
 const ROUTE = "/work";
 const route = routeFor(ROUTE)!;
@@ -25,6 +27,9 @@ export default function WorkPage() {
           lede="Three case studies focused on the constraints, decisions and implementation behind the interface. No invented growth numbers and no prototype theatre."
           crumbs={[{ label: "work" }]}
         />
+        <div className="route-cta-row">
+          <TrackedEmailLink href={`mailto:${EMAIL}`} source="work-index" className="email-cta">Email Yusuf about a project</TrackedEmailLink>
+        </div>
         <div className="work-index-grid">
           {workCaseStudies.map((study, index) => (
             <Reveal as="article" delay={index + 1} key={study.slug} className="panel work-index-card" style={{ borderColor: `${study.accent}33` }}>

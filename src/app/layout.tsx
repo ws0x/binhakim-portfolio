@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import Navigation from "@/components/Navigation";
+import AnalyticsEvents from "@/components/AnalyticsEvents";
 import {
   SITE_URL,
   SITE_NAME,
@@ -13,6 +14,7 @@ import {
   DEFAULT_DESCRIPTION,
 } from "@/lib/site";
 import { baseGraph, webPageNode, graph } from "@/lib/schema";
+import { localeConfig } from "@/lib/locale";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -111,9 +113,9 @@ export const metadata: Metadata = {
       "Software Engineer — systems design and applied security. Two SaaS products taken solo from idea to public launch.",
     images: [
       {
-        url: "/profile.jpg",
-        width: 800,
-        height: 800,
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
         alt: `${FULL_NAME} — Software Engineer`,
         type: "image/jpeg",
       },
@@ -129,7 +131,7 @@ export const metadata: Metadata = {
     title: TITLE,
     description:
       "Software Engineer — systems design, applied security, and SaaS shipped solo.",
-    images: ["/profile.jpg"],
+    images: ["/opengraph-image"],
     creator: "@binhakim",
   },
 
@@ -149,8 +151,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = localeConfig();
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang={locale.locale} dir={locale.direction} className={`${geistSans.variable} ${geistMono.variable}`}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -169,6 +172,7 @@ export default function RootLayout({
         <Navigation />
         {children}
         <GoogleAnalytics />
+        <AnalyticsEvents />
         {/* Both packages were already dependencies but had never been mounted.
             Speed Insights supplies field Core Web Vitals, which is what the
             performance budget is actually measured against. */}

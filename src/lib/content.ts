@@ -154,6 +154,13 @@ export const workCaseStudySchema = z.object({
   accent: nonEmpty.regex(/^#[0-9a-fA-F]{6}$/),
   mockup: z.enum(["commit", "orbit", "nexflow"]),
   verification: z.array(nonEmpty),
+  ownership: z.array(nonEmpty).min(1),
+  architecture: nonEmpty,
+  technicalHighlights: z.array(nonEmpty).min(1),
+  verifiedOutcomes: z.array(nonEmpty).min(1),
+  audienceRelevance: z.array(z.enum(["recruiter", "client", "founder"])).min(1),
+  screenshots: z.array(nonEmpty),
+  lastVerified: z.iso.date(),
 });
 
 export const writingEntrySchema = z.object({

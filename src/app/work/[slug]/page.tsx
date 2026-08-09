@@ -8,6 +8,8 @@ import { GithubIcon } from "@/components/BrandIcons";
 import PageHeader from "@/components/ui/PageHeader";
 import Reveal from "@/components/ui/Reveal";
 import { workCaseStudies } from "@/lib/content";
+import { EMAIL } from "@/lib/site";
+import TrackedEmailLink from "@/components/TrackedEmailLink";
 import { pageMetadata } from "@/lib/metadata";
 import { baseGraph, graph, softwareApplicationNode, webPageNode } from "@/lib/schema";
 
@@ -49,6 +51,7 @@ export default async function WorkCaseStudyPage({ params }: Props) {
             <div className="work-card-actions">
               {study.live ? <a href={study.live} target="_blank" rel="noopener noreferrer" className="github-btn">Visit product <ArrowUpRight size={13} /></a> : null}
               {study.github ? <a href={study.github} target="_blank" rel="noopener noreferrer" className="tech-tag"><GithubIcon size={12} /> Source</a> : null}
+              <TrackedEmailLink href={`mailto:${EMAIL}?subject=${encodeURIComponent(`${study.name} case study`)}`} className="tech-tag" source={study.slug}>Email about this work</TrackedEmailLink>
             </div>
           </div>
           <WorkMockup kind={study.mockup} />
@@ -59,7 +62,11 @@ export default async function WorkCaseStudyPage({ params }: Props) {
           <CaseSection title="Constraints" items={study.constraints} />
           <CaseSection title="Decisions" items={study.decisions} />
           <CaseSection title="Implementation" items={study.implementation} />
+          <CaseSection title="What I owned" items={study.ownership} />
+          <CaseSection title="Architecture" paragraphs={[study.architecture]} />
+          <CaseSection title="Technical highlights" items={study.technicalHighlights} />
           <CaseSection title="Outcome" paragraphs={[study.outcome]} />
+          <CaseSection title="Verified outcomes" items={study.verifiedOutcomes} />
           <Reveal as="section" delay={6} className="panel case-section">
             <h2>Stack</h2>
             <div className="case-tech">{study.tech.map((item) => <span key={item} className="tech-tag">{item}</span>)}</div>

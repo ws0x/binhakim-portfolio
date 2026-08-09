@@ -1,6 +1,7 @@
 import { test, expect, type Page } from "@playwright/test";
 import { ROUTES, SITE_URL, navRoutes, sitemapRoutes } from "../src/lib/site";
 import { workCaseStudies } from "../src/lib/content";
+import { writingArticles } from "../src/lib/writing";
 
 /**
  * Smoke suite.
@@ -253,6 +254,17 @@ test.describe("routes", () => {
     });
   }
 
+  for (const article of writingArticles) {
+    test(`/writing/${article.slug} responds and is self-canonical`, async ({ page }) => {
+      const path = `/writing/${article.slug}`;
+      const response = await page.goto(path);
+      expect(response?.status()).toBe(200);
+      await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", `${SITE_URL}${path}`);
+      await expect(page.locator("h1")).toHaveCount(1);
+      await expect(page.getByText(article.title, { exact: true }).first()).toBeVisible();
+    });
+  }
+
   test("unknown work slugs use the branded 404", async ({ page }) => {
     const response = await page.goto("/work/not-a-real-project");
     expect(response?.status()).toBe(404);
@@ -329,8 +341,17 @@ test.describe("SEO essentials", () => {
     const expected = [
       ...sitemapRoutes.map((route) => route.href === "/" ? SITE_URL : `${SITE_URL}${route.href}`),
       ...workCaseStudies.map((study) => `${SITE_URL}/work/${study.slug}`),
+      ...writingArticles.map((article) => `${SITE_URL}/writing/${article.slug}`),
     ];
     expect(locations.sort()).toEqual(expected.sort());
+  });
+
+  test("serves a local writing RSS feed", async ({ request }) => {
+    const response = await request.get("/writing/feed.xml");
+    expect(response.ok()).toBeTruthy();
+    const xml = await response.text();
+    expect(xml).toContain("<rss");
+    for (const article of writingArticles) expect(xml).toContain(article.title);
   });
 
   test("content remains readable without JavaScript", async ({ browser }) => {

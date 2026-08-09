@@ -64,9 +64,9 @@ export default function BlogCards({ posts }: { posts: Post[] }) {
           <Reveal as="a" delay={i + 1}
             key={i}
             href={post.url}
-            target="_blank"
-            rel="noopener noreferrer"
             className="panel glow-border-hover lift-hover lift-hover-lg"
+            data-track="writing"
+            data-target={post.url}
             style={{
               padding: "1.5rem",
               textDecoration: "none",
@@ -143,7 +143,7 @@ export default function BlogCards({ posts }: { posts: Post[] }) {
                 marginTop: "0.25rem",
               }}
             >
-              Read on Medium <ArrowUpRight size={11} />
+              Read article <ArrowUpRight size={11} />
             </div>
           </Reveal>
         ))}

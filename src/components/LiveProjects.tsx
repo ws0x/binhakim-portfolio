@@ -139,7 +139,7 @@ export default function LiveProjects() {
                 {/* CTAs */}
                 <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
                   <a
-                    href="https://commit.binhakim.dev/" target="_blank" rel="noopener noreferrer"
+                    href="https://commit.binhakim.dev/" target="_blank" rel="noopener noreferrer" data-track="project" data-target="commit-live"
                     style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", fontFamily: "var(--font-jet), monospace", fontSize: "0.73rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#031410", background: COMMIT_GREEN, padding: "0.65rem 1.4rem", borderRadius: "6px", textDecoration: "none", boxShadow: "0 0 22px rgba(16,185,129,0.38)", transition: "background 0.2s, box-shadow 0.2s, transform 0.2s" }}
                     onMouseEnter={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = "#34d399"; el.style.boxShadow = "0 0 36px rgba(16,185,129,0.58)"; el.style.transform = "translateY(-1px)"; }}
                     onMouseLeave={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = COMMIT_GREEN; el.style.boxShadow = "0 0 22px rgba(16,185,129,0.38)"; el.style.transform = "translateY(0)"; }}
@@ -147,12 +147,12 @@ export default function LiveProjects() {
                     <Globe size={14} /> Visit App <ArrowUpRight size={13} />
                   </a>
                   <a
-                    href="https://github.com/ws0x/commit" target="_blank" rel="noopener noreferrer"
+                    href="https://github.com/ws0x" target="_blank" rel="noopener noreferrer" data-track="github" data-target="profile"
                     style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", fontFamily: "var(--font-jet), monospace", fontSize: "0.73rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--text-secondary)", background: "transparent", border: "1px solid rgba(16,185,129,0.25)", padding: "0.65rem 1.2rem", borderRadius: "6px", textDecoration: "none", transition: "color 0.2s, border-color 0.2s, background 0.2s, box-shadow 0.2s" }}
                     onMouseEnter={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.color = COMMIT_GREEN; el.style.borderColor = "rgba(16,185,129,0.55)"; el.style.background = "rgba(16,185,129,0.06)"; el.style.boxShadow = "0 0 14px rgba(16,185,129,0.12)"; }}
                     onMouseLeave={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.color = "var(--text-secondary)"; el.style.borderColor = "rgba(16,185,129,0.25)"; el.style.background = "transparent"; el.style.boxShadow = "none"; }}
                   >
-                    <GithubIcon size={14} /> GitHub
+                    <GithubIcon size={14} /> GitHub profile
                   </a>
                 </div>
               </div>
@@ -235,7 +235,7 @@ export default function LiveProjects() {
                 {/* CTAs */}
                 <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
                   <a
-                    href="https://byorbit.io" target="_blank" rel="noopener noreferrer"
+                    href="https://byorbit.io" target="_blank" rel="noopener noreferrer" data-track="project" data-target="orbit-live"
                     style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", fontFamily: "var(--font-jet), monospace", fontSize: "0.73rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--bg-base)", background: "var(--cyan)", padding: "0.65rem 1.4rem", borderRadius: "6px", textDecoration: "none", boxShadow: "0 0 22px rgba(0,217,255,0.38)", transition: "background 0.2s, box-shadow 0.2s, transform 0.2s" }}
                     onMouseEnter={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = "#33e1ff"; el.style.boxShadow = "0 0 36px rgba(0,217,255,0.58)"; el.style.transform = "translateY(-1px)"; }}
                     onMouseLeave={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = "var(--cyan)"; el.style.boxShadow = "0 0 22px rgba(0,217,255,0.38)"; el.style.transform = "translateY(0)"; }}
@@ -243,7 +243,7 @@ export default function LiveProjects() {
                     <Globe size={14} /> Visit App <ArrowUpRight size={13} />
                   </a>
                   <a
-                    href="https://github.com/ws0x/orbit" target="_blank" rel="noopener noreferrer"
+                    href="https://github.com/ws0x/orbit" target="_blank" rel="noopener noreferrer" data-track="github" data-target="orbit"
                     style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", fontFamily: "var(--font-jet), monospace", fontSize: "0.73rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--text-secondary)", background: "transparent", border: "1px solid rgba(0,217,255,0.25)", padding: "0.65rem 1.2rem", borderRadius: "6px", textDecoration: "none", transition: "color 0.2s, border-color 0.2s, background 0.2s, box-shadow 0.2s" }}
                     onMouseEnter={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.color = "var(--cyan)"; el.style.borderColor = "rgba(0,217,255,0.55)"; el.style.background = "rgba(0,217,255,0.06)"; el.style.boxShadow = "0 0 14px rgba(0,217,255,0.12)"; }}
                     onMouseLeave={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.color = "var(--text-secondary)"; el.style.borderColor = "rgba(0,217,255,0.25)"; el.style.background = "transparent"; el.style.boxShadow = "none"; }}
@@ -335,15 +335,15 @@ export default function LiveProjects() {
                 {/* CTAs */}
                 <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
                   <a
-                    href="https://nexflow-os.vercel.app" target="_blank" rel="noopener noreferrer"
+                    href="https://github.com/ws0x/nexflow" target="_blank" rel="noopener noreferrer" data-track="github" data-target="nexflow"
                     style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", fontFamily: "var(--font-jet), monospace", fontSize: "0.73rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#05131f", background: NF_CYAN, padding: "0.65rem 1.4rem", borderRadius: "6px", textDecoration: "none", boxShadow: "0 0 22px rgba(6,182,212,0.38)", transition: "background 0.2s, box-shadow 0.2s, transform 0.2s" }}
                     onMouseEnter={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = "#22d3ee"; el.style.boxShadow = "0 0 36px rgba(6,182,212,0.58)"; el.style.transform = "translateY(-1px)"; }}
                     onMouseLeave={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = NF_CYAN; el.style.boxShadow = "0 0 22px rgba(6,182,212,0.38)"; el.style.transform = "translateY(0)"; }}
                   >
-                    <Globe size={14} /> Visit App <ArrowUpRight size={13} />
+                    <GithubIcon size={14} /> Repository <ArrowUpRight size={13} />
                   </a>
                   <a
-                    href="https://github.com/ws0x/nexflow" target="_blank" rel="noopener noreferrer"
+                    href="https://github.com/ws0x/nexflow" target="_blank" rel="noopener noreferrer" data-track="github" data-target="nexflow"
                     style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", fontFamily: "var(--font-jet), monospace", fontSize: "0.73rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--text-secondary)", background: "transparent", border: "1px solid rgba(6,182,212,0.25)", padding: "0.65rem 1.2rem", borderRadius: "6px", textDecoration: "none", transition: "color 0.2s, border-color 0.2s, background 0.2s, box-shadow 0.2s" }}
                     onMouseEnter={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.color = NF_CYAN; el.style.borderColor = "rgba(6,182,212,0.55)"; el.style.background = "rgba(6,182,212,0.06)"; el.style.boxShadow = "0 0 14px rgba(6,182,212,0.12)"; }}
                     onMouseLeave={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.color = "var(--text-secondary)"; el.style.borderColor = "rgba(6,182,212,0.25)"; el.style.background = "transparent"; el.style.boxShadow = "none"; }}

@@ -24,10 +24,17 @@
     "outcome": "The product is deployed publicly with the complete tracking loop available end to end.",
     "tech": ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "SQLite", "Resend"],
     "live": "https://commit.binhakim.dev/",
-    "github": "https://github.com/ws0x/commit",
+    "github": null,
     "accent": "#10b981",
     "mockup": "commit",
-    "verification": ["Confirm whether public usage or completion metrics can be published."]
+    "verification": ["Confirm whether public usage or completion metrics can be published."],
+    "ownership": ["Product scope, data model, application code, interface, deployment and post-launch iteration."],
+    "architecture": "Next.js application with a shared domain model, Prisma data access and an environment switch between SQLite for local development and PostgreSQL in production.",
+    "technicalHighlights": ["A single progress model powers the roadmap, streak, XP, badge and email-digest surfaces.", "Pacing feedback is guidance rather than punitive streak messaging."],
+    "verifiedOutcomes": ["The product is publicly deployed with the tracking loop available end to end."],
+    "audienceRelevance": ["recruiter", "client", "founder"],
+    "screenshots": [],
+    "lastVerified": "2026-08-09"
   },
   {
     "slug": "orbit",
@@ -57,7 +64,14 @@
     "github": null,
     "accent": "#00d9ff",
     "mockup": "orbit",
-    "verification": ["Confirm whether customer, revenue or relationship-volume metrics can be published."]
+    "verification": ["Confirm whether customer, revenue or relationship-volume metrics can be published."],
+    "ownership": ["Product scope, multi-tenant data model, authentication, search, billing, interface, deployment and launch operations."],
+    "architecture": "Next.js application backed by Supabase PostgreSQL, with row-level security as the tenant boundary, structured contact workflows, semantic retrieval and a D3 relationship graph.",
+    "technicalHighlights": ["Tenant isolation is enforced at the database layer rather than relying only on application filters.", "Semantic search complements, rather than replaces, structured contact search."],
+    "verifiedOutcomes": ["The product is deployed publicly with authentication, persistence, search and billing flows."],
+    "audienceRelevance": ["recruiter", "client", "founder"],
+    "screenshots": [],
+    "lastVerified": "2026-08-09"
   },
   {
     "slug": "nexflow",
@@ -83,10 +97,17 @@
     ],
     "outcome": "The deployed platform provides a structured alternative to the previous spreadsheet workflow.",
     "tech": ["Next.js", "TypeScript", "PostgreSQL", "RBAC", "Whisper", "Audit Logging"],
-    "live": "https://nexflow-os.vercel.app",
+    "live": null,
     "github": "https://github.com/ws0x/nexflow",
     "accent": "#06b6d4",
     "mockup": "nexflow",
-    "verification": ["Confirm the number of business entities and lead records before publishing those metrics."]
+    "verification": ["Confirm the number of business entities and lead records before publishing those metrics."],
+    "ownership": ["Workflow design, server-side authorization, persistence rules, audit history and operational handoff surfaces."],
+    "architecture": "Internal B2B platform with server-enforced field visibility, atomic request-code generation, audit history and operational integrations.",
+    "technicalHighlights": ["Restricted fields are removed before unauthorized responses reach clients.", "Field-level before-and-after values make operational changes auditable."],
+    "verifiedOutcomes": ["The deployed platform provides a structured alternative to spreadsheet-based lead coordination."],
+    "audienceRelevance": ["recruiter", "client"],
+    "screenshots": [],
+    "lastVerified": "2026-08-09"
   }
 ]

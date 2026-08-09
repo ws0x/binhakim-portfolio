@@ -1,6 +1,8 @@
 import Reveal from "./ui/Reveal";
 import { Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon, InstagramIcon, MediumIcon, WhatsAppIcon } from "./BrandIcons";
+import { EMAIL } from "@/lib/site";
+import TrackedEmailLink from "./TrackedEmailLink";
 
 const socials = [
   {
@@ -79,6 +81,9 @@ export default function Contact() {
             work. Whether you have an opportunity or just want to talk tech —
             my inbox is always open.
           </p>
+          <TrackedEmailLink className="email-cta" href={`mailto:${EMAIL}`} source="contact">
+            Email Yusuf directly
+          </TrackedEmailLink>
         </Reveal>
 
         {/* Social grid */}

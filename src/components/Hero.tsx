@@ -2,7 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { ArrowDown, Download } from "lucide-react";
+import Link from "next/link";
 import { GithubIcon, LinkedinIcon } from "./BrandIcons";
+import { trackEvent } from "@/lib/analytics";
+import { AVAILABILITY, EMAIL, LOCATION } from "@/lib/site";
 
 const ROLES = [
   "Software Engineer",
@@ -245,11 +248,10 @@ export default function Hero() {
             transition: "opacity 0.5s ease 0.3s, transform 0.5s ease 0.3s",
           }}
         >
-          I take systems from a blank schema to production without supervision —
-          REST APIs, relational data models, and access-control layers built to
-          hold under concurrent load. Two self-directed SaaS products taken solo
-          from idea to public launch, threat-modelled before they shipped rather
-          than patched afterwards.
+          I build secure, data-heavy web products for teams that have outgrown
+          spreadsheets. From a blank schema to production, I own the API,
+          relational model, access-control boundary and the decisions that keep
+          the system maintainable after launch.
         </p>
 
         {/* CTAs */}
@@ -263,8 +265,8 @@ export default function Hero() {
             transition: "opacity 0.5s ease 0.4s, transform 0.5s ease 0.4s",
           }}
         >
-          <a
-            href="#projects"
+          <Link
+            href="/work"
             style={{
               display: "inline-flex",
               alignItems: "center",
@@ -291,11 +293,12 @@ export default function Hero() {
               e.currentTarget.style.boxShadow = "0 0 20px rgba(0,217,255,0.3)";
             }}
           >
-            View Projects
-          </a>
+            View flagship work
+          </Link>
 
           <a
-            href="#contact"
+            href={`mailto:${EMAIL}`}
+            onClick={() => trackEvent("email_cta_click", { source: "hero" })}
             style={{
               display: "inline-flex",
               alignItems: "center",
@@ -324,7 +327,7 @@ export default function Hero() {
               e.currentTarget.style.transform = "translateY(0)";
             }}
           >
-            Get in Touch
+            Email Yusuf
           </a>
 
           <a
@@ -390,6 +393,7 @@ export default function Hero() {
             href="/resume.pdf"
             download="Yusuf_Naeem_Resume.pdf"
             aria-label="Download Resume"
+            onClick={() => trackEvent("resume_download", { source: "hero" })}
             style={{
               display: "inline-flex",
               alignItems: "center",
@@ -440,6 +444,10 @@ export default function Hero() {
         </div>
 
         </div>{/* end hero-split */}
+        <div className="hero-facts" aria-label="Availability and location">
+          <span>{AVAILABILITY}</span>
+          <span>{LOCATION.city}, Egypt · UTC+2</span>
+        </div>
       </div>
 
       {/* Scroll indicator */}

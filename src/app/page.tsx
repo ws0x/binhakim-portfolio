@@ -1,4 +1,6 @@
 import Hero from "../components/Hero";
+import AudiencePaths from "../components/AudiencePaths";
+import HowIWork from "../components/HowIWork";
 import About from "../components/About";
 import Skills from "../components/Skills";
 import LiveProjects from "../components/LiveProjects";
@@ -16,6 +18,8 @@ export default function Home() {
     <>
       <main>
         <Hero />
+        <AudiencePaths />
+        <HowIWork />
         <About />
         <Skills />
         <LiveProjects />
