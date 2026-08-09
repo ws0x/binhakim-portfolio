@@ -1,5 +1,4 @@
-import blogData from "../data/blog.json";
-import { getMediumPosts } from "../lib/getMediumPosts";
+import { writingEntries } from "../lib/content";
 import BlogCards from "./BlogCards";
 
 /**
@@ -7,8 +6,6 @@ import BlogCards from "./BlogCards";
  * at build time (revalidated every hour). Falls back to the static
  * blog.json if the feed is unreachable.
  */
-export default async function Blog() {
-  const mediumPosts = await getMediumPosts(6);
-  const posts = mediumPosts.length > 0 ? mediumPosts : blogData;
-  return <BlogCards posts={posts} />;
+export default function Blog() {
+  return <BlogCards posts={writingEntries} />;
 }

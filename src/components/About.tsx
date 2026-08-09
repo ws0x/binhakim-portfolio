@@ -1,9 +1,5 @@
-"use client";
-
-import { useRef } from "react";
-import { motion, useInView, type Variants } from "framer-motion";
+import Reveal from "./ui/Reveal";
 import { Cpu, ScanSearch, Layers, FileCode2, LayoutDashboard } from "lucide-react";
-import skillsData from "../data/skills.json";
 
 const TRAITS = [
   {
@@ -33,35 +29,18 @@ const TRAITS = [
   },
 ];
 
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 28 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.55, delay: i * 0.12, ease: "easeOut" as const },
-  }),
-};
-
 export default function About() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
-
   return (
     <section
       id="about"
-      ref={ref}
       className="section-pad"
       style={{ maxWidth: "72rem", margin: "0 auto" }}
     >
       {/* Section label */}
-      <motion.div
-        custom={0}
-        variants={fadeUp}
-        initial="hidden"
-        animate={inView ? "visible" : "hidden"}
+      <Reveal as="div" delay={0}
         style={{ marginBottom: "3.5rem" }}
       >
-        <p className="section-header">// 01. About</p>
+        <p className="section-header">{"// 01. About"}</p>
         <h2
           style={{
             fontSize: "clamp(1.8rem, 4vw, 2.6rem)",
@@ -74,15 +53,11 @@ export default function About() {
           Engineering systems that{" "}
           <span style={{ color: "var(--cyan)" }}>just work</span>
         </h2>
-      </motion.div>
+      </Reveal>
 
       <div className="about-grid">
         {/* Bio panel */}
-        <motion.div
-          custom={1}
-          variants={fadeUp}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+        <Reveal as="div" delay={1}
           className="panel"
           style={{ padding: "2rem" }}
         >
@@ -189,14 +164,10 @@ export default function About() {
               </a>
             ))}
           </div>
-        </motion.div>
+        </Reveal>
 
         {/* System diagnostics panel */}
-        <motion.div
-          custom={2}
-          variants={fadeUp}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+        <Reveal as="div" delay={2}
           className="panel"
           style={{ padding: "2rem" }}
         >
@@ -238,7 +209,7 @@ export default function About() {
             ))}
           </div>
 
-        </motion.div>
+        </Reveal>
       </div>
     </section>
   );

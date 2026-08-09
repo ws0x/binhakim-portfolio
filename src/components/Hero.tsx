@@ -34,8 +34,13 @@ function TypingText() {
         45
       );
     } else if (deleting && displayed.length === 0) {
-      setDeleting(false);
-      setRoleIdx((i) => (i + 1) % ROLES.length);
+      // Deferred rather than set synchronously: a synchronous setState here
+      // forces an extra render pass, and the short pause reads better between
+      // roles anyway.
+      timeout = setTimeout(() => {
+        setDeleting(false);
+        setRoleIdx((i) => (i + 1) % ROLES.length);
+      }, 400);
     }
 
     return () => clearTimeout(timeout);

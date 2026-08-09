@@ -1,32 +1,7 @@
-"use client";
-
-import { useRef, useState } from "react";
-import { motion, useInView, type Variants } from "framer-motion";
+import Reveal from "./ui/Reveal";
 import { ArrowUpRight, Globe } from "lucide-react";
 import { GithubIcon } from "./BrandIcons";
-import projectsData from "../data/projects.json";
-
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, delay: i * 0.1, ease: "easeOut" as const },
-  }),
-};
-
-interface Project {
-  id: string;
-  title: string;
-  tagline: string;
-  description: string;
-  tech: string[];
-  github: string | null;
-  live: string | null;
-  status: string | null;
-  featured: boolean;
-  category: string;
-}
+import { projects as projectsData, type Project } from "../lib/content";
 
 function ProjectRow({
   project,
@@ -37,21 +12,12 @@ function ProjectRow({
   index: number;
   num: number;
 }) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-40px" });
-  const [hovered, setHovered] = useState(false);
-
   return (
-    <motion.div
-      ref={ref}
-      custom={index}
-      variants={fadeUp}
-      initial="hidden"
-      animate={inView ? "visible" : "hidden"}
+    <Reveal
+      as="div"
+      delay={index}
       className="project-row"
       style={{ position: "relative", cursor: project.live ? "pointer" : "default" }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
     >
       {/* ── Invisible overlay: makes the whole row a link to the live URL ── */}
       {project.live && (
@@ -67,14 +33,12 @@ function ProjectRow({
 
       {/* Index number */}
       <div
+        className="project-index"
         style={{
           fontFamily: "var(--font-jet), monospace",
           fontWeight: 700,
           fontSize: "clamp(1.4rem, 3vw, 2.2rem)",
-          color: hovered ? "var(--cyan)" : "var(--text-dim)",
-          opacity: hovered ? 0.6 : 0.2,
           lineHeight: 1,
-          transition: "color 0.25s, opacity 0.25s",
           paddingTop: "0.2rem",
           userSelect: "none",
           position: "relative",
@@ -135,20 +99,16 @@ function ProjectRow({
                 fontSize: "0.62rem",
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
-                color: hovered ? "var(--cyan)" : "var(--text-dim)",
-                transition: "color 0.25s",
               }}
+              className="project-meta"
             >
               {project.category}
             </span>
             {project.live && (
               <ArrowUpRight
                 size={13}
-                style={{
-                  color: hovered ? "var(--cyan)" : "var(--text-dim)",
-                  transition: "color 0.25s",
-                  flexShrink: 0,
-                }}
+                className="project-meta"
+                style={{ flexShrink: 0 }}
               />
             )}
           </div>
@@ -214,7 +174,6 @@ function ProjectRow({
                 href={project.live}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
                 className="live-btn"
               >
                 <Globe size={13} /> Live
@@ -225,7 +184,6 @@ function ProjectRow({
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
                 className="github-btn"
               >
                 <GithubIcon size={13} /> GitHub
@@ -234,14 +192,11 @@ function ProjectRow({
           </div>
         </div>
       </div>
-    </motion.div>
+    </Reveal>
   );
 }
 
 export default function Projects() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
-
   return (
     <section
       id="projects"
@@ -253,15 +208,11 @@ export default function Projects() {
       }}
     >
       <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
-        <div ref={ref}>
-          <motion.div
-            custom={0}
-            variants={fadeUp}
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
+        <div>
+          <Reveal as="div" delay={0}
             style={{ marginBottom: "1rem" }}
           >
-            <p className="section-header">// 05. Projects</p>
+            <p className="section-header">{"// 05. Projects"}</p>
             <h2
               style={{
                 fontSize: "clamp(1.8rem, 4vw, 2.6rem)",
@@ -272,7 +223,7 @@ export default function Projects() {
             >
               Things I&apos;ve Built
             </h2>
-          </motion.div>
+          </Reveal>
         </div>
 
         {/* Indexed list */}

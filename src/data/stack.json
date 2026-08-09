@@ -1,0 +1,126 @@
+{
+  "_authoring": [
+    "`note` is the reason a tool earns its place. Every note currently here is",
+    "sourced from something already claimed on this site or in the resume — no",
+    "opinions have been invented.",
+    "",
+    "Tools with an empty note render as a bare name, so the page never shows a",
+    "placeholder to a visitor. Fill them in as you have something real to say;",
+    "a tool with no reason to be listed is a tool to delete, not to pad."
+  ],
+  "tiers": [
+    {
+      "id": "daily",
+      "label": "Reach for first",
+      "blurb": "The default answer. I have to be talked out of these, not into them.",
+      "tools": [
+        {
+          "name": "PostgreSQL",
+          "note": "Row-level security is the reason. Tenant isolation enforced in the database holds even when the application code above it is wrong — which is the only guarantee worth having."
+        },
+        {
+          "name": "TypeScript",
+          "note": "Every project on this site is TypeScript end to end. The type boundary is where I catch content and API mistakes before they render."
+        },
+        {
+          "name": "Next.js",
+          "note": "Server components by default, so a page that is really just content ships as content. This site runs on it."
+        },
+        {
+          "name": "Node.js / Express",
+          "note": "The REST layer under most of what I build, including the lead pipeline platform in production at EPPS."
+        },
+        { "name": "React", "note": "" },
+        {
+          "name": "Supabase",
+          "note": "Postgres with the auth and row-level-security plumbing already wired. It is what makes Orbit's multi-tenancy a schema decision rather than a backend project."
+        },
+        { "name": "Git", "note": "" }
+      ]
+    },
+    {
+      "id": "situational",
+      "label": "When the problem calls for it",
+      "blurb": "Not defaults, but the right answer often enough to stay sharp on.",
+      "tools": [
+        {
+          "name": "SQLite",
+          "note": "Paired with Postgres in Commit behind one data-access layer, so local and production differ by a single line and environment drift never gets a foothold."
+        },
+        {
+          "name": "Three.js",
+          "note": "The 3D bin-packing optimiser needed real spatial visualisation — container loads with door-clearance constraints are not a chart."
+        },
+        {
+          "name": "D3",
+          "note": "Force-directed graphs in Orbit, where the shape of a network is the insight and a table would hide it."
+        },
+        {
+          "name": "Gemini API",
+          "note": "Semantic search over a user's own connections in Orbit — retrieval where keyword matching genuinely fails."
+        },
+        {
+          "name": "Stripe",
+          "note": "Free/Pro billing with usage metering in Orbit, with the metering function server-side so application code cannot drift from what was actually charged."
+        },
+        {
+          "name": "Resend",
+          "note": "Daily digests in Commit, with a console fallback in development so a missing key never blocks local work."
+        },
+        {
+          "name": "Docker",
+          "note": ""
+        },
+        {
+          "name": "Nginx",
+          "note": "Reverse proxying and cache/hardening work across the 25+ domains and 7 production sites I keep running."
+        },
+        { "name": "AWS (S3, EC2)", "note": "" },
+        {
+          "name": "Python",
+          "note": "Automation and scraping — catalogue sync via the Sheets API, reconnaissance tooling, reporting workflows. Rarely the product, often the thing that removes a weekly chore."
+        }
+      ]
+    },
+    {
+      "id": "security",
+      "label": "Security tooling",
+      "blurb": "From the offensive-security internship. I use these to check my own work before someone else does.",
+      "tools": [
+        {
+          "name": "Burp Suite",
+          "note": "Intercepting my own traffic is the fastest way to find out what a client is really sending."
+        },
+        { "name": "Metasploit", "note": "" },
+        { "name": "Wireshark", "note": "" },
+        {
+          "name": "OWASP Top 10",
+          "note": "The checklist I threat-model against before shipping, rather than the list I get audited on afterwards."
+        }
+      ]
+    },
+    {
+      "id": "worked-with",
+      "label": "Worked with, not reaching for",
+      "blurb": "Real production experience, but not where I would start a new system today. Listing them honestly is more useful than padding the section above.",
+      "tools": [
+        {
+          "name": "Java / Spring Boot",
+          "note": "Test-first REST APIs for a SaaS ERP at Kites, with Cucumber integration tests. Solid, and still my reference for how a typed backend should be structured."
+        },
+        {
+          "name": "Django REST Framework",
+          "note": "Storefront APIs during freelance work — catalogues and enquiry forms for small businesses."
+        },
+        {
+          "name": "Power BI",
+          "note": "Executive dashboards at EPPS, backing cost-benefit and ROI cases for software spend."
+        },
+        {
+          "name": "WordPress / WooCommerce",
+          "note": "The e-commerce platform at HomeBay, plus the estate of sites I still keep patched and fast."
+        }
+      ]
+    }
+  ]
+}
