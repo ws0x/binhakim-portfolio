@@ -1,4 +1,5 @@
 import Reveal from "./ui/Reveal";
+import Link from "next/link";
 import { ArrowUpRight, Clock } from "lucide-react";
 
 interface Post {
@@ -39,10 +40,8 @@ export default function BlogCards({ posts }: { posts: Post[] }) {
             Thoughts &amp; Articles
           </h2>
         </div>
-        <a
-          href="https://medium.com/@binhakim"
-          target="_blank"
-          rel="noopener noreferrer"
+        <Link
+          href="/writing"
           className="fade-hover"
           style={{
             display: "inline-flex",
@@ -56,8 +55,8 @@ export default function BlogCards({ posts }: { posts: Post[] }) {
             textDecoration: "none",
           }}
         >
-          All articles <ArrowUpRight size={13} />
-        </a>
+          Writing index <ArrowUpRight size={13} />
+        </Link>
       </Reveal>
 
       <div className="blog-grid">

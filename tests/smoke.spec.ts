@@ -1,5 +1,6 @@
 import { test, expect, type Page } from "@playwright/test";
-import { ROUTES, SITE_URL } from "../src/lib/site";
+import { ROUTES, SITE_URL, navRoutes, sitemapRoutes } from "../src/lib/site";
+import { workCaseStudies } from "../src/lib/content";
 
 /**
  * Smoke suite.
@@ -230,6 +231,33 @@ test.describe("routes", () => {
       seen.set(canonical, route.href);
     }
   });
+
+  test("primary navigation exposes the registered nav routes from nested pages", async ({ page }) => {
+    await page.goto("/work/commit");
+    const hrefs = await page.$$eval('nav[aria-label="Primary navigation"] a[href^="/"]', (links) =>
+      links.map((link) => link.getAttribute("href"))
+    );
+    for (const route of navRoutes) {
+      expect(hrefs, `primary navigation should include ${route.href}`).toContain(route.href);
+    }
+    expect(hrefs.some((href) => href?.startsWith("#"))).toBe(false);
+  });
+
+  for (const study of workCaseStudies) {
+    test(`/work/${study.slug} responds and is self-canonical`, async ({ page }) => {
+      const path = `/work/${study.slug}`;
+      const response = await page.goto(path);
+      expect(response?.status()).toBe(200);
+      await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", `${SITE_URL}${path}`);
+      await expect(page.locator("h1")).toHaveText(study.name);
+    });
+  }
+
+  test("unknown work slugs use the branded 404", async ({ page }) => {
+    const response = await page.goto("/work/not-a-real-project");
+    expect(response?.status()).toBe(404);
+    await expect(page.getByText("no such file or directory")).toBeVisible();
+  });
 });
 
 test.describe("error routes", () => {
@@ -240,7 +268,7 @@ test.describe("error routes", () => {
     await expect(page.getByText("no such file or directory")).toBeVisible();
 
     // Offers a way back rather than stranding the visitor.
-    await expect(page.getByRole("link", { name: "Home" })).toBeVisible();
+    await expect(page.getByRole("link", { name: "Home", exact: true })).toBeVisible();
   });
 
   test("404 is excluded from indexing", async ({ page }) => {
@@ -287,14 +315,31 @@ test.describe("SEO essentials", () => {
     expect(types).toContain("Person");
   });
 
-  test("serves robots.txt and sitemap.xml", async ({ request }) => {
+  test("serves robots.txt and an exact fragment-free sitemap", async ({ request }) => {
     const robots = await request.get("/robots.txt");
     expect(robots.ok()).toBeTruthy();
     expect(await robots.text()).toContain("Sitemap:");
 
     const sitemap = await request.get("/sitemap.xml");
     expect(sitemap.ok()).toBeTruthy();
-    expect(await sitemap.text()).toContain("<urlset");
+    const xml = await sitemap.text();
+    expect(xml).toContain("<urlset");
+    expect(xml).not.toContain("#");
+    const locations = [...xml.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1]);
+    const expected = [
+      ...sitemapRoutes.map((route) => route.href === "/" ? SITE_URL : `${SITE_URL}${route.href}`),
+      ...workCaseStudies.map((study) => `${SITE_URL}/work/${study.slug}`),
+    ];
+    expect(locations.sort()).toEqual(expected.sort());
+  });
+
+  test("content remains readable without JavaScript", async ({ browser }) => {
+    const context = await browser.newContext({ javaScriptEnabled: false });
+    const page = await context.newPage();
+    await page.goto("/work");
+    await expect(page.locator("h1")).toBeVisible();
+    await expect(page.getByRole("link", { name: /Read case study/ }).first()).toBeVisible();
+    await context.close();
   });
 
   test("the linked resume PDF actually exists", async ({ page, request }) => {

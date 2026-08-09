@@ -42,6 +42,17 @@ export interface RouteDef {
   changeFrequency: "weekly" | "monthly" | "yearly";
 }
 
+export interface HomeSectionDef {
+  id: string;
+  label: string;
+}
+
+export const HOME_SECTIONS: HomeSectionDef[] = [
+  { id: "live-projects", label: "Featured work" },
+  { id: "experience", label: "Experience" },
+  { id: "contact", label: "Contact" },
+];
+
 export const ROUTES: RouteDef[] = [
   {
     href: "/",
@@ -54,6 +65,17 @@ export const ROUTES: RouteDef[] = [
     changeFrequency: "weekly",
   },
   {
+    href: "/work",
+    label: "Work",
+    title: "Work",
+    description:
+      "Case studies for production products, internal platforms and engineering tools built by Yusuf Naeem.",
+    nav: true,
+    sitemap: true,
+    priority: 0.9,
+    changeFrequency: "monthly",
+  },
+  {
     href: "/about",
     label: "About",
     title: "About",
@@ -63,6 +85,17 @@ export const ROUTES: RouteDef[] = [
     sitemap: true,
     priority: 0.8,
     changeFrequency: "monthly",
+  },
+  {
+    href: "/writing",
+    label: "Writing",
+    title: "Writing",
+    description:
+      "Published notes on backend engineering, database design and application security.",
+    nav: true,
+    sitemap: true,
+    priority: 0.6,
+    changeFrequency: "weekly",
   },
   {
     href: "/stack",
@@ -99,4 +132,8 @@ export function routeFor(href: string): RouteDef | undefined {
 
 export function absoluteUrl(path: string): string {
   return path === "/" ? SITE_URL : `${SITE_URL}${path}`;
+}
+
+export function homeSectionHref(id: string, pathname = "/"): string {
+  return pathname === "/" ? `#${id}` : `/#${id}`;
 }

@@ -173,7 +173,12 @@ export function softwareApplicationNode({
 
 /** Wraps nodes in the @graph envelope ready for a <script type="application/ld+json">. */
 export function graph(...nodes: Node[]): string {
-  return JSON.stringify({ "@context": "https://schema.org", "@graph": nodes });
+  return JSON.stringify({ "@context": "https://schema.org", "@graph": nodes })
+    .replace(/</g, "\\u003c")
+    .replace(/>/g, "\\u003e")
+    .replace(/&/g, "\\u0026")
+    .replace(/\u2028/g, "\\u2028")
+    .replace(/\u2029/g, "\\u2029");
 }
 
 /** The nodes every page carries. */

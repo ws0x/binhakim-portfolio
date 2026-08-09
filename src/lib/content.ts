@@ -6,6 +6,8 @@ import credentialsJson from "../data/credentials.json";
 import skillsJson from "../data/skills.json";
 import stackJson from "../data/stack.json";
 import aboutJson from "../data/about.json";
+import workJson from "../data/work.json";
+import writingJson from "../data/writing.json";
 
 /**
  * Validated access to the JSON content files.
@@ -135,6 +137,33 @@ export const aboutSchema = z.object({
     .min(1),
 });
 
+export const workCaseStudySchema = z.object({
+  slug: nonEmpty.regex(/^[a-z0-9-]+$/),
+  name: nonEmpty,
+  tagline: nonEmpty,
+  category: nonEmpty,
+  summary: nonEmpty,
+  problem: nonEmpty,
+  constraints: z.array(nonEmpty).min(1),
+  decisions: z.array(nonEmpty).min(1),
+  implementation: z.array(nonEmpty).min(1),
+  outcome: nonEmpty,
+  tech: z.array(nonEmpty).min(1),
+  live: z.url().nullable(),
+  github: z.url().nullable(),
+  accent: nonEmpty.regex(/^#[0-9a-fA-F]{6}$/),
+  mockup: z.enum(["commit", "orbit", "nexflow"]),
+  verification: z.array(nonEmpty),
+});
+
+export const writingEntrySchema = z.object({
+  title: nonEmpty,
+  excerpt: nonEmpty,
+  url: z.url(),
+  date: nonEmpty,
+  readTime: nonEmpty,
+});
+
 /* ── Parsing ─────────────────────────────────────────────────────────── */
 
 function parse<T>(schema: z.ZodType<T>, data: unknown, file: string): T {
@@ -171,6 +200,16 @@ export const skills = parse(skillsSchema, skillsJson, "skills.json");
 export const stack = parse(stackSchema, stackJson, "stack.json");
 
 export const about = parse(aboutSchema, aboutJson, "about.json");
+export const workCaseStudies = parse(
+  z.array(workCaseStudySchema).min(1),
+  workJson,
+  "work.json"
+);
+export const writingEntries = parse(
+  z.array(writingEntrySchema).min(1),
+  writingJson,
+  "writing.json"
+);
 
 /* ── Types ───────────────────────────────────────────────────────────── */
 
@@ -180,3 +219,5 @@ export type Credentials = z.infer<typeof credentialsSchema>;
 export type Skills = z.infer<typeof skillsSchema>;
 export type Stack = z.infer<typeof stackSchema>;
 export type About = z.infer<typeof aboutSchema>;
+export type WorkCaseStudy = z.infer<typeof workCaseStudySchema>;
+export type WritingEntry = z.infer<typeof writingEntrySchema>;

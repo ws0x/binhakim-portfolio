@@ -4,6 +4,7 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import Navigation from "@/components/Navigation";
 import {
   SITE_URL,
   SITE_NAME,
@@ -165,6 +166,7 @@ export default function RootLayout({
         </noscript>
       </head>
       <body className="antialiased">
+        <Navigation />
         {children}
         <GoogleAnalytics />
         {/* Both packages were already dependencies but had never been mounted.

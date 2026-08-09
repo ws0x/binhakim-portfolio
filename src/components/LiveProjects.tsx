@@ -1,6 +1,7 @@
 "use client";
 
 import Reveal from "./ui/Reveal";
+import Link from "next/link";
 import { useState } from "react";
 import { ArrowUpRight, Globe } from "lucide-react";
 import { GithubIcon } from "./BrandIcons";
@@ -42,16 +43,18 @@ export default function LiveProjects() {
 
           {/* ── Section header ── */}
           <Reveal as="div" delay={0}
-            style={{ marginBottom: "3rem" }}
+            style={{ marginBottom: "3rem", display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: "1rem", flexWrap: "wrap" }}
           >
-            <p className="section-header">{"// 03. Live"}</p>
-            <h2 style={{ fontSize: "clamp(1.8rem, 4vw, 2.6rem)", fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.02em", marginBottom: "0.6rem" }}>
-              Shipped &amp; Deployed
-            </h2>
-            <p style={{ fontSize: "0.88rem", color: "var(--text-secondary)", maxWidth: "44rem", lineHeight: 1.7 }}>
-              Not prototypes. Not toy demos. Live, full-stack products running on real
-              infrastructure with auth, billing, persistence, and production deployments.
-            </p>
+            <div>
+              <p className="section-header">{"// 03. Live"}</p>
+              <h2 style={{ fontSize: "clamp(1.8rem, 4vw, 2.6rem)", fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.02em", marginBottom: "0.6rem" }}>
+                Shipped &amp; Deployed
+              </h2>
+              <p style={{ fontSize: "0.88rem", color: "var(--text-secondary)", maxWidth: "44rem", lineHeight: 1.7 }}>
+                Production products with authentication, persistence and deployed workflows.
+              </p>
+            </div>
+            <Link href="/work" className="github-btn">Read the case studies <ArrowUpRight size={13} /></Link>
           </Reveal>
 
           {/* ══════════════════════════════════════════════════════════════════

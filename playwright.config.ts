@@ -13,6 +13,7 @@ const launchOptions = executablePath ? { executablePath } : undefined;
 
 export default defineConfig({
   testDir: "./tests",
+  timeout: 60_000,
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,
@@ -31,7 +32,9 @@ export default defineConfig({
   webServer: {
     command: `npx next build && npx next start -p ${PORT}`,
     url: BASE_URL,
-    reuseExistingServer: !process.env.CI,
+    // Never reuse a local server: it may be serving a build from another
+    // branch and produce convincing but false test failures.
+    reuseExistingServer: false,
     timeout: 180_000,
   },
 
