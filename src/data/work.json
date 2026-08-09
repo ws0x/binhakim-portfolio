@@ -1,0 +1,113 @@
+[
+  {
+    "slug": "commit",
+    "name": "commit_",
+    "tagline": "Finish What You Started Learning",
+    "category": "SaaS · EdTech",
+    "summary": "A curriculum tracker that uses a git-inspired completion loop to help independent developers keep momentum and finish courses.",
+    "problem": "Independent learners can collect courses faster than they complete them. The product needed to make the next useful action obvious without turning progress tracking into another administrative task.",
+    "constraints": [
+      "Keep the learning metaphor consistent across sessions, streaks, progress and milestones.",
+      "Support SQLite locally and PostgreSQL in production without maintaining separate domain models.",
+      "Make progress useful at a glance on desktop and mobile."
+    ],
+    "decisions": [
+      "Model study sessions as commits and course completion as merging to main.",
+      "Center the interface on a repeatable loop: log, continue, review what is next and celebrate completion.",
+      "Use pacing and ETA feedback as guidance rather than punitive streak messaging."
+    ],
+    "implementation": [
+      "Built the application with Next.js, TypeScript, Prisma and an interchangeable SQLite/PostgreSQL database setup.",
+      "Added roadmap, contribution graph, streak, XP, badge and email-digest surfaces around the same progress model.",
+      "Kept the dashboard, roadmap and streak views responsive and keyboard reachable."
+    ],
+    "outcome": "The product is deployed publicly with the complete tracking loop available end to end.",
+    "tech": ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "SQLite", "Resend"],
+    "live": "https://commit.binhakim.dev/",
+    "github": null,
+    "accent": "#10b981",
+    "mockup": "commit",
+    "verification": ["Confirm whether public usage or completion metrics can be published."],
+    "ownership": ["Product scope, data model, application code, interface, deployment and post-launch iteration."],
+    "architecture": "Next.js application with a shared domain model, Prisma data access and an environment switch between SQLite for local development and PostgreSQL in production.",
+    "technicalHighlights": ["A single progress model powers the roadmap, streak, XP, badge and email-digest surfaces.", "Pacing feedback is guidance rather than punitive streak messaging."],
+    "verifiedOutcomes": ["The product is publicly deployed with the tracking loop available end to end."],
+    "audienceRelevance": ["recruiter", "client", "founder"],
+    "screenshots": [],
+    "lastVerified": "2026-08-09"
+  },
+  {
+    "slug": "orbit",
+    "name": "Orbit",
+    "tagline": "Professional Relationship OS",
+    "category": "Full-Stack SaaS",
+    "summary": "A relationship-management product that combines structured contacts, a visual graph, reminders and semantic search.",
+    "problem": "Professional context is scattered across contact lists, notes and memory. Orbit brings relationship history, follow-ups and discovery into one queryable system.",
+    "constraints": [
+      "Keep tenant data isolated at the database layer.",
+      "Support English and Arabic interfaces.",
+      "Combine graph exploration and semantic search without hiding ordinary contact workflows."
+    ],
+    "decisions": [
+      "Use row-level security as the multi-tenant boundary instead of relying only on application filters.",
+      "Represent relationships with a D3 force-directed graph alongside conventional person records.",
+      "Use AI for semantic retrieval while retaining structured search and filters."
+    ],
+    "implementation": [
+      "Implemented Google and LinkedIn OAuth, Stripe billing and Supabase persistence.",
+      "Added Gemini-powered semantic search, push reminders and bilingual interface support.",
+      "Deployed the web application on Vercel."
+    ],
+    "outcome": "Orbit is deployed as a public product with authentication, persistence, search and billing flows.",
+    "tech": ["Next.js", "TypeScript", "Supabase", "PostgreSQL", "D3", "Gemini", "Stripe", "Vercel"],
+    "live": "https://byorbit.io",
+    "github": null,
+    "accent": "#00d9ff",
+    "mockup": "orbit",
+    "verification": ["Confirm whether customer, revenue or relationship-volume metrics can be published."],
+    "ownership": ["Product scope, multi-tenant data model, authentication, search, billing, interface, deployment and launch operations."],
+    "architecture": "Next.js application backed by Supabase PostgreSQL, with row-level security as the tenant boundary, structured contact workflows, semantic retrieval and a D3 relationship graph.",
+    "technicalHighlights": ["Tenant isolation is enforced at the database layer rather than relying only on application filters.", "Semantic search complements, rather than replaces, structured contact search."],
+    "verifiedOutcomes": ["The product is deployed publicly with authentication, persistence, search and billing flows."],
+    "audienceRelevance": ["recruiter", "client", "founder"],
+    "screenshots": [],
+    "lastVerified": "2026-08-09"
+  },
+  {
+    "slug": "nexflow",
+    "name": "NexFlow",
+    "tagline": "Intelligent Lead Pipeline Management",
+    "category": "Internal Platform · B2B",
+    "summary": "An internal lead-management platform built to replace spreadsheet coordination with controlled workflows and an auditable record.",
+    "problem": "Spreadsheet-based lead tracking made ownership, permissions and change history difficult to enforce across business teams.",
+    "constraints": [
+      "Enforce field visibility on the server rather than merely hiding fields in the interface.",
+      "Generate conflict-free request codes under concurrent writes.",
+      "Support voice input and operational handoffs used by Arabic-speaking teams."
+    ],
+    "decisions": [
+      "Strip restricted fields before responses reach unauthorized clients.",
+      "Generate request codes atomically in the persistence layer.",
+      "Record field-level before-and-after values for accountability."
+    ],
+    "implementation": [
+      "Built role-based access control, audit history and real-time lead handoff surfaces.",
+      "Added Whisper transcription for Egyptian Arabic voice notes.",
+      "Integrated WhatsApp handoff cards into the lead workflow."
+    ],
+    "outcome": "The deployed platform provides a structured alternative to the previous spreadsheet workflow.",
+    "tech": ["Next.js", "TypeScript", "PostgreSQL", "RBAC", "Whisper", "Audit Logging"],
+    "live": null,
+    "github": "https://github.com/ws0x/nexflow",
+    "accent": "#06b6d4",
+    "mockup": "nexflow",
+    "verification": ["Confirm the number of business entities and lead records before publishing those metrics."],
+    "ownership": ["Workflow design, server-side authorization, persistence rules, audit history and operational handoff surfaces."],
+    "architecture": "Internal B2B platform with server-enforced field visibility, atomic request-code generation, audit history and operational integrations.",
+    "technicalHighlights": ["Restricted fields are removed before unauthorized responses reach clients.", "Field-level before-and-after values make operational changes auditable."],
+    "verifiedOutcomes": ["The deployed platform provides a structured alternative to spreadsheet-based lead coordination."],
+    "audienceRelevance": ["recruiter", "client"],
+    "screenshots": [],
+    "lastVerified": "2026-08-09"
+  }
+]

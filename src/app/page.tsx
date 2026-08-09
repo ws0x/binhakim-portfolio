@@ -1,5 +1,6 @@
-import Navigation from "../components/Navigation";
 import Hero from "../components/Hero";
+import AudiencePaths from "../components/AudiencePaths";
+import HowIWork from "../components/HowIWork";
 import About from "../components/About";
 import Skills from "../components/Skills";
 import LiveProjects from "../components/LiveProjects";
@@ -15,9 +16,10 @@ import Contact from "../components/Contact";
 export default function Home() {
   return (
     <>
-      <Navigation />
       <main>
         <Hero />
+        <AudiencePaths />
+        <HowIWork />
         <About />
         <Skills />
         <LiveProjects />

@@ -1,40 +1,20 @@
-"use client";
-
-import { useRef } from "react";
-import { motion, useInView, type Variants } from "framer-motion";
+import Reveal from "./ui/Reveal";
 import { Trophy } from "lucide-react";
-import credentials from "../data/credentials.json";
+import { credentials } from "../lib/content";
 
 const { honours } = credentials;
 
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.45, delay: i * 0.08, ease: "easeOut" as const },
-  }),
-};
-
 export default function Achievements() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
-
   return (
     <section
       id="achievements"
-      ref={ref}
       className="section-pad"
       style={{ maxWidth: "72rem", margin: "0 auto" }}
     >
-      <motion.div
-        custom={0}
-        variants={fadeUp}
-        initial="hidden"
-        animate={inView ? "visible" : "hidden"}
+      <Reveal as="div" delay={0}
         style={{ marginBottom: "3rem" }}
       >
-        <p className="section-header">// 08. Achievements</p>
+        <p className="section-header">{"// 08. Achievements"}</p>
         <h2
           style={{
             fontSize: "clamp(1.8rem, 4vw, 2.6rem)",
@@ -45,16 +25,12 @@ export default function Achievements() {
         >
           Honours
         </h2>
-      </motion.div>
+      </Reveal>
 
       <div className="honour-grid">
         {honours.map((h, i) => (
-          <motion.div
+          <Reveal as="div" delay={i + 1}
             key={h.title + h.year}
-            custom={i + 1}
-            variants={fadeUp}
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
             className="panel glow-border-hover"
             style={{
               padding: "1.4rem 1.5rem",
@@ -92,7 +68,7 @@ export default function Achievements() {
                 <span style={{ color: "var(--cyan)", opacity: 0.85 }}>{h.year}</span>
               </div>
             </div>
-          </motion.div>
+          </Reveal>
         ))}
       </div>
     </section>
