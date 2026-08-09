@@ -6,9 +6,6 @@ import LiveProjects from "../components/LiveProjects";
 import Experience from "../components/Experience";
 import Projects from "../components/Projects";
 import Education from "../components/Education";
-import Certifications from "../components/Certifications";
-import Achievements from "../components/Achievements";
-import Languages from "../components/Languages";
 import Blog from "../components/Blog";
 import Contact from "../components/Contact";
 
@@ -24,9 +21,6 @@ export default function Home() {
         <Experience />
         <Projects />
         <Education />
-        <Certifications />
-        <Achievements />
-        <Languages />
         <Blog />
         <Contact />
       </main>
