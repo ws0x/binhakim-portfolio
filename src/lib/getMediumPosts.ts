@@ -83,6 +83,7 @@ export async function getMediumPosts(limit = 6): Promise<MediumPost[]> {
         Accept: "application/rss+xml, application/xml, text/xml",
       },
       next: { revalidate: 3600 }, // re-fetch at most once per hour
+      signal: AbortSignal.timeout(5000),
     });
 
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
