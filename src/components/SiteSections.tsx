@@ -2,10 +2,8 @@ import { ArrowUpRight, Download, Mail, MapPin } from "lucide-react";
 import Image from "next/image";
 import experienceData from "@/data/experience.json";
 import credentials from "@/data/credentials.json";
-import skillsData from "@/data/skills.json";
 import projectsData from "@/data/projects.json";
 import type { MediumPost } from "@/lib/getMediumPosts";
-import { getFeaturedProjects } from "@/content/projects";
 import { GithubIcon, LinkedinIcon } from "@/components/BrandIcons";
 
 export function HeroSection() {
@@ -16,9 +14,12 @@ export function HeroSection() {
         <div className="hero-copy">
           <div className="hero-kicker"><span className="hero-pulse" /> Available for backend and full-stack roles</div>
           <p className="hero-command">$ whoami / systems-minded product engineer</p>
-          <h1>Yusuf Naeem<br /><span>Abd El-Hakim</span></h1>
+          <h1>
+            <span className="hero-name-primary">Yusuf Naeem</span>
+            <span className="hero-name-secondary">Abd El-Hakim</span>
+          </h1>
           <p className="hero-role">Backend-leaning full-stack software engineer</p>
-          <p className="hero-summary">I build production systems end to end: APIs, relational data models, security boundaries, and useful product surfaces. My strongest work turns messy operational problems into software people can rely on.</p>
+          <p className="hero-summary">I build production systems end to end, from APIs and data models to security boundaries and useful product surfaces. My strongest work turns messy operations into dependable software.</p>
           <div className="hero-actions">
             <a href="#work" className="button button-primary button-large">Explore selected work <ArrowUpRight size={16} /></a>
             <a href="/resume.pdf" download="Yusuf_Naeem_Resume.pdf" className="button button-secondary button-large" data-analytics="resume-download"><Download size={15} /> Download resume</a>
@@ -40,14 +41,13 @@ export function HeroSection() {
 }
 
 export function EvidenceStrip() {
-  const projects = getFeaturedProjects();
   return (
     <section className="evidence-strip" aria-label="Selected evidence">
       <div className="section-shell evidence-grid">
-        <div><span className="evidence-value">{projects.length}</span><span className="evidence-label">flagship case studies</span></div>
-        <div><span className="evidence-value">4</span><span className="evidence-label">business entities unified</span></div>
-        <div><span className="evidence-value">local</span><span className="evidence-label">privacy-first systems</span></div>
-        <div><span className="evidence-value">server</span><span className="evidence-label">security boundaries</span></div>
+        <div><span className="evidence-value">4 entities</span><span className="evidence-label">unified in NexFlow</span></div>
+        <div><span className="evidence-value">API-level</span><span className="evidence-label">field filtering</span></div>
+        <div><span className="evidence-value">Crash-safe</span><span className="evidence-label">local queue design</span></div>
+        <div><span className="evidence-value">RLS</span><span className="evidence-label">tenant isolation</span></div>
       </div>
     </section>
   );
@@ -70,8 +70,8 @@ export function ExperienceSection() {
               <p className="experience-company">{experience.company}</p>
               <h3>{experience.title}</h3>
               <p className="experience-description">{experience.description}</p>
-              <ul>{experience.bullets.slice(0, 5).map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>
-              <div className="stack-list">{experience.tech.slice(0, 8).map((technology) => <span key={technology}>{technology}</span>)}</div>
+              <ul>{experience.bullets.slice(0, 3).map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>
+              <div className="stack-list">{experience.tech.slice(0, 6).map((technology) => <span key={technology}>{technology}</span>)}</div>
             </div>
           </article>
         ))}
@@ -92,10 +92,11 @@ const CAPABILITIES = [
 
 export function CapabilitiesSection() {
   return (
-    <section id="capabilities" className="section-shell section-block section-tinted capabilities-section">
-      <div className="section-heading"><div><p className="section-label">03 / capabilities</p><h2>How I think about engineering</h2></div><p className="section-intro">Tools change. These are the problem spaces I can take responsibility for.</p></div>
-      <div className="capability-grid">{CAPABILITIES.map((capability) => <article className="capability-card" key={capability.number}><span>{capability.number}</span><h3>{capability.title}</h3><p>{capability.detail}</p></article>)}</div>
-      <div className="stack-manifest"><span className="manifest-label">Current working stack</span><p>{skillsData.categories.flatMap((category) => category.skills).join(" · ")}</p></div>
+    <section id="capabilities" className="section-block section-tinted capabilities-section">
+      <div className="section-shell">
+        <div className="section-heading"><div><p className="section-label">03 / capabilities</p><h2>How I think about engineering</h2></div><p className="section-intro">Tools change. These are the problem spaces I can take responsibility for.</p></div>
+        <div className="capability-grid">{CAPABILITIES.map((capability) => <article className="capability-card" key={capability.number}><span>{capability.number}</span><h3>{capability.title}</h3><p>{capability.detail}</p></article>)}</div>
+      </div>
     </section>
   );
 }
@@ -104,16 +105,18 @@ export function MoreWorkSection() {
   return (
     <section id="more-work" className="section-shell section-block archive-section">
       <div className="section-heading"><div><p className="section-label">04 / more work</p><h2>Smaller projects, different muscles</h2></div><p className="section-intro">The flagship case studies show depth. This archive shows range without competing for attention.</p></div>
-      <div className="archive-list">{projectsData.map((project, index) => <article className="archive-item" key={project.id}><span className="archive-number">0{index + 1}</span><div><p className="archive-category">{project.category}</p><h3>{project.title}</h3><p>{project.description}</p><div className="stack-list">{project.tech.slice(0, 6).map((technology) => <span key={technology}>{technology}</span>)}</div></div><div className="archive-links">{project.live && <a href={project.live} target="_blank" rel="noopener noreferrer" data-analytics="project-outbound">Live <ArrowUpRight size={14} /></a>}{project.github && <a href={project.github} target="_blank" rel="noopener noreferrer" data-analytics="repository-click">Source <GithubIcon size={14} /></a>}</div></article>)}</div>
+      <div className="archive-list">{projectsData.map((project, index) => <article className="archive-item" key={project.id}><span className="archive-number">0{index + 1}</span><div><p className="archive-category">{project.category}</p><h3>{project.title}</h3><p className="archive-tagline">{project.tagline}</p><p>{project.description}</p><div className="stack-list">{project.tech.slice(0, 5).map((technology) => <span key={technology}>{technology}</span>)}</div></div><div className="archive-links">{project.live && <a href={project.live} target="_blank" rel="noopener noreferrer" data-analytics="project-outbound">Live <ArrowUpRight size={14} /></a>}{project.github && <a href={project.github} target="_blank" rel="noopener noreferrer" data-analytics="repository-click">Source <GithubIcon size={14} /></a>}</div></article>)}</div>
     </section>
   );
 }
 
 export function WritingSection({ posts }: { posts: MediumPost[] }) {
   return (
-    <section id="writing" className="section-shell section-block section-tinted writing-section">
-      <div className="section-heading"><div><p className="section-label">05 / writing</p><h2>Technical notes with a point of view</h2></div><a className="text-link" href="https://medium.com/@binhakim" target="_blank" rel="noopener noreferrer" data-analytics="writing-click">All articles <ArrowUpRight size={14} /></a></div>
-      <div className="writing-grid">{posts.slice(0, 3).map((post) => <a className="writing-card" href={post.url} target="_blank" rel="noopener noreferrer" key={post.url} data-analytics="writing-click"><div className="writing-meta"><span>{post.date}</span><span>{post.readTime}</span></div><h3>{post.title}</h3><p>{post.excerpt}</p><span className="text-link">Read on Medium <ArrowUpRight size={13} /></span></a>)}</div>
+    <section id="writing" className="section-block section-tinted writing-section">
+      <div className="section-shell">
+        <div className="section-heading"><div><p className="section-label">05 / writing</p><h2>Technical notes with a point of view</h2></div><a className="text-link" href="https://medium.com/@binhakim" target="_blank" rel="noopener noreferrer" data-analytics="writing-click">All articles <ArrowUpRight size={14} /></a></div>
+        <div className="writing-grid">{posts.slice(0, 3).map((post) => <a className="writing-card" href={post.url} target="_blank" rel="noopener noreferrer" key={post.url} data-analytics="writing-click"><div className="writing-meta"><span>{post.date}</span><span>{post.readTime}</span></div><h3>{post.title}</h3><p>{post.excerpt}</p><span className="text-link">Read on Medium <ArrowUpRight size={13} /></span></a>)}</div>
+      </div>
     </section>
   );
 }

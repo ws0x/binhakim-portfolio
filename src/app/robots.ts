@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/"],
       },
     ],
-    sitemap: "https://binhakim.dev/sitemap.xml",
-    host: "https://binhakim.dev",
+    sitemap: "https://www.binhakim.dev/sitemap.xml",
+    host: "https://www.binhakim.dev",
   };
 }

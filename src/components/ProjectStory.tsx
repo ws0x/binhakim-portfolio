@@ -16,14 +16,14 @@ function StatusPill({ project }: { project: ProjectCaseStudy }) {
 function ProjectVisual({ project, detail = false }: { project: ProjectCaseStudy; detail?: boolean }) {
   return (
     <figure className={`project-visual visual-${project.accent} ${detail ? "project-visual-detail" : ""}`}>
-      <div className="visual-toolbar">
+      <div className="visual-toolbar" aria-hidden="true">
         <span className="toolbar-dots" aria-hidden="true"><i /><i /><i /></span>
         <span className="toolbar-path">{project.slug}.system</span>
-        <span className="toolbar-state">{project.media.kind === "diagram" ? "illustrative diagram" : "sanitized system view"}</span>
+        <span className="toolbar-state">{project.media.kind === "diagram" ? "illustrative system diagram" : "conceptual product view"}</span>
       </div>
 
       {project.slug === "nexflow" && (
-        <div className="visual-body visual-nexflow">
+        <div className="visual-body visual-nexflow" aria-hidden="true">
           <div className="visual-heading"><span>security.pipeline</span><b>request trace</b></div>
           <div className="security-flow">
             {["Session", "Role", "BU scope", "Dept scope", "Field filter"].map((step, index) => (
@@ -39,7 +39,7 @@ function ProjectVisual({ project, detail = false }: { project: ProjectCaseStudy;
       )}
 
       {project.slug === "videx" && (
-        <div className="visual-body visual-videx">
+        <div className="visual-body visual-videx" aria-hidden="true">
           <div className="visual-heading"><span>videx app</span><b>local queue</b></div>
           <div className="videx-layout">
             <div className="videx-sidebar"><span className="active">Queue</span><span>History</span><span>Settings</span></div>
@@ -53,7 +53,7 @@ function ProjectVisual({ project, detail = false }: { project: ProjectCaseStudy;
       )}
 
       {project.slug === "orbit" && (
-        <div className="visual-body visual-orbit">
+        <div className="visual-body visual-orbit" aria-hidden="true">
           <div className="visual-heading"><span>relationship.os</span><b>private graph</b></div>
           <div className="orbit-graph" aria-hidden="true">
             <span className="orbit-line line-a" /><span className="orbit-line line-b" /><span className="orbit-line line-c" />
@@ -64,7 +64,7 @@ function ProjectVisual({ project, detail = false }: { project: ProjectCaseStudy;
       )}
 
       {project.slug === "commit" && (
-        <div className="visual-body visual-commit">
+        <div className="visual-body visual-commit" aria-hidden="true">
           <div className="visual-heading"><span>commit_ roadmap</span><b>next action</b></div>
           <div className="roadmap">
             <div className="roadmap-line" />
@@ -83,12 +83,16 @@ function ProjectVisual({ project, detail = false }: { project: ProjectCaseStudy;
   );
 }
 
-function ProjectLinks({ project }: { project: ProjectCaseStudy }) {
+function ProjectLinks({ project, includeCaseStudy = true }: { project: ProjectCaseStudy; includeCaseStudy?: boolean }) {
+  if (!includeCaseStudy && !project.links.live && !project.links.source && !project.links.docs) return null;
+
   return (
     <div className="project-actions">
-      <Link href={`/work/${project.slug}`} className="button button-primary" data-analytics="case-study-open">
-        Read case study <ArrowUpRight size={15} />
-      </Link>
+      {includeCaseStudy && (
+        <Link href={`/work/${project.slug}`} className="button button-primary" data-analytics="case-study-open">
+          Read case study <ArrowUpRight size={15} />
+        </Link>
+      )}
       {project.links.live && (
         <a className="button button-secondary" href={project.links.live} target="_blank" rel="noopener noreferrer" data-analytics="project-outbound">
           Visit product <ExternalLink size={14} />
@@ -97,6 +101,11 @@ function ProjectLinks({ project }: { project: ProjectCaseStudy }) {
       {project.links.source && (
         <a className="button button-quiet" href={project.links.source} target="_blank" rel="noopener noreferrer" data-analytics="repository-click">
           Source <GithubIcon size={14} />
+        </a>
+      )}
+      {project.links.docs && (
+        <a className="button button-quiet" href={project.links.docs} target="_blank" rel="noopener noreferrer">
+          Documentation <ArrowUpRight size={14} />
         </a>
       )}
     </div>
@@ -113,6 +122,7 @@ export function ProjectStory({ project, index }: { project: ProjectCaseStudy; in
         <p className="story-category">{project.category}</p>
         <p className="story-summary">{project.summary}</p>
 
+        <p className="story-proof-label">Verified signals</p>
         <div className="story-outcomes">
           {project.outcomes.map((outcome) => (
             <div key={outcome.value} className="outcome-item">
@@ -122,10 +132,10 @@ export function ProjectStory({ project, index }: { project: ProjectCaseStudy; in
           ))}
         </div>
 
-        <ProjectDetailPanel project={project} />
         <ProjectLinks project={project} />
       </div>
       <ProjectVisual project={project} />
+      <ProjectDetailPanel project={project} />
     </article>
   );
 }
@@ -143,7 +153,7 @@ export function CaseStudyHero({ project }: { project: ProjectCaseStudy }) {
           <div><span>Timeline</span><strong>{project.timeline}</strong></div>
           <div><span>Verified</span><strong>{project.verifiedAt}</strong></div>
         </div>
-        <ProjectLinks project={project} />
+        <ProjectLinks project={project} includeCaseStudy={false} />
       </div>
       <ProjectVisual project={project} detail />
     </header>

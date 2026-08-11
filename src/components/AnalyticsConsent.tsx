@@ -32,6 +32,15 @@ function setConsent(value: Exclude<Consent, "unknown">) {
   window.dispatchEvent(new Event(EVENT_NAME));
 }
 
+function closePreferences() {
+  window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}`);
+}
+
+function setPreference(value: Exclude<Consent, "unknown">) {
+  setConsent(value);
+  closePreferences();
+}
+
 export default function AnalyticsConsent() {
   const consent = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   const enabled = consent === "accepted" && Boolean(GA_ID);
@@ -53,7 +62,7 @@ export default function AnalyticsConsent() {
           <div className="consent-actions"><button type="button" className="consent-accept" onClick={() => setConsent("accepted")}>Allow analytics</button><button type="button" className="consent-decline" onClick={() => setConsent("declined")}>No thanks</button></div>
         </aside>
       )}
-      <div id="analytics-preferences" className="analytics-preferences"><button type="button" onClick={() => setConsent("accepted")}>Allow analytics</button><button type="button" onClick={() => setConsent("declined")}>Disable analytics</button></div>
+      <div id="analytics-preferences" className="analytics-preferences" aria-label="Change analytics preferences"><button type="button" onClick={() => setPreference("accepted")}>Allow analytics</button><button type="button" onClick={() => setPreference("declined")}>Disable analytics</button><button type="button" onClick={closePreferences}>Close</button></div>
     </>
   );
 }

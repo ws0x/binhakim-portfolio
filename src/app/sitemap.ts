@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getFeaturedProjects } from "@/content/projects";
 
-const BASE = "https://binhakim.dev";
+const BASE = "https://www.binhakim.dev";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

@@ -11,6 +11,9 @@
     "check": "npm run typecheck && npm run lint && npm run build",
     "validate": "node scripts/validate-content.mjs",
     "test": "node --test",
+    "test:e2e": "playwright test",
+    "test:e2e:mobile": "playwright test --project=mobile",
+    "quality:lighthouse": "node scripts/run-lighthouse.mjs",
     "test:routes": "node scripts/verify-routes.mjs",
     "test:accessibility": "node scripts/check-accessibility.mjs",
     "check:links": "node scripts/check-links.mjs"
@@ -23,12 +26,16 @@
     "react-dom": "^19.2.8"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.12.1",
+    "@playwright/test": "^1.62.1",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "chrome-launcher": "^1.2.1",
     "eslint": "^9",
     "eslint-config-next": "^16.3.0",
+    "lighthouse": "^13.4.1",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

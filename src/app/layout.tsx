@@ -1,13 +1,14 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, JetBrains_Mono } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Navigation from "@/components/Navigation";
 import "./globals.css";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"], display: "swap" });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"], display: "swap" });
+const jetBrainsMono = JetBrains_Mono({ variable: "--font-jet", subsets: ["latin"], display: "swap" });
 
-const SITE_URL = "https://binhakim.dev";
+const SITE_URL = "https://www.binhakim.dev";
 const FULL_NAME = "Yusuf Naeem Abd El-Hakim";
 const TITLE = "Yusuf Naeem | Backend-leaning Full-Stack Software Engineer";
 const DESCRIPTION = "Yusuf Naeem Abd El-Hakim builds production systems end to end: APIs, relational data models, security boundaries, and useful product surfaces.";
@@ -40,7 +41,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${jetBrainsMono.variable}`}>
       <head><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} /></head>
       <body><a className="skip-link" href="#main-content">Skip to content</a><Navigation />{children}<SpeedInsights /></body>
     </html>
