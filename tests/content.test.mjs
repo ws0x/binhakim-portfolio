@@ -7,9 +7,12 @@ const root = new URL("..", import.meta.url);
 const content = readFileSync(new URL("src/content/projects.ts", root), "utf8");
 
 test("flagship projects keep the agreed order", () => {
-  const expected = ["nexflow", "videx", "orbit", "commit"];
-  const actual = [...content.matchAll(/slug: "([^"]+)"/g)].map((match) => match[1]);
-  assert.deepEqual(actual, expected);
+  const expected = ["commit", "videx", "orbit", "nexflow"];
+  const ranked = [...content.matchAll(/slug: "([^"]+)"[\s\S]*?featuredOrder: (\d)/g)]
+    .map((match) => ({ slug: match[1], order: Number(match[2]) }))
+    .sort((left, right) => left.order - right.order)
+    .map(({ slug }) => slug);
+  assert.deepEqual(ranked, expected);
 });
 
 test("content validation script passes", () => {

@@ -1,4 +1,3 @@
-import Navigation from "@/components/Navigation";
 import AnalyticsConsent from "@/components/AnalyticsConsent";
 import { ProjectStory } from "@/components/ProjectStory";
 import {
@@ -23,7 +22,6 @@ export default async function Home() {
 
   return (
     <>
-      <Navigation />
       <main id="main-content">
         <HeroSection />
         <EvidenceStrip />

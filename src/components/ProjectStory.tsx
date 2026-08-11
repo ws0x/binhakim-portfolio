@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowUpRight, ExternalLink, LockKeyhole } from "lucide-react";
 import type { ProjectCaseStudy } from "@/content/projects";
 import { GithubIcon } from "@/components/BrandIcons";
+import ProjectDetailPanel from "@/components/ProjectDetailPanel";
 
 function StatusPill({ project }: { project: ProjectCaseStudy }) {
   return (
@@ -121,18 +122,7 @@ export function ProjectStory({ project, index }: { project: ProjectCaseStudy; in
           ))}
         </div>
 
-        <div className="highlight-list">
-          {project.engineeringHighlights.map((highlight) => (
-            <div className="highlight-item" key={highlight.title}>
-              <span className="highlight-mark" aria-hidden="true">+</span>
-              <div><strong>{highlight.title}</strong><p>{highlight.detail}</p></div>
-            </div>
-          ))}
-        </div>
-
-        <div className="stack-list" aria-label={`${project.name} technology stack`}>
-          {project.stack.map((technology) => <span key={technology}>{technology}</span>)}
-        </div>
+        <ProjectDetailPanel project={project} />
         <ProjectLinks project={project} />
       </div>
       <ProjectVisual project={project} />
