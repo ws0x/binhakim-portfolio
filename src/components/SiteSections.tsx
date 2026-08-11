@@ -54,8 +54,6 @@ export function EvidenceStrip() {
 }
 
 export function ExperienceSection() {
-  const primary = experienceData.slice(0, 3);
-  const earlier = experienceData.slice(3);
   return (
     <section id="experience" className="section-shell section-block experience-section">
       <div className="section-heading">
@@ -63,20 +61,19 @@ export function ExperienceSection() {
         <p className="section-intro">The work spans internal platforms, security assessments, commerce, and API teams. The common thread is ownership from problem definition through production.</p>
       </div>
       <div className="experience-list">
-        {primary.map((experience) => (
-          <article className="experience-item" key={`${experience.company}-${experience.period}`}>
+        {experienceData.map((experience, index) => (
+          <article className={`experience-item ${index === 0 ? "experience-current" : "experience-earlier"}`} key={`${experience.company}-${experience.period}`}>
             <div className="experience-meta"><span>{experience.period}</span><span>{experience.location}</span></div>
             <div className="experience-content">
               <p className="experience-company">{experience.company}</p>
               <h3>{experience.title}</h3>
               <p className="experience-description">{experience.description}</p>
-              <ul>{experience.bullets.slice(0, 3).map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>
-              <div className="stack-list">{experience.tech.slice(0, 6).map((technology) => <span key={technology}>{technology}</span>)}</div>
+              <ul>{experience.bullets.slice(0, index === 0 ? 5 : 3).map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>
+              <div className="stack-list">{experience.tech.slice(0, index === 0 ? 6 : 5).map((technology) => <span key={technology}>{technology}</span>)}</div>
             </div>
           </article>
         ))}
       </div>
-      <details className="earlier-experience"><summary>Earlier work and foundations <span>+</span></summary><div className="earlier-grid">{earlier.map((experience) => <div key={`${experience.company}-${experience.period}`}><span>{experience.period}</span><strong>{experience.title}</strong><b>{experience.company}</b><p>{experience.description}</p></div>)}</div></details>
     </section>
   );
 }

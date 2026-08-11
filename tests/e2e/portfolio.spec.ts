@@ -50,3 +50,23 @@ test("compact navigation remains usable", async ({ page, viewport }) => {
   await toggle.click();
   await expect(page.locator("#mobile-navigation").getByRole("link", { name: "Work" })).toBeVisible();
 });
+
+test("experience is one continuous timeline with an aligned rail", async ({ page }) => {
+  await page.goto("/#experience");
+  await expect(page.locator(".experience-item")).toHaveCount(6);
+  await expect(page.locator(".earlier-experience")).toHaveCount(0);
+
+  const alignment = await page.locator(".experience-list").evaluate((list) => {
+    const item = list.querySelector<HTMLElement>(".experience-item");
+    if (!item) throw new Error("Experience item not found");
+    const rail = getComputedStyle(list, "::before");
+    const dot = getComputedStyle(item, "::before");
+    const listRect = list.getBoundingClientRect();
+    const itemRect = item.getBoundingClientRect();
+    const railX = listRect.left + Number.parseFloat(rail.left);
+    const dotX = itemRect.left + Number.parseFloat(dot.left) + Number.parseFloat(dot.width) / 2;
+    return Math.abs(railX - dotX);
+  });
+
+  expect(alignment).toBeLessThan(1);
+});
