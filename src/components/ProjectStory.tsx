@@ -115,11 +115,13 @@ function ProjectLinks({ project, includeCaseStudy = true }: { project: ProjectCa
 export function ProjectStory({ project, index }: { project: ProjectCaseStudy; index: number }) {
   return (
     <article className={`project-story accent-${project.accent}`}>
+      <div className="story-status-corner">
+        <StatusPill project={project} />
+      </div>
       <div className="story-index">0{index}</div>
       <div className="story-copy">
         <div className="story-header">
           <span className="story-eyebrow">{project.eyebrow}</span>
-          <StatusPill project={project} />
         </div>
         <h3>{project.name}</h3>
         <p className="story-category">{project.category}</p>
@@ -157,7 +159,10 @@ export function CaseStudyHero({ project }: { project: ProjectCaseStudy }) {
     <header className={`case-hero accent-${project.accent}`}>
       <div className="case-hero-copy">
         <Link className="back-link" href="/#work">← Selected work</Link>
-        <div className="story-kicker"><span>{project.eyebrow}</span><StatusPill project={project} /></div>
+        <div className="story-header">
+          <span className="story-eyebrow">{project.eyebrow}</span>
+          <StatusPill project={project} />
+        </div>
         <h1>{project.name}</h1>
         <p className="case-summary">{project.summary}</p>
         <div className="case-facts">

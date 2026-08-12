@@ -147,6 +147,7 @@ button { font: inherit; }
 .story-summary { margin: 1.1rem 0 0; color: var(--muted); font-size: .98rem; line-height: 1.7; }
 
 /* Prominent Project Status Labels */
+.story-status-corner { position: absolute; top: 1.35rem; right: 1.35rem; z-index: 5; }
 .status-pill { display: inline-flex; align-items: center; gap: .45rem; padding: .32rem .75rem; border: 1px solid var(--line-strong); border-radius: 999px; font-family: var(--font-mono); font-size: .72rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; transition: all .2s ease; }
 .status-dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
 .status-public-live, .status-internal-production { border-color: rgba(52, 211, 153, 0.45); background: rgba(52, 211, 153, 0.12); color: #34d399; box-shadow: 0 0 14px rgba(52, 211, 153, 0.18); }
