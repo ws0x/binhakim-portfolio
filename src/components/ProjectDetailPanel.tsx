@@ -2,6 +2,7 @@
 
 import { type KeyboardEvent, useId, useRef, useState } from "react";
 import type { ProjectCaseStudy } from "@/content/projects";
+import { TechIcon } from "@/components/BrandIcons";
 
 type Panel = "decisions" | "proof" | "stack";
 
@@ -87,7 +88,17 @@ export default function ProjectDetailPanel({ project }: { project: ProjectCaseSt
         )}
 
         {panel === "stack" && (
-          <div className="detail-stack"><p>Selected implementation tools</p><div>{project.stack.map((technology) => <span key={technology}>{technology}</span>)}</div></div>
+          <div className="detail-stack">
+            <p>Selected implementation tools</p>
+            <div>
+              {project.stack.map((technology) => (
+                <span key={technology} className="tech-badge">
+                  <TechIcon name={technology} size={14} />
+                  <span>{technology}</span>
+                </span>
+              ))}
+            </div>
+          </div>
         )}
         </div>
       ))}

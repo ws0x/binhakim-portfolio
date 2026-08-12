@@ -5,6 +5,7 @@ import credentials from "@/data/credentials.json";
 import projectsData from "@/data/projects.json";
 import type { MediumPost } from "@/lib/getMediumPosts";
 import { GithubIcon, LinkedinIcon } from "@/components/BrandIcons";
+import { EngineeringRadarStrip } from "@/components/EngineeringRadarStrip";
 
 export function HeroSection() {
   return (
@@ -35,22 +36,12 @@ export function HeroSection() {
           <p className="portrait-caption"><span>01</span> systems-minded / people-first</p>
         </div>
       </div>
-      <div className="hero-scroll" aria-hidden="true"><span>Scroll to inspect the work</span><i /></div>
     </section>
   );
 }
 
 export function EvidenceStrip() {
-  return (
-    <section className="evidence-strip" aria-label="Selected evidence">
-      <div className="section-shell evidence-grid">
-        <div><span className="evidence-value">4 entities</span><span className="evidence-label">unified in NexFlow</span></div>
-        <div><span className="evidence-value">API-level</span><span className="evidence-label">field filtering</span></div>
-        <div><span className="evidence-value">Crash-safe</span><span className="evidence-label">local queue design</span></div>
-        <div><span className="evidence-value">RLS</span><span className="evidence-label">tenant isolation</span></div>
-      </div>
-    </section>
-  );
+  return <EngineeringRadarStrip />;
 }
 
 export function ExperienceSection() {
