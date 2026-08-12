@@ -4,7 +4,7 @@ import experienceData from "@/data/experience.json";
 import credentials from "@/data/credentials.json";
 import projectsData from "@/data/projects.json";
 import type { MediumPost } from "@/lib/getMediumPosts";
-import { GithubIcon, LinkedinIcon } from "@/components/BrandIcons";
+import { GithubIcon, LinkedinIcon, TechIcon } from "@/components/BrandIcons";
 import { EngineeringRadarStrip } from "@/components/EngineeringRadarStrip";
 
 export function HeroSection() {
@@ -60,7 +60,14 @@ export function ExperienceSection() {
               <h3>{experience.title}</h3>
               <p className="experience-description">{experience.description}</p>
               <ul>{experience.bullets.slice(0, index === 0 ? 5 : 3).map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>
-              <div className="stack-list">{experience.tech.slice(0, index === 0 ? 6 : 5).map((technology) => <span key={technology}>{technology}</span>)}</div>
+              <div className="experience-tech-list">
+                {experience.tech.map((technology) => (
+                  <span key={technology} className="experience-tech-badge">
+                    <TechIcon name={technology} size={13} />
+                    <span>{technology}</span>
+                  </span>
+                ))}
+              </div>
             </div>
           </article>
         ))}

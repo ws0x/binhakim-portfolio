@@ -240,9 +240,7 @@ button { font: inherit; }
 .experience-list { position: relative; }
 .experience-list::before { position: absolute; top: 3.05rem; bottom: 3.05rem; left: 1.25rem; width: 1px; background: linear-gradient(var(--blue), rgba(90,167,255,.12)); content: ""; opacity: .55; }
 .experience-item { position: relative; padding: 2.7rem 0 2.7rem 3.2rem; border-bottom-color: rgba(155,173,198,.12); }
-.experience-item::before { position: absolute; top: 3.05rem; left: .925rem; width: .65rem; height: .65rem; border: 2px solid var(--bg); border-radius: 50%; background: var(--blue); box-shadow: 0 0 0 5px rgba(90,167,255,.12); content: ""; }
-.experience-item:nth-child(2)::before { background: var(--purple); box-shadow: 0 0 0 5px rgba(181,155,255,.12); }
-.experience-item:nth-child(3)::before { background: var(--olive-gold); box-shadow: 0 0 0 5px rgba(182,182,76,.12); }
+.experience-item::before { position: absolute; top: 3.05rem; left: .925rem; width: .65rem; height: .65rem; border: 2px solid var(--bg); border-radius: 50%; background: var(--blue); box-shadow: 0 0 0 5px rgba(90,167,255,.2); content: ""; }
 .experience-content { padding: 1.25rem; border: 1px solid transparent; border-radius: 12px; transition: border-color .2s ease, background .2s ease; }
 .experience-item:hover .experience-content { border-color: var(--line); background: rgba(255,255,255,.018); }
 .experience-item { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 2rem; }
@@ -252,6 +250,10 @@ button { font: inherit; }
 .experience-content ul { display: grid; gap: .55rem; margin: 1.2rem 0 0; padding: 0; list-style: none; }
 .experience-content li { position: relative; padding-left: 1.1rem; color: var(--muted); font-size: .82rem; line-height: 1.58; }
 .experience-content li::before { position: absolute; top: .55rem; left: 0; width: 5px; height: 5px; border-radius: 50%; background: var(--cyan); content: ""; }
+.experience-tech-list { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: 1.25rem; }
+.experience-tech-badge { display: inline-flex; align-items: center; gap: .4rem; padding: .32rem .6rem; border: 1px solid var(--line-strong); border-radius: 6px; background: rgba(255,255,255,.025); color: var(--text); font-family: var(--font-mono); font-size: .68rem; font-weight: 500; transition: border-color .2s ease, background .2s ease, transform .2s ease; }
+.experience-tech-badge:hover { border-color: var(--blue); background: rgba(90,167,255,.12); transform: translateY(-1px); }
+.experience-tech-badge svg { color: var(--blue); flex-shrink: 0; }
 
 /* Capabilities Section */
 .capability-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; grid-auto-rows: minmax(180px, auto); }
