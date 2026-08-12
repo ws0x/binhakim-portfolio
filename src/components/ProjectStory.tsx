@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight, ExternalLink, LockKeyhole } from "lucide-react";
 import type { ProjectCaseStudy } from "@/content/projects";
-import { GithubIcon } from "@/components/BrandIcons";
+import { GithubIcon, TechIcon } from "@/components/BrandIcons";
 import ProjectDetailPanel from "@/components/ProjectDetailPanel";
 
 function StatusPill({ project }: { project: ProjectCaseStudy }) {
@@ -117,10 +117,22 @@ export function ProjectStory({ project, index }: { project: ProjectCaseStudy; in
     <article className={`project-story accent-${project.accent}`}>
       <div className="story-index">0{index}</div>
       <div className="story-copy">
-        <div className="story-kicker"><span>{project.eyebrow}</span><StatusPill project={project} /></div>
+        <div className="story-header">
+          <span className="story-eyebrow">{project.eyebrow}</span>
+          <StatusPill project={project} />
+        </div>
         <h3>{project.name}</h3>
         <p className="story-category">{project.category}</p>
         <p className="story-summary">{project.summary}</p>
+
+        <div className="story-stack-inline" aria-label={`${project.name} tech stack`}>
+          {project.stack.map((tech) => (
+            <span key={tech} className="tech-tag">
+              <TechIcon name={tech} size={13} />
+              <span>{tech}</span>
+            </span>
+          ))}
+        </div>
 
         <p className="story-proof-label">Verified signals</p>
         <div className="story-outcomes">
