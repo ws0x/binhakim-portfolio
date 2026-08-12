@@ -119,15 +119,71 @@ export function WritingSection({ posts }: { posts: MediumPost[] }) {
 export function BackgroundSection() {
   return (
     <section id="background" className="section-shell section-block background-section">
-      <div className="section-heading"><div><p className="section-label">06 / background</p><h2>The context behind the work</h2></div><p className="section-intro">A compact record of the foundations that inform how I build, communicate, and keep learning.</p></div>
+      <div className="section-heading">
+        <div><p className="section-label">06 / background</p><h2>The context behind the work</h2></div>
+        <p className="section-intro">A compact record of the foundations that inform how I build, communicate, and keep learning.</p>
+      </div>
       <div className="background-grid">
-        <article className="background-card background-education"><span className="card-label">Education</span><h3>{credentials.education.degree}</h3><p>{credentials.education.major} · {credentials.education.school}</p><span>{credentials.education.period} · {credentials.education.location}</span><p className="background-note">{credentials.education.graduate}</p></article>
-        <article className="background-card"><span className="card-label">Credentials</span><ul className="credential-list">{credentials.certifications.map((cert) => <li key={cert.name}><strong>{cert.name}</strong><span>{cert.issuer}{cert.year ? ` · ${cert.year}` : ""}</span></li>)}</ul></article>
-        <article className="background-card">
-          <span className="card-label">Signals & Languages</span>
-          <div className="signal-block">
-            <strong>{credentials.honours[0].title}</strong>
-            <span>{credentials.honours[0].detail} · {credentials.honours[0].year}</span>
+        <article className="background-card background-education">
+          <span className="card-label">Education & Foundation</span>
+          <h3>{credentials.education.degree}</h3>
+          <p className="education-school">{credentials.education.major} · {credentials.education.school}</p>
+          <span className="education-meta">{credentials.education.period} · {credentials.education.location}</span>
+          
+          <div className="education-stats-grid">
+            <div className="edu-stat-pill">
+              <span>Overall GPA</span>
+              <strong>{credentials.education.gpa}</strong>
+            </div>
+            <div className="edu-stat-pill">
+              <span>Final Term</span>
+              <strong>{credentials.education.finalSemesterGpa} / 4.00</strong>
+            </div>
+            <div className="edu-stat-pill stat-highlight">
+              <span>Grad Project</span>
+              <strong>Grade {credentials.education.gradProjectGrade}</strong>
+            </div>
+          </div>
+
+          <div className="education-activities">
+            <span className="activity-label">Communities & Peer Tutoring</span>
+            <div className="activity-tags">
+              {credentials.education.activities.map((act) => (
+                <span key={act} className="activity-tag">{act}</span>
+              ))}
+            </div>
+            <p className="education-tutoring">{credentials.education.volunteering}</p>
+          </div>
+        </article>
+
+        <article className="background-card background-credentials">
+          <span className="card-label">Verified Certifications & Training</span>
+          <div className="cert-card-list">
+            {credentials.certifications.map((cert) => (
+              <div className="cert-item-card" key={cert.name}>
+                <div className="cert-item-header">
+                  <strong>{cert.name}</strong>
+                  {cert.tag && <span className="cert-tag">{cert.tag}</span>}
+                </div>
+                <div className="cert-item-meta">
+                  <span className="cert-issuer">{cert.issuer}</span>
+                  {cert.year && <span className="cert-year">{cert.year}</span>}
+                </div>
+              </div>
+            ))}
+          </div>
+        </article>
+
+        <article className="background-card background-signals">
+          <span className="card-label">Signals & Spoken Languages</span>
+          <div className="honour-badge-card">
+            <div className="honour-header">
+              <span className="honour-trophy">🏆</span>
+              <div>
+                <strong>{credentials.honours[0].title}</strong>
+                <span>{credentials.honours[0].detail} ({credentials.honours[0].year})</span>
+              </div>
+            </div>
           </div>
 
           <div className="language-signals-group">
