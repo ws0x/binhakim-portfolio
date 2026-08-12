@@ -59,7 +59,7 @@ export function ExperienceSection() {
               <p className="experience-company">{experience.company}</p>
               <h3>{experience.title}</h3>
               <p className="experience-description">{experience.description}</p>
-              <ul>{experience.bullets.slice(0, index === 0 ? 5 : 3).map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>
+              <ul>{experience.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>
               <div className="experience-tech-list">
                 {experience.tech.map((technology) => (
                   <span key={technology} className="experience-tech-badge">
