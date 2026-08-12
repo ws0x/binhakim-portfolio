@@ -300,6 +300,25 @@ button { font: inherit; }
 .signal-block + .signal-block { margin-top: 1.4rem; }
 .signal-block strong { font-size: .8rem; }
 
+/* Creative & Representable Spoken Languages Showcase */
+.language-signals-group { display: flex; flex-direction: column; gap: .65rem; margin-top: 1.5rem; }
+.language-group-title { margin: 0 0 .2rem; color: var(--dim); font-family: var(--font-mono); font-size: .62rem; letter-spacing: .08em; text-transform: uppercase; }
+.language-item { display: flex; flex-direction: column; gap: .45rem; padding: .6rem .75rem; border: 1px solid var(--line); border-radius: 8px; background: rgba(255,255,255,.015); transition: border-color .2s ease, background .2s ease, transform .2s ease; }
+.language-item:hover { border-color: rgba(90,167,255,.35); background: rgba(90,167,255,.03); transform: translateY(-1px); }
+.lang-header { display: flex; align-items: center; justify-content: space-between; gap: .5rem; font-family: var(--font-mono); }
+.lang-flag-group { display: flex; align-items: center; gap: .5rem; }
+.lang-tag { display: inline-flex; align-items: center; justify-content: center; padding: .15rem .35rem; border: 1px solid var(--line-strong); border-radius: 4px; background: rgba(255,255,255,.04); color: var(--blue); font-size: .6rem; font-weight: 700; }
+.lang-name { color: var(--text); font-size: .78rem; font-weight: 600; }
+.lang-level-badge { font-size: .56rem; letter-spacing: .04em; text-transform: uppercase; padding: .18rem .45rem; border-radius: 999px; font-weight: 600; }
+.level-native { border: 1px solid rgba(52,211,153,.4); background: rgba(52,211,153,.12); color: #34d399; }
+.level-fluent { border: 1px solid rgba(90,167,255,.4); background: rgba(90,167,255,.12); color: #5aa7ff; }
+.level-working { border: 1px solid rgba(181,155,255,.4); background: rgba(181,155,255,.12); color: #b59bff; }
+.lang-bar-track { width: 100%; height: 4px; border-radius: 999px; background: rgba(255,255,255,.06); overflow: hidden; position: relative; }
+.lang-bar-fill { height: 100%; border-radius: 999px; }
+.fill-native { width: 100%; background: linear-gradient(90deg, #34d399, #67e8f9); }
+.fill-fluent { width: 85%; background: linear-gradient(90deg, #5aa7ff, #67e8f9); }
+.fill-working { width: 45%; background: linear-gradient(90deg, #b59bff, #5aa7ff); }
+
 /* Contact Section & Footer */
 .contact-section { padding-block: clamp(5rem, 10vw, 8rem); border-top: 1px solid var(--line); background: linear-gradient(135deg, #0b1722, #081019 60%, #0b111d); }
 .contact-inner { display: grid; grid-template-columns: 1fr auto; gap: 2rem 4rem; align-items: end; }

@@ -123,7 +123,55 @@ export function BackgroundSection() {
       <div className="background-grid">
         <article className="background-card background-education"><span className="card-label">Education</span><h3>{credentials.education.degree}</h3><p>{credentials.education.major} · {credentials.education.school}</p><span>{credentials.education.period} · {credentials.education.location}</span><p className="background-note">{credentials.education.graduate}</p></article>
         <article className="background-card"><span className="card-label">Credentials</span><ul className="credential-list">{credentials.certifications.map((cert) => <li key={cert.name}><strong>{cert.name}</strong><span>{cert.issuer}{cert.year ? ` · ${cert.year}` : ""}</span></li>)}</ul></article>
-        <article className="background-card"><span className="card-label">Signals</span><div className="signal-block"><strong>{credentials.honours[0].title}</strong><span>{credentials.honours[0].detail} · {credentials.honours[0].year}</span></div><div className="signal-block"><strong>Languages</strong><span>{credentials.languages.map((language) => `${language.name} (${language.level})`).join(" · ")}</span></div></article>
+        <article className="background-card">
+          <span className="card-label">Signals & Languages</span>
+          <div className="signal-block">
+            <strong>{credentials.honours[0].title}</strong>
+            <span>{credentials.honours[0].detail} · {credentials.honours[0].year}</span>
+          </div>
+
+          <div className="language-signals-group">
+            <p className="language-group-title">Languages & Mobility</p>
+            <div className="language-item">
+              <div className="lang-header">
+                <div className="lang-flag-group">
+                  <span className="lang-tag">AR</span>
+                  <span className="lang-name">Arabic</span>
+                </div>
+                <span className="lang-level-badge level-native">Native / Bilingual</span>
+              </div>
+              <div className="lang-bar-track">
+                <div className="lang-bar-fill fill-native" />
+              </div>
+            </div>
+
+            <div className="language-item">
+              <div className="lang-header">
+                <div className="lang-flag-group">
+                  <span className="lang-tag">EN</span>
+                  <span className="lang-name">English</span>
+                </div>
+                <span className="lang-level-badge level-fluent">Professional C1</span>
+              </div>
+              <div className="lang-bar-track">
+                <div className="lang-bar-fill fill-fluent" />
+              </div>
+            </div>
+
+            <div className="language-item">
+              <div className="lang-header">
+                <div className="lang-flag-group">
+                  <span className="lang-tag">DE</span>
+                  <span className="lang-name">German</span>
+                </div>
+                <span className="lang-level-badge level-working">Limited Working</span>
+              </div>
+              <div className="lang-bar-track">
+                <div className="lang-bar-fill fill-working" />
+              </div>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
   );
@@ -131,7 +179,7 @@ export function BackgroundSection() {
 
 export function ContactSection() {
   return (
-      <section id="contact" className="contact-section">
+    <section id="contact" className="contact-section">
       <div className="section-shell contact-inner"><div><p className="section-label">07 / contact</p><h2>Let’s build something dependable.</h2><p>I’m open to backend and full-stack engineering roles, infrastructure work, and collaborations involving systems design, APIs, data, or applied security.</p></div><div className="contact-actions"><a href="mailto:yusufnaeemhakim@gmail.com" className="button button-primary button-large" data-analytics="contact-click"><Mail size={15} /> Email me</a><a href="https://linkedin.com/in/binhakim" target="_blank" rel="noopener noreferrer" className="button button-secondary button-large" data-analytics="contact-click"><LinkedinIcon size={15} /> LinkedIn</a><a href="https://github.com/ws0x" target="_blank" rel="noopener noreferrer" className="button button-quiet button-large" data-analytics="contact-click"><GithubIcon size={15} /> GitHub</a></div><div className="contact-location"><MapPin size={14} /> Cairo, Egypt · open to remote collaboration</div></div>
     </section>
   );
