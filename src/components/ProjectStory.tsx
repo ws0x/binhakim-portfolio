@@ -13,13 +13,23 @@ function StatusPill({ project }: { project: ProjectCaseStudy }) {
   );
 }
 
+function EvidenceLabel({ level }: { level: ProjectCaseStudy["evidenceLevel"] }) {
+  const labels = {
+    public: "Public evidence",
+    sanitized: "Sanitized evidence",
+    "owner-verified": "Owner-verified evidence",
+  } as const;
+
+  return labels[level];
+}
+
 function ProjectVisual({ project, detail = false }: { project: ProjectCaseStudy; detail?: boolean }) {
   return (
     <figure className={`project-visual visual-${project.accent} ${detail ? "project-visual-detail" : ""}`}>
-      <div className="visual-toolbar" aria-hidden="true">
+      <div className="visual-toolbar">
         <span className="toolbar-dots" aria-hidden="true"><i /><i /><i /></span>
-        <span className="toolbar-path">{project.slug}.system</span>
-        <span className="toolbar-state">{project.media.kind === "diagram" ? "illustrative system diagram" : "conceptual product view"}</span>
+        <span className="toolbar-path">{project.slug}.architecture</span>
+        <span className="toolbar-state">Architecture lens, not a product screenshot</span>
       </div>
 
       {project.slug === "nexflow" && (
@@ -146,6 +156,8 @@ export function ProjectStory({ project, index }: { project: ProjectCaseStudy; in
           ))}
         </div>
 
+        <p className="story-decision"><span>First engineering decision</span>{project.engineeringHighlights[0]?.title}</p>
+
         <ProjectLinks project={project} />
       </div>
       <ProjectVisual project={project} />
@@ -158,14 +170,20 @@ export function CaseStudyHero({ project }: { project: ProjectCaseStudy }) {
   return (
     <header className={`case-hero accent-${project.accent}`}>
       <div className="case-hero-copy">
-        <Link className="back-link" href="/#work">← Selected work</Link>
+        <Link className="back-link" href="/work">← Binhakim Works</Link>
         <div className="story-header">
           <span className="story-eyebrow">{project.eyebrow}</span>
           <StatusPill project={project} />
         </div>
         <h1>{project.name}</h1>
         <p className="case-summary">{project.summary}</p>
-        <div className="story-stack-inline" style={{ marginTop: "1.2rem", marginBottom: "0.5rem" }} aria-label={`${project.name} tech stack`}>
+        <section className="case-proof-strip" aria-label={`${project.name} proof at a glance`}>
+          <div><span>Role</span><strong>{project.role}</strong></div>
+          <div><span>Key decision</span><strong>{project.engineeringHighlights[0]?.title}</strong></div>
+          <div><span>Evidence</span><strong><EvidenceLabel level={project.evidenceLevel} /></strong></div>
+        </section>
+        <p className="case-verified">Last reviewed <time dateTime={project.verifiedAt}>{project.verifiedAt}</time> · {project.timeline}</p>
+        <div className="story-stack-inline case-stack" aria-label={`${project.name} tech stack`}>
           {project.stack.map((tech) => (
             <span key={tech} className="tech-tag">
               <TechIcon name={tech} size={13} />
@@ -173,12 +191,10 @@ export function CaseStudyHero({ project }: { project: ProjectCaseStudy }) {
             </span>
           ))}
         </div>
-        <div className="case-facts">
-          <div><span>Role</span><strong>{project.role}</strong></div>
-          <div><span>Timeline</span><strong>{project.timeline}</strong></div>
-          <div><span>Verified</span><strong>{project.verifiedAt}</strong></div>
-        </div>
         <ProjectLinks project={project} includeCaseStudy={false} />
+        {!project.links.live && !project.links.source && !project.links.docs && (
+          <p className="case-availability">No public demo or repository is linked while this product is rebuilding.</p>
+        )}
       </div>
       <ProjectVisual project={project} detail />
     </header>

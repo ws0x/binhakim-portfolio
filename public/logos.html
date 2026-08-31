@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Binhakim Brand Logo System: Dev-Brutalist & Master Suite</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800;900&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+    .logo-card { transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); }
+    .logo-card:hover { transform: translateY(-4px); }
+  </style>
+</head>
+<body class="bg-[#05080f] text-slate-100 antialiased p-4 sm:p-8 min-h-screen">
+  <div class="max-w-7xl mx-auto space-y-12">
+    
+    <!-- Top Header -->
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-slate-800">
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="inline-block w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse"></span>
+          <span class="mono text-xs font-semibold text-cyan-400 uppercase tracking-widest">Brand Evolution · Dev-Brutalist Master Suite</span>
+        </div>
+        <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white mt-1.5">
+          Binhakim Brand Logo Master Suite
+        </h1>
+        <p class="text-sm text-slate-400 mt-1 max-w-3xl">
+          Featuring 3 new <strong>Dev-Style Brutalist Monoliths</strong> with command prompts, hex memory registers, and git graphs, alongside all colorways and hybrid archetypes.
+        </p>
+      </div>
+
+      <!-- Live Background Simulation Toggle -->
+      <div class="flex items-center gap-2 bg-slate-900/90 p-2 rounded-xl border border-slate-800 self-start md:self-auto backdrop-blur-md">
+        <span class="mono text-[11px] text-slate-400 px-2 font-medium">BG SIMULATION:</span>
+        <button onclick="setTheme('dark')" id="btn-dark" class="px-3 py-1.5 text-xs mono rounded-lg bg-cyan-500/20 text-cyan-300 font-semibold border border-cyan-500/30 transition-all">#070b13 (Dark Site)</button>
+        <button onclick="setTheme('light')" id="btn-light" class="px-3 py-1.5 text-xs mono rounded-lg text-slate-400 hover:text-white transition-all">Light Mode Tab</button>
+      </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- FEATURED: 3 NEW DEV-STYLE BRUTALIST MONOLITHS -->
+    <!-- ========================================================================= -->
+    <section>
+      <div class="flex items-center justify-between mb-6">
+        <div>
+          <span class="mono text-xs font-bold text-cyan-400 tracking-wider uppercase bg-cyan-500/10 px-2.5 py-1 rounded border border-cyan-500/20">
+            NEW COLLECTION · DEV-STYLE BRUTALIST MONOLITHS
+          </span>
+          <h2 class="text-xl font-bold text-white mt-2">Monolithic Mass × Developer Cues (CLI, Hex, Git)</h2>
+          <p class="text-xs text-slate-400 mt-0.5">Heavy Swiss brutalist slabs infused with real software engineering primitives.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- DEV-01: The Terminal Prompt Monolith -->
+        <div class="logo-card bg-slate-900/60 border border-slate-800 hover:border-cyan-400/50 rounded-2xl p-6 flex flex-col justify-between backdrop-blur-sm ring-2 ring-cyan-500/30">
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="mono text-[11px] bg-cyan-500/10 text-cyan-400 px-2.5 py-1 rounded-md border border-cyan-500/20 font-bold">
+                DEV-01 · CLI PROMPT
+              </span>
+              <span class="mono text-[10px] text-slate-500 uppercase">&gt;_ Terminal</span>
+            </div>
+            
+            <h3 class="text-lg font-bold text-white mt-4">The Terminal Prompt Monolith</h3>
+            <p class="mono text-xs text-cyan-400 mt-0.5">&gt;_ CLI Shell &amp; Block Cursor</p>
+            <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+              A heavy cyber-monolith where the upper negative space chamber is an active command prompt <strong>&gt;_</strong> with a blinking cursor block, carving a sharp developer <strong>B</strong>.
+            </p>
+          </div>
+
+          <!-- Stage -->
+          <div class="stage-box my-6 p-6 rounded-xl bg-[#070b13] border border-slate-800 flex items-center justify-center min-h-[170px] transition-colors">
+            <svg width="120" height="120" viewBox="0 0 200 200" fill="none" class="drop-shadow-[0_0_22px_rgba(103,232,249,0.4)]">
+              <defs>
+                <linearGradient id="dev1-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#67e8f9"/>
+                  <stop offset="60%" stop-color="#38bdf8"/>
+                  <stop offset="100%" stop-color="#2563eb"/>
+                </linearGradient>
+              </defs>
+              <!-- Heavy Monolith Container -->
+              <rect x="22" y="22" width="156" height="156" rx="30" fill="url(#dev1-grad)"/>
+
+              <!-- Left Spine Channel -->
+              <line x1="56" y1="44" x2="56" y2="156" stroke="#070b13" stroke-width="12" stroke-linecap="round"/>
+
+              <!-- Upper Chamber: Terminal Prompt >_ in Negative Space -->
+              <rect x="74" y="46" width="62" height="44" rx="10" fill="#070b13"/>
+              <!-- Chevron > in negative space chamber -->
+              <path d="M88 57L98 68L88 79" stroke="url(#dev1-grad)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+              <!-- Cursor _ in negative space chamber -->
+              <rect x="106" y="74" width="16" height="6" rx="2" fill="#22c55e"/>
+
+              <!-- Lower Chamber: Data Array Block -->
+              <rect x="74" y="104" width="70" height="48" rx="12" fill="#070b13"/>
+              <rect x="86" y="116" width="18" height="24" rx="4" fill="url(#dev1-grad)"/>
+              <rect x="110" y="116" width="22" height="24" rx="4" fill="url(#dev1-grad)"/>
+
+              <!-- Monolith Diagonal Air Intake Slit -->
+              <polygon points="152,46 164,46 154,152 142,152" fill="#070b13"/>
+            </svg>
+          </div>
+
+          <!-- Scale Previews -->
+          <div class="pt-4 border-t border-slate-800">
+            <div class="flex items-center justify-between text-[11px] mono text-slate-400 mb-2">
+              <span>Navbar Preview (28px)</span>
+              <span>Favicon (16px)</span>
+            </div>
+            <div class="flex items-center justify-between bg-slate-950/80 p-2.5 rounded-xl border border-slate-800">
+              <div class="flex items-center gap-2.5">
+                <div class="w-7 h-7 rounded-md flex items-center justify-center overflow-hidden">
+                  <svg width="28" height="28" viewBox="0 0 200 200" fill="none">
+                    <rect x="22" y="22" width="156" height="156" rx="30" fill="#67e8f9"/>
+                    <line x1="56" y1="44" x2="56" y2="156" stroke="#070b13" stroke-width="18" stroke-linecap="round"/>
+                    <rect x="74" y="46" width="62" height="44" rx="10" fill="#070b13"/>
+                    <rect x="74" y="104" width="70" height="48" rx="12" fill="#070b13"/>
+                  </svg>
+                </div>
+                <span class="mono text-xs font-semibold text-white">binhakim<span class="text-cyan-400">.</span>dev</span>
+              </div>
+              <div class="w-5 h-5 bg-[#67e8f9] rounded flex items-center justify-center">
+                <span class="mono text-[9px] font-extrabold text-[#070b13]">&gt;</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DEV-02: The Hex Register Monolith (Recommended) -->
+        <div class="logo-card bg-slate-900/60 border border-slate-800 hover:border-emerald-400/50 rounded-2xl p-6 flex flex-col justify-between backdrop-blur-sm ring-2 ring-emerald-500/30">
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="mono text-[11px] bg-emerald-500/10 text-emerald-400 px-2.5 py-1 rounded-md border border-emerald-500/20 font-bold">
+                DEV-02 · HEX REGISTER
+              </span>
+              <span class="mono text-[10px] text-slate-500 uppercase">0x / Byte Memory</span>
+            </div>
+            
+            <h3 class="text-lg font-bold text-white mt-4">The Hex Register Monolith</h3>
+            <p class="mono text-xs text-emerald-400 mt-0.5">Microchip Pin Etch &amp; Memory Array</p>
+            <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+              Low-level hardware inspired by CPU memory registers and chip dies. Features dual-chamber negative space <strong>B</strong> loops, memory bus notches, and status flag bit.
+            </p>
+          </div>
+
+          <!-- Stage -->
+          <div class="stage-box my-6 p-6 rounded-xl bg-[#070b13] border border-slate-800 flex items-center justify-center min-h-[170px] transition-colors">
+            <svg width="120" height="120" viewBox="0 0 200 200" fill="none" class="drop-shadow-[0_0_22px_rgba(52,211,153,0.4)]">
+              <defs>
+                <linearGradient id="dev2-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#34d399"/>
+                  <stop offset="50%" stop-color="#67e8f9"/>
+                  <stop offset="100%" stop-color="#2563eb"/>
+                </linearGradient>
+              </defs>
+              <!-- Chip Monolith with Hardware Pin Notches -->
+              <rect x="26" y="26" width="148" height="148" rx="24" fill="url(#dev2-grad)"/>
+
+              <!-- Hardware Pin Notches on left and right borders -->
+              <rect x="18" y="52" width="14" height="12" rx="3" fill="#070b13"/>
+              <rect x="18" y="78" width="14" height="12" rx="3" fill="#070b13"/>
+              <rect x="18" y="104" width="14" height="12" rx="3" fill="#070b13"/>
+              <rect x="18" y="130" width="14" height="12" rx="3" fill="#070b13"/>
+
+              <rect x="168" y="64" width="14" height="12" rx="3" fill="#070b13"/>
+              <rect x="168" y="90" width="14" height="12" rx="3" fill="#070b13"/>
+              <rect x="168" y="116" width="14" height="12" rx="3" fill="#070b13"/>
+
+              <!-- Left Core Spine Channel -->
+              <line x1="58" y1="46" x2="58" y2="154" stroke="#070b13" stroke-width="12" stroke-linecap="round"/>
+
+              <!-- Upper Hex Chamber: [ 0x ] -->
+              <polygon points="76,46 128,46 142,60 142,76 128,90 76,90" fill="#070b13"/>
+              <circle cx="109" cy="68" r="8" fill="url(#dev2-grad)"/>
+
+              <!-- Lower Hex Chamber: [ 0b ] -->
+              <polygon points="76,102 134,102 148,116 148,136 134,150 76,150" fill="#070b13"/>
+              <rect x="94" y="116" width="34" height="20" rx="4" fill="url(#dev2-grad)"/>
+
+              <!-- Status Flag Bit Indicator -->
+              <circle cx="150" cy="46" r="6" fill="#fbbf24"/>
+            </svg>
+          </div>
+
+          <!-- Scale Previews -->
+          <div class="pt-4 border-t border-slate-800">
+            <div class="flex items-center justify-between text-[11px] mono text-slate-400 mb-2">
+              <span>Navbar Preview (28px)</span>
+              <span>Favicon (16px)</span>
+            </div>
+            <div class="flex items-center justify-between bg-slate-950/80 p-2.5 rounded-xl border border-slate-800">
+              <div class="flex items-center gap-2.5">
+                <div class="w-7 h-7 rounded-md flex items-center justify-center overflow-hidden">
+                  <svg width="28" height="28" viewBox="0 0 200 200" fill="none">
+                    <rect x="26" y="26" width="148" height="148" rx="24" fill="#34d399"/>
+                    <line x1="58" y1="46" x2="58" y2="154" stroke="#070b13" stroke-width="18" stroke-linecap="round"/>
+                    <polygon points="76,46 128,46 142,60 142,76 128,90 76,90" fill="#070b13"/>
+                    <polygon points="76,102 134,102 148,116 148,136 134,150 76,150" fill="#070b13"/>
+                  </svg>
+                </div>
+                <span class="mono text-xs font-semibold text-white">binhakim<span class="text-emerald-400">.</span>dev</span>
+              </div>
+              <div class="w-5 h-5 bg-[#34d399] rounded flex items-center justify-center">
+                <div class="w-2 h-2 bg-[#070b13] rounded-sm"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DEV-03: The Git-Branching Monolith -->
+        <div class="logo-card bg-slate-900/60 border border-slate-800 hover:border-violet-400/50 rounded-2xl p-6 flex flex-col justify-between backdrop-blur-sm">
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="mono text-[11px] bg-violet-500/10 text-violet-400 px-2.5 py-1 rounded-md border border-violet-500/20 font-bold">
+                DEV-03 · GIT GRAPH
+              </span>
+              <span class="mono text-[10px] text-slate-500 uppercase">Commit Pipeline</span>
+            </div>
+            
+            <h3 class="text-lg font-bold text-white mt-4">The Git-Branching Monolith</h3>
+            <p class="mono text-xs text-violet-400 mt-0.5">Commit Graph &amp; Stencil Code Loops</p>
+            <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+              Merges a heavy code block with a git commit topology: a main trunk line forking into dual feature branch loops that merge cleanly back, sculpting a dynamic <strong>B</strong>.
+            </p>
+          </div>
+
+          <!-- Stage -->
+          <div class="stage-box my-6 p-6 rounded-xl bg-[#0a0d18] border border-slate-800 flex items-center justify-center min-h-[170px] transition-colors">
+            <svg width="120" height="120" viewBox="0 0 200 200" fill="none" class="drop-shadow-[0_0_22px_rgba(167,139,250,0.4)]">
+              <defs>
+                <linearGradient id="dev3-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#c084fc"/>
+                  <stop offset="50%" stop-color="#8b5cf6"/>
+                  <stop offset="100%" stop-color="#38bdf8"/>
+                </linearGradient>
+              </defs>
+              <!-- Monolith Slab Container -->
+              <rect x="22" y="22" width="156" height="156" rx="28" fill="#0d1122" stroke="url(#dev3-grad)" stroke-width="4" stroke-opacity="0.4"/>
+              
+              <!-- Main Git Trunk Spine -->
+              <rect x="42" y="38" width="22" height="124" rx="8" fill="url(#dev3-grad)"/>
+
+              <!-- Branch Fork 01 (Upper Loop) -->
+              <path d="M58 54H116C136 54 144 68 134 82C126 92 110 94 58 94" stroke="url(#dev3-grad)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+              <!-- Branch Fork 02 (Lower Loop) -->
+              <path d="M58 94H124C146 94 154 112 142 128C132 140 114 142 58 142" stroke="url(#dev3-grad)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+              <!-- Git Commit Nodes -->
+              <circle cx="53" cy="54" r="6" fill="#67e8f9"/>
+              <circle cx="53" cy="94" r="6" fill="#34d399"/>
+              <circle cx="53" cy="142" r="6" fill="#a855f7"/>
+              <circle cx="134" cy="72" r="5" fill="#67e8f9"/>
+              <circle cx="142" cy="116" r="5.5" fill="#38bdf8"/>
+            </svg>
+          </div>
+
+          <!-- Scale Previews -->
+          <div class="pt-4 border-t border-slate-800">
+            <div class="flex items-center justify-between text-[11px] mono text-slate-400 mb-2">
+              <span>Navbar Preview (28px)</span>
+              <span>Favicon (16px)</span>
+            </div>
+            <div class="flex items-center justify-between bg-slate-950/80 p-2.5 rounded-xl border border-slate-800">
+              <div class="flex items-center gap-2.5">
+                <div class="w-7 h-7 bg-[#0d1122] border border-violet-500/40 rounded-md flex items-center justify-center">
+                  <svg width="22" height="22" viewBox="0 0 200 200" fill="none">
+                    <rect x="42" y="38" width="22" height="124" rx="8" fill="#a855f7"/>
+                    <path d="M58 54H116C136 54 136 94 116 94H58" stroke="#a855f7" stroke-width="20" fill="none"/>
+                    <path d="M58 94H124C146 94 146 142 124 142H58" stroke="#a855f7" stroke-width="20" fill="none"/>
+                  </svg>
+                </div>
+                <span class="mono text-xs font-semibold text-white">binhakim<span class="text-violet-400">.</span>dev</span>
+              </div>
+              <div class="w-5 h-5 bg-[#0d1122] border border-violet-400 rounded flex items-center justify-center">
+                <div class="w-2.5 h-2.5 bg-violet-400 rounded-full"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 1: BRUTALIST MONOLITH IN PORTFOLIO THEME COLORWAYS -->
+    <!-- ========================================================================= -->
+    <section class="pt-6 border-t border-slate-800">
+      <div class="flex items-center justify-between mb-6">
+        <div>
+          <span class="mono text-xs font-semibold text-slate-400 tracking-wider uppercase">Collection 02</span>
+          <h2 class="text-xl font-bold text-white mt-0.5">The Brutalist Monolith Cipher in Portfolio Colorways</h2>
+          <p class="text-xs text-slate-400 mt-0.5">The user favorite presented across your portfolio's exact design-system palettes.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+
+        <!-- 1A: Cyber Cyan & Electric Blue (Site Core) -->
+        <div class="logo-card bg-slate-900/60 border border-slate-800 hover:border-cyan-500/50 rounded-2xl p-5 flex flex-col justify-between backdrop-blur-sm">
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="mono text-[10px] bg-cyan-500/10 text-cyan-400 px-2 py-0.5 rounded border border-cyan-500/20 font-bold">1A · SITE CORE</span>
+              <span class="mono text-[10px] text-slate-500">#67e8f9</span>
+            </div>
+            <h3 class="text-base font-bold text-white mt-3">Cyber Cyan Monolith</h3>
+          </div>
+          <div class="stage-box my-5 p-5 rounded-xl bg-[#070b13] border border-slate-800 flex items-center justify-center min-h-[130px] transition-colors">
+            <svg width="90" height="90" viewBox="0 0 200 200" fill="none" class="drop-shadow-[0_0_16px_rgba(103,232,249,0.35)]">
+              <rect x="24" y="24" width="152" height="152" rx="28" fill="#67e8f9"/>
+              <line x1="56" y1="46" x2="56" y2="154" stroke="#070b13" stroke-width="13" stroke-linecap="round"/>
+              <rect x="74" y="48" width="56" height="42" rx="10" fill="#070b13"/>
+              <rect x="86" y="58" width="32" height="22" rx="5" fill="#67e8f9"/>
+              <rect x="74" y="104" width="66" height="46" rx="12" fill="#070b13"/>
+              <rect x="86" y="114" width="42" height="26" rx="6" fill="#67e8f9"/>
+              <polygon points="144,48 160,48 148,152 132,152" fill="#070b13"/>
+            </svg>
+          </div>
+          <span class="mono text-[11px] text-slate-400">Cyber Cyan · Deep Site Match</span>
+        </div>
+
+        <!-- 1B: Matrix Emerald & Mint -->
+        <div class="logo-card bg-slate-900/60 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-5 flex flex-col justify-between backdrop-blur-sm">
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="mono text-[10px] bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded border border-emerald-500/20 font-bold">1B · MATRIX GREEN</span>
+              <span class="mono text-[10px] text-slate-500">#34d399</span>
+            </div>
+            <h3 class="text-base font-bold text-white mt-3">Matrix Emerald Monolith</h3>
+          </div>
+          <div class="stage-box my-5 p-5 rounded-xl bg-[#040f0f] border border-slate-800 flex items-center justify-center min-h-[130px] transition-colors">
+            <svg width="90" height="90" viewBox="0 0 200 200" fill="none" class="drop-shadow-[0_0_16px_rgba(52,211,153,0.35)]">
+              <rect x="24" y="24" width="152" height="152" rx="28" fill="#34d399"/>
+              <line x1="56" y1="46" x2="56" y2="154" stroke="#040f0f" stroke-width="13" stroke-linecap="round"/>
+              <rect x="74" y="48" width="56" height="42" rx="10" fill="#040f0f"/>
+              <rect x="86" y="58" width="32" height="22" rx="5" fill="#34d399"/>
+              <rect x="74" y="104" width="66" height="46" rx="12" fill="#040f0f"/>
+              <rect x="86" y="114" width="42" height="26" rx="6" fill="#34d399"/>
+              <polygon points="144,48 160,48 148,152 132,152" fill="#040f0f"/>
+            </svg>
+          </div>
+          <span class="mono text-[11px] text-slate-400">Matrix Emerald · Live Signals</span>
+        </div>
+
+        <!-- 1C: Solar Amber & Flare -->
+        <div class="logo-card bg-slate-900/60 border border-slate-800 hover:border-amber-500/50 rounded-2xl p-5 flex flex-col justify-between backdrop-blur-sm">
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="mono text-[10px] bg-amber-500/10 text-amber-400 px-2 py-0.5 rounded border border-amber-500/20 font-bold">1C · SOLAR AMBER</span>
+              <span class="mono text-[10px] text-slate-500">#fbbf24</span>
+            </div>
+            <h3 class="text-base font-bold text-white mt-3">Solar Amber Monolith</h3>
+          </div>
+          <div class="stage-box my-5 p-5 rounded-xl bg-[#0c0a09] border border-slate-800 flex items-center justify-center min-h-[130px] transition-colors">
+            <svg width="90" height="90" viewBox="0 0 200 200" fill="none" class="drop-shadow-[0_0_16px_rgba(251,191,36,0.35)]">
+              <rect x="24" y="24" width="152" height="152" rx="28" fill="#fbbf24"/>
+              <line x1="56" y1="46" x2="56" y2="154" stroke="#0c0a09" stroke-width="13" stroke-linecap="round"/>
+              <rect x="74" y="48" width="56" height="42" rx="10" fill="#0c0a09"/>
+              <rect x="86" y="58" width="32" height="22" rx="5" fill="#fbbf24"/>
+              <rect x="74" y="104" width="66" height="46" rx="12" fill="#0c0a09"/>
+              <rect x="86" y="114" width="42" height="26" rx="6" fill="#fbbf24"/>
+              <polygon points="144,48 160,48 148,152 132,152" fill="#0c0a09"/>
+            </svg>
+          </div>
+          <span class="mono text-[11px] text-slate-400">Solar Amber · Videx Accent</span>
+        </div>
+
+        <!-- 1D: Platinum Ice Monochrome -->
+        <div class="logo-card bg-slate-900/60 border border-slate-800 hover:border-slate-400/50 rounded-2xl p-5 flex flex-col justify-between backdrop-blur-sm">
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="mono text-[10px] bg-slate-500/10 text-slate-300 px-2 py-0.5 rounded border border-slate-500/20 font-bold">1D · PLATINUM ICE</span>
+              <span class="mono text-[10px] text-slate-500">#ffffff</span>
+            </div>
+            <h3 class="text-base font-bold text-white mt-3">Platinum Ice Monolith</h3>
+          </div>
+          <div class="stage-box my-5 p-5 rounded-xl bg-[#030712] border border-slate-800 flex items-center justify-center min-h-[130px] transition-colors">
+            <svg width="90" height="90" viewBox="0 0 200 200" fill="none" class="drop-shadow-[0_0_16px_rgba(248,250,252,0.35)]">
+              <rect x="24" y="24" width="152" height="152" rx="28" fill="#ffffff"/>
+              <line x1="56" y1="46" x2="56" y2="154" stroke="#030712" stroke-width="13" stroke-linecap="round"/>
+              <rect x="74" y="48" width="56" height="42" rx="10" fill="#030712"/>
+              <rect x="86" y="58" width="32" height="22" rx="5" fill="#ffffff"/>
+              <rect x="74" y="104" width="66" height="46" rx="12" fill="#030712"/>
+              <rect x="86" y="114" width="42" height="26" rx="6" fill="#ffffff"/>
+              <polygon points="144,48 160,48 148,152 132,152" fill="#030712"/>
+            </svg>
+          </div>
+          <span class="mono text-[11px] text-slate-400">Swiss Monochrome · Maximum Contrast</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 2: 3 HYBRIDS (SYSTEMS BRACKET × BRUTALIST MONOLITH) -->
+    <!-- ========================================================================= -->
+    <section class="pt-6 border-t border-slate-800">
+      <div class="flex items-center justify-between mb-6">
+        <div>
+          <span class="mono text-xs font-semibold text-slate-400 tracking-wider uppercase">Collection 03</span>
+          <h2 class="text-xl font-bold text-white mt-0.5">Systems Terminal Bracket × Brutalist Monolith Fusion</h2>
+          <p class="text-xs text-slate-400 mt-0.5">Fusing bracket gate precision with heavy monolithic negative-space.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- HYBRID 01 -->
+        <div class="logo-card bg-slate-900/60 border border-slate-800 hover:border-cyan-500/50 rounded-2xl p-6 flex flex-col justify-between backdrop-blur-sm">
+          <div>
+            <span class="mono text-[11px] bg-cyan-500/10 text-cyan-400 px-2.5 py-1 rounded-md border border-cyan-500/20 font-bold">HYBRID 01</span>
+            <h3 class="text-lg font-bold text-white mt-3">The Bracketed Monolith</h3>
+            <p class="text-xs text-slate-400 mt-1.5">Monolithic slab cradled inside an outer terminal bracket <code class="mono text-cyan-400">[</code>.</p>
+          </div>
+          <div class="stage-box my-5 p-5 rounded-xl bg-[#070b13] border border-slate-800 flex items-center justify-center min-h-[140px] transition-colors">
+            <svg width="100" height="100" viewBox="0 0 200 200" fill="none">
+              <path d="M48 36H30V164H48" stroke="#67e8f9" stroke-width="12" stroke-linecap="round"/>
+              <rect x="58" y="32" width="112" height="136" rx="20" fill="#67e8f9"/>
+              <line x1="82" y1="48" x2="82" y2="152" stroke="#070b13" stroke-width="10" stroke-linecap="round"/>
+              <rect x="96" y="50" width="48" height="38" rx="8" fill="#070b13"/>
+              <rect x="96" y="100" width="56" height="42" rx="10" fill="#070b13"/>
+              <circle cx="178" cy="36" r="6" fill="#34d399"/>
+            </svg>
+          </div>
+          <span class="mono text-xs text-slate-400">Hardware HSM Module Style</span>
+        </div>
+
+        <!-- HYBRID 02 -->
+        <div class="logo-card bg-slate-900/60 border border-slate-800 hover:border-emerald-400/50 rounded-2xl p-6 flex flex-col justify-between backdrop-blur-sm">
+          <div>
+            <span class="mono text-[11px] bg-emerald-500/10 text-emerald-400 px-2.5 py-1 rounded-md border border-emerald-500/20 font-bold">HYBRID 02</span>
+            <h3 class="text-lg font-bold text-white mt-3">The Chamfered Terminal Slab</h3>
+            <p class="text-xs text-slate-400 mt-1.5">Integrated 45° chamfered B loops with embedded emerald pulse dot.</p>
+          </div>
+          <div class="stage-box my-5 p-5 rounded-xl bg-[#070b13] border border-slate-800 flex items-center justify-center min-h-[140px] transition-colors">
+            <svg width="100" height="100" viewBox="0 0 200 200" fill="none">
+              <rect x="20" y="20" width="160" height="160" rx="32" fill="#08101a" stroke="#67e8f9" stroke-width="4" stroke-opacity="0.4"/>
+              <path d="M46 54H68V146H46" stroke="#67e8f9" stroke-width="12" stroke-linecap="round"/>
+              <path d="M84 54H134L154 74V90L136 98L156 116V130L134 146H84V54Z" fill="#34d399"/>
+              <polygon points="102,68 126,68 136,78 136,86 124,92 102,92" fill="#08101a"/>
+              <polygon points="102,106 128,106 138,116 138,124 126,132 102,132" fill="#08101a"/>
+              <circle cx="158" cy="46" r="6.5" fill="#34d399"/>
+            </svg>
+          </div>
+          <span class="mono text-xs text-slate-400">Integrated Bracket-Spine Block</span>
+        </div>
+
+        <!-- HYBRID 03 -->
+        <div class="logo-card bg-slate-900/60 border border-slate-800 hover:border-violet-400/50 rounded-2xl p-6 flex flex-col justify-between backdrop-blur-sm">
+          <div>
+            <span class="mono text-[11px] bg-violet-500/10 text-violet-400 px-2.5 py-1 rounded-md border border-violet-500/20 font-bold">HYBRID 03</span>
+            <h3 class="text-lg font-bold text-white mt-3">The Stencil Silicon Die</h3>
+            <p class="text-xs text-slate-400 mt-1.5">Dual-register silicon die connected via an orthogonal logic data bus.</p>
+          </div>
+          <div class="stage-box my-5 p-5 rounded-xl bg-[#0a0d18] border border-slate-800 flex items-center justify-center min-h-[140px] transition-colors">
+            <svg width="100" height="100" viewBox="0 0 200 200" fill="none">
+              <rect x="22" y="22" width="156" height="156" rx="28" fill="#0c0f1d" stroke="#a78bfa" stroke-width="4" stroke-opacity="0.45"/>
+              <rect x="44" y="44" width="28" height="112" rx="8" fill="#a78bfa"/>
+              <rect x="82" y="44" width="74" height="50" rx="10" fill="#a78bfa"/>
+              <rect x="82" y="104" width="74" height="52" rx="12" fill="#a78bfa"/>
+              <rect x="98" y="56" width="42" height="26" rx="5" fill="#0c0f1d"/>
+              <rect x="98" y="116" width="42" height="28" rx="6" fill="#0c0f1d"/>
+            </svg>
+          </div>
+          <span class="mono text-xs text-slate-400">Cryptographic Register Style</span>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    function setTheme(mode) {
+      const stageBoxes = document.querySelectorAll('.stage-box');
+      const btnDark = document.getElementById('btn-dark');
+      const btnLight = document.getElementById('btn-light');
+
+      if (mode === 'light') {
+        stageBoxes.forEach(el => {
+          el.style.backgroundColor = '#f1f5f9';
+          el.style.borderColor = '#cbd5e1';
+        });
+        btnLight.className = "px-3 py-1.5 text-xs mono rounded-lg bg-slate-200 text-slate-900 font-semibold transition-all";
+        btnDark.className = "px-3 py-1.5 text-xs mono rounded-lg text-slate-400 hover:text-white transition-all";
+      } else {
+        stageBoxes.forEach((el, index) => {
+          el.style.backgroundColor = '#070b13';
+          el.style.borderColor = '#1e293b';
+        });
+        btnDark.className = "px-3 py-1.5 text-xs mono rounded-lg bg-cyan-500/20 text-cyan-300 font-semibold border border-cyan-500/30 transition-all";
+        btnLight.className = "px-3 py-1.5 text-xs mono rounded-lg text-slate-400 hover:text-white transition-all";
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,12 +1,16 @@
 export type ProjectStatus =
-  | "public-live"
+  | "public"
   | "internal-production"
   | "beta"
+  | "experimental"
   | "rebuilding"
-  | "private"
   | "archived";
 
 export type EvidenceLevel = "public" | "sanitized" | "owner-verified";
+
+export type ProjectCollection = "featured" | "open-source" | "experiment" | "archive";
+
+export type ProjectVisibility = "public" | "internal" | "private";
 
 export interface ProjectOutcome {
   value: string;
@@ -38,27 +42,41 @@ export interface CaseStudySection {
   bullets?: string[];
 }
 
-export interface ProjectCaseStudy {
+export interface WorkItem {
   slug: string;
   name: string;
-  eyebrow: string;
   category: string;
-  accent: "cyan" | "violet" | "green" | "amber";
-  featuredOrder: number;
+  collection: ProjectCollection;
   status: ProjectStatus;
   statusLabel: string;
   verifiedAt: string;
   summary: string;
+  audience: string;
   problem: string;
   role: string;
+  visibility: ProjectVisibility;
+  openSource: boolean;
+  evidenceLevel: EvidenceLevel;
+  stack: string[];
+  links: ProjectLinks;
+}
+
+export interface ProjectCaseStudy extends WorkItem {
+  collection: "featured";
+  eyebrow: string;
+  accent: "cyan" | "violet" | "green" | "amber";
+  featuredOrder: number;
   timeline: string;
   constraints: string[];
   outcomes: ProjectOutcome[];
   engineeringHighlights: EngineeringHighlight[];
-  stack: string[];
-  links: ProjectLinks;
   media: ProjectMedia;
   sections: CaseStudySection[];
+}
+
+export interface ProjectArchive extends WorkItem {
+  collection: "open-source" | "experiment" | "archive";
+  tagline?: string;
 }
 
 export const PROJECTS = [
@@ -67,6 +85,7 @@ export const PROJECTS = [
     name: "NexFlow",
     eyebrow: "Internal production platform",
     category: "B2B operations · security",
+    collection: "featured",
     accent: "cyan",
     featuredOrder: 4,
     status: "internal-production",
@@ -74,9 +93,13 @@ export const PROJECTS = [
     verifiedAt: "2026-08-11",
     summary:
       "A lead pipeline platform that replaced conflicting spreadsheets across four business entities with one auditable, role-aware workflow.",
+    audience: "Marketing and Sales teams working across four business entities.",
     problem:
       "Marketing and Sales were working from separate Excel files with conflicting versions, weak ownership, and no reliable answer to what happened to a lead.",
     role: "Sole product engineer",
+    visibility: "internal",
+    openSource: true,
+    evidenceLevel: "owner-verified",
     timeline: "2024–present",
     constraints: [
       "Four entities needed shared infrastructure with isolated operational views.",
@@ -136,6 +159,7 @@ export const PROJECTS = [
     name: "Videx",
     eyebrow: "Local-first media workflow",
     category: "Python · systems · privacy",
+    collection: "featured",
     accent: "amber",
     featuredOrder: 2,
     status: "beta",
@@ -143,9 +167,13 @@ export const PROJECTS = [
     verifiedAt: "2026-08-11",
     summary:
       "A private local video and audio download manager with a guided CLI, browser interface, persistent queue, and no hosted processing backend.",
+    audience: "People who need a privacy-first local media workflow.",
     problem:
       "Many download tools force users to choose between approachable interfaces and powerful controls, while cloud-based workflows create unnecessary privacy concerns.",
     role: "Product engineer and maintainer",
+    visibility: "public",
+    openSource: true,
+    evidenceLevel: "public",
     timeline: "2025–present",
     constraints: [
       "Media, credentials, queue history, and files must remain on the user’s machine.",
@@ -206,6 +234,7 @@ export const PROJECTS = [
     name: "Orbit",
     eyebrow: "Relationship intelligence product",
     category: "SaaS · AI · multi-tenant data",
+    collection: "featured",
     accent: "violet",
     featuredOrder: 3,
     status: "rebuilding",
@@ -213,9 +242,13 @@ export const PROJECTS = [
     verifiedAt: "2026-08-11",
     summary:
       "A relationship operating system that turns professional contacts into a queryable, visual, and bilingual workspace.",
+    audience: "Professionals who need reliable context for relationship follow-up.",
     problem:
       "Professional networks are usually scattered across contacts, notes, and memory, which makes follow-up inconsistent and relationship context difficult to query.",
     role: "Solo product engineer",
+    visibility: "private",
+    openSource: false,
+    evidenceLevel: "owner-verified",
     timeline: "2025–present",
     constraints: [
       "Users need fast relationship context without learning a CRM workflow.",
@@ -272,6 +305,7 @@ export const PROJECTS = [
     name: "commit_",
     eyebrow: "Learning completion product",
     category: "SaaS · education · behavior design",
+    collection: "featured",
     accent: "green",
     featuredOrder: 1,
     status: "beta",
@@ -279,9 +313,13 @@ export const PROJECTS = [
     verifiedAt: "2026-08-11",
     summary:
       "A curriculum tracker that turns study sessions into commits, progress into a contribution graph, and unfinished learning into a visible completion loop.",
+    audience: "Self-taught developers working through structured learning paths.",
     problem:
       "Self-taught developers often collect courses faster than they finish them. Existing trackers record tasks but rarely help users maintain momentum.",
     role: "Solo product engineer",
+    visibility: "public",
+    openSource: false,
+    evidenceLevel: "sanitized",
     timeline: "2025–present",
     constraints: [
       "Progress needs to feel encouraging rather than punitive.",
@@ -337,6 +375,93 @@ export const PROJECTS = [
   },
 ] satisfies readonly ProjectCaseStudy[];
 
+export const ARCHIVE_PROJECTS = [
+  {
+    slug: "throughline",
+    name: "Throughline",
+    tagline: "Behavioral insight exploration",
+    category: "AI · product exploration",
+    collection: "experiment",
+    status: "experimental",
+    statusLabel: "Experimental",
+    verifiedAt: "2026-08-31",
+    summary: "An early exploration of how structured inputs could support more useful behavioral reflection. It is not a launched product.",
+    audience: "People exploring structured reflection from assessment material.",
+    problem: "Assessment reports are difficult to turn into focused, reviewable insight without overstating what the system knows.",
+    role: "Concept and prototype exploration",
+    visibility: "private",
+    openSource: true,
+    evidenceLevel: "owner-verified",
+    stack: ["Next.js", "TypeScript", "AI workflows", "PostgreSQL"],
+    links: { source: "https://github.com/ws0x/throughline" },
+  },
+  {
+    slug: "epps-container-optimizer",
+    name: "EPPS Container Optimizer",
+    tagline: "3D bin-packing and logistics tool",
+    category: "Algorithms · visualization",
+    collection: "open-source",
+    status: "public",
+    statusLabel: "Public",
+    verifiedAt: "2026-08-31",
+    summary: "A browser-based tool for comparing container placements with door-clearance validation and PDF export.",
+    audience: "Logistics teams planning container loads under practical constraints.",
+    problem: "Manual container planning makes it difficult to compare viable placements and communicate a loading plan.",
+    role: "Product engineer",
+    visibility: "public",
+    openSource: true,
+    evidenceLevel: "public",
+    stack: ["React", "Three.js", "Vite", "3D algorithms", "Bin packing", "PDF export"],
+    links: {
+      live: "https://ws0x.github.io/epps-sc-container-optimizer/",
+      source: "https://github.com/ws0x/epps-sc-container-optimizer",
+    },
+  },
+  {
+    slug: "algorithm-visualizer",
+    name: "Algorithm Visualizer",
+    tagline: "Interactive computer-science learning tool",
+    category: "Education · computer science",
+    collection: "open-source",
+    status: "archived",
+    statusLabel: "Archived",
+    verifiedAt: "2026-08-31",
+    summary: "An interactive learning project that visualizes algorithms and data structures step by step.",
+    audience: "Students learning algorithmic thinking and data structures.",
+    problem: "Static examples make it hard for beginners to see how an algorithm changes state over time.",
+    role: "Developer and educator",
+    visibility: "public",
+    openSource: true,
+    evidenceLevel: "public",
+    stack: ["React", "Vite", "JavaScript", "Canvas", "Algorithms", "Data structures"],
+    links: {
+      live: "https://ws0x.github.io/algo-visualizer/",
+      source: "https://github.com/ws0x/algo-visualizer",
+    },
+  },
+  {
+    slug: "iread",
+    name: "iREAD",
+    tagline: "Reading platform and digital bookstore",
+    category: "Academic · full-stack",
+    collection: "archive",
+    status: "archived",
+    statusLabel: "Archived",
+    verifiedAt: "2026-08-31",
+    summary: "A graduation project that connected reading history, reviews, commerce, and community flows through one REST API.",
+    audience: "Readers looking for a combined reading, review, and bookstore experience.",
+    problem: "Reading history, reviews, and discovery are often split across disconnected experiences.",
+    role: "Graduation project contributor",
+    visibility: "private",
+    openSource: false,
+    evidenceLevel: "owner-verified",
+    stack: ["Flutter", "React", "REST API", "Mobile and web"],
+    links: {},
+  },
+] satisfies readonly ProjectArchive[];
+
+export const WORK_ITEMS = [...PROJECTS, ...ARCHIVE_PROJECTS] as const satisfies readonly WorkItem[];
+
 export function getProject(slug: string) {
   return PROJECTS.find((project) => project.slug === slug);
 }
@@ -345,11 +470,15 @@ export function getFeaturedProjects() {
   return [...PROJECTS].sort((a, b) => a.featuredOrder - b.featuredOrder);
 }
 
+export function getProjectsByCollection(collection: Exclude<ProjectCollection, "featured">) {
+  return ARCHIVE_PROJECTS.filter((project) => project.collection === collection);
+}
+
 export const STATUS_LABELS: Record<ProjectStatus, string> = {
-  "public-live": "Public live",
+  public: "Public",
   "internal-production": "Internal production",
-  beta: "Private beta",
+  beta: "Beta",
+  experimental: "Experimental",
   rebuilding: "Rebuilding",
-  private: "Private",
   archived: "Archived",
 };

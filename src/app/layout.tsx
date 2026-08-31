@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   keywords: ["Yusuf Naeem", "Product Engineer", "Full-Stack Engineer", "Software Systems", "API Design", "PostgreSQL", "Application Security", "Next.js", "TypeScript", "Business Operations"],
   alternates: { canonical: SITE_URL },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 } },
-  icons: { icon: "/icon.png", shortcut: "/favicon.ico", apple: "/icon.png" },
+  icons: { icon: "/icon.png", shortcut: "/favicon.ico", apple: "/apple-touch-icon.png" },
   openGraph: { type: "profile", locale: "en_US", url: SITE_URL, siteName: "binhakim.dev", title: TITLE, description: DESCRIPTION, images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: TITLE }], firstName: "Yusuf", lastName: "Naeem", username: "binhakim" },
   twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION, images: ["/opengraph-image"], creator: "@binhakim" },
   category: "technology",

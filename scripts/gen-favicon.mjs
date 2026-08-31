@@ -13,75 +13,55 @@ const APP_DIR = resolve(__dir, "../src/app");
 const PUB_DIR = resolve(__dir, "../public");
 
 const svgLogo = `
-<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="512" height="512" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0a1220"/>
-      <stop offset="50%" stop-color="#070b13"/>
-      <stop offset="100%" stop-color="#04080e"/>
+    <linearGradient id="plat-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="60%" stop-color="#f1f5f9"/>
+      <stop offset="100%" stop-color="#cbd5e1"/>
     </linearGradient>
-    <linearGradient id="bh-cyan-blue" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#67e8f9"/>
-      <stop offset="60%" stop-color="#5aa7ff"/>
-      <stop offset="100%" stop-color="#3b82f6"/>
-    </linearGradient>
-    <radialGradient id="bh-glow" cx="50%" cy="50%" r="60%">
-      <stop offset="0%" stop-color="#67e8f9" stop-opacity="0.18"/>
-      <stop offset="100%" stop-color="#67e8f9" stop-opacity="0"/>
-    </radialGradient>
-    <filter id="glow-filter" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="4" stdDeviation="10" flood-color="#67e8f9" flood-opacity="0.3"/>
-    </filter>
+    <mask id="plat-mask">
+      <rect width="200" height="200" fill="#ffffff"/>
+      <line x1="56" y1="46" x2="56" y2="154" stroke="#000000" stroke-width="13" stroke-linecap="round"/>
+      <rect x="74" y="48" width="56" height="42" rx="10" fill="#000000"/>
+      <rect x="86" y="58" width="32" height="22" rx="5" fill="#ffffff"/>
+      <rect x="74" y="104" width="66" height="46" rx="12" fill="#000000"/>
+      <rect x="86" y="114" width="42" height="26" rx="6" fill="#ffffff"/>
+      <polygon points="144,48 160,48 148,152 132,152" fill="#000000"/>
+    </mask>
   </defs>
 
-  <!-- Base container with subtle border -->
-  <rect x="20" y="20" width="472" height="472" rx="104" fill="url(#bg-grad)"/>
-  <rect x="20" y="20" width="472" height="472" rx="104" fill="url(#bh-glow)"/>
-  <rect x="20" y="20" width="472" height="472" rx="104" stroke="url(#bh-cyan-blue)" stroke-width="8" stroke-opacity="0.45"/>
+  <!-- Deep dark container for standalone icons & app manifest -->
+  <rect width="200" height="200" rx="36" fill="#030712"/>
 
-  <!-- Inner Monogram Glyph: B + H Circuit Interlock -->
-  <g filter="url(#glow-filter)">
-    <!-- Left B spine -->
-    <path d="M148 116V396" stroke="url(#bh-cyan-blue)" stroke-width="36" stroke-linecap="round"/>
-
-    <!-- Upper B loop -->
-    <path d="M148 134H244C298 134 298 248 244 248H148" stroke="url(#bh-cyan-blue)" stroke-width="36" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-
-    <!-- Lower B loop -->
-    <path d="M148 248H252C310 248 310 378 252 378H148" stroke="url(#bh-cyan-blue)" stroke-width="36" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-
-    <!-- Right H pillar -->
-    <path d="M364 116V396" stroke="url(#bh-cyan-blue)" stroke-width="36" stroke-linecap="round"/>
-
-    <!-- Cross bridge uniting B and H -->
-    <path d="M252 248H364" stroke="url(#bh-cyan-blue)" stroke-width="36" stroke-linecap="round"/>
-
-    <!-- High-tech Node Accents -->
-    <circle cx="364" cy="116" r="16" fill="#67e8f9"/>
-    <circle cx="148" cy="116" r="16" fill="#67e8f9"/>
-    <circle cx="364" cy="396" r="14" fill="#5aa7ff"/>
-    <circle cx="148" cy="396" r="14" fill="#5aa7ff"/>
-  </g>
+  <!-- Main Platinum Monolith Slab with Negative Space Mask -->
+  <rect x="24" y="24" width="152" height="152" rx="28" fill="url(#plat-grad)" mask="url(#plat-mask)"/>
 </svg>
 `;
 
 async function run() {
   const svgBuffer = Buffer.from(svgLogo);
 
-  // 1. Generate icon.png (192x192 and 512x512)
+  // 1. Generate icon.png (192x192, 512x512, and 180x180 Apple Touch)
   const icon192 = await sharp(svgBuffer)
-    .resize(192, 192)
+    .resize(192, 192, { kernel: "lanczos3" })
     .png({ compressionLevel: 9 })
     .toBuffer();
 
   const icon512 = await sharp(svgBuffer)
-    .resize(512, 512)
+    .resize(512, 512, { kernel: "lanczos3" })
+    .png({ compressionLevel: 9 })
+    .toBuffer();
+
+  const appleTouch = await sharp(svgBuffer)
+    .resize(180, 180, { kernel: "lanczos3" })
     .png({ compressionLevel: 9 })
     .toBuffer();
 
   writeFileSync(`${APP_DIR}/icon.png`, icon192);
   writeFileSync(`${PUB_DIR}/icon.png`, icon512);
-  console.log("Wrote icon.png (192px to src/app and 512px to public)");
+  writeFileSync(`${PUB_DIR}/apple-touch-icon.png`, appleTouch);
+  console.log("Wrote icon.png (192px and 512px) and apple-touch-icon.png (180px)");
 
   // 2. Generate multi-size favicon.ico (16, 32, 48)
   const sizes = [16, 32, 48];

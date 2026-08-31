@@ -3,76 +3,53 @@ export function BinhakimLogo({ size = 26, className = "" }: { size?: number; cla
     <svg
       width={size}
       height={size}
-      viewBox="0 0 32 32"
+      viewBox="0 0 200 200"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
+      shapeRendering="geometricPrecision"
       aria-hidden="true"
     >
       <defs>
-        <linearGradient id="bh-nav-glow" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#67e8f9" />
-          <stop offset="100%" stopColor="#5aa7ff" />
+        <linearGradient id="bh-plat-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#ffffff" />
+          <stop offset="60%" stopColor="#f1f5f9" />
+          <stop offset="100%" stopColor="#cbd5e1" />
         </linearGradient>
+
+        <mask id="bh-plat-mask">
+          {/* Base visible mask area */}
+          <rect width="200" height="200" fill="#ffffff" />
+
+          {/* Precision Negative Space Cutouts */}
+          {/* 1. Left Vertical Spine Channel */}
+          <line x1="56" y1="46" x2="56" y2="154" stroke="#000000" strokeWidth="13" strokeLinecap="round" />
+
+          {/* 2. Upper Chamber Cutout */}
+          <rect x="74" y="48" width="56" height="42" rx="10" fill="#000000" />
+          {/* Upper Chamber Platinum Core Counter */}
+          <rect x="86" y="58" width="32" height="22" rx="5" fill="#ffffff" />
+
+          {/* 3. Lower Chamber Cutout */}
+          <rect x="74" y="104" width="66" height="46" rx="12" fill="#000000" />
+          {/* Lower Chamber Platinum Core Counter */}
+          <rect x="86" y="114" width="42" height="26" rx="6" fill="#ffffff" />
+
+          {/* 4. Right Diagonal Aerodynamic Slit */}
+          <polygon points="144,48 160,48 148,152 132,152" fill="#000000" />
+        </mask>
       </defs>
 
-      {/* Frame container */}
+      {/* Main Solid Monolithic Slab with Transparency Mask */}
       <rect
-        x="1.5"
-        y="1.5"
-        width="29"
-        height="29"
-        rx="7"
-        fill="#0a1220"
-        stroke="rgba(103, 232, 249, 0.45)"
-        strokeWidth="1.2"
+        x="24"
+        y="24"
+        width="152"
+        height="152"
+        rx="28"
+        fill="url(#bh-plat-grad)"
+        mask="url(#bh-plat-mask)"
       />
-
-      {/* Left B spine */}
-      <path
-        d="M9.5 7.5v17"
-        stroke="url(#bh-nav-glow)"
-        strokeWidth="2.2"
-        strokeLinecap="round"
-      />
-
-      {/* Upper B loop */}
-      <path
-        d="M9.5 8.5h5.5a3.5 3.5 0 0 1 0 7h-5.5"
-        stroke="url(#bh-nav-glow)"
-        strokeWidth="2.2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-
-      {/* Lower B loop */}
-      <path
-        d="M9.5 15.5h6a4 4 0 0 1 0 8h-6"
-        stroke="url(#bh-nav-glow)"
-        strokeWidth="2.2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-
-      {/* Right H pillar */}
-      <path
-        d="M22.5 7.5v17"
-        stroke="url(#bh-nav-glow)"
-        strokeWidth="2.2"
-        strokeLinecap="round"
-      />
-
-      {/* Bridge connecting B loop to H pillar */}
-      <path
-        d="M15.5 15.5h7"
-        stroke="url(#bh-nav-glow)"
-        strokeWidth="2.2"
-        strokeLinecap="round"
-      />
-
-      {/* High-tech accent nodes */}
-      <circle cx="22.5" cy="7.5" r="1.3" fill="#67e8f9" />
-      <circle cx="9.5" cy="7.5" r="1.3" fill="#67e8f9" />
     </svg>
   );
 }

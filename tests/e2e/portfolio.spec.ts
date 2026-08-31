@@ -1,7 +1,7 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
-const routes = ["/", "/work/commit", "/work/videx", "/work/orbit", "/work/nexflow"];
+const routes = ["/", "/work", "/work/commit", "/work/videx", "/work/orbit", "/work/nexflow"];
 
 for (const route of routes) {
   test(`${route} has no horizontal overflow`, async ({ page }) => {
@@ -49,6 +49,28 @@ test("compact navigation remains usable", async ({ page, viewport }) => {
   await expect(toggle).toBeVisible();
   await toggle.click();
   await expect(page.locator("#mobile-navigation").getByRole("link", { name: "Work" })).toBeVisible();
+});
+
+test("Binhakim Works distinguishes flagship products from smaller work without pretending experiments are launched", async ({ page }) => {
+  await page.goto("/work");
+  await expect(page.getByRole("heading", { name: "Independent products and open-source work by Yusuf Naeem." })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Four systems with engineering depth" })).toBeVisible();
+  await expect(page.locator(".works-feature-card")).toHaveCount(4);
+  await expect(page.getByRole("heading", { name: "Open source" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Experiments" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Archive" })).toBeVisible();
+  await expect(page.getByText("Experimental", { exact: true })).toBeVisible();
+  await expect(page.getByText("Archived", { exact: true }).first()).toBeVisible();
+});
+
+test("case studies distinguish architecture evidence from product screenshots", async ({ page }) => {
+  await page.goto("/work/nexflow");
+  await expect(page.getByText("Architecture lens, not a product screenshot", { exact: true })).toBeVisible();
+  await expect(page.getByRole("region", { name: "NexFlow proof at a glance" })).toContainText("Server-side field permissions");
+  await expect(page.getByText("Owner-verified evidence", { exact: true })).toBeVisible();
+
+  await page.goto("/work/orbit");
+  await expect(page.getByText("No public demo or repository is linked while this product is rebuilding.", { exact: true })).toBeVisible();
 });
 
 test("experience is one continuous timeline with an aligned rail", async ({ page }) => {

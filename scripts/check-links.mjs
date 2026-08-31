@@ -2,7 +2,6 @@ import { readFile } from "node:fs/promises";
 
 const files = [
   "src/content/projects.ts",
-  "src/data/projects.json",
   "src/components/SiteSections.tsx",
   "src/data/blog.json",
 ];

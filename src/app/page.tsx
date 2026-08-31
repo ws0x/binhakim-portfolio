@@ -26,7 +26,7 @@ export default async function Home() {
         <HeroSection />
         <EvidenceStrip />
         <section id="work" className="section-shell section-block work-section">
-          <div className="section-heading work-heading"><div><p className="section-label">01 / selected work</p><h2>Systems built for real constraints</h2></div><p className="section-intro">Four products, four different problems. Each story focuses on the decision that made the system dependable.</p></div>
+          <div className="section-heading work-heading"><div><p className="section-label">01 / Binhakim Works</p><h2>Products built for real constraints</h2></div><p className="section-intro">Binhakim Works is Yusuf Naeem&apos;s independent product lab and open-source practice. These four flagship stories focus on the decision that made each system dependable.</p></div>
           <div className="project-stories">{featuredProjects.map((project, index) => <ProjectStory key={project.slug} project={project} index={index + 1} />)}</div>
         </section>
         <ExperienceSection />

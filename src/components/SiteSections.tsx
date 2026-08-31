@@ -1,11 +1,12 @@
 import { ArrowUpRight, Download, Mail, MapPin } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import experienceData from "@/data/experience.json";
 import credentials from "@/data/credentials.json";
-import projectsData from "@/data/projects.json";
 import type { MediumPost } from "@/lib/getMediumPosts";
 import { GithubIcon, LinkedinIcon, TechIcon } from "@/components/BrandIcons";
 import { EngineeringRadarStrip } from "@/components/EngineeringRadarStrip";
+import { getProjectsByCollection } from "@/content/projects";
 
 export function HeroSection() {
   return (
@@ -22,7 +23,7 @@ export function HeroSection() {
           <p className="hero-role">Product Engineer · Software Systems & Business Impact</p>
           <p className="hero-summary">I build production software end to end, unifying system architecture, resilient data flows, security boundaries, and real business operations into dependable products.</p>
           <div className="hero-actions">
-            <a href="#work" className="button button-primary button-large">Explore selected work <ArrowUpRight size={16} /></a>
+            <Link href="/work" className="button button-primary button-large">Explore Binhakim Works <ArrowUpRight size={16} /></Link>
             <a href="/resume.pdf" download="Yusuf_Naeem_Resume.pdf" className="button button-secondary button-large" data-analytics="resume-download"><Download size={15} /> Download resume</a>
           </div>
           <div className="hero-proof"><span>Product Architecture</span><span>System Design</span><span>Applied Security</span><span>Business Outcomes</span></div>
@@ -97,20 +98,27 @@ export function CapabilitiesSection() {
 }
 
 export function MoreWorkSection() {
+  const secondaryProjects = [
+    ...getProjectsByCollection("open-source"),
+    ...getProjectsByCollection("experiment"),
+    ...getProjectsByCollection("archive"),
+  ];
+
   return (
     <section id="more-work" className="section-shell section-block archive-section">
-      <div className="section-heading"><div><p className="section-label">04 / more work</p><h2>Smaller projects, different muscles</h2></div><p className="section-intro">The flagship case studies show depth. This archive shows range without competing for attention.</p></div>
+      <div className="section-heading"><div><p className="section-label">04 / Binhakim Works</p><h2>Smaller products, honest status</h2></div><p className="section-intro">Binhakim Works is Yusuf Naeem&apos;s independent product lab and open-source practice. The flagship stories show depth. This collection shows range without inflating unfinished work.</p></div>
       <div className="archive-list">
-        {projectsData.map((project, index) => (
-          <article className="archive-item" key={project.id}>
+        {secondaryProjects.map((project, index) => (
+          <article className="archive-item" key={project.slug}>
             <span className="archive-number">0{index + 1}</span>
             <div>
               <p className="archive-category">{project.category}</p>
-              <h3>{project.title}</h3>
-              <p className="archive-tagline">{project.tagline}</p>
-              <p>{project.description}</p>
-              <div className="story-stack-inline archive-stack" aria-label={`${project.title} tech stack`}>
-                {project.tech.map((technology) => (
+              <h3>{project.name}</h3>
+              {project.tagline && <p className="archive-tagline">{project.tagline}</p>}
+              <p>{project.summary}</p>
+              <p className={`archive-status status-${project.status}`}>{project.statusLabel}</p>
+              <div className="story-stack-inline archive-stack" aria-label={`${project.name} tech stack`}>
+                {project.stack.map((technology) => (
                   <span key={technology} className="tech-tag">
                     <TechIcon name={technology} size={13} />
                     <span>{technology}</span>
@@ -119,8 +127,8 @@ export function MoreWorkSection() {
               </div>
             </div>
             <div className="archive-links">
-              {project.live && <a href={project.live} target="_blank" rel="noopener noreferrer" data-analytics="project-outbound">Live <ArrowUpRight size={14} /></a>}
-              {project.github && <a href={project.github} target="_blank" rel="noopener noreferrer" data-analytics="repository-click">Source <GithubIcon size={14} /></a>}
+              {project.links.live && <a href={project.links.live} target="_blank" rel="noopener noreferrer" data-analytics="project-outbound">Visit <ArrowUpRight size={14} /></a>}
+              {project.links.source && <a href={project.links.source} target="_blank" rel="noopener noreferrer" data-analytics="repository-click">Source <GithubIcon size={14} /></a>}
             </div>
           </article>
         ))}

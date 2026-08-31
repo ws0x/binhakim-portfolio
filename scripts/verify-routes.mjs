@@ -1,5 +1,5 @@
 const baseUrl = process.env.BASE_URL || "http://localhost:3000";
-const routes = ["/", "/work/nexflow", "/work/videx", "/work/orbit", "/work/commit"];
+const routes = ["/", "/work", "/work/nexflow", "/work/videx", "/work/orbit", "/work/commit"];
 
 for (const route of routes) {
   const response = await fetch(`${baseUrl}${route}`, { signal: AbortSignal.timeout(10000) });

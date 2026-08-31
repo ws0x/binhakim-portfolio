@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { BinhakimLogo } from "@/components/BrandIcons";
 
 const links = [
-  { label: "Work", href: "#work" },
+  { label: "Binhakim Works", href: "/work" },
   { label: "Experience", href: "#experience" },
   { label: "Capabilities", href: "#capabilities" },
   { label: "Writing", href: "#writing" },
@@ -19,7 +19,7 @@ export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const homeHref = pathname === "/" ? "#hero" : "/#hero";
-  const resolveHref = (href: string) => pathname === "/" ? href : `/${href}`;
+  const resolveHref = (href: string) => href.startsWith("/") ? href : pathname === "/" ? href : `/${href}`;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
