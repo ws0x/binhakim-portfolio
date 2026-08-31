@@ -1,3 +1,82 @@
+export function BinhakimLogo({ size = 26, className = "" }: { size?: number; className?: string }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 32 32"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      aria-hidden="true"
+    >
+      <defs>
+        <linearGradient id="bh-nav-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#67e8f9" />
+          <stop offset="100%" stopColor="#5aa7ff" />
+        </linearGradient>
+      </defs>
+
+      {/* Frame container */}
+      <rect
+        x="1.5"
+        y="1.5"
+        width="29"
+        height="29"
+        rx="7"
+        fill="#0a1220"
+        stroke="rgba(103, 232, 249, 0.45)"
+        strokeWidth="1.2"
+      />
+
+      {/* Left B spine */}
+      <path
+        d="M9.5 7.5v17"
+        stroke="url(#bh-nav-glow)"
+        strokeWidth="2.2"
+        strokeLinecap="round"
+      />
+
+      {/* Upper B loop */}
+      <path
+        d="M9.5 8.5h5.5a3.5 3.5 0 0 1 0 7h-5.5"
+        stroke="url(#bh-nav-glow)"
+        strokeWidth="2.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+
+      {/* Lower B loop */}
+      <path
+        d="M9.5 15.5h6a4 4 0 0 1 0 8h-6"
+        stroke="url(#bh-nav-glow)"
+        strokeWidth="2.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+
+      {/* Right H pillar */}
+      <path
+        d="M22.5 7.5v17"
+        stroke="url(#bh-nav-glow)"
+        strokeWidth="2.2"
+        strokeLinecap="round"
+      />
+
+      {/* Bridge connecting B loop to H pillar */}
+      <path
+        d="M15.5 15.5h7"
+        stroke="url(#bh-nav-glow)"
+        strokeWidth="2.2"
+        strokeLinecap="round"
+      />
+
+      {/* High-tech accent nodes */}
+      <circle cx="22.5" cy="7.5" r="1.3" fill="#67e8f9" />
+      <circle cx="9.5" cy="7.5" r="1.3" fill="#67e8f9" />
+    </svg>
+  );
+}
+
 export function GithubIcon({ size = 16 }: { size?: number }) {
   return (
     <svg

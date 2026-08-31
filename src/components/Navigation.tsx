@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Download, Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { BinhakimLogo } from "@/components/BrandIcons";
 
 const links = [
   { label: "Work", href: "#work" },
@@ -29,7 +30,12 @@ export default function Navigation() {
   return (
     <header className={`site-nav ${scrolled ? "is-scrolled" : ""}`}>
       <nav className="section-shell nav-inner" aria-label="Primary navigation">
-        <a className="brand" href={homeHref} onClick={() => setOpen(false)}><span className="brand-mark" aria-hidden="true">Y</span><span>binhakim<span className="brand-dot">.</span>dev</span></a>
+        <a className="brand" href={homeHref} onClick={() => setOpen(false)}>
+          <span className="brand-mark" aria-hidden="true">
+            <BinhakimLogo size={27} />
+          </span>
+          <span>binhakim<span className="brand-dot">.</span>dev</span>
+        </a>
         <div className="nav-links nav-desktop">{links.map((link) => <a href={resolveHref(link.href)} key={link.href}>{link.label}</a>)}<a href="/resume.pdf" download="Yusuf_Naeem_Resume.pdf" className="nav-resume" data-analytics="resume-download"><Download size={13} /> Resume</a></div>
         <button className="nav-toggle" type="button" aria-expanded={open} aria-controls="mobile-navigation" aria-label={open ? "Close menu" : "Open menu"} onClick={() => setOpen((value) => !value)}>{open ? <X size={20} /> : <Menu size={20} />}</button>
       </nav>

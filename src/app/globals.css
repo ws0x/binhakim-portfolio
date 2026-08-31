@@ -48,7 +48,8 @@ button { font: inherit; }
 .site-nav.is-scrolled { border-color: var(--line); background: rgba(7,11,19,.94); box-shadow: 0 12px 38px rgba(0,0,0,.16); backdrop-filter: blur(16px); }
 .nav-inner { min-height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
 .brand { display: inline-flex; align-items: center; gap: .65rem; color: var(--text); font-family: var(--font-mono); font-size: .82rem; font-weight: 700; letter-spacing: .03em; text-decoration: none; }
-.brand-mark { display: inline-grid; width: 27px; height: 27px; place-items: center; border: 1px solid rgba(103,232,249,.5); border-radius: 7px; color: var(--cyan); font-size: .75rem; }
+.brand-mark { display: inline-flex; align-items: center; justify-content: center; width: 27px; height: 27px; flex-shrink: 0; transition: transform .2s ease; }
+.brand:hover .brand-mark { transform: scale(1.05); }
 .brand-dot { color: var(--cyan); }
 .nav-links { display: flex; align-items: center; gap: clamp(1rem, 2.4vw, 1.8rem); }
 .nav-links a { color: var(--muted); font-family: var(--font-mono); font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; text-decoration: none; transition: color .2s ease; }
