@@ -350,6 +350,75 @@ export function WorkflowIcon({ size = 14 }: { size?: number }) {
   );
 }
 
+export function ClaudeIcon({ size = 14 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 2l1.76 6.24L20 10l-6.24 1.76L12 18l-1.76-6.24L4 10l6.24-1.76L12 2zm6.5 12l.88 3.12L22.5 18l-3.12.88L18.5 22l-.88-3.12L14.5 18l3.12-.88.88-3.12zM5.5 15l.88 3.12L9.5 19l-3.12.88L5.5 23l-.88-3.12L1.5 19l3.12-.88.88-3.12z" />
+    </svg>
+  );
+}
+
+export function DrizzleIcon({ size = 14 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M10.5 13.5l3-3m-3 0l3 3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+export function FlutterIcon({ size = 14 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M14.314 0L2.3 12 6 15.7 21.686 0h-7.372zm.028 10.371l-6.843 6.843 3.7 3.7 10.485-10.543h-7.342zM8.9 18.686l3.714 3.714 3.714-3.714-3.714-3.714L8.9 18.686z" />
+    </svg>
+  );
+}
+
+export function ViteIcon({ size = 14 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M21.447 2.766a.75.75 0 0 0-.847-.07L12.5 7.553 4.4 2.696a.75.75 0 0 0-1.127.817l3.35 15.65a.75.75 0 0 0 .617.579l5.06.745 5.06-.745a.75.75 0 0 0 .617-.579l3.35-15.65a.75.75 0 0 0-.88-.807zM12 18.42l-3.8-12.7 3.8 2.29 3.8-2.29L12 18.42z" />
+    </svg>
+  );
+}
+
+export function PdfIcon({ size = 14 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+      <polyline points="14 2 14 8 20 8" />
+      <line x1="16" y1="13" x2="8" y2="13" />
+      <line x1="16" y1="17" x2="8" y2="17" />
+      <polyline points="10 9 9 9 8 9" />
+    </svg>
+  );
+}
+
+export function AlgorithmIcon({ size = 14 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <circle cx="18" cy="5" r="3" />
+      <circle cx="6" cy="12" r="3" />
+      <circle cx="18" cy="19" r="3" />
+      <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+      <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+    </svg>
+  );
+}
+
+export function CanvasIcon({ size = 14 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <circle cx="13.5" cy="6.5" r=".5" fill="currentColor" />
+      <circle cx="17.5" cy="10.5" r=".5" fill="currentColor" />
+      <circle cx="8.5" cy="7.5" r=".5" fill="currentColor" />
+      <circle cx="6.5" cy="12.5" r=".5" fill="currentColor" />
+      <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z" />
+    </svg>
+  );
+}
+
 export function GenericCodeIcon({ size = 14 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -374,14 +443,18 @@ export function TechIcon({ name, size = 14 }: { name: string; size?: number }) {
   if (normalized.includes("java") && !normalized.includes("javascript")) return <JavaIcon size={size} />;
   if (normalized.includes("node") || normalized.includes("express")) return <NodejsIcon size={size} />;
   if (normalized.includes("three")) return <ThreejsIcon size={size} />;
+  if (normalized.includes("flutter")) return <FlutterIcon size={size} />;
+  if (normalized.includes("vite")) return <ViteIcon size={size} />;
 
   // Databases & ORMs
   if (normalized.includes("postgres")) return <PostgresqlIcon size={size} />;
   if (normalized.includes("sqlite")) return <SqliteIcon size={size} />;
   if (normalized.includes("prisma")) return <PrismaIcon size={size} />;
   if (normalized.includes("supabase")) return <SupabaseIcon size={size} />;
+  if (normalized.includes("drizzle")) return <DrizzleIcon size={size} />;
 
   // AI, Media & Video Tools
+  if (normalized.includes("claude") || normalized.includes("anthropic")) return <ClaudeIcon size={size} />;
   if (normalized.includes("gemini")) return <GeminiIcon size={size} />;
   if (normalized.includes("whisper") || normalized.includes("llm")) return <WhisperIcon size={size} />;
   if (normalized.includes("yt-dlp")) return <YtdlpIcon size={size} />;
@@ -390,15 +463,16 @@ export function TechIcon({ name, size = 14 }: { name: string; size?: number }) {
   // Auth, Payments & Communication
   if (normalized.includes("stripe")) return <StripeIcon size={size} />;
   if (normalized.includes("resend")) return <ResendIcon size={size} />;
-  if (normalized.includes("nextauth") || normalized.includes("auth")) return <NextauthIcon size={size} />;
+  if (normalized.includes("clerk") || normalized.includes("nextauth") || normalized.includes("auth") || normalized.includes("jwt") || normalized.includes("oauth")) return <NextauthIcon size={size} />;
 
-  // State, Query & Styling
+  // State, Query, Storage & Styling
   if (normalized.includes("tanstack") || normalized.includes("query")) return <TanstackIcon size={size} />;
   if (normalized.includes("tailwind")) return <TailwindIcon size={size} />;
   if (normalized.includes("html") || normalized.includes("css")) return <HtmlCssIcon size={size} />;
+  if (normalized.includes("blob") || normalized.includes("s3") || normalized.includes("cloud") || normalized.includes("stream") || normalized.includes("sse")) return <AnalyticsIcon size={size} />;
 
   // Security, Shell & DevOps Infrastructure
-  if (normalized.includes("docker")) return <DockerIcon size={size} />;
+  if (normalized.includes("docker") || normalized.includes("nginx")) return <DockerIcon size={size} />;
   if (normalized.includes("git")) return <GitIcon size={size} />;
   if (normalized.includes("security") || normalized.includes("burp") || normalized.includes("owasp") || normalized.includes("metasploit") || normalized.includes("rls") || normalized.includes("wireshark") || normalized.includes("kali")) return <SecurityShieldIcon size={size} />;
 
@@ -408,6 +482,11 @@ export function TechIcon({ name, size = 14 }: { name: string; size?: number }) {
 
   // APIs, Networking & WebSockets
   if (normalized.includes("rest") || normalized.includes("api") || normalized.includes("websocket")) return <RestApiIcon size={size} />;
+
+  // Algorithms, Data Structures & Visuals
+  if (normalized.includes("algorithm") || normalized.includes("packing") || normalized.includes("structure")) return <AlgorithmIcon size={size} />;
+  if (normalized.includes("canvas")) return <CanvasIcon size={size} />;
+  if (normalized.includes("pdf")) return <PdfIcon size={size} />;
 
   // Data, Charts & Analytics
   if (normalized.includes("power bi") || normalized.includes("analytics") || normalized.includes("chart") || normalized.includes("sheet")) return <AnalyticsIcon size={size} />;

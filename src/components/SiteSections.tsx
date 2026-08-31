@@ -13,19 +13,19 @@ export function HeroSection() {
       <div className="hero-grid" aria-hidden="true" />
       <div className="hero-inner">
         <div className="hero-copy">
-          <div className="hero-kicker"><span className="hero-pulse" /> Available for backend and full-stack roles</div>
-          <p className="hero-command">$ whoami / systems-minded product engineer</p>
+          <div className="hero-kicker"><span className="hero-pulse" /> Available for product engineering & full-stack roles</div>
+          <p className="hero-command">$ whoami / product engineer bridging software systems and business operations</p>
           <h1>
             <span className="hero-name-primary">Yusuf Naeem</span>
             <span className="hero-name-secondary">Abd El-Hakim</span>
           </h1>
-          <p className="hero-role">Backend-leaning full-stack software engineer</p>
-          <p className="hero-summary">I build production systems end to end, from APIs and data models to security boundaries and useful product surfaces. My strongest work turns messy operations into dependable software.</p>
+          <p className="hero-role">Product Engineer · Software Systems & Business Impact</p>
+          <p className="hero-summary">I build production software end to end—unifying system architecture, resilient data flows, security boundaries, and real business operations into dependable products.</p>
           <div className="hero-actions">
             <a href="#work" className="button button-primary button-large">Explore selected work <ArrowUpRight size={16} /></a>
             <a href="/resume.pdf" download="Yusuf_Naeem_Resume.pdf" className="button button-secondary button-large" data-analytics="resume-download"><Download size={15} /> Download resume</a>
           </div>
-          <div className="hero-proof"><span>APIs</span><span>Data systems</span><span>Applied security</span><span>Product delivery</span></div>
+          <div className="hero-proof"><span>Product Architecture</span><span>System Design</span><span>Applied Security</span><span>Business Outcomes</span></div>
         </div>
         <div className="hero-portrait-wrap">
           <div className="portrait-orbit orbit-one" aria-hidden="true" />
@@ -100,7 +100,31 @@ export function MoreWorkSection() {
   return (
     <section id="more-work" className="section-shell section-block archive-section">
       <div className="section-heading"><div><p className="section-label">04 / more work</p><h2>Smaller projects, different muscles</h2></div><p className="section-intro">The flagship case studies show depth. This archive shows range without competing for attention.</p></div>
-      <div className="archive-list">{projectsData.map((project, index) => <article className="archive-item" key={project.id}><span className="archive-number">0{index + 1}</span><div><p className="archive-category">{project.category}</p><h3>{project.title}</h3><p className="archive-tagline">{project.tagline}</p><p>{project.description}</p><div className="stack-list">{project.tech.slice(0, 5).map((technology) => <span key={technology}>{technology}</span>)}</div></div><div className="archive-links">{project.live && <a href={project.live} target="_blank" rel="noopener noreferrer" data-analytics="project-outbound">Live <ArrowUpRight size={14} /></a>}{project.github && <a href={project.github} target="_blank" rel="noopener noreferrer" data-analytics="repository-click">Source <GithubIcon size={14} /></a>}</div></article>)}</div>
+      <div className="archive-list">
+        {projectsData.map((project, index) => (
+          <article className="archive-item" key={project.id}>
+            <span className="archive-number">0{index + 1}</span>
+            <div>
+              <p className="archive-category">{project.category}</p>
+              <h3>{project.title}</h3>
+              <p className="archive-tagline">{project.tagline}</p>
+              <p>{project.description}</p>
+              <div className="story-stack-inline archive-stack" aria-label={`${project.title} tech stack`}>
+                {project.tech.map((technology) => (
+                  <span key={technology} className="tech-tag">
+                    <TechIcon name={technology} size={13} />
+                    <span>{technology}</span>
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div className="archive-links">
+              {project.live && <a href={project.live} target="_blank" rel="noopener noreferrer" data-analytics="project-outbound">Live <ArrowUpRight size={14} /></a>}
+              {project.github && <a href={project.github} target="_blank" rel="noopener noreferrer" data-analytics="repository-click">Source <GithubIcon size={14} /></a>}
+            </div>
+          </article>
+        ))}
+      </div>
     </section>
   );
 }
@@ -236,7 +260,7 @@ export function BackgroundSection() {
 export function ContactSection() {
   return (
     <section id="contact" className="contact-section">
-      <div className="section-shell contact-inner"><div><p className="section-label">07 / contact</p><h2>Let’s build something dependable.</h2><p>I’m open to backend and full-stack engineering roles, infrastructure work, and collaborations involving systems design, APIs, data, or applied security.</p></div><div className="contact-actions"><a href="mailto:yusufnaeemhakim@gmail.com" className="button button-primary button-large" data-analytics="contact-click"><Mail size={15} /> Email me</a><a href="https://linkedin.com/in/binhakim" target="_blank" rel="noopener noreferrer" className="button button-secondary button-large" data-analytics="contact-click"><LinkedinIcon size={15} /> LinkedIn</a><a href="https://github.com/ws0x" target="_blank" rel="noopener noreferrer" className="button button-quiet button-large" data-analytics="contact-click"><GithubIcon size={15} /> GitHub</a></div><div className="contact-location"><MapPin size={14} /> Cairo, Egypt · open to remote collaboration</div></div>
+      <div className="section-shell contact-inner"><div><p className="section-label">07 / contact</p><h2>Let’s build something dependable.</h2><p>I’m open to product engineering and full-stack roles, system architecture work, and high-impact software initiatives connecting technology with real business outcomes.</p></div><div className="contact-actions"><a href="mailto:yusufnaeemhakim@gmail.com" className="button button-primary button-large" data-analytics="contact-click"><Mail size={15} /> Email me</a><a href="https://linkedin.com/in/binhakim" target="_blank" rel="noopener noreferrer" className="button button-secondary button-large" data-analytics="contact-click"><LinkedinIcon size={15} /> LinkedIn</a><a href="https://github.com/ws0x" target="_blank" rel="noopener noreferrer" className="button button-quiet button-large" data-analytics="contact-click"><GithubIcon size={15} /> GitHub</a></div><div className="contact-location"><MapPin size={14} /> Cairo, Egypt · open to remote collaboration</div></div>
     </section>
   );
 }

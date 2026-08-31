@@ -10,8 +10,8 @@ const jetBrainsMono = JetBrains_Mono({ variable: "--font-jet", subsets: ["latin"
 
 const SITE_URL = "https://www.binhakim.dev";
 const FULL_NAME = "Yusuf Naeem Abd El-Hakim";
-const TITLE = "Yusuf Naeem | Backend-leaning Full-Stack Software Engineer";
-const DESCRIPTION = "Yusuf Naeem Abd El-Hakim builds production systems end to end: APIs, relational data models, security boundaries, and useful product surfaces.";
+const TITLE = "Yusuf Naeem | Product Engineer · Software Systems & Business Impact";
+const DESCRIPTION = "Yusuf Naeem Abd El-Hakim builds software systems and digital products end to end with deep ownership of engineering architecture, resilient data flows, and measurable business outcomes.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   authors: [{ name: FULL_NAME, url: SITE_URL }],
   creator: FULL_NAME,
   publisher: FULL_NAME,
-  keywords: ["Yusuf Naeem", "Backend Engineer", "Full-Stack Engineer", "API Design", "PostgreSQL", "Application Security", "Next.js", "TypeScript"],
+  keywords: ["Yusuf Naeem", "Product Engineer", "Full-Stack Engineer", "Software Systems", "API Design", "PostgreSQL", "Application Security", "Next.js", "TypeScript", "Business Operations"],
   alternates: { canonical: SITE_URL },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 } },
   icons: { icon: "/icon.png", shortcut: "/favicon.ico", apple: "/icon.png" },
@@ -34,7 +34,7 @@ export const viewport: Viewport = { width: "device-width", initialScale: 1, them
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
-    { "@type": "Person", "@id": `${SITE_URL}/#person`, name: FULL_NAME, url: SITE_URL, jobTitle: "Backend-leaning Full-Stack Software Engineer", description: DESCRIPTION, email: "yusufnaeemhakim@gmail.com", address: { "@type": "PostalAddress", addressLocality: "Cairo", addressCountry: "EG" }, sameAs: ["https://github.com/ws0x", "https://linkedin.com/in/binhakim", "https://medium.com/@binhakim"] },
+    { "@type": "Person", "@id": `${SITE_URL}/#person`, name: FULL_NAME, url: SITE_URL, jobTitle: "Product Engineer · Software Systems & Business Impact", description: DESCRIPTION, email: "yusufnaeemhakim@gmail.com", address: { "@type": "PostalAddress", addressLocality: "Cairo", addressCountry: "EG" }, sameAs: ["https://github.com/ws0x", "https://linkedin.com/in/binhakim", "https://medium.com/@binhakim"] },
     { "@type": "WebSite", "@id": `${SITE_URL}/#website`, url: SITE_URL, name: TITLE, description: DESCRIPTION, author: { "@id": `${SITE_URL}/#person` }, inLanguage: "en-US" },
   ],
 };

@@ -165,6 +165,14 @@ export function CaseStudyHero({ project }: { project: ProjectCaseStudy }) {
         </div>
         <h1>{project.name}</h1>
         <p className="case-summary">{project.summary}</p>
+        <div className="story-stack-inline" style={{ marginTop: "1.2rem", marginBottom: "0.5rem" }} aria-label={`${project.name} tech stack`}>
+          {project.stack.map((tech) => (
+            <span key={tech} className="tech-tag">
+              <TechIcon name={tech} size={13} />
+              <span>{tech}</span>
+            </span>
+          ))}
+        </div>
         <div className="case-facts">
           <div><span>Role</span><strong>{project.role}</strong></div>
           <div><span>Timeline</span><strong>{project.timeline}</strong></div>

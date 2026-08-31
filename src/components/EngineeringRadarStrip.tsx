@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { type KeyboardEvent, useRef, useState } from "react";
 import { ArrowUpRight, Cpu, Database, Lock, Terminal, Zap } from "lucide-react";
+import Link from "next/link";
 import { TechIcon } from "@/components/BrandIcons";
 
 interface RadarPillar {
@@ -25,7 +26,7 @@ const PILLARS: RadarPillar[] = [
     metricLabel: "Unified in auditable pipeline",
     description: "Server-side field permission filtering, atomic REQ identifier sequences, and strict REST API contract boundaries.",
     techs: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "NextAuth"],
-    projectLink: "#work",
+    projectLink: "/work/nexflow",
     projectName: "NexFlow",
   },
   {
@@ -36,7 +37,7 @@ const PILLARS: RadarPillar[] = [
     metricLabel: "Durable SQLite transaction boundary",
     description: "Loopback-only service architecture, local network privacy boundaries, and daemon auto-recovery.",
     techs: ["Python", "FastAPI", "SQLite", "yt-dlp", "FFmpeg"],
-    projectLink: "#work",
+    projectLink: "/work/videx",
     projectName: "Videx",
   },
   {
@@ -47,7 +48,7 @@ const PILLARS: RadarPillar[] = [
     metricLabel: "Database-enforced tenant isolation",
     description: "Row-Level Security ensuring multi-tenant data boundaries are guaranteed at the database layer.",
     techs: ["Supabase", "PostgreSQL", "TypeScript", "Stripe"],
-    projectLink: "#work",
+    projectLink: "/work/orbit",
     projectName: "Orbit",
   },
   {
@@ -58,14 +59,28 @@ const PILLARS: RadarPillar[] = [
     metricLabel: "Production speech & semantic search",
     description: "Locally testable AI pipelines with context boundaries, streaming responses, and reliable email notifications.",
     techs: ["Whisper AI", "Gemini AI", "Resend", "Next.js"],
-    projectLink: "#work",
+    projectLink: "/work/commit",
     projectName: "commit_",
   },
 ];
 
 export function EngineeringRadarStrip() {
   const [activeId, setActiveId] = useState<string>("backend");
+  const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const activePillar = PILLARS.find((p) => p.id === activeId) || PILLARS[0];
+
+  const moveFocus = (event: KeyboardEvent<HTMLButtonElement>, index: number) => {
+    let nextIndex = index;
+    if (event.key === "ArrowRight") nextIndex = (index + 1) % PILLARS.length;
+    else if (event.key === "ArrowLeft") nextIndex = (index - 1 + PILLARS.length) % PILLARS.length;
+    else if (event.key === "Home") nextIndex = 0;
+    else if (event.key === "End") nextIndex = PILLARS.length - 1;
+    else return;
+
+    event.preventDefault();
+    setActiveId(PILLARS[nextIndex].id);
+    tabRefs.current[nextIndex]?.focus();
+  };
 
   return (
     <section className="engineering-radar-strip" aria-label="Interactive engineering capability matrix">
@@ -78,7 +93,7 @@ export function EngineeringRadarStrip() {
             <h3>Core Engineering Pillars & System Matrix</h3>
           </div>
           <div className="radar-tabs" role="tablist" aria-label="Select engineering domain">
-            {PILLARS.map((pillar) => {
+            {PILLARS.map((pillar, index) => {
               const Icon = pillar.icon;
               const isActive = pillar.id === activeId;
               return (
@@ -86,8 +101,11 @@ export function EngineeringRadarStrip() {
                   key={pillar.id}
                   role="tab"
                   aria-selected={isActive}
+                  tabIndex={isActive ? 0 : -1}
+                  ref={(el) => { tabRefs.current[index] = el; }}
                   className={`radar-tab ${isActive ? "is-active" : ""}`}
                   onClick={() => setActiveId(pillar.id)}
+                  onKeyDown={(event) => moveFocus(event, index)}
                 >
                   <Icon size={14} />
                   <span>{pillar.label}</span>
@@ -121,10 +139,10 @@ export function EngineeringRadarStrip() {
             </div>
           </div>
 
-          <a href={activePillar.projectLink} className="radar-action-link">
+          <Link href={activePillar.projectLink} className="radar-action-link">
             <span>Inspect in {activePillar.projectName}</span>
             <ArrowUpRight size={14} />
-          </a>
+          </Link>
         </div>
       </div>
     </section>
