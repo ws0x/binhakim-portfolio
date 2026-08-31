@@ -20,7 +20,7 @@ export function HeroSection() {
             <span className="hero-name-secondary">Abd El-Hakim</span>
           </h1>
           <p className="hero-role">Product Engineer · Software Systems & Business Impact</p>
-          <p className="hero-summary">I build production software end to end—unifying system architecture, resilient data flows, security boundaries, and real business operations into dependable products.</p>
+          <p className="hero-summary">I build production software end to end, unifying system architecture, resilient data flows, security boundaries, and real business operations into dependable products.</p>
           <div className="hero-actions">
             <a href="#work" className="button button-primary button-large">Explore selected work <ArrowUpRight size={16} /></a>
             <a href="/resume.pdf" download="Yusuf_Naeem_Resume.pdf" className="button button-secondary button-large" data-analytics="resume-download"><Download size={15} /> Download resume</a>
