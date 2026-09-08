@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { getFeaturedProjects } from "@/content/projects";
+import { STUDIO_PRODUCTS } from "@/content/studio-products";
 
 const BASE = "https://www.binhakim.dev";
 
@@ -7,9 +7,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: BASE, lastModified: new Date(), changeFrequency: "weekly", priority: 1.0 },
     { url: `${BASE}/studio`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.95 },
-    ...getFeaturedProjects().map((project) => ({
+    ...STUDIO_PRODUCTS.map((project) => ({
       url: `${BASE}/studio/${project.slug}`,
-      lastModified: new Date(project.verifiedAt),
+      lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.9,
     })),

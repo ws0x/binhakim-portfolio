@@ -5,6 +5,7 @@ import test from "node:test";
 
 const root = new URL("..", import.meta.url);
 const content = readFileSync(new URL("src/content/projects.ts", root), "utf8");
+const studioContent = readFileSync(new URL("src/content/studio-products.ts", root), "utf8");
 
 test("flagship projects keep the agreed order", () => {
   const expected = ["commit", "videx", "orbit", "nexflow"];
@@ -17,6 +18,13 @@ test("flagship projects keep the agreed order", () => {
 
 test("content validation script passes", () => {
   execFileSync(process.execPath, ["scripts/validate-content.mjs"], { cwd: root, stdio: "pipe" });
+});
+
+test("Hakim Studio keeps the approved product order and excludes portfolio-only work", () => {
+  const expected = ["hakim", "videx", "cerebro", "commit", "orbit"];
+  const actual = [...studioContent.matchAll(/slug: "([^"]+)"/g)].map((match) => match[1]);
+  assert.deepEqual(actual, expected);
+  for (const excluded of ["nexflow", "throughline", "epps-container-optimizer", "algorithm-visualizer", "iread"]) assert.equal(studioContent.includes(excluded), false);
 });
 
 test("no obsolete Interpack project is published", () => {

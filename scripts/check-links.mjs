@@ -1,9 +1,7 @@
 import { readFile } from "node:fs/promises";
 
 const files = [
-  "src/content/projects.ts",
-  "src/components/SiteSections.tsx",
-  "src/data/blog.json",
+  "src/content/studio-products.ts",
 ];
 const urls = new Set();
 for (const file of files) {

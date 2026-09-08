@@ -7,7 +7,6 @@ import {
   EvidenceStrip,
   ExperienceSection,
   HeroSection,
-  MoreWorkSection,
   SiteFooter,
   WritingSection,
 } from "@/components/SiteSections";
@@ -26,12 +25,11 @@ export default async function Home() {
         <HeroSection />
         <EvidenceStrip />
         <section id="work" className="section-shell section-block work-section">
-          <div className="section-heading work-heading"><div><p className="section-label">01 / Hakim Studio</p><h2>Products built for real constraints</h2></div><p className="section-intro">Hakim Studio is Yusuf Naeem&apos;s independent product lab and open-source practice. These four flagship stories focus on the decision that made each system dependable.</p></div>
+          <div className="section-heading work-heading"><div><p className="section-label">01 / selected engineering work</p><h2>Systems built for real constraints</h2></div><p className="section-intro">Selected product-engineering case studies. Each story focuses on the decision that made the system dependable.</p></div>
           <div className="project-stories">{featuredProjects.map((project, index) => <ProjectStory key={project.slug} project={project} index={index + 1} />)}</div>
         </section>
         <ExperienceSection />
         <CapabilitiesSection />
-        <MoreWorkSection />
         <WritingSection posts={posts} />
         <BackgroundSection />
         <ContactSection />

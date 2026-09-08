@@ -1,173 +1,40 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight, ExternalLink } from "lucide-react";
-import { GithubIcon, TechIcon } from "@/components/BrandIcons";
-import { getFeaturedProjects, getProjectsByCollection, type ProjectArchive } from "@/content/projects";
+import { getStudioProductsByAvailability, STUDIO_PRODUCTS, type StudioProduct } from "@/content/studio-products";
 
 const STUDIO_URL = "https://www.binhakim.dev/studio";
 
 export const metadata: Metadata = {
-  title: "Hakim Studio | Independent Product Lab",
-  description: "Hakim Studio is Yusuf Naeem's independent product lab and open-source practice, collecting dependable software, experiments, and engineering case studies.",
+  title: { absolute: "Hakim Studio | Public Software by Yusuf Naeem" },
+  description: "Hakim Studio is Yusuf Naeem's independent collection of public software for reading, local media workflows, and clearer thinking.",
   alternates: { canonical: "/studio" },
-  openGraph: {
-    title: "Hakim Studio | Independent Product Lab",
-    description: "Independent products, open-source software, experiments, and engineering case studies by Yusuf Naeem.",
-    url: "/studio",
-    images: [{ url: "/studio/opengraph-image", width: 1200, height: 630, alt: "Hakim Studio by Yusuf Naeem" }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Hakim Studio | Independent Product Lab",
-    description: "Independent products, open-source software, experiments, and engineering case studies by Yusuf Naeem.",
-    images: ["/studio/opengraph-image"],
-  },
+  openGraph: { title: "Hakim Studio | Public Software by Yusuf Naeem", description: "Public tools for reading, local media workflows, and clearer thinking.", url: "/studio", images: [{ url: "/studio/opengraph-image", width: 1200, height: 630, alt: "Hakim Studio by Yusuf Naeem" }] },
+  twitter: { card: "summary_large_image", title: "Hakim Studio | Public Software by Yusuf Naeem", description: "Public tools for reading, local media workflows, and clearer thinking.", images: ["/studio/opengraph-image"] },
 };
 
-function ArchiveProjectCard({ project }: { project: ProjectArchive }) {
-  return (
-    <article className="works-project-card">
-      <div className="works-card-header">
-        <p>{project.category}</p>
-        <span className={`status-pill status-${project.status}`}>
-          <span className="status-dot" aria-hidden="true" />
-          {project.statusLabel}
-        </span>
-      </div>
-      <h3>{project.name}</h3>
-      {project.tagline && <p className="works-card-tagline">{project.tagline}</p>}
-      <p className="works-card-summary">{project.summary}</p>
-      <p className="works-card-meta">For {project.audience}</p>
-      <div className="story-stack-inline works-card-stack" aria-label={`${project.name} technology stack`}>
-        {project.stack.map((technology) => (
-          <span key={technology} className="tech-tag">
-            <TechIcon name={technology} size={13} />
-            <span>{technology}</span>
-          </span>
-        ))}
-      </div>
-      <div className="works-card-footer">
-        <span>Verified {project.verifiedAt}</span>
-        <div className="works-card-actions">
-          {project.links.live && <a href={project.links.live} target="_blank" rel="noopener noreferrer" data-analytics="project-outbound">Visit <ExternalLink size={14} /></a>}
-          {project.links.source && <a href={project.links.source} target="_blank" rel="noopener noreferrer" data-analytics="repository-click">Source <GithubIcon size={14} /></a>}
-        </div>
-      </div>
-    </article>
-  );
+function ProductCard({ product, lead = false }: { product: StudioProduct; lead?: boolean }) {
+  const hasLinks = product.links.length > 0;
+  return <article className={`studio-product-card status-${product.status} ${lead ? "is-lead" : ""}`}>
+    <div className="studio-card-header"><p>{product.category}</p><span className="studio-status"><span aria-hidden="true" />{product.statusLabel}</span></div>
+    <h3>{hasLinks ? <Link href={`/studio/${product.slug}`}>{product.name}</Link> : product.name}</h3>
+    <p className="studio-card-summary">{product.summary}</p>
+    <p className="studio-card-audience"><span>Built for</span>{product.audience}</p>
+    <p className="studio-card-proof"><span>Why trust it</span>{product.proof}</p>
+    <p className="studio-card-availability">{product.availability}</p>
+    {hasLinks && <div className="studio-card-actions"><Link href={`/studio/${product.slug}`}>Details <ArrowUpRight size={14} /></Link>{product.links.slice(0, 1).map((link) => <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer">{link.label} <ExternalLink size={13} /></a>)}</div>}
+  </article>;
 }
 
 export default function HakimStudioPage() {
-  const featuredProjects = getFeaturedProjects();
-  const collections = [
-    {
-      id: "open-source",
-      title: "Open source",
-      description: "Smaller public projects with source available for inspection and reuse.",
-      projects: getProjectsByCollection("open-source"),
-    },
-    {
-      id: "experiments",
-      title: "Experiments",
-      description: "Early explorations that are useful to show, but are not presented as launched products.",
-      projects: getProjectsByCollection("experiment"),
-    },
-    {
-      id: "archive",
-      title: "Archive",
-      description: "Earlier work retained for context, with its historical status stated plainly.",
-      projects: getProjectsByCollection("archive"),
-    },
-  ];
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    name: "Hakim Studio",
-    description: "The independent product lab and open-source practice of Yusuf Naeem.",
-    url: STUDIO_URL,
-    isPartOf: { "@type": "WebSite", url: "https://www.binhakim.dev" },
-    mainEntity: {
-      "@type": "ItemList",
-      itemListElement: [...featuredProjects, ...collections.flatMap((collection) => collection.projects)].map((project, index) => ({
-        "@type": "ListItem",
-        position: index + 1,
-        item: {
-          "@type": "CreativeWork",
-          name: project.name,
-          description: project.summary,
-          url: project.collection === "featured" ? `${STUDIO_URL}/${project.slug}` : project.links.live || project.links.source || STUDIO_URL,
-        },
-      })),
-    },
-  };
-
-  return (
-    <main id="main-content" className="works-page">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <header className="section-shell works-hero">
-        <p className="section-label">Hakim Studio / independent product lab</p>
-        <h1>Independent products and open-source work by Yusuf Naeem.</h1>
-        <div className="works-hero-grid">
-          <div className="works-hero-copy">
-            <p>Hakim Studio collects four flagship systems alongside selected open-source work, experiments, and archive projects. It is Yusuf&apos;s independent practice, not a conventional company.</p>
-            <a className="works-jump-link" href="#featured-products">Explore four flagship systems <ArrowUpRight size={15} /></a>
-          </div>
-          <dl>
-            <div><dt>Builder</dt><dd>Yusuf Naeem</dd></div>
-            <div><dt>Focus</dt><dd>Product engineering</dd></div>
-            <div><dt>Evidence</dt><dd>Public or verified</dd></div>
-          </dl>
-        </div>
-      </header>
-
-      <section className="section-shell works-section" aria-labelledby="featured-products">
-        <div className="works-section-heading">
-          <div><p className="section-label">01 / featured products</p><h2 id="featured-products">Four systems with engineering depth</h2></div>
-          <p>Start with the product. Each case study then shows the problem, one key engineering decision, and the level of evidence behind its claims.</p>
-        </div>
-        <div className="works-feature-grid">
-          {featuredProjects.map((project) => (
-            <article className={`works-feature-card accent-${project.accent}`} key={project.slug}>
-              <div className="works-card-header">
-                <p>{project.eyebrow}</p>
-                <span className={`status-pill status-${project.status}`}><span className="status-dot" aria-hidden="true" />{project.statusLabel}</span>
-              </div>
-              <h3><Link href={`/studio/${project.slug}`}>{project.name}</Link></h3>
-              <p className="works-card-summary">{project.summary}</p>
-              <p className="works-card-meta"><span>Built for</span>{project.audience}</p>
-              <p className="works-card-decision"><span>Key engineering decision</span>{project.engineeringHighlights[0]?.title}</p>
-              <div className="story-stack-inline works-card-stack" aria-label={`${project.name} technology stack`}>
-                {project.stack.map((technology) => <span key={technology} className="tech-tag"><TechIcon name={technology} size={13} /><span>{technology}</span></span>)}
-              </div>
-              <div className="works-card-footer">
-                <span>Verified {project.verifiedAt}</span>
-                <div className="works-card-actions">
-                  <Link href={`/studio/${project.slug}`} data-analytics="case-study-open">Case study <ArrowUpRight size={14} /></Link>
-                  {project.links.live && <a href={project.links.live} target="_blank" rel="noopener noreferrer" data-analytics="project-outbound">Visit <ExternalLink size={14} /></a>}
-                  {project.links.source && <a href={project.links.source} target="_blank" rel="noopener noreferrer" data-analytics="repository-click">Source <GithubIcon size={14} /></a>}
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      {collections.map((collection, index) => (
-        <section className="section-shell works-section works-secondary-section" aria-labelledby={collection.id} key={collection.id}>
-          <div className="works-section-heading">
-            <div><p className="section-label">0{index + 2} / {collection.id}</p><h2 id={collection.id}>{collection.title}</h2></div>
-            <p>{collection.description}</p>
-          </div>
-          <div className="works-secondary-grid">
-            {collection.projects.map((project) => <ArchiveProjectCard key={project.slug} project={project} />)}
-          </div>
-        </section>
-      ))}
-
-      <section className="section-shell works-cta" aria-labelledby="works-contact">
-        <div><p className="section-label">Hakim Studio / collaborations</p><h2 id="works-contact">Need someone who can turn an uncertain workflow into dependable software?</h2></div>
-        <a href="mailto:yusufnaeemhakim@gmail.com" className="button button-primary button-large" data-analytics="contact-click">Email Yusuf <ArrowUpRight size={16} /></a>
-      </section>
-    </main>
-  );
+  const { available, inDevelopment } = getStudioProductsByAvailability();
+  const jsonLd = { "@context": "https://schema.org", "@type": "CollectionPage", name: "Hakim Studio", description: "Public software by Yusuf Naeem for reading, local media workflows, and clearer thinking.", url: STUDIO_URL, mainEntity: { "@type": "ItemList", itemListElement: STUDIO_PRODUCTS.map((product, index) => ({ "@type": "ListItem", position: index + 1, item: { "@type": "SoftwareApplication", name: product.name, description: product.summary, url: `${STUDIO_URL}/${product.slug}` } })) } };
+  return <main id="main-content" className="studio-page">
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+    <header className="section-shell studio-hero"><p className="section-label">Hakim Studio / independent software</p><h1>Useful software for reading, media, and clearer thinking.</h1><div className="studio-hero-grid"><p>Hakim Studio is Yusuf Naeem&apos;s independent collection of public tools. Each product is shown with its actual availability, so you can tell what you can use now and what is still being built.</p><dl><div><dt>Builder</dt><dd>Yusuf Naeem</dd></div><div><dt>Focus</dt><dd>Practical software</dd></div><div><dt>Principle</dt><dd>Honest product status</dd></div></dl></div></header>
+    <section id="products" className="section-shell studio-section" aria-labelledby="available-heading"><div className="studio-section-heading"><div><p className="section-label">01 / products to use now</p><h2 id="available-heading">Start with the tool, not the story.</h2></div><p>These products have a public path today, whether that is a release candidate, public beta, or open-source source code.</p></div><div className="studio-available-grid">{available.map((product, index) => <ProductCard key={product.slug} product={product} lead={index === 0} />)}</div></section>
+    <section id="in-development" className="section-shell studio-section studio-roadmap-section" aria-labelledby="roadmap-heading"><div className="studio-section-heading"><div><p className="section-label">02 / in development</p><h2 id="roadmap-heading">Worth following, not yet available.</h2></div><p>These products are included for context, with no claim of public access or launch readiness.</p></div><div className="studio-roadmap-grid">{inDevelopment.map((product) => <ProductCard key={product.slug} product={product} />)}</div></section>
+    <section id="about-studio" className="section-shell studio-about" aria-labelledby="about-heading"><div><p className="section-label">03 / about Hakim Studio</p><h2 id="about-heading">Built independently, released carefully.</h2></div><div><p>Hakim Studio is a one-person software practice by Yusuf Naeem. It is not an agency, consultancy, or venture-backed company. The goal is simple: make useful tools, state their limits plainly, and improve them through real use.</p><Link href="/">About Yusuf&apos;s engineering work <ArrowUpRight size={15} /></Link></div></section>
+    <footer className="section-shell studio-footer"><span>Hakim Studio</span><a href="mailto:yusufnaeemhakim@gmail.com">Contact Yusuf</a></footer>
+  </main>;
 }

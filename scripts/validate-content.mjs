@@ -3,8 +3,8 @@ import { access } from "node:fs/promises";
 import { join } from "node:path";
 
 const root = process.cwd();
-const content = await readFile(join(root, "src/content/projects.ts"), "utf8");
-const requiredSlugs = ["nexflow", "videx", "orbit", "commit"];
+const content = await readFile(join(root, "src/content/studio-products.ts"), "utf8");
+const requiredSlugs = ["hakim", "videx", "cerebro", "commit", "orbit"];
 const missingSlugs = requiredSlugs.filter((slug) => !content.includes(`slug: "${slug}"`));
 if (missingSlugs.length > 0) throw new Error(`Missing flagship projects: ${missingSlugs.join(", ")}`);
 if (content.includes("Interpack26") || content.includes("interpack-scraper")) throw new Error("Obsolete Interpack content is still present");

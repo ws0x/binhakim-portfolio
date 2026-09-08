@@ -1,76 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ArrowUpRight, ExternalLink } from "lucide-react";
 import { notFound } from "next/navigation";
-import { ArrowUpRight } from "lucide-react";
-import { CaseStudyHero, ConstraintSection, DecisionGrid, ProjectSection } from "@/components/ProjectStory";
-import { getFeaturedProjects, getProject } from "@/content/projects";
+import { getStudioProduct, STUDIO_PRODUCTS } from "@/content/studio-products";
 
 type Props = { params: Promise<{ slug: string }> };
-
-export function generateStaticParams() {
-  return getFeaturedProjects().map((project) => ({ slug: project.slug }));
-}
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params;
-  const project = getProject(slug);
-  if (!project) return {};
-
-  return {
-    title: `${project.name} case study`,
-    description: project.summary,
-    alternates: { canonical: `/studio/${project.slug}` },
-    openGraph: {
-      type: "article",
-      title: `${project.name} case study | Yusuf Naeem`,
-      description: project.summary,
-      url: `/studio/${project.slug}`,
-      images: [{ url: `/studio/${project.slug}/opengraph-image`, width: 1200, height: 630, alt: `${project.name} case study` }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${project.name} case study | Yusuf Naeem`,
-      description: project.summary,
-      images: [`/studio/${project.slug}/opengraph-image`],
-    },
-  };
-}
-
-export default async function CaseStudyPage({ params }: Props) {
-  const { slug } = await params;
-  const project = getProject(slug);
-  if (!project) notFound();
-
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": project.links.source ? "SoftwareSourceCode" : "CreativeWork",
-    name: project.name,
-    description: project.summary,
-    url: `https://www.binhakim.dev/studio/${project.slug}`,
-    author: { "@type": "Person", name: "Yusuf Naeem Abd El-Hakim", url: "https://www.binhakim.dev" },
-    keywords: project.stack.join(", "),
-    dateModified: project.verifiedAt,
-    codeRepository: project.links.source,
-  };
-
-  const nextProject = getFeaturedProjects().find((candidate) => candidate.featuredOrder === project.featuredOrder + 1) ?? getFeaturedProjects()[0];
-
-  return (
-    <>
-      <main id="main-content" className="case-page">
-        <CaseStudyHero project={project} />
-        <div className="section-shell case-content">
-          <section className="case-section overview-section">
-            <div className="case-section-label">{project.name} / overview</div>
-            <div><h2>The problem</h2><p>{project.problem}</p><div className="outcome-grid">{project.outcomes.map((outcome) => <div key={outcome.value}><strong>{outcome.value}</strong><span>{outcome.context}</span><small>{outcome.evidence} evidence</small></div>)}</div></div>
-          </section>
-          <ConstraintSection project={project} />
-          <DecisionGrid project={project} />
-          {project.sections.map((section) => <ProjectSection key={section.title} project={project} section={section} />)}
-          <section className="case-next"><div><span className="case-section-label">Next case study</span><h2>{nextProject.name}</h2><p>{nextProject.summary}</p></div><Link href={`/studio/${nextProject.slug}`} className="button button-primary">Read next <ArrowUpRight size={15} /></Link></section>
-        </div>
-      </main>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-    </>
-  );
-}
+export function generateStaticParams() { return STUDIO_PRODUCTS.map((product) => ({ slug: product.slug })); }
+export async function generateMetadata({ params }: Props): Promise<Metadata> { const product = getStudioProduct((await params).slug); if (!product) return {}; return { title: `${product.name} | Hakim Studio`, description: product.summary, alternates: { canonical: `/studio/${product.slug}` }, openGraph: { title: `${product.name} | Hakim Studio`, description: product.summary, url: `/studio/${product.slug}`, images: [{ url: `/studio/${product.slug}/opengraph-image`, width: 1200, height: 630, alt: `${product.name} by Hakim Studio` }] }, twitter: { card: "summary_large_image", title: `${product.name} | Hakim Studio`, description: product.summary, images: [`/studio/${product.slug}/opengraph-image`] } }; }
+export default async function StudioProductPage({ params }: Props) { const product = getStudioProduct((await params).slug); if (!product) notFound(); const jsonLd = { "@context": "https://schema.org", "@type": "SoftwareApplication", name: product.name, description: product.summary, url: `https://www.binhakim.dev/studio/${product.slug}`, author: { "@type": "Person", name: "Yusuf Naeem", url: "https://www.binhakim.dev" } }; return <main id="main-content" className="studio-product-page"><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} /><header className="section-shell studio-product-hero"><Link className="studio-back-link" href="/studio">← Hakim Studio</Link><p className="section-label">{product.category}</p><div className="studio-product-title-row"><h1>{product.name}</h1><span className={`studio-status status-${product.status}`}><span aria-hidden="true" />{product.statusLabel}</span></div><p className="studio-product-summary">{product.summary}</p><p className="studio-product-availability">{product.availability}</p>{product.links.length > 0 && <div className="studio-product-actions">{product.links.map((link) => <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer">{link.label} <ExternalLink size={14} /></a>)}</div>}</header><div className="section-shell studio-product-content"><section><p className="section-label">Built for</p><h2>{product.audience}</h2><p>{product.proof}</p></section><section><p className="section-label">Technical boundary</p><h2>Designed with a clear limit.</h2><p>{product.technicalNote}</p></section>{product.details.map((detail) => <section key={detail.title}><p className="section-label">{product.name}</p><h2>{detail.title}</h2><p>{detail.body}</p></section>)}</div><footer className="section-shell studio-footer"><Link href="/studio">All Hakim Studio products <ArrowUpRight size={14} /></Link><Link href="/">Yusuf&apos;s engineering portfolio <ArrowUpRight size={14} /></Link></footer></main>; }

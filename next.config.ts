@@ -22,12 +22,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/work",
-        destination: "/studio",
-        permanent: true,
-      },
-      {
-        source: "/work/:slug",
-        destination: "/studio/:slug",
+        destination: "/#work",
         permanent: true,
       },
     ];

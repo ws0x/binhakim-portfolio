@@ -5,7 +5,7 @@ import { Download, Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { BinhakimLogo } from "@/components/BrandIcons";
 
-const links = [
+const portfolioLinks = [
   { label: "Hakim Studio", href: "/studio" },
   { label: "Experience", href: "#experience" },
   { label: "Capabilities", href: "#capabilities" },
@@ -14,12 +14,21 @@ const links = [
   { label: "Contact", href: "#contact" },
 ];
 
+const studioLinks = [
+  { label: "Products", href: "#products" },
+  { label: "In development", href: "#in-development" },
+  { label: "About", href: "#about-studio" },
+  { label: "Yusuf's portfolio", href: "/" },
+];
+
 export default function Navigation() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const isStudio = pathname.startsWith("/studio");
+  const links = isStudio ? studioLinks : portfolioLinks;
   const homeHref = pathname === "/" ? "#hero" : "/#hero";
-  const resolveHref = (href: string) => href.startsWith("/") ? href : pathname === "/" ? href : `/${href}`;
+  const resolveHref = (href: string) => href.startsWith("/") ? href : isStudio ? `/studio${href}` : pathname === "/" ? href : `/${href}`;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -36,11 +45,11 @@ export default function Navigation() {
           </span>
           <span>binhakim<span className="brand-dot">.</span>dev</span>
         </a>
-        <div className="nav-links nav-desktop">{links.map((link) => <a href={resolveHref(link.href)} key={link.href}>{link.label}</a>)}<a href="/resume.pdf" download="Yusuf_Naeem_Resume.pdf" className="nav-resume" data-analytics="resume-download"><Download size={13} /> Resume</a></div>
+        <div className="nav-links nav-desktop">{links.map((link) => <a href={resolveHref(link.href)} key={link.href}>{link.label}</a>)}{!isStudio && <a href="/resume.pdf" download="Yusuf_Naeem_Resume.pdf" className="nav-resume" data-analytics="resume-download"><Download size={13} /> Resume</a>}</div>
         <button className="nav-toggle" type="button" aria-expanded={open} aria-controls="mobile-navigation" aria-label={open ? "Close menu" : "Open menu"} onClick={() => setOpen((value) => !value)}>{open ? <X size={20} /> : <Menu size={20} />}</button>
       </nav>
       <div id="mobile-navigation" className={`nav-mobile ${open ? "is-open" : ""}`}>
-        <div className="section-shell">{links.map((link) => <a href={resolveHref(link.href)} key={link.href} onClick={() => setOpen(false)}>{link.label}</a>)}<a href="/resume.pdf" download="Yusuf_Naeem_Resume.pdf" data-analytics="resume-download" onClick={() => setOpen(false)}><Download size={14} /> Resume</a></div>
+        <div className="section-shell">{links.map((link) => <a href={resolveHref(link.href)} key={link.href} onClick={() => setOpen(false)}>{link.label}</a>)}{!isStudio && <a href="/resume.pdf" download="Yusuf_Naeem_Resume.pdf" data-analytics="resume-download" onClick={() => setOpen(false)}><Download size={14} /> Resume</a>}</div>
       </div>
     </header>
   );

@@ -1,7 +1,7 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
-const routes = ["/", "/studio", "/studio/commit", "/studio/videx", "/studio/orbit", "/studio/nexflow"];
+const routes = ["/", "/studio", "/studio/hakim", "/studio/videx", "/studio/cerebro", "/studio/commit", "/studio/orbit", "/work/nexflow"];
 
 for (const route of routes) {
   test(`${route} has no horizontal overflow`, async ({ page }) => {
@@ -36,7 +36,7 @@ test("homepage keeps the agreed project order, accents, portrait, and interactiv
 });
 
 test("case studies keep shared navigation and do not link to themselves", async ({ page }) => {
-  await page.goto("/studio/commit");
+  await page.goto("/work/commit");
   await expect(page.locator(".site-nav")).toBeVisible();
   await expect(page.getByRole("link", { name: "Read case study" })).toHaveCount(0);
   await expect(page.getByRole("link", { name: "Visit product" })).toBeVisible();
@@ -48,29 +48,27 @@ test("compact navigation remains usable", async ({ page, viewport }) => {
   const toggle = page.getByRole("button", { name: "Open menu" });
   await expect(toggle).toBeVisible();
   await toggle.click();
-  await expect(page.locator("#mobile-navigation").getByRole("link", { name: "Hakim Studio" })).toBeVisible();
+  await expect(page.locator("#mobile-navigation").getByRole("link", { name: "Products" })).toBeVisible();
 });
 
-test("Hakim Studio distinguishes flagship products from smaller work without pretending experiments are launched", async ({ page }) => {
+test("Hakim Studio presents the approved public catalog and roadmap without portfolio-only work", async ({ page }) => {
   await page.goto("/studio");
-  await expect(page.getByRole("heading", { name: "Independent products and open-source work by Yusuf Naeem." })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Four systems with engineering depth" })).toBeVisible();
-  await expect(page.locator(".works-feature-card")).toHaveCount(4);
-  await expect(page.getByRole("heading", { name: "Open source" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Experiments" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Archive" })).toBeVisible();
-  await expect(page.getByText("Experimental", { exact: true })).toBeVisible();
-  await expect(page.getByText("Archived", { exact: true }).first()).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Useful software for reading, media, and clearer thinking." })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Start with the tool, not the story." })).toBeVisible();
+  await expect(page.locator(".studio-product-card")).toHaveCount(5);
+  await expect(page.locator(".studio-product-card h3")).toHaveText(["Hakim", "Videx", "Cerebro", "commit_", "Orbit"]);
+  await expect(page.getByText("Release candidate", { exact: true })).toBeVisible();
+  await expect(page.getByText("Private beta", { exact: true })).toBeVisible();
+  await expect(page.getByText("Rebuilding", { exact: true })).toBeVisible();
+  await expect(page.getByText("NexFlow", { exact: true })).toHaveCount(0);
+  await expect(page.getByText("Throughline", { exact: true })).toHaveCount(0);
 });
 
-test("case studies distinguish architecture evidence from product screenshots", async ({ page }) => {
-  await page.goto("/studio/nexflow");
-  await expect(page.getByText("Architecture lens, not a product screenshot", { exact: true })).toBeVisible();
-  await expect(page.getByRole("region", { name: "NexFlow proof at a glance" })).toContainText("Server-side field permissions");
-  await expect(page.getByText("Owner-verified evidence", { exact: true })).toBeVisible();
-
+test("Studio product pages keep availability boundaries honest", async ({ page }) => {
+  await page.goto("/studio/hakim");
+  await expect(page.getByText("Store publication and live migration canary are still pending.", { exact: false })).toBeVisible();
   await page.goto("/studio/orbit");
-  await expect(page.getByText("No public demo or repository is linked while this product is rebuilding.", { exact: true })).toBeVisible();
+  await expect(page.getByText("No public demo or repository is available while the product is rebuilt.", { exact: true })).toBeVisible();
 });
 
 test("experience is one continuous timeline with an aligned rail", async ({ page }) => {
