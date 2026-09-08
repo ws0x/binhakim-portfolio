@@ -99,7 +99,7 @@ function ProjectLinks({ project, includeCaseStudy = true }: { project: ProjectCa
   return (
     <div className="project-actions">
       {includeCaseStudy && (
-        <Link href={`/work/${project.slug}`} className="button button-primary" data-analytics="case-study-open">
+        <Link href={`/studio/${project.slug}`} className="button button-primary" data-analytics="case-study-open">
           Read case study <ArrowUpRight size={15} />
         </Link>
       )}
@@ -170,7 +170,7 @@ export function CaseStudyHero({ project }: { project: ProjectCaseStudy }) {
   return (
     <header className={`case-hero accent-${project.accent}`}>
       <div className="case-hero-copy">
-        <Link className="back-link" href="/work">← Binhakim Works</Link>
+        <Link className="back-link" href="/studio">← Hakim Studio</Link>
         <div className="story-header">
           <span className="story-eyebrow">{project.eyebrow}</span>
           <StatusPill project={project} />

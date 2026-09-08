@@ -14,28 +14,26 @@ const PUB_DIR = resolve(__dir, "../public");
 
 const svgLogo = `
 <svg width="512" height="512" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="plat-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#ffffff"/>
-      <stop offset="60%" stop-color="#f1f5f9"/>
-      <stop offset="100%" stop-color="#cbd5e1"/>
-    </linearGradient>
-    <mask id="plat-mask">
-      <rect width="200" height="200" fill="#ffffff"/>
-      <line x1="56" y1="46" x2="56" y2="154" stroke="#000000" stroke-width="13" stroke-linecap="round"/>
-      <rect x="74" y="48" width="56" height="42" rx="10" fill="#000000"/>
-      <rect x="86" y="58" width="32" height="22" rx="5" fill="#ffffff"/>
-      <rect x="74" y="104" width="66" height="46" rx="12" fill="#000000"/>
-      <rect x="86" y="114" width="42" height="26" rx="6" fill="#ffffff"/>
-      <polygon points="144,48 160,48 148,152 132,152" fill="#000000"/>
-    </mask>
-  </defs>
+  <!-- Deep dark container for app manifest & standalone icons -->
+  <rect width="200" height="200" rx="36" fill="#070b13"/>
 
-  <!-- Deep dark container for standalone icons & app manifest -->
-  <rect width="200" height="200" rx="36" fill="#030712"/>
+  <!-- Housing Frame -->
+  <rect x="18" y="18" width="164" height="164" rx="32" fill="#ffffff" fill-opacity="0.08" stroke="#ffffff" stroke-width="4" stroke-opacity="0.35"/>
 
-  <!-- Main Platinum Monolith Slab with Negative Space Mask -->
-  <rect x="24" y="24" width="152" height="152" rx="28" fill="url(#plat-grad)" mask="url(#plat-mask)"/>
+  <!-- Left B Spine -->
+  <rect x="42" y="44" width="22" height="112" rx="6" fill="#ffffff"/>
+
+  <!-- Upper B Loop -->
+  <path d="M58 44H106C124 44 132 58 124 72C118 82 106 86 58 86" stroke="#ffffff" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+  <!-- Lower B Loop & Integrated H Crossbar Bridge -->
+  <path d="M58 86H114C134 86 142 102 130 118C122 128 106 130 58 130" stroke="#ffffff" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+  <!-- Right H Upright Column -->
+  <rect x="136" y="44" width="22" height="112" rx="6" fill="#ffffff"/>
+
+  <!-- H Crossbar connecting B center to H Column -->
+  <rect x="108" y="90" width="34" height="20" fill="#ffffff"/>
 </svg>
 `;
 

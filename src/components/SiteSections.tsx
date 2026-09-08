@@ -23,7 +23,7 @@ export function HeroSection() {
           <p className="hero-role">Product Engineer · Software Systems & Business Impact</p>
           <p className="hero-summary">I build production software end to end, unifying system architecture, resilient data flows, security boundaries, and real business operations into dependable products.</p>
           <div className="hero-actions">
-            <Link href="/work" className="button button-primary button-large">Explore Binhakim Works <ArrowUpRight size={16} /></Link>
+            <Link href="/studio" className="button button-primary button-large">Explore Hakim Studio <ArrowUpRight size={16} /></Link>
             <a href="/resume.pdf" download="Yusuf_Naeem_Resume.pdf" className="button button-secondary button-large" data-analytics="resume-download"><Download size={15} /> Download resume</a>
           </div>
           <div className="hero-proof"><span>Product Architecture</span><span>System Design</span><span>Applied Security</span><span>Business Outcomes</span></div>
@@ -106,7 +106,7 @@ export function MoreWorkSection() {
 
   return (
     <section id="more-work" className="section-shell section-block archive-section">
-      <div className="section-heading"><div><p className="section-label">04 / Binhakim Works</p><h2>Smaller products, honest status</h2></div><p className="section-intro">Binhakim Works is Yusuf Naeem&apos;s independent product lab and open-source practice. The flagship stories show depth. This collection shows range without inflating unfinished work.</p></div>
+      <div className="section-heading"><div><p className="section-label">04 / Hakim Studio</p><h2>Smaller products, honest status</h2></div><p className="section-intro">Hakim Studio is Yusuf Naeem&apos;s independent product lab and open-source practice. The flagship stories show depth. This collection shows range without inflating unfinished work.</p></div>
       <div className="archive-list">
         {secondaryProjects.map((project, index) => (
           <article className="archive-item" key={project.slug}>

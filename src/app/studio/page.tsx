@@ -4,23 +4,23 @@ import { ArrowUpRight, ExternalLink } from "lucide-react";
 import { GithubIcon, TechIcon } from "@/components/BrandIcons";
 import { getFeaturedProjects, getProjectsByCollection, type ProjectArchive } from "@/content/projects";
 
-const WORKS_URL = "https://www.binhakim.dev/work";
+const STUDIO_URL = "https://www.binhakim.dev/studio";
 
 export const metadata: Metadata = {
-  title: "Binhakim Works",
-  description: "Binhakim Works is Yusuf Naeem's independent product lab and open-source practice, collecting dependable software, experiments, and engineering case studies.",
-  alternates: { canonical: "/work" },
+  title: "Hakim Studio | Independent Product Lab",
+  description: "Hakim Studio is Yusuf Naeem's independent product lab and open-source practice, collecting dependable software, experiments, and engineering case studies.",
+  alternates: { canonical: "/studio" },
   openGraph: {
-    title: "Binhakim Works | Independent product lab",
+    title: "Hakim Studio | Independent Product Lab",
     description: "Independent products, open-source software, experiments, and engineering case studies by Yusuf Naeem.",
-    url: "/work",
-    images: [{ url: "/work/opengraph-image", width: 1200, height: 630, alt: "Binhakim Works by Yusuf Naeem" }],
+    url: "/studio",
+    images: [{ url: "/studio/opengraph-image", width: 1200, height: 630, alt: "Hakim Studio by Yusuf Naeem" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Binhakim Works | Independent product lab",
+    title: "Hakim Studio | Independent Product Lab",
     description: "Independent products, open-source software, experiments, and engineering case studies by Yusuf Naeem.",
-    images: ["/work/opengraph-image"],
+    images: ["/studio/opengraph-image"],
   },
 };
 
@@ -57,7 +57,7 @@ function ArchiveProjectCard({ project }: { project: ProjectArchive }) {
   );
 }
 
-export default function BinhakimWorksPage() {
+export default function HakimStudioPage() {
   const featuredProjects = getFeaturedProjects();
   const collections = [
     {
@@ -82,9 +82,9 @@ export default function BinhakimWorksPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Binhakim Works",
+    name: "Hakim Studio",
     description: "The independent product lab and open-source practice of Yusuf Naeem.",
-    url: WORKS_URL,
+    url: STUDIO_URL,
     isPartOf: { "@type": "WebSite", url: "https://www.binhakim.dev" },
     mainEntity: {
       "@type": "ItemList",
@@ -95,7 +95,7 @@ export default function BinhakimWorksPage() {
           "@type": "CreativeWork",
           name: project.name,
           description: project.summary,
-          url: project.collection === "featured" ? `${WORKS_URL}/${project.slug}` : project.links.live || project.links.source || WORKS_URL,
+          url: project.collection === "featured" ? `${STUDIO_URL}/${project.slug}` : project.links.live || project.links.source || STUDIO_URL,
         },
       })),
     },
@@ -105,11 +105,11 @@ export default function BinhakimWorksPage() {
     <main id="main-content" className="works-page">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <header className="section-shell works-hero">
-        <p className="section-label">Binhakim Works / independent product lab</p>
+        <p className="section-label">Hakim Studio / independent product lab</p>
         <h1>Independent products and open-source work by Yusuf Naeem.</h1>
         <div className="works-hero-grid">
           <div className="works-hero-copy">
-            <p>Binhakim Works collects four flagship systems alongside selected open-source work, experiments, and archive projects. It is Yusuf&apos;s independent practice, not a conventional company.</p>
+            <p>Hakim Studio collects four flagship systems alongside selected open-source work, experiments, and archive projects. It is Yusuf&apos;s independent practice, not a conventional company.</p>
             <a className="works-jump-link" href="#featured-products">Explore four flagship systems <ArrowUpRight size={15} /></a>
           </div>
           <dl>
@@ -132,7 +132,7 @@ export default function BinhakimWorksPage() {
                 <p>{project.eyebrow}</p>
                 <span className={`status-pill status-${project.status}`}><span className="status-dot" aria-hidden="true" />{project.statusLabel}</span>
               </div>
-              <h3><Link href={`/work/${project.slug}`}>{project.name}</Link></h3>
+              <h3><Link href={`/studio/${project.slug}`}>{project.name}</Link></h3>
               <p className="works-card-summary">{project.summary}</p>
               <p className="works-card-meta"><span>Built for</span>{project.audience}</p>
               <p className="works-card-decision"><span>Key engineering decision</span>{project.engineeringHighlights[0]?.title}</p>
@@ -142,7 +142,7 @@ export default function BinhakimWorksPage() {
               <div className="works-card-footer">
                 <span>Verified {project.verifiedAt}</span>
                 <div className="works-card-actions">
-                  <Link href={`/work/${project.slug}`} data-analytics="case-study-open">Case study <ArrowUpRight size={14} /></Link>
+                  <Link href={`/studio/${project.slug}`} data-analytics="case-study-open">Case study <ArrowUpRight size={14} /></Link>
                   {project.links.live && <a href={project.links.live} target="_blank" rel="noopener noreferrer" data-analytics="project-outbound">Visit <ExternalLink size={14} /></a>}
                   {project.links.source && <a href={project.links.source} target="_blank" rel="noopener noreferrer" data-analytics="repository-click">Source <GithubIcon size={14} /></a>}
                 </div>
@@ -165,7 +165,7 @@ export default function BinhakimWorksPage() {
       ))}
 
       <section className="section-shell works-cta" aria-labelledby="works-contact">
-        <div><p className="section-label">Binhakim Works / collaborations</p><h2 id="works-contact">Need someone who can turn an uncertain workflow into dependable software?</h2></div>
+        <div><p className="section-label">Hakim Studio / collaborations</p><h2 id="works-contact">Need someone who can turn an uncertain workflow into dependable software?</h2></div>
         <a href="mailto:yusufnaeemhakim@gmail.com" className="button button-primary button-large" data-analytics="contact-click">Email Yusuf <ArrowUpRight size={16} /></a>
       </section>
     </main>

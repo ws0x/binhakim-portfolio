@@ -19,19 +19,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${project.name} case study`,
     description: project.summary,
-    alternates: { canonical: `/work/${project.slug}` },
+    alternates: { canonical: `/studio/${project.slug}` },
     openGraph: {
       type: "article",
       title: `${project.name} case study | Yusuf Naeem`,
       description: project.summary,
-      url: `/work/${project.slug}`,
-      images: [{ url: `/work/${project.slug}/opengraph-image`, width: 1200, height: 630, alt: `${project.name} case study` }],
+      url: `/studio/${project.slug}`,
+      images: [{ url: `/studio/${project.slug}/opengraph-image`, width: 1200, height: 630, alt: `${project.name} case study` }],
     },
     twitter: {
       card: "summary_large_image",
       title: `${project.name} case study | Yusuf Naeem`,
       description: project.summary,
-      images: [`/work/${project.slug}/opengraph-image`],
+      images: [`/studio/${project.slug}/opengraph-image`],
     },
   };
 }
@@ -46,7 +46,7 @@ export default async function CaseStudyPage({ params }: Props) {
     "@type": project.links.source ? "SoftwareSourceCode" : "CreativeWork",
     name: project.name,
     description: project.summary,
-    url: `https://www.binhakim.dev/work/${project.slug}`,
+    url: `https://www.binhakim.dev/studio/${project.slug}`,
     author: { "@type": "Person", name: "Yusuf Naeem Abd El-Hakim", url: "https://www.binhakim.dev" },
     keywords: project.stack.join(", "),
     dateModified: project.verifiedAt,
@@ -67,7 +67,7 @@ export default async function CaseStudyPage({ params }: Props) {
           <ConstraintSection project={project} />
           <DecisionGrid project={project} />
           {project.sections.map((section) => <ProjectSection key={section.title} project={project} section={section} />)}
-          <section className="case-next"><div><span className="case-section-label">Next case study</span><h2>{nextProject.name}</h2><p>{nextProject.summary}</p></div><Link href={`/work/${nextProject.slug}`} className="button button-primary">Read next <ArrowUpRight size={15} /></Link></section>
+          <section className="case-next"><div><span className="case-section-label">Next case study</span><h2>{nextProject.name}</h2><p>{nextProject.summary}</p></div><Link href={`/studio/${nextProject.slug}`} className="button button-primary">Read next <ArrowUpRight size={15} /></Link></section>
         </div>
       </main>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />

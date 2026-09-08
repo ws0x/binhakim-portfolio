@@ -3,7 +3,7 @@ import lighthouse from "lighthouse";
 
 const baseUrl = process.env.LIGHTHOUSE_BASE_URL ?? "http://127.0.0.1:3000";
 const chromePath = process.env.CHROME_PATH;
-const routes = ["/", "/work/commit", "/work/videx", "/work/orbit", "/work/nexflow"];
+const routes = ["/", "/studio", "/studio/commit", "/studio/videx", "/studio/orbit", "/studio/nexflow"];
 const minimumScores = { performance: 0.95, accessibility: 1, "best-practices": 1, seo: 1 };
 
 const chrome = await launch({

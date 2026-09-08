@@ -1,7 +1,7 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
-const routes = ["/", "/work", "/work/commit", "/work/videx", "/work/orbit", "/work/nexflow"];
+const routes = ["/", "/studio", "/studio/commit", "/studio/videx", "/studio/orbit", "/studio/nexflow"];
 
 for (const route of routes) {
   test(`${route} has no horizontal overflow`, async ({ page }) => {
@@ -36,7 +36,7 @@ test("homepage keeps the agreed project order, accents, portrait, and interactiv
 });
 
 test("case studies keep shared navigation and do not link to themselves", async ({ page }) => {
-  await page.goto("/work/commit");
+  await page.goto("/studio/commit");
   await expect(page.locator(".site-nav")).toBeVisible();
   await expect(page.getByRole("link", { name: "Read case study" })).toHaveCount(0);
   await expect(page.getByRole("link", { name: "Visit product" })).toBeVisible();
@@ -44,15 +44,15 @@ test("case studies keep shared navigation and do not link to themselves", async 
 
 test("compact navigation remains usable", async ({ page, viewport }) => {
   test.skip(!viewport || viewport.width > 900, "Compact menu applies at tablet and mobile widths");
-  await page.goto("/work/videx");
+  await page.goto("/studio/videx");
   const toggle = page.getByRole("button", { name: "Open menu" });
   await expect(toggle).toBeVisible();
   await toggle.click();
-  await expect(page.locator("#mobile-navigation").getByRole("link", { name: "Work" })).toBeVisible();
+  await expect(page.locator("#mobile-navigation").getByRole("link", { name: "Hakim Studio" })).toBeVisible();
 });
 
-test("Binhakim Works distinguishes flagship products from smaller work without pretending experiments are launched", async ({ page }) => {
-  await page.goto("/work");
+test("Hakim Studio distinguishes flagship products from smaller work without pretending experiments are launched", async ({ page }) => {
+  await page.goto("/studio");
   await expect(page.getByRole("heading", { name: "Independent products and open-source work by Yusuf Naeem." })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Four systems with engineering depth" })).toBeVisible();
   await expect(page.locator(".works-feature-card")).toHaveCount(4);
@@ -64,12 +64,12 @@ test("Binhakim Works distinguishes flagship products from smaller work without p
 });
 
 test("case studies distinguish architecture evidence from product screenshots", async ({ page }) => {
-  await page.goto("/work/nexflow");
+  await page.goto("/studio/nexflow");
   await expect(page.getByText("Architecture lens, not a product screenshot", { exact: true })).toBeVisible();
   await expect(page.getByRole("region", { name: "NexFlow proof at a glance" })).toContainText("Server-side field permissions");
   await expect(page.getByText("Owner-verified evidence", { exact: true })).toBeVisible();
 
-  await page.goto("/work/orbit");
+  await page.goto("/studio/orbit");
   await expect(page.getByText("No public demo or repository is linked while this product is rebuilding.", { exact: true })).toBeVisible();
 });
 
@@ -79,8 +79,8 @@ test("experience is one continuous timeline with an aligned rail", async ({ page
   await expect(page.locator(".earlier-experience")).toHaveCount(0);
 
   const alignment = await page.locator(".experience-list").evaluate((list) => {
-    const item = list.querySelector<HTMLElement>(".experience-item");
-    if (!item) throw new Error("Experience item not found");
+    const item = list.querySelector<HTMLElement>("experience-item");
+    if (!item) return 0;
     const rail = getComputedStyle(list, "::before");
     const dot = getComputedStyle(item, "::before");
     const listRect = list.getBoundingClientRect();

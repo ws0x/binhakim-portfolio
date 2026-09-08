@@ -10,46 +10,48 @@ export function BinhakimLogo({ size = 26, className = "" }: { size?: number; cla
       shapeRendering="geometricPrecision"
       aria-hidden="true"
     >
-      <defs>
-        <linearGradient id="bh-plat-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#ffffff" />
-          <stop offset="60%" stopColor="#f1f5f9" />
-          <stop offset="100%" stopColor="#cbd5e1" />
-        </linearGradient>
-
-        <mask id="bh-plat-mask">
-          {/* Base visible mask area */}
-          <rect width="200" height="200" fill="#ffffff" />
-
-          {/* Precision Negative Space Cutouts */}
-          {/* 1. Left Vertical Spine Channel */}
-          <line x1="56" y1="46" x2="56" y2="154" stroke="#000000" strokeWidth="13" strokeLinecap="round" />
-
-          {/* 2. Upper Chamber Cutout */}
-          <rect x="74" y="48" width="56" height="42" rx="10" fill="#000000" />
-          {/* Upper Chamber Platinum Core Counter */}
-          <rect x="86" y="58" width="32" height="22" rx="5" fill="#ffffff" />
-
-          {/* 3. Lower Chamber Cutout */}
-          <rect x="74" y="104" width="66" height="46" rx="12" fill="#000000" />
-          {/* Lower Chamber Platinum Core Counter */}
-          <rect x="86" y="114" width="42" height="26" rx="6" fill="#ffffff" />
-
-          {/* 4. Right Diagonal Aerodynamic Slit */}
-          <polygon points="144,48 160,48 148,152 132,152" fill="#000000" />
-        </mask>
-      </defs>
-
-      {/* Main Solid Monolithic Slab with Transparency Mask */}
+      {/* Outer Housing Frame */}
       <rect
-        x="24"
-        y="24"
-        width="152"
-        height="152"
-        rx="28"
-        fill="url(#bh-plat-grad)"
-        mask="url(#bh-plat-mask)"
+        x="18"
+        y="18"
+        width="164"
+        height="164"
+        rx="32"
+        fill="currentColor"
+        fillOpacity="0.08"
+        stroke="currentColor"
+        strokeWidth="4"
+        strokeOpacity="0.35"
       />
+
+      {/* Left B Spine */}
+      <rect x="42" y="44" width="22" height="112" rx="6" fill="currentColor" />
+
+      {/* Upper B Loop */}
+      <path
+        d="M58 44H106C124 44 132 58 124 72C118 82 106 86 58 86"
+        stroke="currentColor"
+        strokeWidth="20"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        fill="none"
+      />
+
+      {/* Lower B Loop & Integrated H Crossbar Bridge */}
+      <path
+        d="M58 86H114C134 86 142 102 130 118C122 128 106 130 58 130"
+        stroke="currentColor"
+        strokeWidth="20"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        fill="none"
+      />
+
+      {/* Right H Upright Column */}
+      <rect x="136" y="44" width="22" height="112" rx="6" fill="currentColor" />
+
+      {/* H Crossbar connecting B center to H Column */}
+      <rect x="108" y="90" width="34" height="20" fill="currentColor" />
     </svg>
   );
 }

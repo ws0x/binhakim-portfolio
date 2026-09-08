@@ -1,0 +1,16 @@
+<svg width="512" height="512" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <mask id="c3-mask-light">
+      <rect width="200" height="200" fill="#ffffff"/>
+      <line x1="54" y1="44" x2="54" y2="156" stroke="#000000" stroke-width="12" stroke-linecap="round"/>
+      <rect x="70" y="46" width="50" height="42" rx="8" fill="#000000"/>
+      <rect x="80" y="56" width="28" height="22" rx="4" fill="#ffffff"/>
+      <rect x="70" y="102" width="54" height="46" rx="10" fill="#000000"/>
+      <rect x="80" y="112" width="32" height="26" rx="5" fill="#ffffff"/>
+      <line x1="146" y1="44" x2="146" y2="156" stroke="#000000" stroke-width="12" stroke-linecap="round"/>
+      <rect x="122" y="90" width="28" height="12" fill="#000000"/>
+    </mask>
+  </defs>
+  <rect width="200" height="200" fill="#ffffff"/>
+  <rect x="24" y="24" width="152" height="152" rx="28" fill="#000000" mask="url(#c3-mask-light)"/>
+</svg>

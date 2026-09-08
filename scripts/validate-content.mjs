@@ -10,7 +10,7 @@ if (missingSlugs.length > 0) throw new Error(`Missing flagship projects: ${missi
 if (content.includes("Interpack26") || content.includes("interpack-scraper")) throw new Error("Obsolete Interpack content is still present");
 
 for (const slug of requiredSlugs) {
-  await access(join(root, `src/app/work/[slug]/page.tsx`));
+  await access(join(root, `src/app/studio/[slug]/page.tsx`));
   if (!content.includes(`slug: "${slug}"`)) throw new Error(`Project ${slug} has no content record`);
 }
 

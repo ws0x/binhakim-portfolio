@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Binhakim Works, independent product lab by Yusuf Naeem";
+export const alt = "Hakim Studio, independent product lab by Yusuf Naeem";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -13,11 +13,11 @@ export default function OpenGraphImage() {
           Independent product lab
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: "22px" }}>
-          <div style={{ fontSize: 92, fontWeight: 800, letterSpacing: -5 }}>Binhakim Works</div>
+          <div style={{ fontSize: 92, fontWeight: 800, letterSpacing: -5 }}>Hakim Studio</div>
           <div style={{ maxWidth: 840, color: "#a1afc1", fontSize: 37, lineHeight: 1.25 }}>Products, open-source software, experiments, and engineering case studies by Yusuf Naeem.</div>
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", color: "#a1afc1", fontSize: 26 }}>
-          <span>binhakim.dev/work</span>
+          <span>binhakim.dev/studio</span>
           <span>Yusuf Naeem</span>
         </div>
       </div>

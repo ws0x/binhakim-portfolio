@@ -1,5 +1,5 @@
 const baseUrl = process.env.BASE_URL || "http://localhost:3000";
-const routes = ["/", "/work", "/work/nexflow", "/work/videx", "/work/orbit", "/work/commit"];
+const routes = ["/", "/studio", "/studio/nexflow", "/studio/videx", "/studio/orbit", "/studio/commit"];
 
 for (const route of routes) {
   const response = await fetch(`${baseUrl}${route}`, { signal: AbortSignal.timeout(10000) });
@@ -9,7 +9,7 @@ for (const route of routes) {
   if (!html.match(/<h1[\s>]/)) throw new Error(`${route} is missing a primary heading`);
 }
 
-const missing = await fetch(`${baseUrl}/work/not-a-project`, { signal: AbortSignal.timeout(10000) });
+const missing = await fetch(`${baseUrl}/studio/not-a-project`, { signal: AbortSignal.timeout(10000) });
 if (missing.status !== 404) throw new Error(`Unknown project slug returned ${missing.status}, expected 404`);
 
 console.log(`Verified ${routes.length} routes and the invalid-slug 404 at ${baseUrl}.`);

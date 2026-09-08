@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { BinhakimLogo } from "@/components/BrandIcons";
 
 const links = [
-  { label: "Binhakim Works", href: "/work" },
+  { label: "Hakim Studio", href: "/studio" },
   { label: "Experience", href: "#experience" },
   { label: "Capabilities", href: "#capabilities" },
   { label: "Writing", href: "#writing" },
