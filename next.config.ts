@@ -25,6 +25,11 @@ const nextConfig: NextConfig = {
         destination: "/#work",
         permanent: true,
       },
+      {
+        source: "/studio/hakim",
+        destination: "/studio/marginsync",
+        permanent: true,
+      },
     ];
   },
 };

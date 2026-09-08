@@ -22,8 +22,8 @@ export interface StudioProduct {
 
 export const STUDIO_PRODUCTS: readonly StudioProduct[] = [
   {
-    slug: "hakim",
-    name: "Hakim",
+    slug: "marginsync",
+    name: "MarginSync",
     category: "Reading intelligence",
     status: "release-candidate",
     statusLabel: "Release candidate",
@@ -33,7 +33,7 @@ export const STUDIO_PRODUCTS: readonly StudioProduct[] = [
     proof: "Local-first sync with resumable jobs, backup preflight, and controlled Notion writes.",
     technicalNote: "The extension keeps the Kindle snapshot in IndexedDB and treats Notion as a controlled projection with user-owned fields.",
     details: [
-      { title: "What it protects", body: "Hakim separates source data from your interpretation. Kindle highlights stay intact, while your Notion status, tags, and notes remain yours." },
+      { title: "What it protects", body: "MarginSync separates source data from your interpretation. Kindle highlights stay intact, while your Notion status, tags, and notes remain yours." },
       { title: "What is available", body: "The release candidate can be built and loaded from source. Public store release remains intentionally withheld until migration and background-soak gates are complete." },
     ],
     links: [

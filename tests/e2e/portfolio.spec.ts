@@ -1,7 +1,7 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
-const routes = ["/", "/studio", "/studio/hakim", "/studio/videx", "/studio/cerebro", "/studio/commit", "/studio/orbit", "/work/nexflow"];
+const routes = ["/", "/studio", "/studio/marginsync", "/studio/videx", "/studio/cerebro", "/studio/commit", "/studio/orbit", "/work/nexflow"];
 
 for (const route of routes) {
   test(`${route} has no horizontal overflow`, async ({ page }) => {
@@ -56,7 +56,7 @@ test("Hakim Studio presents the approved public catalog and roadmap without port
   await expect(page.getByRole("heading", { name: "Useful software for reading, media, and clearer thinking." })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Start with the tool, not the story." })).toBeVisible();
   await expect(page.locator(".studio-product-card")).toHaveCount(5);
-  await expect(page.locator(".studio-product-card h3")).toHaveText(["Hakim", "Videx", "Cerebro", "commit_", "Orbit"]);
+  await expect(page.locator(".studio-product-card h3")).toHaveText(["MarginSync", "Videx", "Cerebro", "Commit", "Orbit"]);
   await expect(page.getByText("Release candidate", { exact: true })).toBeVisible();
   await expect(page.getByText("Private beta", { exact: true })).toBeVisible();
   await expect(page.getByText("Rebuilding", { exact: true })).toBeVisible();
@@ -65,7 +65,7 @@ test("Hakim Studio presents the approved public catalog and roadmap without port
 });
 
 test("Studio product pages keep availability boundaries honest", async ({ page }) => {
-  await page.goto("/studio/hakim");
+  await page.goto("/studio/marginsync");
   await expect(page.getByText("Store publication and live migration canary are still pending.", { exact: false })).toBeVisible();
   await page.goto("/studio/orbit");
   await expect(page.getByText("No public demo or repository is available while the product is rebuilt.", { exact: true })).toBeVisible();

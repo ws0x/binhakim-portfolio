@@ -21,7 +21,7 @@ test("content validation script passes", () => {
 });
 
 test("Hakim Studio keeps the approved product order and excludes portfolio-only work", () => {
-  const expected = ["hakim", "videx", "cerebro", "commit", "orbit"];
+  const expected = ["marginsync", "videx", "cerebro", "commit", "orbit"];
   const actual = [...studioContent.matchAll(/slug: "([^"]+)"/g)].map((match) => match[1]);
   assert.deepEqual(actual, expected);
   for (const excluded of ["nexflow", "throughline", "epps-container-optimizer", "algorithm-visualizer", "iread"]) assert.equal(studioContent.includes(excluded), false);
