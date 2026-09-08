@@ -1,6 +1,5 @@
 import { ArrowUpRight, Download, Mail, MapPin } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import experienceData from "@/data/experience.json";
 import credentials from "@/data/credentials.json";
 import type { MediumPost } from "@/lib/getMediumPosts";
@@ -23,7 +22,7 @@ export function HeroSection() {
           <p className="hero-role">Product Engineer · Software Systems & Business Impact</p>
           <p className="hero-summary">I build production software end to end, unifying system architecture, resilient data flows, security boundaries, and real business operations into dependable products.</p>
           <div className="hero-actions">
-            <Link href="/studio" className="button button-primary button-large">Explore Hakim Studio <ArrowUpRight size={16} /></Link>
+            <a href="https://studio.binhakim.dev" className="button button-primary button-large">Explore Hakim Studio <ArrowUpRight size={16} /></a>
             <a href="/resume.pdf" download="Yusuf_Naeem_Resume.pdf" className="button button-secondary button-large" data-analytics="resume-download"><Download size={15} /> Download resume</a>
           </div>
           <div className="hero-proof"><span>Product Architecture</span><span>System Design</span><span>Applied Security</span><span>Business Outcomes</span></div>

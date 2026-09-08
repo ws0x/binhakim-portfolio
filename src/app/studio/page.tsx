@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { ArrowUpRight, ExternalLink } from "lucide-react";
 import { getStudioProductsByAvailability, STUDIO_PRODUCTS, type StudioProduct } from "@/content/studio-products";
 
@@ -30,7 +29,7 @@ function ProductRow({ product, index, available }: { product: StudioProduct; ind
       <div className="studio-row-index" aria-hidden="true">{String(index + 1).padStart(2, "0")}</div>
       <div className="studio-row-main">
         <div className="studio-row-kicker"><span>{product.category}</span><span className="studio-status"><i aria-hidden="true" />{product.statusLabel}</span></div>
-        <h3>{available ? <Link href={`/studio/${product.slug}`}>{product.name}</Link> : product.name}</h3>
+        <h3>{available ? <a href={`${STUDIO_ORIGIN}/${product.slug}`}>{product.name}</a> : product.name}</h3>
         <p>{product.summary}</p>
         <div className="studio-row-tags">{product.platforms.slice(0, 4).map((platform) => <span key={platform}>{platform}</span>)}</div>
       </div>
@@ -41,7 +40,7 @@ function ProductRow({ product, index, available }: { product: StudioProduct; ind
         <p>{product.availability}</p>
       </div>
       <div className="studio-row-actions">
-        {available ? <Link className="studio-action-primary" href={`/studio/${product.slug}`}>Explore product <ArrowUpRight size={15} /></Link> : <span className="studio-action-muted">Not public yet</span>}
+        {available ? <a className="studio-action-primary" href={`${STUDIO_ORIGIN}/${product.slug}`}>Explore product <ArrowUpRight size={15} /></a> : <span className="studio-action-muted">Not public yet</span>}
         {firstLink && <a className="studio-action-secondary" href={firstLink.href} target="_blank" rel="noopener noreferrer">{firstLink.label} <ExternalLink size={13} /></a>}
       </div>
     </article>

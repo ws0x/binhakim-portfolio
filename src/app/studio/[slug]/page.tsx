@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { ArrowLeft, ArrowUpRight, ExternalLink } from "lucide-react";
 import { notFound } from "next/navigation";
 import { getStudioProduct, STUDIO_PRODUCTS } from "@/content/studio-products";
@@ -43,9 +42,9 @@ export default async function StudioProductPage({ params }: Props) {
     <main id="main-content" className="studio-detail-page">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="studio-detail-shell">
-        <nav className="studio-detail-breadcrumb" aria-label="Breadcrumb"><Link href="/studio"><ArrowLeft size={15} /> Hakim Studio</Link><span>/</span><span>{product.category}</span></nav>
+        <nav className="studio-detail-breadcrumb" aria-label="Breadcrumb"><a href={STUDIO_ORIGIN}><ArrowLeft size={15} /> Hakim Studio</a><span>/</span><span>{product.category}</span></nav>
         <header className="studio-detail-header">
-          <div className="studio-detail-title-block"><div className="studio-detail-number">{String(productIndex).padStart(2, "0")}</div><p className="studio-section-kicker">{product.category}</p><div className="studio-detail-title-line"><h1>{product.name}</h1><span className={`studio-status status-${product.status}`}><i aria-hidden="true" />{product.statusLabel}</span></div><p className="studio-detail-summary">{product.summary}</p><div className="studio-detail-actions">{product.links.map((link) => <a className="studio-action-primary" key={link.href} href={link.href} target="_blank" rel="noopener noreferrer">{link.label} <ExternalLink size={14} /></a>)}<Link className="studio-action-secondary" href="/studio">Browse all products <ArrowUpRight size={14} /></Link></div></div>
+          <div className="studio-detail-title-block"><div className="studio-detail-number">{String(productIndex).padStart(2, "0")}</div><p className="studio-section-kicker">{product.category}</p><div className="studio-detail-title-line"><h1>{product.name}</h1><span className={`studio-status status-${product.status}`}><i aria-hidden="true" />{product.statusLabel}</span></div><p className="studio-detail-summary">{product.summary}</p><div className="studio-detail-actions">{product.links.map((link) => <a className="studio-action-primary" key={link.href} href={link.href} target="_blank" rel="noopener noreferrer">{link.label} <ExternalLink size={14} /></a>)}<a className="studio-action-secondary" href={STUDIO_ORIGIN}>Browse all products <ArrowUpRight size={14} /></a></div></div>
           <aside className="studio-detail-facts"><div><span className="studio-field-label">Status</span><strong>{product.statusLabel}</strong></div><div><span className="studio-field-label">Built for</span><strong>{product.audience}</strong></div><div><span className="studio-field-label">Availability</span><strong>{product.availability}</strong></div></aside>
         </header>
 
@@ -60,7 +59,7 @@ export default async function StudioProductPage({ params }: Props) {
 
         {product.details.slice(1).map((detail) => <section className="studio-detail-note" key={detail.title}><p className="studio-section-kicker">{product.name}</p><div><h2>{detail.title}</h2><p>{detail.body}</p></div></section>)}
 
-        <footer className="studio-detail-footer"><Link href="/studio"><ArrowLeft size={15} /> All Hakim Studio products</Link><a href="https://www.binhakim.dev">Yusuf&apos;s engineering portfolio <ArrowUpRight size={15} /></a></footer>
+        <footer className="studio-detail-footer"><a href={STUDIO_ORIGIN}><ArrowLeft size={15} /> All Hakim Studio products</a><a href="https://www.binhakim.dev">Yusuf&apos;s engineering portfolio <ArrowUpRight size={15} /></a></footer>
       </div>
     </main>
   );

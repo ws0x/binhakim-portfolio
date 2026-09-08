@@ -71,6 +71,13 @@ test("Studio product pages keep availability boundaries honest", async ({ page }
   await expect(page.getByText("No public demo or repository is available while the product is rebuilt.", { exact: true })).toBeVisible();
 });
 
+test("Studio navigation points to the canonical Studio and portfolio hosts", async ({ page }) => {
+  await page.goto("/studio");
+  await expect(page.getByRole("link", { name: "Hakim Studio" }).first()).toHaveAttribute("href", "https://studio.binhakim.dev/#top");
+  await page.getByRole("button", { name: "Open menu" }).click();
+  await expect(page.getByRole("link", { name: "Yusuf's portfolio" })).toHaveAttribute("href", "https://www.binhakim.dev/");
+});
+
 test("experience is one continuous timeline with an aligned rail", async ({ page }) => {
   await page.goto("/#experience");
   await expect(page.locator(".experience-item")).toHaveCount(6);

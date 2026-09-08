@@ -26,7 +26,7 @@ const PILLARS: RadarPillar[] = [
     metricLabel: "Unified in auditable pipeline",
     description: "Server-side field permission filtering, atomic REQ identifier sequences, and strict REST API contract boundaries.",
     techs: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "NextAuth"],
-    projectLink: "/studio/nexflow",
+    projectLink: "/work/nexflow",
     projectName: "NexFlow",
   },
   {
@@ -37,7 +37,7 @@ const PILLARS: RadarPillar[] = [
     metricLabel: "Durable SQLite transaction boundary",
     description: "Loopback-only service architecture, local network privacy boundaries, and daemon auto-recovery.",
     techs: ["Python", "FastAPI", "SQLite", "yt-dlp", "FFmpeg"],
-    projectLink: "/studio/videx",
+    projectLink: "/work/videx",
     projectName: "Videx",
   },
   {
@@ -48,7 +48,7 @@ const PILLARS: RadarPillar[] = [
     metricLabel: "Database-enforced tenant isolation",
     description: "Row-Level Security ensuring multi-tenant data boundaries are guaranteed at the database layer.",
     techs: ["Supabase", "PostgreSQL", "TypeScript", "Stripe"],
-    projectLink: "/studio/orbit",
+    projectLink: "/work/orbit",
     projectName: "Orbit",
   },
   {
@@ -59,7 +59,7 @@ const PILLARS: RadarPillar[] = [
     metricLabel: "Production speech & semantic search",
     description: "Locally testable AI pipelines with context boundaries, streaming responses, and reliable email notifications.",
     techs: ["Whisper AI", "Gemini AI", "Resend", "Next.js"],
-    projectLink: "/studio/commit",
+    projectLink: "/work/commit",
     projectName: "commit_",
   },
 ];

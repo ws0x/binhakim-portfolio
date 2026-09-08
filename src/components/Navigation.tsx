@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { BinhakimLogo } from "@/components/BrandIcons";
 
 const portfolioLinks = [
-  { label: "Hakim Studio", href: "/studio" },
+  { label: "Hakim Studio", href: "https://studio.binhakim.dev" },
   { label: "Experience", href: "#experience" },
   { label: "Capabilities", href: "#capabilities" },
   { label: "Writing", href: "#writing" },
@@ -18,7 +18,7 @@ const studioLinks = [
   { label: "Products", href: "#available" },
   { label: "In development", href: "#in-development" },
   { label: "About", href: "#about" },
-  { label: "Yusuf's portfolio", href: "/" },
+  { label: "Yusuf's portfolio", href: "https://www.binhakim.dev/" },
 ];
 
 export default function Navigation() {
@@ -28,8 +28,9 @@ export default function Navigation() {
   const pathname = usePathname();
   const isStudio = pathname.startsWith("/studio") || studioHost;
   const links = isStudio ? studioLinks : portfolioLinks;
-  const homeHref = studioHost ? "/#top" : isStudio ? "/studio#top" : pathname === "/" ? "#hero" : "/#hero";
+  const homeHref = studioHost ? "/#top" : isStudio ? "https://studio.binhakim.dev/#top" : pathname === "/" ? "#hero" : "/#hero";
   const resolveHref = (href: string) => {
+    if (href.startsWith("http://") || href.startsWith("https://")) return href;
     if (studioHost && href.startsWith("#")) return href;
     if (studioHost && href.startsWith("/")) return href.replace(/^\/studio/, "") || "/";
     return href.startsWith("/") ? href : isStudio ? `/studio${href}` : pathname === "/" ? href : `/${href}`;
