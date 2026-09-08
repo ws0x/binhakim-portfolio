@@ -73,7 +73,7 @@ export default function HakimStudioPage() {
         <header className="studio-catalog-header" id="top">
           <div className="studio-catalog-eyebrow"><span>Hakim Studio</span><span>Public software by Yusuf Naeem</span></div>
           <div className="studio-catalog-intro">
-            <div><h1>Small tools with a clear job to do.</h1><p>Independent software for reading, local media workflows, and turning dense material into something you can use.</p></div>
+            <div><h1>Focused software for reading, media, and clearer thinking.</h1><p>Hakim Studio makes practical tools for Kindle highlights, local media workflows, and turning dense material into structured notes.</p></div>
             <aside className="studio-catalog-index" aria-label="Studio catalog index">
               <div><span>01</span><a href="#available">Use now</a></div>
               <div><span>02</span><a href="#in-development">In development</a></div>
@@ -85,7 +85,7 @@ export default function HakimStudioPage() {
         <section id="available" className="studio-catalog-section" aria-labelledby="available-heading">
           <div className="studio-catalog-section-head">
             <div><span className="studio-section-number">01</span><div><p className="studio-section-kicker">Available products</p><h2 id="available-heading">Use something useful today.</h2></div></div>
-            <p>Each entry has a public path, a stated status, and a direct next step. Start with the product, not a portfolio story.</p>
+            <p>MarginSync, Videx, and Cerebro each have a public path, a stated status, and a direct next step. Start with the tool, not a portfolio story.</p>
           </div>
           <div className="studio-catalog-list">{available.map((product, index) => <ProductRow key={product.slug} product={product} index={index} available />)}</div>
         </section>
@@ -93,14 +93,14 @@ export default function HakimStudioPage() {
         <section id="in-development" className="studio-catalog-section studio-catalog-development" aria-labelledby="development-heading">
           <div className="studio-catalog-section-head">
             <div><span className="studio-section-number">02</span><div><p className="studio-section-kicker">In development</p><h2 id="development-heading">Worth following. Not available yet.</h2></div></div>
-            <p>These products are shown for context only. Their labels describe their current state, not a launch promise.</p>
+            <p>Commit and Orbit are shown for context only. Their labels describe their current state, not a launch promise.</p>
           </div>
           <div className="studio-catalog-list">{inDevelopment.map((product, index) => <ProductRow key={product.slug} product={product} index={index + available.length} available={false} />)}</div>
         </section>
 
         <section id="about" className="studio-catalog-about" aria-labelledby="about-heading">
           <div><span className="studio-section-number">03</span><p className="studio-section-kicker">About Hakim Studio</p></div>
-          <div><h2 id="about-heading">A one-person studio for practical software.</h2><p>Hakim Studio is Yusuf Naeem&apos;s independent product practice. The work is small on purpose: each tool has a specific user problem, a visible boundary, and a public record of what is ready.</p><a className="studio-action-primary" href="https://www.binhakim.dev">See Yusuf&apos;s engineering work <ArrowUpRight size={15} /></a></div>
+          <div><h2 id="about-heading">A one-person studio for practical software.</h2><p>Hakim Studio is Yusuf Naeem&apos;s independent product studio. Each tool starts with one specific user problem, has a visible technical boundary, and states exactly what is ready to use.</p><a className="studio-action-primary" href="https://www.binhakim.dev">See Yusuf&apos;s engineering work <ArrowUpRight size={15} /></a></div>
         </section>
 
         <footer className="studio-catalog-footer"><span>Hakim Studio · Yusuf Naeem</span><a href="mailto:yusufnaeemhakim@gmail.com">Contact Yusuf</a></footer>

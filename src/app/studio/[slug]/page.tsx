@@ -50,11 +50,11 @@ export default async function StudioProductPage({ params }: Props) {
         </header>
 
         <div className="studio-detail-main-grid">
-          <section className="studio-detail-overview"><p className="studio-section-kicker">Product overview</p><h2>{product.details[0]?.title ?? "What it does"}</h2><p>{product.details[0]?.body ?? product.summary}</p></section>
-          <aside className="studio-detail-signal"><p className="studio-section-kicker">Why it is credible</p><p>{product.proof}</p></aside>
+          <section className="studio-detail-overview"><p className="studio-section-kicker">What it does</p><h2>{product.details[0]?.title ?? "What it does"}</h2><p>{product.details[0]?.body ?? product.summary}</p></section>
+          <aside className="studio-detail-signal"><p className="studio-section-kicker">Built with</p><p>{product.proof}</p></aside>
         </div>
 
-        <section className="studio-detail-capabilities" aria-labelledby="capabilities-heading"><div><p className="studio-section-kicker">Capabilities</p><h2 id="capabilities-heading">Designed around the job.</h2></div><div className="studio-capability-list">{product.capabilities.map((capability, index) => <div key={capability}><span>{String(index + 1).padStart(2, "0")}</span><strong>{capability}</strong></div>)}</div></section>
+        <section className="studio-detail-capabilities" aria-labelledby="capabilities-heading"><div><p className="studio-section-kicker">Core capabilities</p><h2 id="capabilities-heading">Designed around the job.</h2></div><div className="studio-capability-list">{product.capabilities.map((capability, index) => <div key={capability}><span>{String(index + 1).padStart(2, "0")}</span><strong>{capability}</strong></div>)}</div></section>
 
         <section className="studio-detail-technical" aria-labelledby="technical-heading"><div><p className="studio-section-kicker">Technical boundary</p><h2 id="technical-heading">Useful because its limits are explicit.</h2></div><div><p>{product.technicalNote}</p><div className="studio-row-tags">{product.platforms.map((platform) => <span key={platform}>{platform}</span>)}</div></div></section>
 

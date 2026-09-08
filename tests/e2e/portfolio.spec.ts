@@ -53,7 +53,7 @@ test("compact navigation remains usable", async ({ page, viewport }) => {
 
 test("Hakim Studio presents the approved public catalog and roadmap without portfolio-only work", async ({ page }) => {
   await page.goto("/studio");
-  await expect(page.getByRole("heading", { name: "Small tools with a clear job to do." })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Focused software for reading, media, and clearer thinking." })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Use something useful today." })).toBeVisible();
   await expect(page.locator(".studio-catalog-row")).toHaveCount(5);
   await expect(page.locator(".studio-catalog-row h3")).toHaveText(["MarginSync", "Videx", "Cerebro", "Commit", "Orbit"]);
