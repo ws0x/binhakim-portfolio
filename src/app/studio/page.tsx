@@ -3,38 +3,108 @@ import Link from "next/link";
 import { ArrowUpRight, ExternalLink } from "lucide-react";
 import { getStudioProductsByAvailability, STUDIO_PRODUCTS, type StudioProduct } from "@/content/studio-products";
 
-const STUDIO_URL = "https://www.binhakim.dev/studio";
+const STUDIO_ORIGIN = "https://studio.binhakim.dev";
 
 export const metadata: Metadata = {
   title: { absolute: "Hakim Studio | Public Software by Yusuf Naeem" },
-  description: "Hakim Studio is Yusuf Naeem's independent collection of public software for reading, local media workflows, and clearer thinking.",
-  alternates: { canonical: "/studio" },
-  openGraph: { title: "Hakim Studio | Public Software by Yusuf Naeem", description: "Public tools for reading, local media workflows, and clearer thinking.", url: "/studio", images: [{ url: "/studio/opengraph-image", width: 1200, height: 630, alt: "Hakim Studio by Yusuf Naeem" }] },
-  twitter: { card: "summary_large_image", title: "Hakim Studio | Public Software by Yusuf Naeem", description: "Public tools for reading, local media workflows, and clearer thinking.", images: ["/studio/opengraph-image"] },
+  description: "Public software by Yusuf Naeem for reading, local media workflows, and clearer thinking.",
+  alternates: { canonical: STUDIO_ORIGIN },
+  openGraph: {
+    title: "Hakim Studio | Public Software by Yusuf Naeem",
+    description: "Public tools for reading, local media workflows, and clearer thinking.",
+    url: STUDIO_ORIGIN,
+    images: [{ url: "/studio/opengraph-image", width: 1200, height: 630, alt: "Hakim Studio by Yusuf Naeem" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Hakim Studio | Public Software by Yusuf Naeem",
+    description: "Public tools for reading, local media workflows, and clearer thinking.",
+    images: ["/studio/opengraph-image"],
+  },
 };
 
-function ProductCard({ product, lead = false }: { product: StudioProduct; lead?: boolean }) {
-  const hasLinks = product.links.length > 0;
-  return <article className={`studio-product-card status-${product.status} ${lead ? "is-lead" : ""}`}>
-    <div className="studio-card-header"><p>{product.category}</p><span className="studio-status"><span aria-hidden="true" />{product.statusLabel}</span></div>
-    <h3>{hasLinks ? <Link href={`/studio/${product.slug}`}>{product.name}</Link> : product.name}</h3>
-    <p className="studio-card-summary">{product.summary}</p>
-    <p className="studio-card-audience"><span>Built for</span>{product.audience}</p>
-    <p className="studio-card-proof"><span>Why trust it</span>{product.proof}</p>
-    <p className="studio-card-availability">{product.availability}</p>
-    {hasLinks && <div className="studio-card-actions"><Link href={`/studio/${product.slug}`}>Details <ArrowUpRight size={14} /></Link>{product.links.slice(0, 1).map((link) => <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer">{link.label} <ExternalLink size={13} /></a>)}</div>}
-  </article>;
+function ProductRow({ product, index, available }: { product: StudioProduct; index: number; available: boolean }) {
+  const firstLink = product.links[0];
+  return (
+    <article className={`studio-catalog-row ${available ? "is-available" : "is-roadmap"} status-${product.status}`}>
+      <div className="studio-row-index" aria-hidden="true">{String(index + 1).padStart(2, "0")}</div>
+      <div className="studio-row-main">
+        <div className="studio-row-kicker"><span>{product.category}</span><span className="studio-status"><i aria-hidden="true" />{product.statusLabel}</span></div>
+        <h3>{available ? <Link href={`/studio/${product.slug}`}>{product.name}</Link> : product.name}</h3>
+        <p>{product.summary}</p>
+        <div className="studio-row-tags">{product.platforms.slice(0, 4).map((platform) => <span key={platform}>{platform}</span>)}</div>
+      </div>
+      <div className="studio-row-proof">
+        <span className="studio-field-label">Signal</span>
+        <p>{product.proof}</p>
+        <span className="studio-field-label">Availability</span>
+        <p>{product.availability}</p>
+      </div>
+      <div className="studio-row-actions">
+        {available ? <Link className="studio-action-primary" href={`/studio/${product.slug}`}>Explore product <ArrowUpRight size={15} /></Link> : <span className="studio-action-muted">Not public yet</span>}
+        {firstLink && <a className="studio-action-secondary" href={firstLink.href} target="_blank" rel="noopener noreferrer">{firstLink.label} <ExternalLink size={13} /></a>}
+      </div>
+    </article>
+  );
 }
 
 export default function HakimStudioPage() {
   const { available, inDevelopment } = getStudioProductsByAvailability();
-  const jsonLd = { "@context": "https://schema.org", "@type": "CollectionPage", name: "Hakim Studio", description: "Public software by Yusuf Naeem for reading, local media workflows, and clearer thinking.", url: STUDIO_URL, mainEntity: { "@type": "ItemList", itemListElement: STUDIO_PRODUCTS.map((product, index) => ({ "@type": "ListItem", position: index + 1, item: { "@type": "SoftwareApplication", name: product.name, description: product.summary, url: `${STUDIO_URL}/${product.slug}` } })) } };
-  return <main id="main-content" className="studio-page">
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-    <header className="section-shell studio-hero"><p className="section-label">Hakim Studio / independent software</p><h1>Useful software for reading, media, and clearer thinking.</h1><div className="studio-hero-grid"><p>Hakim Studio is Yusuf Naeem&apos;s independent collection of public tools. Each product is shown with its actual availability, so you can tell what you can use now and what is still being built.</p><dl><div><dt>Builder</dt><dd>Yusuf Naeem</dd></div><div><dt>Focus</dt><dd>Practical software</dd></div><div><dt>Principle</dt><dd>Honest product status</dd></div></dl></div></header>
-    <section id="products" className="section-shell studio-section" aria-labelledby="available-heading"><div className="studio-section-heading"><div><p className="section-label">01 / products to use now</p><h2 id="available-heading">Start with the tool, not the story.</h2></div><p>These products have a public path today, whether that is a release candidate, public beta, or open-source source code.</p></div><div className="studio-available-grid">{available.map((product, index) => <ProductCard key={product.slug} product={product} lead={index === 0} />)}</div></section>
-    <section id="in-development" className="section-shell studio-section studio-roadmap-section" aria-labelledby="roadmap-heading"><div className="studio-section-heading"><div><p className="section-label">02 / in development</p><h2 id="roadmap-heading">Worth following, not yet available.</h2></div><p>These products are included for context, with no claim of public access or launch readiness.</p></div><div className="studio-roadmap-grid">{inDevelopment.map((product) => <ProductCard key={product.slug} product={product} />)}</div></section>
-    <section id="about-studio" className="section-shell studio-about" aria-labelledby="about-heading"><div><p className="section-label">03 / about Hakim Studio</p><h2 id="about-heading">Built independently, released carefully.</h2></div><div><p>Hakim Studio is a one-person software practice by Yusuf Naeem. It is not an agency, consultancy, or venture-backed company. The goal is simple: make useful tools, state their limits plainly, and improve them through real use.</p><Link href="/">About Yusuf&apos;s engineering work <ArrowUpRight size={15} /></Link></div></section>
-    <footer className="section-shell studio-footer"><span>Hakim Studio</span><a href="mailto:yusufnaeemhakim@gmail.com">Contact Yusuf</a></footer>
-  </main>;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Hakim Studio",
+    description: "Public software by Yusuf Naeem for reading, local media workflows, and clearer thinking.",
+    url: STUDIO_ORIGIN,
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: STUDIO_PRODUCTS.map((product, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        item: { "@type": "SoftwareApplication", name: product.name, description: product.summary, url: `${STUDIO_ORIGIN}/${product.slug}` },
+      })),
+    },
+  };
+
+  return (
+    <main id="main-content" className="studio-catalog-page">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <div className="studio-catalog-shell">
+        <header className="studio-catalog-header" id="top">
+          <div className="studio-catalog-eyebrow"><span>Hakim Studio</span><span>Public software by Yusuf Naeem</span></div>
+          <div className="studio-catalog-intro">
+            <div><h1>Small tools with a clear job to do.</h1><p>Independent software for reading, local media workflows, and turning dense material into something you can use.</p></div>
+            <aside className="studio-catalog-index" aria-label="Studio catalog index">
+              <div><span>01</span><a href="#available">Use now</a></div>
+              <div><span>02</span><a href="#in-development">In development</a></div>
+              <div><span>03</span><a href="#about">About the studio</a></div>
+            </aside>
+          </div>
+        </header>
+
+        <section id="available" className="studio-catalog-section" aria-labelledby="available-heading">
+          <div className="studio-catalog-section-head">
+            <div><span className="studio-section-number">01</span><div><p className="studio-section-kicker">Available products</p><h2 id="available-heading">Use something useful today.</h2></div></div>
+            <p>Each entry has a public path, a stated status, and a direct next step. Start with the product, not a portfolio story.</p>
+          </div>
+          <div className="studio-catalog-list">{available.map((product, index) => <ProductRow key={product.slug} product={product} index={index} available />)}</div>
+        </section>
+
+        <section id="in-development" className="studio-catalog-section studio-catalog-development" aria-labelledby="development-heading">
+          <div className="studio-catalog-section-head">
+            <div><span className="studio-section-number">02</span><div><p className="studio-section-kicker">In development</p><h2 id="development-heading">Worth following. Not available yet.</h2></div></div>
+            <p>These products are shown for context only. Their labels describe their current state, not a launch promise.</p>
+          </div>
+          <div className="studio-catalog-list">{inDevelopment.map((product, index) => <ProductRow key={product.slug} product={product} index={index + available.length} available={false} />)}</div>
+        </section>
+
+        <section id="about" className="studio-catalog-about" aria-labelledby="about-heading">
+          <div><span className="studio-section-number">03</span><p className="studio-section-kicker">About Hakim Studio</p></div>
+          <div><h2 id="about-heading">A one-person studio for practical software.</h2><p>Hakim Studio is Yusuf Naeem&apos;s independent product practice. The work is small on purpose: each tool has a specific user problem, a visible boundary, and a public record of what is ready.</p><a className="studio-action-primary" href="https://www.binhakim.dev">See Yusuf&apos;s engineering work <ArrowUpRight size={15} /></a></div>
+        </section>
+
+        <footer className="studio-catalog-footer"><span>Hakim Studio · Yusuf Naeem</span><a href="mailto:yusufnaeemhakim@gmail.com">Contact Yusuf</a></footer>
+      </div>
+    </main>
+  );
 }

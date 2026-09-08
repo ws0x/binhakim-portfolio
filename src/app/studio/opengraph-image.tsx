@@ -17,7 +17,7 @@ export default function OpenGraphImage() {
           <div style={{ maxWidth: 840, color: "#a1afc1", fontSize: 37, lineHeight: 1.25 }}>Public software for reading, local media workflows, and clearer thinking.</div>
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", color: "#a1afc1", fontSize: 26 }}>
-          <span>binhakim.dev/studio</span>
+          <span>studio.binhakim.dev</span>
           <span>Yusuf Naeem</span>
         </div>
       </div>

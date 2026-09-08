@@ -53,10 +53,10 @@ test("compact navigation remains usable", async ({ page, viewport }) => {
 
 test("Hakim Studio presents the approved public catalog and roadmap without portfolio-only work", async ({ page }) => {
   await page.goto("/studio");
-  await expect(page.getByRole("heading", { name: "Useful software for reading, media, and clearer thinking." })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Start with the tool, not the story." })).toBeVisible();
-  await expect(page.locator(".studio-product-card")).toHaveCount(5);
-  await expect(page.locator(".studio-product-card h3")).toHaveText(["MarginSync", "Videx", "Cerebro", "Commit", "Orbit"]);
+  await expect(page.getByRole("heading", { name: "Small tools with a clear job to do." })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Use something useful today." })).toBeVisible();
+  await expect(page.locator(".studio-catalog-row")).toHaveCount(5);
+  await expect(page.locator(".studio-catalog-row h3")).toHaveText(["MarginSync", "Videx", "Cerebro", "Commit", "Orbit"]);
   await expect(page.getByText("Release candidate", { exact: true })).toBeVisible();
   await expect(page.getByText("Private beta", { exact: true })).toBeVisible();
   await expect(page.getByText("Rebuilding", { exact: true })).toBeVisible();
