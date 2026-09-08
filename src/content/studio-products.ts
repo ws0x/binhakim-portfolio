@@ -83,7 +83,7 @@ export const STUDIO_PRODUCTS: readonly StudioProduct[] = [
   },
   {
     slug: "commit",
-    name: "commit_",
+    name: "Commit",
     category: "Learning completion",
     status: "private-beta",
     statusLabel: "Private beta",
