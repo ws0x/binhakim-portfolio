@@ -13,13 +13,13 @@ export const metadata: Metadata = {
     title: "Hakim Studio | Public Software by Yusuf Naeem",
     description: "Public tools for reading, local media workflows, and clearer thinking.",
     url: STUDIO_ORIGIN,
-    images: [{ url: "/studio/opengraph-image", width: 1200, height: 630, alt: "Hakim Studio by Yusuf Naeem" }],
+    images: [{ url: `${STUDIO_ORIGIN}/opengraph-image`, width: 1200, height: 630, alt: "Hakim Studio by Yusuf Naeem" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Hakim Studio | Public Software by Yusuf Naeem",
     description: "Public tools for reading, local media workflows, and clearer thinking.",
-    images: ["/studio/opengraph-image"],
+    images: [`${STUDIO_ORIGIN}/opengraph-image`],
   },
 };
 

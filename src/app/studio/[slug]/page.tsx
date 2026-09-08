@@ -18,8 +18,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: product.summary,
     keywords: product.keywords,
     alternates: { canonical: `${STUDIO_ORIGIN}/${product.slug}` },
-    openGraph: { title, description: product.summary, url: `${STUDIO_ORIGIN}/${product.slug}`, images: [{ url: `/studio/${product.slug}/opengraph-image`, width: 1200, height: 630, alt: `${product.name} by Hakim Studio` }] },
-    twitter: { card: "summary_large_image", title, description: product.summary, images: [`/studio/${product.slug}/opengraph-image`] },
+    openGraph: { title, description: product.summary, url: `${STUDIO_ORIGIN}/${product.slug}`, images: [{ url: `${STUDIO_ORIGIN}/${product.slug}/opengraph-image`, width: 1200, height: 630, alt: `${product.name} by Hakim Studio` }] },
+    twitter: { card: "summary_large_image", title, description: product.summary, images: [`${STUDIO_ORIGIN}/${product.slug}/opengraph-image`] },
   };
 }
 
